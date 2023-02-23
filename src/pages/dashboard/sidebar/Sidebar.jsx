@@ -49,7 +49,7 @@ console.log(loc.pathname)
   // const loc = useLocation()
   // console.log()
   return (
-    <div className='flex flex-col gap-[2.5rem] py-[2.5rem] border-r-solid border-[#CDCDCD] border-r-[1px] border-t-[solid] border-t-[1px] w-full h-full'>
+    <div className='hidden md:flex flex-col gap-[2.5rem] py-[2.5rem] border-r-solid border-[#CDCDCD] border-r-[1px] border-t-[solid] border-t-[1px] w-full h-full'>
         {sidedetails.map((item) => <SideItem {...item}/>)}
     </div>
   )

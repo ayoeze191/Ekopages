@@ -12,7 +12,7 @@ import Sidebar from './sidebar/Sidebar'
 const Dashboardcontainer = () => {
   return (
     <div className='flex bg-inherit h-full relative'>
-      <div className='w-[25%]'>
+      <div className='md:w-[25%]'>
         <Sidebar />
         </div>
         <div className='flex-1'>

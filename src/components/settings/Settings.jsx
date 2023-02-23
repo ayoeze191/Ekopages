@@ -11,7 +11,7 @@ const Settings = () => {
     const [passwordReset, setPasswordReset] = useState(false)
 
   return (
-    <div className='px-[3.625rem] py-[3rem] flex-1 border-solid border-[#CDCDCD] border-[1px] border-l-none h-[100%] flex flex-col font-lato'>
+    <div className='px-[3.625rem] py-[3rem] w-full md:border-solid md:border-[#CDCDCD] md:border-[1px] md:border-l-none h-[100%] flex flex-col font-lato'>
         <div className='flex flex-col w-full pb-[1.5rem]'>
             <div className='flex justify-between items-center'>
             <p>Profile Picture</p>

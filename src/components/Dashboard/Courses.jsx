@@ -27,7 +27,7 @@ const courseDetails = [
 
 const Courses = () => {
   return (
-    <div className='flex justify-between w-full gap-[2rem]'>
+    <div className='flex flex-col md:flex-row justify-between w-full gap-[2rem]'>
         {courseDetails.map(course => <Course {...course} />)}
     </div>
   )
