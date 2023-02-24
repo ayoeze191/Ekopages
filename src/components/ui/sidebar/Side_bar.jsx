@@ -24,13 +24,13 @@ const Side_bar = ({show, sideFunc}) => {
                     </Link>
                     <p className="text-[#4A4A4A] text-[0.875rem] lg:text-[1rem] font-[400] ">Hello, Oyin</p> 
         </div>
-        <div>  <BsCart className='hidden lg:block'></BsCart></div>
+        <div>  <BsCart className='block lg:hidden'></BsCart></div>
 
         </div>
-      <div className='px-[2.5rem] mb-[26px]'>
+      <div className='px-[2.5rem] mb-[26px] w-full'>
         <div className=' rounded-[10px] bg-[#F4F4F4] flex gap-[3.99px] w-full w-fit h-full px-[23px] py-[11px] items-center'>
             <AiOutlineSearch />
-            <input type="text" placeholder='Search' className='bg-[#F4F4F4] text-[1rem] font-[400] outline-none '/>
+            <input type="text" placeholder='Search' className='bg-[#F4F4F4] text-[1rem] font-[400] outline-none w-full'/>
         </div>
         </div>
 
