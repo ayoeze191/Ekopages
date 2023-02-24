@@ -17,14 +17,14 @@ const ProductPending = ({image, Name, category, amount,author}) => {
             </div>
         </div>
 
-        <div className='flex md:gap-[6.5rem] items-center flex-col md:flex-row justify-between'>
-            <div className='border-[#705E5E] border-solid border-[1px]  flex items-center rounded-[0.3125rem]'>
-                <button className='px-[10px]  py-[3.2px] md:py-[0.32rem] md:px-[1rem] flex items-center text-[15px] md:text-[1rem]'>-</button> 1 <button className='px-[10px]  py-[3.2px] md:py-[0.32rem] md:px-[1rem] flex items-center'>+</button>
+        <div className='flex md:gap-[6.5rem] items-end md:items-center flex-col md:flex-row justify-between order-3 md:order-1'>
+            <div className='border-[#705E5E] border-solid border-[1px]  flex items-center rounded-[0.3125rem] order-3 md:order-1'>
+                <button className='px-[10px]  py-[3.2px] flex items-center text-[15px] md:text-[1rem]'>-</button> 1 <button className='px-[10px]  py-[3.2px] md:py-[0.32rem] md:px-[1rem] flex items-center'>+</button>
             </div>
-            <p className='text-[14px] md:text-[1rem] '>
+            <p className='text-[14px] md:text-[1rem] order-2 md:order-2'>
                 Subtotal: {amount}
             </p>
-            <div>
+            <div className='order-1 md:order-3'>
                 <img src={del} className='w-[19.5px] h-[21px] md:w-initial md:h-initial' alt="" />
             </div>
         </div>

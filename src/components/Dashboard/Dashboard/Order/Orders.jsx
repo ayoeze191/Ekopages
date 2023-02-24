@@ -15,8 +15,9 @@ const Orders = () => {
   return (
     <div className='pl-[1.68rem] pr-[5.0625rem] my-[6rem]'>
       <div className='flex justify-between'>
-        <div className='mb-[4.68rem] flex justify-between flex-col md:flex-row flex-1 items-center md:items-start'>
-            <p className='font-[700] md:font-[500] md:text-[20px] text-[1.5rem] text-[#232323] mb-[22.5px] md:mb-[0px] font-lato'>My Orders</p> <div className='flex gap-[1rem] text-[11.25px] font-[400] md:font-[500] md:text-[1rem]'><button className={!status?style[1]:style[0]}>Pending</button><button className={status?style[1]:style[0]}>Completed</button></div> <div></div>
+        <div className='mb-[24px] md:mb-[4.68rem] flex  md:justify-between flex-col md:flex-row flex-1 items-center md:items-start'>
+            <p className='font-[700] md:font-[500] md:text-[20px] text-[1.5rem] text-[#232323] mb-[22.5px] md:mb-[0px] font-lato'>My Orders</p>
+            <div className='flex gap-[1rem] text-[11.25px] font-[400] md:font-[500] md:text-[1rem] '><button className={!status?style[1]:style[0]}>Pending</button><button className={status?style[1]:style[0]}>Completed</button></div> <div></div>
         </div>
         <div>
               <img src={bell} alt="" />
