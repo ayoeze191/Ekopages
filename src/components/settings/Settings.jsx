@@ -48,7 +48,7 @@ const Settings = () => {
             </div>
             {passwordReset?
             <div className='flex flex-col gap-[3.5rem]'>
-            <div className='grid grid-cols-2 mt-[1rem] gap-x-[1.625rem] gap-y-[2.5rem]'>
+            <div className='grid grid-cols-1 md:grid-cols-2 mt-[1rem] gap-x-[1.625rem] gap-y-[2.5rem]'>
                 <div className='flex flex-col'> <label htmlFor="current password"><div className='font-lato font-[600] text-[1rem]'> Current Password </div></label> <input type="password"  name='current password' className='outline-none border-solid border-[#888888] border-[1px] rounded-[5px]'/> </div>
                 <div className='flex flex-col'>  <label htmlFor="current password2"> <div className='font-lato font-[600] text-[1rem]'> Enter Current Password</div></label><input type="password" name='current password2' className='outline-none border-solid border-[#888888] border-[1px] rounded-[5px]'/> </div>
                 <div className='flex flex-col'> <label htmlFor="new password"> <div className='font-lato font-[600] text-[1rem]'>New password</div> </label> <input type="password" name='new password' className='outline-none border-solid border-[#888888] border-[1px] rounded-[5px]'/> </div>
