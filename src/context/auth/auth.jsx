@@ -57,6 +57,7 @@ export const AuthProvider = ( { children }) => {
       <AuthContext.Provider
         value={{
           isAuth: localStorage.getItem('access')?true:false,
+          // isAuth: true,
           access: localStorage.getItem('access'),
           refresh: localStorage.getItem('refresh'),
           user: JSON.parse(localStorage.getItem("user")),

@@ -6,6 +6,56 @@ import linkedln from "./../../assets/about/linkedln.png"
 import facebook from "./../../assets/about/facebook.png"
 import Subscribe from '../about/subscribe/Subscribe';
 import { useLocation } from 'react-router-dom';
+import { Link } from 'react-router-dom';
+
+const NavItem = ({to, name}) => {
+ return  <Link to={to}>{name}</Link>
+}
+
+const linkVal = [
+    {
+        name: "Eko News",
+        to: "/ekonews"
+    },
+    {
+        name: "Become a Partner",
+        to: ""
+    },
+    {
+        name: "Contact Us",
+        to: "/contact"
+    },
+    {
+        name: "FAQs",
+        to: "/faq"
+    }
+]
+const linkVal2 = [
+    {
+        name: "About us",
+        to: "/about"
+    },
+    {
+        name: "Projects",
+        to: "/projects"
+    },
+    {
+        name: "About us",
+        to: "/about"
+    },
+    {
+        name: "Services",
+        to: "/services"
+    },
+    {
+        name: "Eko Store",
+        to: "/ekostore"
+    },
+]
+
+
+
+
 const Footers = () => {
     const loc = useLocation()
     // console.log(loc.pathname)
@@ -29,16 +79,11 @@ const Footers = () => {
         </div>
     <div className='flex gap-[5.4rem] text-[#232323]   font-lato  text-left mr-[4.75rem] h-full items-start font-[500] text-[1rem]'>
     <div className='flex flex-col gap-3 h-full'>
-        <p>About us</p>
-        <p>Projects</p>
-        <p>Services</p>
-        <p>Eko Store</p>
+        {linkVal.map(li => <NavItem {...li}/>)}
     </div>
     <div className='flex flex-col'>
-    <p>Eko News</p>
-    <p>Become a Partner</p>
-    <p>Contact Us</p>
-    <p>FAQs</p>
+    {linkVal2.map(li => <NavItem {...li}/>)}
+    
     </div>
     </div>
     <Subscribe />

@@ -6,8 +6,8 @@ export const get_all_categories = () => (dispatch) => {
     console.log("getting")
     instance.get('store/category/', Config())
     .then(res => {
-        // console.log(res.data, "response")
-        dispatch(setcategories(res.data.data))
+        console.log(res.data, "Our response")
+        // dispatch(setcategories(res.data.data))
     }
     )
     .catch((err) => {

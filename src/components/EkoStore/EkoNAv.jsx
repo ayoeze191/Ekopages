@@ -1,12 +1,19 @@
 import React from 'react'
 import NavItem from './NavItem'
-import { useSelector } from 'react-redux'
+import { useSelector, useDispatch } from 'react-redux'
+import { get_all_categories } from '../../store/Actions/Product'
+import { useEffect } from 'react'
 const EkoNAv = () => {
   const navtem = [
     {id: "1", name: "Books"},
     {id: "2", name: "Clothes"},
   ]
+  const dispatch = useDispatch()
 
+  useEffect(() => {
+    dispatch(get_all_categories())
+    
+  }, [])
 
 
   return (

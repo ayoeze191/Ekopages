@@ -14,6 +14,7 @@ import ShppoingCarts from "./pages/ShoppingCart/ShppoingCarts"
 import WhishlistContainer from "./pages/WhishlistContainer/WhishlistContainer"
 import Login from "./components/Login/Login"
 import StoreDetails from "./components/EkoStore/StoreDetails/StoreDetails"
+import Test from "./components/Test"
 
 
 export const BasicRoutes = [
@@ -77,6 +78,10 @@ export const BasicRoutes = [
     {
         path: '/login',
         component: <Login />
+    },
+    {
+        // path: "/test", 
+        // component: <Test />
     }
 ]
 
