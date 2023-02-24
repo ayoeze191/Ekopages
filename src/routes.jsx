@@ -78,11 +78,6 @@ export const BasicRoutes = [
         path: '/login',
         component: <Login />
     }
-    // {
-    //     path: '/sdg',
-        
-    // },
-    
 ]
 
 export const PrivateRoutes = [

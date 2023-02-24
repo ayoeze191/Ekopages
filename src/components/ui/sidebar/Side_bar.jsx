@@ -17,7 +17,7 @@ const Side_bar = ({show, sideFunc}) => {
 
     {/* <Overlay showSmallOnly={true}/> */}
 
-        <div className='flex justify-between px-[2.5rem] items-center mb-[2.5rem]'>
+        <div className='flex justify-between px-[1.7rem] items-center mb-[2.5rem]'>
         <div className='flex items-center gap-[0.5rem]'>
         <Link className=" relative  w-[28px] h-[50px] w-[50px] bg-[#CCB4DD] rounded-[40px] flex items-center justify-center cursor-pointer flex" to = {'/dashboard'} >
                         <AiOutlineUser></AiOutlineUser>
@@ -27,14 +27,14 @@ const Side_bar = ({show, sideFunc}) => {
         <div>  <BsCart className='block lg:hidden'></BsCart></div>
 
         </div>
-      <div className='px-[2.5rem] mb-[26px] w-full'>
+      <div className='px-[1.7rem] mb-[26px] w-full'>
         <div className=' rounded-[10px] bg-[#F4F4F4] flex gap-[3.99px] w-full w-fit h-full px-[23px] py-[11px] items-center'>
             <AiOutlineSearch />
             <input type="text" placeholder='Search' className='bg-[#F4F4F4] text-[1rem] font-[400] outline-none w-full'/>
         </div>
         </div>
 
-        <div className='bg-white px-[2.5rem] text-black flex flex-col gap-[2rem] mb-[66px]'>
+        <div className='bg-white px-[1.7rem] text-black flex flex-col gap-[2rem] mb-[66px]'>
             
       {items.map(item => <SideItem {...item} sidefunctions={sideFunc}/>)}
 
