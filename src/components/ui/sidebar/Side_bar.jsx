@@ -4,15 +4,19 @@ import SideItem from './SideItem'
 import { Link } from "react-router-dom"
 import { AiOutlineUser,  AiOutlineHeart, AiOutlineSearch} from 'react-icons/ai'
 import { BsCart } from 'react-icons/bs'
+import Overlay from '../Overlay'
 const Side_bar = ({show, sideFunc}) => {
   return (
-    <div className=' w-full h-full flex flex-col pt-[80px] pb-[50px] md:hidden w-full h-full w-full bg-white overflow-scroll fixed z-50 left-0 right-0 top-0 bottom-0'
+    <div className=' w-full h-full flex flex-col pt-[80px] pb-[50px] md:hidden w-[80%] h-full w-full bg-white overflow-scroll fixed z-50 left-0 right-0 top-0 bottom-0'
     style={{
       transform:show ? 'translateX(0)' : 'translateX(-1000px)',
       // opacity:show ? '1' : '0',
       transition: "ease-in-out 1s"
   }}
     >
+
+    {/* <Overlay showSmallOnly={true}/> */}
+
         <div className='flex justify-between px-[2.5rem] items-center mb-[2.5rem]'>
         <div className='flex items-center gap-[0.5rem]'>
         <Link className=" relative  w-[28px] h-[50px] w-[50px] bg-[#CCB4DD] rounded-[40px] flex items-center justify-center cursor-pointer flex" to = {'/dashboard'} >

@@ -10,6 +10,7 @@ import Rodal from "rodal";
 import 'rodal/lib/rodal.css';
 import Side_bar from "./components/ui/sidebar/Side_bar";
 import { useState } from "react";
+import Overlay from "./components/ui/Overlay";
 function App() {
   const [side, setSide] = useState(false)
 
@@ -25,7 +26,7 @@ function App() {
   // localStorage.removeItem('refresh')
   // localStorage.removeItem('user')
   return (
-    <div className="bg-[#F6F6F6] min-h-screen h-full flex flex-col  justify-center">
+    <div className="bg-[#F6F6F6] flex">
 
       
 
@@ -33,8 +34,9 @@ function App() {
       <Routes>
       {/* <Route element= {<Login />}  path="/login" /> */}
       </Routes>
+      <Overlay showSmallOnly={side} remove={sidebarHandler}/>
       <Side_bar show={side} sideFunc={sidebarHandler}/>
-      
+      <div className="min-h-screen h-full w-full flex flex-col  justify-center">
       <NavHead sideHandler ={sidebarHandler}/>
         <Routes>
           {
@@ -46,6 +48,7 @@ function App() {
           }
       </Routes>
       <Footers /> 
+      </div>
       </BrowserRouter>
       
     </div>
