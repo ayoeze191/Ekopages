@@ -12,6 +12,7 @@ export const AuthContext = React.createContext({
     success: false,
     loading: false,
     login: (value) => {},
+    logout: () => {},
     showLoginModal: false,
     setloginMode: () => {}
 });
@@ -43,11 +44,11 @@ export const AuthProvider = ( { children }) => {
           setLoginModal(!loginModal)
       })
       .catch((err) => {
-        console.log(err, "logging in error")
+        console.log(err.response.data, "logging in error")
           setIsloading(true)
           setIsloading(false)
           setsucess(false);
-          setError(err.response);
+          setError(err.response.data);
           localStorage.removeItem('access')
           localStorage.removeItem('refresh')
           localStorage.removeItem('user')

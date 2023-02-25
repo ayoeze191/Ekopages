@@ -5,8 +5,8 @@ import { get_all_categories } from '../../store/Actions/Product'
 import { useEffect } from 'react'
 const EkoNAv = () => {
   const navtem = [
-    {id: "1", name: "Books"},
-    {id: "2", name: "Clothes"},
+    {id: "books", name: "books"},
+    {id: "merch", name: "merch"},
   ]
   const dispatch = useDispatch()
 

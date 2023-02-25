@@ -10,7 +10,7 @@ import useLogic from "../hooks/login"
 import {useAuthContext} from "../context/auth/auth"
 import { useState } from "react"
 import logi from "./../assets/login/login.png"
-import { ValidateLogin } from "./validate/validate"
+import { validate } from "./validate/validate"
 // import Overlay from "./Overlay"
 import { useFormik } from 'formik'
 import Link from "antd/es/typography/Link"
@@ -22,8 +22,10 @@ const Login = () => {
 
   const loginObject = useLogic()
   
-  const { login, loading } = useAuthContext()
+  const { login, loading, error } = useAuthContext()
 
+
+  console.log(error)
   const handlesubmit = (data) => {
     login(data)
  }
@@ -34,11 +36,18 @@ const Login = () => {
         "email": "",
         "password": ""
     },
+    validate,
+    
     onSubmit: values => {
         login(values)
     },
-    validate: ValidateLogin
 })
+
+const handleError = (error) => {
+  if(error.non_field_errors) {
+    return error.non_field_errors
+  }
+}
 
     return (
       <div className="w-full flex h-full items-center font-lato flex-col md:flex-row md:rounded-[20px] bg-[#F6F6F6]" >
@@ -52,15 +61,20 @@ const Login = () => {
         <form onSubmit={formik.handleSubmit} className='flex flex-col w-full max-w-[20.37rem] gap-[1.5rem]' >
         <section className="flex flex-col">
             <InputField type="email" onChangeHandler={formik.handleChange} value={formik.values.username} fieldName={"Username"} name="username" id="username"></InputField>
-            <p className="text-[12px] text-red-600">{formik.touched.username && formik.errors.username ? formik.errors.username:null}</p>
+            <p className="text-[12px] text-red-600 mt-4">{formik.touched.username && formik.errors.username ? formik.errors.username:null}</p>
           </section>
               <section className="flex flex-col">
             <InputField type="email" onChangeHandler={formik.handleChange} value={formik.values.email} fieldName={"Email Address"} name="email" id="email"></InputField>
-            <p className="text-[12px] text-red-600">{formik.touched.username && formik.errors.username ? formik.errors.username:null}</p>
+            <p className="text-[12px] text-red-600 mt-4">{formik.touched.email && formik.errors.email ? formik.errors.email:null}</p>
           </section>
           <section className="flex  flex-col">
             <InputField type="password" onChangeHandler={formik.handleChange} value={formik.values.password} src={assets.passwordIcons}  fieldName={"Password"} desc="Passowrd icons" id="password"  showValue={loginObject.state.showPassword} handleVisibility={()=> loginObject.showPassword(loginObject.state)}></InputField>
-            <p className="text-[12px] text-red-600">{formik.touched.password && formik.errors.password ? formik.errors.password:null}</p>
+            <p className="text-[12px] text-red-600 mt-5">{formik.touched.password && formik.errors.password ? formik.errors.password:null}</p>
+
+            <div className="text-[#DD3D08] text-[14px] font-[700] font-lato">
+            {error?  handleError(error):null}
+            </div>
+
             <p className="text-[16px] text-[black] font-Poppins mt-[15px] mb-[15px]">
           Forgot Password?
           </p>
@@ -96,3 +110,7 @@ const Login = () => {
 }
 
 export default Login 
+
+
+
+

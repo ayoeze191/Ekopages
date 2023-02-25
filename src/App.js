@@ -11,14 +11,20 @@ import 'rodal/lib/rodal.css';
 import Side_bar from "./components/ui/sidebar/Side_bar";
 import { useState } from "react";
 import Overlay from "./components/ui/Overlay";
+import { useEffect } from "react";
+import { useDispatch } from "react-redux";
+import { get_cart } from "./store/Actions/Cart";
 function App() {
-  const [side, setSide] = useState(false)
-
-
-
+  const [side, setSide] = useState(false)  
+  const dispatch = useDispatch()
   const sidebarHandler = () => {
     setSide(!side)
   }
+
+
+  useEffect(() => {
+    dispatch(get_cart())
+  }, [])
 
   const {isAuth} = useAuthContext()
   console.log(isAuth)

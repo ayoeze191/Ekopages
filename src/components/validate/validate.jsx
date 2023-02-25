@@ -1,5 +1,5 @@
 export function SignupValidate(values, name) {
-    const validate = values => {
+   
         const errors = {};
         if (!values.firstName) {
           errors.firstName = 'Required';
@@ -25,11 +25,9 @@ export function SignupValidate(values, name) {
 
         return errors;
 }
-}
 
 
-export function ValidateLogin(values, name) {
-    const validate = values => {
+export function validate(values) {
         const errors = {};
         if(!values.email) {
             errors.email = 'Required';
@@ -45,5 +43,4 @@ export function ValidateLogin(values, name) {
         }
 
         return errors;
-}
 }

@@ -14,11 +14,16 @@ const initialState = {
 const cartSlice = createSlice({
     name: "carts",
     initialState,
-    
+    reducers: {
+        getCart: (state, action) => {
+           state.cart = action.payload
+            // state.category = action.payload.category
+        },
+    }
 })
 
 
-export const {} = cartSlice.actions
+export const {getCart} = cartSlice.actions
 
 
 export default cartSlice.reducer;
