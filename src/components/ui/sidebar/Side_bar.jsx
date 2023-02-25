@@ -5,7 +5,9 @@ import { Link } from "react-router-dom"
 import { AiOutlineUser,  AiOutlineHeart, AiOutlineSearch} from 'react-icons/ai'
 import { BsCart } from 'react-icons/bs'
 import Overlay from '../Overlay'
+import { useAuthContext } from '../../../context/auth/auth'
 const Side_bar = ({show, sideFunc}) => {
+  const {isAuth, user} = useAuthContext()
   return (
     <div className=' w-full h-full flex flex-col pt-[80px] pb-[50px] md:hidden w-[80%] h-full w-full bg-white overflow-scroll fixed z-50 left-0 right-0 top-0 bottom-0'
     style={{
@@ -22,7 +24,9 @@ const Side_bar = ({show, sideFunc}) => {
         <Link className=" relative  w-[28px] h-[50px] w-[50px] bg-[#CCB4DD] rounded-[40px] flex items-center justify-center cursor-pointer flex" to = {'/dashboard/account'} >
                         <AiOutlineUser></AiOutlineUser>
                     </Link>
-                    <p className="text-[#4A4A4A] text-[0.875rem] lg:text-[1rem] font-[400] ">Hello, Oyin</p> 
+                    {isAuth &&<p className="text-[#4A4A4A] text-[0.875rem] lg:text-[1rem] font-[400] ">Hello, {user.username}</p>} 
+                    {!isAuth && <p className="text-[#4A4A4A] text-[0.875rem] lg:text-[1rem] font-[400] ">Log in/Sign up</p> }
+
         </div>
         <div>  <BsCart className='block lg:hidden'></BsCart></div>
 
