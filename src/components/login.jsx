@@ -30,6 +30,7 @@ const Login = () => {
 
   const formik = useFormik({
     initialValues: {
+      "username": "",
         "email": "",
         "password": ""
     },
@@ -49,9 +50,12 @@ const Login = () => {
         
         <p className="font-lato font-[700] text-[1.5rem] md:text-[1.75rem] text-[#232323] text-center mx-auto mt-[24px] md:mt-[0] mb-[24px] md:mb-[0]">Log In</p>
         <form onSubmit={formik.handleSubmit} className='flex flex-col w-full max-w-[20.37rem] gap-[1.5rem]' >
-         
+        <section className="flex flex-col">
+            <InputField type="email" onChangeHandler={formik.handleChange} value={formik.values.username} fieldName={"Username"} name="username" id="username"></InputField>
+            <p className="text-[12px] text-red-600">{formik.touched.username && formik.errors.username ? formik.errors.username:null}</p>
+          </section>
               <section className="flex flex-col">
-            <InputField type="email" onChangeHandler={formik.handleChange} value={formik.values.username} fieldName={"Email Address"} name="email" id="email"></InputField>
+            <InputField type="email" onChangeHandler={formik.handleChange} value={formik.values.email} fieldName={"Email Address"} name="email" id="email"></InputField>
             <p className="text-[12px] text-red-600">{formik.touched.username && formik.errors.username ? formik.errors.username:null}</p>
           </section>
           <section className="flex  flex-col">

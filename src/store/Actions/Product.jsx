@@ -11,7 +11,7 @@ export const get_all_categories = () => (dispatch) => {
     }
     )
     .catch((err) => {
-        console.log(err)
+        console.log(err, "error wao")
     })
 }
 
@@ -28,7 +28,6 @@ export const get_products = (id, name) => (dispatch) => {
     console.log(url)
     instance.get(url)
     .then(res => {
-        console.log("feteching product")
         // console.log(res.data.data)
         dispatch(setproducts(res.data.data))
     })

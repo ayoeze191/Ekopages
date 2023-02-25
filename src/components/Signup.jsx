@@ -24,11 +24,12 @@ const Signup = () => {
   const formik = useFormik({
     initialValues: {
       email: "",
-      name: "",
+      username: "",
       // last_name: "",
       // username: "",
       // account_type: "Individual",
       password1: "",
+      password2: ""
       // password2: ""
     },
     onSubmit: values => {
@@ -41,11 +42,11 @@ const Signup = () => {
   // console.log(details[5].error, "error")
     return (
       <div className="w-full flex h-full items-center font-lato flex-col md:flex-row md:rounded-[20px] bg-[#F6F6F6]">
-          <div className="md:h-full bg-[#5A0C91] w-full md:w-fit">
+          <div className="md:h-full bg-[#5A0C91] w-full md:w-fit h-full flex items-center">
       <div className="relative md:left-32 w-[169px] md:w-[initial] mx-auto pb-2 pt-[22.29px]"><img src={logi} className=' w-full h-full'  alt="" /></div>
       </div>
 
-        <div className="md:w-[57%] flex flex-col md:items-center px-[21px]">     
+        <div className="md:w-[57%] flex flex-col md:items-center px-[21px] bg-green-300 h-full justify-center">     
         
         <p className="font-lato font-[700] text-[1.5rem] md:text-[1.75rem] text-[#232323] text-center mx-auto mt-[24px] md:mt-[0] mb-[2rem] md:mb-[0] ">Create an Account</p>
         <form  onSubmit={formik.handleSubmit} className="flex flex-col w-full max-w-[20.37rem] gap-[1.5rem]">
@@ -57,7 +58,7 @@ const Signup = () => {
           </section>
       
           <section className="flex flex-col">
-                <InputField  blurHandler={signupObject.SignupFormObj.handleBlur} type="text" id="" onChangeHandler={formik.handleChange} value={formik.values.name} src={assets.profileIcon} fieldName={"Name"} name={"name"} desc="profile icons"  ></InputField>
+                <InputField  blurHandler={signupObject.SignupFormObj.handleBlur} type="text" id="" onChangeHandler={formik.handleChange} value={formik.values.username} src={assets.profileIcon} fieldName={"Username"} name={"username"} desc="profile icons"  ></InputField>
                 {/* {signupObject.SignupFormObj.errors.firstName && signupObject.SignupFormObj.touched.firstName ? <p className="text-[12px] text-red-500">{ signupObject.SignupFormObj.errors.firstName}</p>:null} */}
           </section>
 
@@ -66,11 +67,11 @@ const Signup = () => {
                 {/* {signupObject.SignupFormObj.errors.email && signupObject.SignupFormObj.touched.email ? <p className="text-[12px] text-red-500">{ signupObject.SignupFormObj.errors.email}</p>:null} */}
           </section>
 
-          {/* <section className="">
+          <section className="">
                 <InputField blurHandler={signupObject.SignupFormObj.handleBlur} type="password" onChangeHandler={formik.handleChange} value={formik.values.password2} src={assets.callIcon} fieldName={"password2"} name={"password2"} desc="call icons"  ></InputField>
-                <p className="text-[12px] text-red-500">{details[5].error?details[5].error:null }</p>
+                {/* <p className="text-[12px] text-red-500">{details[5].error?details[5].error:null }</p> */}
 
-          </section> */}
+          </section>
           <AuthButton isLoading={loading} name="Sign Up"></AuthButton>
           
          </form>
@@ -89,7 +90,6 @@ const Signup = () => {
           </div>
            <p className=" text-[#000000] text-center text-[1rem] font-lato font-[500] ">Already have an account? <Link className="text-[#5A0C91] text-[1rem] font-[500] md:text-[1rem]">Log In here</Link></p>
           </section>
-
          </div>
         </div>
     )

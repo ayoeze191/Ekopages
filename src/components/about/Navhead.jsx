@@ -115,7 +115,6 @@ const NavHead = ({sideHandler}) => {
                     height: "90vh",
                     paddingBottom: "0",
                     background: "#F6F6F6",
-                    height: "90vh",
                     overflowY:"scroll",
                     maxWidth: "1000px",
                 
@@ -161,8 +160,8 @@ const NavHead = ({sideHandler}) => {
             
             <section className=' items-center justify-between gap-[1rem] flex flex-0'>
             
-                 {isAuth && <>                      <p className="text-[#4A4A4A] text-[0.875rem] lg:text-[1rem] font-[400] ">hello {user.first_name}</p> 
-                    <Link className=" relative  w-[28px] h-[28px] lg:w-[40px] h-[40px] bg-[#CCB4DD] rounded-[40px] flex items-center justify-center cursor-pointer flex" to = {'/dashboard'} >
+                 {isAuth && <>                      <p className="text-[#4A4A4A] text-[0.875rem] lg:text-[1rem] font-[400] ">hello {user.username}</p> 
+                    <Link className=" relative  w-[28px] h-[28px] lg:w-[40px] lg:h-[40px] bg-[#CCB4DD] rounded-full flex items-center justify-center cursor-pointer flex" to = {'/dashboard'} >
                         <AiOutlineUser></AiOutlineUser>
                         <p className="absolute h-[7px] w-[7px] rounded-[7px] bg-[#03A800] top-[5px] right-[0px]"></p>
                     </Link>
