@@ -34,7 +34,7 @@ export const AuthProvider = ( { children }) => {
       console.log("logging in")
       loginUser(details)
         .then((res) => {
-          console.log(res.data.user)
+          console.log(res, "data")
           setsucess(true);
           setError("");
           localStorage.setItem('access', res.data.access_token)

@@ -20,16 +20,16 @@ const BecomeAPartner = () => {
 
 
   return (
-    <div className='flex rounded-[10px 0px 0px 10px] text-center font-lato'>
-        <div className='w-[50%] bg-[#EFA30C] flex items-center justify-center'>
+    <div className='flex flex-col md:flex-row rounded-[10px 0px 0px 10px] text-center font-lato'>
+        <div className='w-full md:w-[50%] bg-[#EFA30C] flex items-center justify-center'>
 
         <div>
             <img src={amico} alt="" />
         </div>
 
         </div>
-        <div className='w-[50%] bg-[#F9F9F9] px-[79px] py-[80px]'>
-            <p className='font-[700] font-lato text-[1.25rem] '>Are you passionate about SDG projects for children?</p>
+        <div className='w-full md:w-[50%] bg-[#F9F9F9] px-[79px] py-[80px]'>
+            <p className='font-[700] font-lato text-[1.25rem] w-full md:fit'>Are you passionate about SDG projects for children?</p>
             <div className='font-[500] text-[12px] flex flex-col gap-[1rem] mt-[4px] mb-[11px]'>
                 <p>Then fill the form below detailing your intentions</p>
                     <p> OR </p>
@@ -37,7 +37,7 @@ const BecomeAPartner = () => {
                 <p> Shoot us a mail at <span className='text-[#5A0C91]'> sales@ekopages.com </span></p>
             </div>
 
-            <form action="" className='flex flex-col gap-[1.5rem]'>
+            <form action="" className='flex flex-col gap-[1.5rem] w-full md:w-fit'>
             <section className="flex flex-col">
             <InputField type="text" onChangeHandler={formik.handleChange} value={formik.values.username} fieldName={"Name"} name="name" id="Name" placeholder={"Enter your name here"}></InputField>
             {/* <p className="text-[12px] text-red-600 mt-4">{formik.touched.username && formik.errors.username ? formik.errors.username:null}</p> */}
