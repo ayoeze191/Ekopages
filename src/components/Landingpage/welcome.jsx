@@ -1,9 +1,10 @@
+import { useModalContext } from "../../context/modal/modal"
 import { AdBx } from "./adBx"
 
 
 
 const WelcomeComponent = () => {
-
+    const {setpartnerModal} = useModalContext()
 
 
     return (
@@ -25,7 +26,7 @@ const WelcomeComponent = () => {
                     <button className="w-[216px] h-[59px] bg-[#EFA30C] rounded-[10px] mt-[20px] font-[20px] flex items-center justify-center text-[20px] text-[#480A74] font-latomedium">
                             Explore Courses
                     </button>
-                    <button className=" ml-[10px] border border-white w-[216px] h-[59px]  rounded-[10px] mt-[20px] font-[20px] flex items-center justify-center text-[20px] text-white font-latomedium">Become a Partner</button>
+                    <button className=" ml-[10px] border border-white w-[216px] h-[59px]  rounded-[10px] mt-[20px] font-[20px] flex items-center justify-center text-[20px] text-white font-latomedium" onClick={() => setpartnerModal()}>Become a Partner</button>
                 </div>
           
             

@@ -9,11 +9,13 @@ import { Provider } from 'react-redux'
 import { AuthProvider } from './context/auth/auth';
 import { SignUpProvider } from "./context/auth/signup"
 import { store } from './store/Store';
+import { ModalProvider } from './context/modal/modal';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 const queryClient = new QueryClient()
 root.render(
   <React.StrictMode>
+    <ModalProvider>
     <AuthProvider>
       <Provider store={store}>
       <SignUpProvider>
@@ -23,6 +25,7 @@ root.render(
     </SignUpProvider>
     </Provider>
     </AuthProvider>
+    </ModalProvider>
   </React.StrictMode>
 );
 

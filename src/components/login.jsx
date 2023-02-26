@@ -50,15 +50,15 @@ const handleError = (error) => {
 }
 
     return (
-      <div className="w-full flex h-full items-center font-lato flex-col md:flex-row md:rounded-[20px] bg-[#F6F6F6]" >
-        <div className="md:h-full bg-[#5A0C91] w-full md:w-fit">
+      <div className="w-full flex h-full  items-center font-lato flex-col md:flex-row md:rounded-[20px] bg-[#F6F6F6]" >
+        <div className="md:h-full bg-[#5A0C91] w-full md:w-[43%]">
       <div className="relative md:left-32 w-[169px] md:w-[initial] mx-auto pb-2 pt-[22.29px]"><img src={logi} className=' w-full h-full'  alt="" /></div>
       </div>
 
-        <div className="md:w-[57%] flex flex-col md:items-center px-[23px]">     
+        <div className="md:w-[57%] flex flex-col md:items-center w-full px-[23px] h-full">     
         
-        <p className="font-lato font-[700] text-[1.5rem] md:text-[1.75rem] text-[#232323] text-center mx-auto mt-[24px] md:mt-[0] mb-[24px] md:mb-[0]">Log In</p>
-        <form onSubmit={formik.handleSubmit} className='flex flex-col w-full max-w-[20.37rem] gap-[1.5rem]' >
+        <p className="font-lato font-[700] text-[1.5rem] md:text-[1.75rem] text-[#232323] text-center mx-auto mt-[24px]  mb-[24px]">Log In</p>
+        <form onSubmit={formik.handleSubmit} className='flex flex-col w-full w-full md:max-w-[20.37rem] gap-[1.5rem]' >
         <section className="flex flex-col">
             <InputField type="email" onChangeHandler={formik.handleChange} value={formik.values.username} fieldName={"Username"} name="username" id="username"></InputField>
             <p className="text-[12px] text-red-600 mt-4">{formik.touched.username && formik.errors.username ? formik.errors.username:null}</p>

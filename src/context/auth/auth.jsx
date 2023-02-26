@@ -68,7 +68,6 @@ export const AuthProvider = ( { children }) => {
           login: Login,
           showLoginModal: loginModal,
           setloginMode: ChangeLoginModalMode
-
         }}
       >
         {children}

@@ -41,15 +41,15 @@ const Signup = () => {
   
   // console.log(details[5].error, "error")
     return (
-      <div className="w-full flex h-full items-center font-lato flex-col md:flex-row md:rounded-[20px] bg-[#F6F6F6]">
-          <div className="md:h-full bg-[#5A0C91] w-full md:w-fit h-full flex items-center">
+      <div className="w-full flex h-full  items-center font-lato flex-col md:flex-row md:rounded-[20px] bg-[#F6F6F6]">
+          <div className="md:h-full bg-[#5A0C91] w-full md:w-[43%] flex items-center ">
       <div className="relative md:left-32 w-[169px] md:w-[initial] mx-auto pb-2 pt-[22.29px]"><img src={logi} className=' w-full h-full'  alt="" /></div>
       </div>
 
-        <div className="md:w-[57%] flex flex-col md:items-center px-[21px] bg-green-300 h-full justify-center">     
+        <div className="md:w-[57%] flex flex-col md:items-center w-full px-[23px] h-full">     
         
-        <p className="font-lato font-[700] text-[1.5rem] md:text-[1.75rem] text-[#232323] text-center mx-auto mt-[24px] md:mt-[0] mb-[2rem] md:mb-[0] ">Create an Account</p>
-        <form  onSubmit={formik.handleSubmit} className="flex flex-col w-full max-w-[20.37rem] gap-[1.5rem]">
+        <p className="font-lato font-[700] text-[1.5rem] md:text-[1.75rem] text-[#232323] text-center mx-auto mt-[24px]  mb-[24px] ">Create an Account</p>
+        <form  onSubmit={formik.handleSubmit} className="flex flex-col w-full w-full md:max-w-[20.37rem] gap-[1.5rem] ">
         <section className="flex flex-col">
             <InputField blurHandler={signupObject.SignupFormObj}  type="email" id="email" onChangeHandler={formik.handleChange} value={formik.values.email} src={assets.profileIcon} fieldName={"Email Address"} name={"email"} desc="profile icons"  ></InputField>
             {/* {signupObject.SignupFormObj.errors.username && signupObject.SignupFormObj.touched.username ? <p className="text-[12px] text-red-500">
@@ -76,7 +76,7 @@ const Signup = () => {
           
          </form>
 
-         <section className="w-full flex flex-col gap-[1.5rem] mt-[0.5rem] mb-[168px] md:mb-0">
+         <section className="w-full flex flex-col gap-[1.5rem] mt-[0.5rem] mb-[168px] md:mb-[111px]">
           
           <div className="flex flex-row items-center w-full gap-[22px] text-[1rem] font-[500] font-lato mt-[40px] md:mt-[0]">
   <span className="flex-1 md:h-[1px] bg-[#CCB4DD]"></span>
