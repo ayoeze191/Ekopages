@@ -16,7 +16,7 @@ const EkoStoreCOntainer = () => {
   //    dispatch(get_all_categories())
   // }, [])
 
-  // console.log("container")
+  // //("container")
 
   return (
     <div className='bg-[#F6F6F6]'>

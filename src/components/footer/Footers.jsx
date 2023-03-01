@@ -58,7 +58,7 @@ const linkVal2 = [
 
 const Footers = () => {
     const loc = useLocation()
-    // console.log(loc.pathname)
+    // //(loc.pathname)
 
   return ( 
    <div className='bg-[#DACDAE]'>

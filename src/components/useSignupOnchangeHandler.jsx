@@ -17,10 +17,10 @@ const useSignupOnchange = () => {
     ])
     
       const signupOnChangeHandler = (e) => {
-        //   console.log(e.target.name, "changinh")
+        //   //(e.target.name, "changinh")
           let new_detail = {...details}
           let error = null
-        //   console.log(e.target.name)
+        //   //(e.target.name)
     
           if(e.target.name === "username") {
             new_detail[0].username = e.target.value
@@ -63,7 +63,7 @@ const useSignupOnchange = () => {
             new_detail[5].Phone_Number = e.target.value
             if(  SignupValidate(e.target.value, e.target.name)){
               error =  SignupValidate(e.target.value, e.target.name)
-              console.log(error, "ero")
+              //(error, "ero")
               new_detail[5].error = error
             }
           }

@@ -1,6 +1,7 @@
 import React from 'react'
 import arrow from "./../../assets/projects/arrow.png"
-const Project = ({img, h1, p}) => {
+import { Link } from 'react-router-dom'
+const Project = ({img, h1, p, path}) => {
   return (
     <div className='flex flex-col font-lato'>
         <div className='mb-[1.5rem] '>
@@ -15,10 +16,10 @@ const Project = ({img, h1, p}) => {
         </p>
         </div>
 
-        <div className='flex items-center gap-[0.7rem]'>
+        <Link className='flex items-center gap-[0.7rem]' to={path}>
             <p className='text-[1rem] font-[700] text-[#4A4A4A]'>View Project</p><div><img src={arrow} alt="" />
             </div>
-        </div>
+        </Link>
     </div>
   )
 }

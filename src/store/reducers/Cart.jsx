@@ -7,8 +7,12 @@ import axios from "axios"
 
 
 const initialState = {
-    cart: "",
-    
+    prodid: null,
+    cart: null,
+    loading: false,
+    success: false,
+    cartLoading: false
+
 }  
 
 const cartSlice = createSlice({
@@ -17,13 +21,31 @@ const cartSlice = createSlice({
     reducers: {
         getCart: (state, action) => {
            state.cart = action.payload
+           state.cartLoading = false
             // state.category = action.payload.category
         },
+        adding__to__Cart: (state, action) => {
+            state.loading = true
+            state.success = false
+            state.prodid = action.payload
+        },
+        added_to_cart: (state,action) => {
+            state.loading = false
+            state.success = true
+        },
+        finished_adding: (state, action) => {
+            state.loading = false
+            state.success = false
+            state.prodid = null
+        },
+        getting_Cart: (state,action) => {
+            state.cartLoading = true
+        }
     }
 })
 
 
-export const {getCart} = cartSlice.actions
+export const {getCart, adding__to__Cart, added_to_cart, finished_adding} = cartSlice.actions
 
 
 export default cartSlice.reducer;

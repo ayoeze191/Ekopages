@@ -25,7 +25,7 @@ const Login = () => {
   const { login, loading, error } = useAuthContext()
 
 
-  console.log(error)
+  //(error)
   const handlesubmit = (data) => {
     login(data)
  }

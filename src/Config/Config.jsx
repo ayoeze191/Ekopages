@@ -1,18 +1,17 @@
 import axios from "axios"
 
-export const Config = () => {
+  export const tokenConfig = () => {
+  // console.log(localStorage.getItem('access'), "access token")
   const access = localStorage.getItem('access')? localStorage.getItem('access'):null
-  console.log(access)
-  const tokenConfig = () => {
     const config = {
       headers: {
         "Content-Type": "application/json",
         'Authorization': ''
       },
     };
-    if(access){
+    if(access !== null){
     config.headers["Authorization"] = `Bearer ${access}`;
     }
+    // console.log(config)
     return config;
   }
-}

@@ -1,8 +1,29 @@
 import React from 'react'
 import Vector15 from "./../../assets/EkoStore/Vector15.png"
 import Star from "./../../assets/EkoStore/Star.png"
-const StoreCard = ({name, image, available, author, price}) => {
-  console.log(image)
+import { Add_to_cart } from '../../store/Actions/Cart'
+import { useDispatch, useSelector } from 'react-redux'
+import { finished_adding } from '../../store/reducers/Cart'
+
+import AuthButton from '../authButton'
+import AddToCartbtn from './AddToCartbtn'
+import { useNavigate } from 'react-router-dom'
+const StoreCard = ({name, image, available, author, price, id}) => {
+  const cart = useSelector(state => state.cart)
+  const dispatch = useDispatch()
+  const navigate = useNavigate()
+  const addTocart = () => {
+    dispatch(Add_to_cart(id))
+  }
+
+  if(cart.success) {
+    // navigate('/cart')
+    dispatch(finished_adding())
+  }
+
+
+
+  //(image)
   const myArray = [Star, Star, Star, Star, Star]
   return (
     <div className='storecard flex items-center justify-center flex-col px-[2rem] pb-[2.5rem] w-full h-[420px]'>
@@ -23,9 +44,10 @@ const StoreCard = ({name, image, available, author, price}) => {
             <div className='font-[500] text-[1.68rem] font-lato'>
                 #{price}
             </div>
-            <button className='px-[1.18rem] bg-[#5A0C91] text-[#ffffff] py-[0.656rem] rounded-[0.3125rem] font-lato font-[500] text-[1rem]'>
-            Add to Cart
-            </button>
+            {/* <button className='px-[1.18rem] bg-[#5A0C91] text-[#ffffff] py-[0.656rem] rounded-[0.3125rem] font-lato font-[500] text-[1rem]' onClick={() => dispatch(Add_to_cart(id))}>
+            
+            </button> */}
+            <AddToCartbtn name={"Add to Cart"} isLoading={(cart.prodid===id && cart.loading)? true:false} add={addTocart}></AddToCartbtn>
         </div>
     </div>
   )

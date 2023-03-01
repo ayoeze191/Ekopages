@@ -26,7 +26,8 @@ function App() {
 
 
   useEffect(() => {
-    dispatch(get_cart())
+    // dispatch(get_cart())
+    // console.log("getting cart")
   }, [])
 
   const {isAuth} = useAuthContext()

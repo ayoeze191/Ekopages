@@ -20,6 +20,7 @@ export const service = [
         smallimg: ""
     },
     {
+        url: 'ekotales',
         img: ekotales, 
         h: "Eko Tales",
         p: "A weekly publication of children's stories, with themes that align with the sustainable development goals.",

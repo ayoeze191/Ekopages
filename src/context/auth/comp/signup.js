@@ -1,8 +1,8 @@
 // registration/
 import instance from "../../../axios";
-import { Config } from "../../../Config/Config";
+import { tokenConfig } from "../../../Config/Config";
 
 export const signUp = (data) => {
-    return instance.post('registration/', data, Config())    
+    return instance.post('registration/', data, tokenConfig())    
 }
 

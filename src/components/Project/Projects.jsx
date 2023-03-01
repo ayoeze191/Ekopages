@@ -6,7 +6,7 @@ import Project from './Project'
 // import first from "./../../assets/projects/first.png"
 
 const projects = [
-    {
+    {   path: "sdg",
         img: first, 
         h1: "SDG Literacy Drive", 
         p: "Queen College, Lagos"

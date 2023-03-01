@@ -31,20 +31,21 @@ export const AuthProvider = ( { children }) => {
 
     const Login = (details) => {
       setIsloading(true)
-      console.log("logging in")
+      //("logging in")
       loginUser(details)
         .then((res) => {
-          console.log(res, "data")
+          // //(res.data.access_token, "data")
           setsucess(true);
           setError("");
           localStorage.setItem('access', res.data.access_token)
+          
           localStorage.setItem('refresh', res.data.refresh_token)
           localStorage.setItem('user', JSON.stringify (res.data.user))
           setIsloading(false)
           setLoginModal(!loginModal)
       })
       .catch((err) => {
-        console.log(err.response.data, "logging in error")
+        //(err.response.data, "logging in error")
           setIsloading(true)
           setIsloading(false)
           setsucess(false);

@@ -39,7 +39,7 @@ const Signup = () => {
 })
 
   
-  // console.log(details[5].error, "error")
+  // //(details[5].error, "error")
     return (
       <div className="w-full flex h-full  items-center font-lato flex-col md:flex-row md:rounded-[20px] bg-[#F6F6F6]">
           <div className="md:h-full bg-[#5A0C91] w-full md:w-[43%] flex items-center ">

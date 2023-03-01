@@ -1,17 +1,17 @@
 import instance from "../../axios"
-import { Config } from "../../Config/Config"
+import { tokenConfig } from "../../Config/Config"
 import { productError, productLoading, setcategories, setcategory, setproducts } from "../reducers/Products"
 
 export const get_all_categories = () => (dispatch) => {
-    console.log("getting")
-    instance.get('store/category_list/', Config())
+    //("getting")
+    instance.get('store/category_list/', tokenConfig())
     .then(res => {
-        console.log(res.data, "Our response")
+        //(res.data, "Our response")
         // dispatch(setcategories(res.data.data))
     }
     )
     .catch((err) => {
-        console.log(err, "error wao")
+        //(err, "error wao")
     })
 }
 
@@ -33,14 +33,14 @@ export const get_products = (id, name) => (dispatch) => {
         url = 'store/book_list/'
     }
 
-    console.log(url)
+    //(url)
     instance.get(url)
     .then(res => {
-        console.log(res.data.data)
+        //(res.data.data)
         dispatch(setproducts(res.data.data))
     })
     .catch((err) => {
-        console.log(err)
+        //(err)
         dispatch(productError())
     })
 }

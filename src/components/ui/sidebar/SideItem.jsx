@@ -9,10 +9,10 @@ const SideItem = ({text, path, sidefunctions}) => {
   const {setpartnerModal} = useModalContext()
   const nav = useNavigate()
   const navigate = () => {
-      console.log(path)
+      //(path)
       // <Navigate to={path} />
       if (path==="/BeacomeaPartner") {
-        console.log("becoming")
+        //("becoming")
         return setpartnerModal()
       }
       nav(path)

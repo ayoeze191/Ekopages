@@ -9,7 +9,7 @@ const useLogic = () => {
     
 //handle login modal visibility
     const handleLoginModalVisibility = (state) => {
-        console.log("working")
+        //("working")
         if (state.showLoginModal === false) return(
             dispatch({ type: "LOGIN_MODAL_VISIBILITY", payload: { showLoginModal: true } }))
         dispatch({ type: "LOGIN_MODAL_VISIBILITY", payload: { showLoginModal: false } })
@@ -17,7 +17,7 @@ const useLogic = () => {
 
 //handle signup modal visibility
 const handleSignupModalVisibility = (state) => {
-    console.log("working")
+    //("working")
         if (state.showSignupModal === false) return(
             dispatch({ type: "SIGNUP_MODAL_VISIBILITY", payload: { showSignupModal: true } }))
         dispatch({ type: "SIGNUP_MODAL_VISIBILITY", payload: { showSignupModal: false } })

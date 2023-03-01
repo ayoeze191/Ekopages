@@ -24,15 +24,19 @@ import { useLocation } from 'react-router-dom';
 import { Navigate } from 'react-router-dom';
 import Side_bar from '../ui/sidebar/Side_bar';
 import { useState } from 'react';
+import { useEffect } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
 
+import { get_cart } from '../../store/Actions/Cart';
 
 const NavHead = ({sideHandler}) => {
     const loc = useLocation()
     const [side, setside] = useState(false)
     const NavLogicObject = useLogic()
     const {isAuth, access, user, showLoginModal, setloginMode, loading} = useAuthContext()
-    console.log(user)
-    // console.log(isAuth, "authentication")
+    const dispatch = useDispatch()
+    const cart = useSelector((state) => state.cart.cart)
+    // //(isAuth, "authentication")
     const arrauOfNavs  = [{
         name: "About Us",
         path:"/about"
@@ -59,27 +63,14 @@ const NavHead = ({sideHandler}) => {
     }
     ]
 
-    // localStorage.removeItem('access')
-    
-    const onsetSidebar = (open) => {
-        console.log("setting")
-        // setside(open)
-    }
+    useEffect(() => {
+        dispatch(get_cart())
+    }, [])
+
 
     return (
         // <div className='bg-[#F6F6F6] w-full'>
     <div className="headersection w-full  flex items-center justify-between text-[24px] font-normal font-lato relative">
-
-{/* <Sidebar
-  sidebar={<Side_bar /> }
-  open={true}
-  transitions={true}
-  onSetOpen={onsetSidebar}
-  styles={{ sidebar: { background: "white", height:"100vh", width:"100%" , position:"fixed", overflowY:"scroll"} }}
-  docked={false}
-  shadow={false}
-/> */}
-{/* <Side_bar show={true}/> */}
 
 
 
@@ -134,7 +125,6 @@ const NavHead = ({sideHandler}) => {
                     <img  src={asset.Logo} alt="logo" className='w-full h-full'/>
                 </Link>
  </section>
-
                 <section className='hidden lg:block'>
                 <div  className="text-[16px] font-lato flex justify-between gap-[20px]">
 
@@ -167,8 +157,7 @@ const NavHead = ({sideHandler}) => {
                     </Link>
                     <AiOutlineHeart className='hidden lg:flex'></AiOutlineHeart>
                     </>
-}       
-                    
+}                   
                   <div>  <BsCart className='hidden lg:block'></BsCart></div>
             </section>
 

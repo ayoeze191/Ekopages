@@ -19,7 +19,7 @@ const StoreDetails = () => {
         setProduct(data.data)
     }
 
-    console.log(product, "productdetails")
+    //(product, "productdetails")
 
     useEffect(() => {
         getproducts()
