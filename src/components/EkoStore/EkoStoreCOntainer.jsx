@@ -12,11 +12,7 @@ import { useDispatch } from 'react-redux'
 const EkoStoreCOntainer = () => {
   const categories = useSelector(state => state.products.category)
   const dispatch = useDispatch()
-  // useEffect(() => {
-  //    dispatch(get_all_categories())
-  // }, [])
-
-  // //("container")
+ 
 
   return (
     <div className='bg-[#F6F6F6]'>

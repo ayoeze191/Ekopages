@@ -9,15 +9,13 @@ import { useAuthContext } from '../../../context/auth/auth'
 const Side_bar = ({show, sideFunc}) => {
   const {isAuth, user} = useAuthContext()
   return (
-    <div className=' w-full h-full flex flex-col pt-[80px] pb-[50px] md:hidden w-[80%] h-full w-full bg-white overflow-scroll fixed z-50 left-0 right-0 top-0 bottom-0'
+    <div className=' w-full h-full flex flex-col pt-[80px] pb-[50px] md:hidden w-[80%] h-full w-full bg-white overflow-scroll fixed z-50 left-0 top-0 bottom-0'
     style={{
       transform:show ? 'translateX(0)' : 'translateX(-1000px)',
       // opacity:show ? '1' : '0',
       transition: "ease-in-out 1s"
   }}
     >
-
-    {/* <Overlay showSmallOnly={true}/> */}
 
         <div className='flex justify-between px-[1.7rem] items-center mb-[2.5rem]'>
         <div className='flex items-center gap-[0.5rem]'>

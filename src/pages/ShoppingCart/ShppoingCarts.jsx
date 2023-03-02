@@ -6,13 +6,7 @@ import { get_cart } from '../../store/Actions/Cart'
 
 
 const ShppoingCarts = () => {
-  const disptach = useDispatch()
   
-
-  useEffect(() => {
-    disptach(get_cart())
-    console.log("gettingcart")
-  })
 
 
   return (

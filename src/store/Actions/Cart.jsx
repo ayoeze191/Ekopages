@@ -1,13 +1,14 @@
 // import axios from "axios"
 import instance from "../../axios"
 import { tokenConfig } from "../../Config/Config"
-import { added_to_cart, adding__to__Cart, getCart } from "../reducers/Cart"
+import { added_to_cart, adding__to__Cart, getCart, getting_Cart } from "../reducers/Cart"
 export const get_cart = () => (dispatch) => {
     // console.log("kemi")
-    instance.get('cart/cart', tokenConfig())
+    dispatch(getting_Cart())
+    instance.get('cart/list', tokenConfig())
     .then((res) => {
-        console.log(res, "get cart")
-        getCart(res.data)
+        console.log(res.data, "get cart")
+        dispatch(getCart(res.data))
     })
     .catch((err) => {
         console.log(err, "error tiwaoo")
@@ -15,11 +16,12 @@ export const get_cart = () => (dispatch) => {
 }
 
 
+
 export const Add_to_cart = (id) => (dispatch) => {
-    console.log("adding")
+    // console.log("adding")
     dispatch(adding__to__Cart(id))
-    const data = {product: id}
-    instance.post(`cart/cart`, data , tokenConfig())
+    const data = {"product": id}
+    instance.post(`cart/create/`, data , tokenConfig())
     .then(res => {
         console.log("added")
         console.log(res)

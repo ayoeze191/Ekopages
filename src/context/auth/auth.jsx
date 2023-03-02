@@ -1,7 +1,7 @@
 // import axios from "axios";
 import React from "react";
 import { useState, useContext } from "react";
-import { loginUser } from "./comp/Login";
+import { loginUser,  logoutUser} from "./comp/Login";
 
 export const AuthContext = React.createContext({
     isAuth: localStorage.getItem('access')?true:false, 
@@ -11,6 +11,7 @@ export const AuthContext = React.createContext({
     error: "",
     success: false,
     loading: false,
+    logoutLoading: false,
     login: (value) => {},
     logout: () => {},
     showLoginModal: false,
@@ -28,6 +29,7 @@ export const AuthProvider = ( { children }) => {
     const ChangeLoginModalMode = () => {
         setLoginModal(!loginModal)
     }
+
 
     const Login = (details) => {
       setIsloading(true)
@@ -54,7 +56,19 @@ export const AuthProvider = ( { children }) => {
           localStorage.removeItem('refresh')
           localStorage.removeItem('user')
       })
-};
+}
+
+
+    const logout = () => {
+      logoutUser()
+      .then((res) => {
+        console.log(res)
+      })
+      .catch((err) => {
+        console.log(err)
+      })
+    }
+
     return (
       <AuthContext.Provider
         value={{

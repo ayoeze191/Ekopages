@@ -7,6 +7,8 @@ import { useEffect } from 'react'
 import { useDispatch } from 'react-redux'
 import { get_products } from '../../store/Actions/Product'
 import Loader from '../ui/Loader/Loader'
+import { MoonLoader } from 'react-spinners'
+import GeneralUiOverlayLoader from '../ui/GeneralUiOverlayLoader'
 // import 
 const StoreCards = () => {
 
@@ -19,8 +21,8 @@ const StoreCards = () => {
 
 
   return (
-    store.isloading ? <Loader /> :store.products?
-    <div className='sm md:grid  md:grid-cols-3 mx-auto section gap-x-[2rem] gap-y-[12.25rem] items-center mb-[60px]'>
+    store.isloading ? <GeneralUiOverlayLoader /> :store.products?
+    <div className='sm:grid sm:grid-cols-2  md:grid-cols-3 mx-auto section gap-x-[2rem] gap-y-[12.25rem] items-center mb-[60px]'>
         {store.products.map((prod) => <StoreCard {...prod}/>)}
     </div>
     :<div className='h-[50vh] w-full text-center font-lato text-[2rem]'>Empty Product</div>

@@ -23,13 +23,7 @@ function App() {
   const sidebarHandler = () => {
     setSide(!side)
   }
-
-
-  useEffect(() => {
-    // dispatch(get_cart())
-    // console.log("getting cart")
-  }, [])
-
+  
   const {isAuth} = useAuthContext()
   const {partnerModal, setpartnerModal, stayIntouchModal, setstayIntouchModal} = useModalContext()
   console.log(isAuth)

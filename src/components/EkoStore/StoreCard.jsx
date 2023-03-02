@@ -12,12 +12,13 @@ const StoreCard = ({name, image, available, author, price, id}) => {
   const cart = useSelector(state => state.cart)
   const dispatch = useDispatch()
   const navigate = useNavigate()
+
   const addTocart = () => {
     dispatch(Add_to_cart(id))
   }
 
   if(cart.success) {
-    // navigate('/cart')
+    navigate('/cart')
     dispatch(finished_adding())
   }
 

@@ -1,13 +1,20 @@
-import React from 'react'
+import React , {useEffect} from 'react'
 import CartDetails from './CartDetails/CartDetails'
 import Products from './Products/Products'
 import ShoppingCartsText from './ShoppingCartsText'
-import { useSelector } from 'react-redux'
+import { useSelector, useDispatch } from 'react-redux'
+import { get_cart } from '../../store/Actions/Cart' 
+
 const ShoppingCartsContainer = () => {
   const cart = useSelector(state => state.cart)
+  const disptach = useDispatch()
+  
 
+  useEffect(() => {
+    disptach(get_cart())
+  }, [])
 
-  // console.log(cart, "all cart")
+ 
   return (
     <div>
         <ShoppingCartsText />
