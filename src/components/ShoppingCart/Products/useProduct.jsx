@@ -8,7 +8,7 @@ const useProduct = (id) => {
 
     
     const get__product = () => {
-        setloading(true)
+        // setloading(true)
         instance.get(`store/product_detail/${id}`)
         .then((res) => {
             console.log("product success")

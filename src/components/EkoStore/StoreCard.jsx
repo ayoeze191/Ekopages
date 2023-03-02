@@ -15,9 +15,6 @@ const StoreCard = ({name, image, available, author, price, id}) => {
 
   const addTocart = () => {
     dispatch(Add_to_cart(id))
-  }
-
-  if(cart.success) {
     navigate('/cart')
     dispatch(finished_adding())
   }

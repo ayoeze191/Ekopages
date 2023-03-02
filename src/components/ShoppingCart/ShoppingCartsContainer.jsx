@@ -7,14 +7,7 @@ import { get_cart } from '../../store/Actions/Cart'
 
 const ShoppingCartsContainer = () => {
   const cart = useSelector(state => state.cart)
-  const disptach = useDispatch()
-  
 
-  useEffect(() => {
-    disptach(get_cart())
-  }, [])
-
- 
   return (
     <div>
         <ShoppingCartsText />
