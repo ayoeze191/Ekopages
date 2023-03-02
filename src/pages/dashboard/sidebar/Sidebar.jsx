@@ -9,12 +9,14 @@ import { FiSettings } from "react-icons/fi"
 import { RxDashboard } from "react-icons/rx"
 import {TbCertificate} from "react-icons/tb"
 import { useLocation } from 'react-router-dom';
+import { useAuthContext } from '../../../context/auth/auth';
 
 
 
 
 const Sidebar = () => {
   const loc = useLocation()
+  const {logout} = useAuthContext()
 
 
 

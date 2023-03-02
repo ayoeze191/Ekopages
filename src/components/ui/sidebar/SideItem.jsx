@@ -2,11 +2,13 @@ import React from 'react'
 import { useNavigate } from 'react-router-dom'
 import { Navigate } from 'react-router-dom'
 import { Link } from 'react-router-dom'
+import { useAuthContext } from '../../../context/auth/auth'
 import {useModalContext} from "./../../../context/modal/modal"
 
 
 const SideItem = ({text, path, sidefunctions}) => {
   const {setpartnerModal} = useModalContext()
+  // const {logout} = useAuthContext()
   const nav = useNavigate()
   const navigate = () => {
       //(path)
@@ -15,6 +17,7 @@ const SideItem = ({text, path, sidefunctions}) => {
         //("becoming")
         return setpartnerModal()
       }
+
       nav(path)
 
       sidefunctions()

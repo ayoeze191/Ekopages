@@ -8,5 +8,5 @@ export const loginUser = (data) => {
 
 
 export const logoutUser = () => {
-    return instance.get('auth/logout/', tokenConfig())
+    return instance.post('auth/logout/', tokenConfig())
 }

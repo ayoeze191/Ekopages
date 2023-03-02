@@ -1,6 +1,23 @@
 import React from 'react'
-
+import { useFormik } from 'formik'
 const BillingDetails = () => {
+  const formik = useFormik({
+    initialValues: {
+      "First_name": "",
+      "Last_name": "",
+      "Company_name": "",
+      "country": "Nigeria",
+      "street_address": "",
+      "city": "lagos",
+      "apartment": "",
+      "state": "",
+      "phone_number": "",
+      "email": "",
+      "shipping_location": ""
+    }
+  })
+
+
   return (
     <div className='font-lato w-full md:w-[57%]'>
         <div className='font-[400] text-[1rem]'>

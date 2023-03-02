@@ -7,7 +7,14 @@ import { BsCart } from 'react-icons/bs'
 import Overlay from '../Overlay'
 import { useAuthContext } from '../../../context/auth/auth'
 const Side_bar = ({show, sideFunc}) => {
-  const {isAuth, user} = useAuthContext()
+  const {isAuth, user, logout} = useAuthContext()
+
+  const LogOut = () => {
+    console.log("logging out")
+    logout()
+  }
+
+
   return (
     <div className=' w-full h-full flex flex-col pt-[80px] pb-[50px] md:hidden w-[80%] h-full w-full bg-white overflow-scroll fixed z-50 left-0 top-0 bottom-0'
     style={{
@@ -42,7 +49,7 @@ const Side_bar = ({show, sideFunc}) => {
 
         </div>
 
-        <div className=' bg-[#5A0C91] text-[#FFFFFF] py-[20px] px-[2.5rem] '>
+        <div className=' bg-[#5A0C91] text-[#FFFFFF] py-[20px] px-[2.5rem] ' onClick={() => LogOut()}>
         Log Out
         </div>
     </div>

@@ -1,12 +1,26 @@
 import React from 'react'
-
+import { useEffect } from 'react'
+import { useSelector } from 'react-redux'
+import { useDispatch } from 'react-redux'
+import { ClipLoader } from 'react-spinners'
+import { get_cart_total } from '../../../../store/Actions/Cart'
 const CartTotals = () => {
+    const disptach = useDispatch()
+    const total = useSelector((state) => state.cart.total)
+
+    console.log(total)
+
+    useEffect(() => {
+        disptach(get_cart_total())
+    }, [])
+
+
   return (
       <div className='md:w-[42%] w-full'>
     <div className='font-lato px-[2rem] border-[1px] border-solid border-[#232323]  py-[3rem] rounded-[5px] h-fit'>
         <p className='mb-[1.5rem] text-[1.5rem] font-[500]'>Cart Totals</p>
         <div className='py-[1.5rem] flex justify-between border-solid border-y-[1px] border-[#9E9E9E]'>
-            <p className='text-[1rem] font-[400]'>SUBTOTAL</p> <p className='font-[600]'>#14,200</p>
+            <p className='text-[1rem] font-[400]'>SUBTOTAL</p> <p className='font-[600]'>#{total? total: null}</p>
         </div>
         <div>
             <p className='py-[1.5rem] my-[1rem] text-[1rem] font-[400]'>

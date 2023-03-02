@@ -8,15 +8,23 @@ import { finished_adding } from '../../store/reducers/Cart'
 import AuthButton from '../authButton'
 import AddToCartbtn from './AddToCartbtn'
 import { useNavigate } from 'react-router-dom'
+import { useAuthContext } from '../../context/auth/auth'
 const StoreCard = ({name, image, available, author, price, id}) => {
   const cart = useSelector(state => state.cart)
   const dispatch = useDispatch()
+  const {isAuth, setloginMode} = useAuthContext()
+  
   const navigate = useNavigate()
 
   const addTocart = () => {
-    dispatch(Add_to_cart(id))
-    navigate('/cart')
-    dispatch(finished_adding())
+    if(isAuth) {
+      dispatch(Add_to_cart(id))
+      navigate('/cart')
+      dispatch(finished_adding())
+    }
+    else {
+      setloginMode()
+    }
   }
 
 

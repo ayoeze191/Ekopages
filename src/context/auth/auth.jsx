@@ -25,6 +25,7 @@ export const AuthProvider = ( { children }) => {
     const [error, setError] = useState("");
     const [loading, setIsloading] = useState(false)
     const [loginModal, setLoginModal] = useState(false)
+    const [auth, setisAuth] = useState(localStorage.getItem('access')?true:false)
 
     const ChangeLoginModalMode = () => {
         setLoginModal(!loginModal)
@@ -40,18 +41,19 @@ export const AuthProvider = ( { children }) => {
           setsucess(true);
           setError("");
           localStorage.setItem('access', res.data.access_token)
-          
+          setisAuth(true)
           localStorage.setItem('refresh', res.data.refresh_token)
           localStorage.setItem('user', JSON.stringify (res.data.user))
           setIsloading(false)
           setLoginModal(!loginModal)
       })
       .catch((err) => {
+        setisAuth(false)
         //(err.response.data, "logging in error")
           setIsloading(true)
           setIsloading(false)
           setsucess(false);
-          setError(err.response.data);
+          setError(err.response);
           localStorage.removeItem('access')
           localStorage.removeItem('refresh')
           localStorage.removeItem('user')
@@ -63,6 +65,10 @@ export const AuthProvider = ( { children }) => {
       logoutUser()
       .then((res) => {
         console.log(res)
+        localStorage.removeItem('access')
+        localStorage.removeItem('refresh')
+        localStorage.removeItem('user')
+        setisAuth(false)
       })
       .catch((err) => {
         console.log(err)
@@ -72,7 +78,7 @@ export const AuthProvider = ( { children }) => {
     return (
       <AuthContext.Provider
         value={{
-          isAuth: localStorage.getItem('access')?true:false,
+          isAuth: auth,
           // isAuth: true,
           access: localStorage.getItem('access'),
           refresh: localStorage.getItem('refresh'),
@@ -82,7 +88,8 @@ export const AuthProvider = ( { children }) => {
           loading,
           login: Login,
           showLoginModal: loginModal,
-          setloginMode: ChangeLoginModalMode
+          setloginMode: ChangeLoginModalMode,
+          logout
         }}
       >
         {children}
