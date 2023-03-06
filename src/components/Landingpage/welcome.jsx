@@ -14,8 +14,8 @@ const WelcomeComponent = () => {
             <div className="section ">
                 <div className="flex gap-[15px] justify-between">
                     <div>
-                    <h1 className="text-[#ffffff] font-[700] text-[24px] md:text-[80px] md:font-[700]">Education <span className="text-[#EFA30C]"> for </span> <br />  Sustainability</h1>
-                    <p className="font-[500] text-[#D7D7D7] text-[12px] md:text-[20px] md:font-[400] font-lato">An “Edtech” Platform for Sustainability Literacy for <br/> Children through Literature, Animation and Courses.</p>
+                    <h1 className="text-[#ffffff] font-[700] text-[24px] md:text-[80px] md:font-[700] mb-[12px]">Education <span className="text-[#EFA30C]"> for </span> <br />  Sustainability</h1>
+                    <p className="font-[500] text-[#D7D7D7] text-[12px] md:text-[20px] md:font-[400] font-lato mb-[40px]">An “Edtech” Platform for Sustainability Literacy for <br/> Children through Literature, Animation and Courses.</p>
                     </div>
                     <div className="w-[147.59px] h-[132.36px] md:w-[521px] md:h-[465px]"> <img src={Group} className="w-full h-full" /> </div>
                 </div>
