@@ -8,8 +8,8 @@ export const StoreItems = () => {
     
 
     return (
-        <div className="w-[400px] h-[524px] relative">
-            <section className="flex w-[100%] justify-center position relative z-10">
+        <div className="w-full  md:w-[400px] h-[524px] relative">
+            <section className="flex w-[100%] justify-center relative z-[100]">
                 <img className="w-[125px] h-[178px]" src={assets.cartItemsImg} alt="" />
                 <img className="w-[125px] h-[178px]" src={assets.cartItemsImgRight} alt="" />
             </section>
@@ -35,7 +35,7 @@ export const StoreItems = () => {
                     </div>
                     <br></br>
                    <Divider></Divider>
-                    <section className="relative top-[50px]">
+                    <section className="relative">
                 
                     <div  className="flex justify-between " >
                     

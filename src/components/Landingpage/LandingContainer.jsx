@@ -26,7 +26,7 @@ const LandingComponent = () => {
             <About></About>
             <Benefits></Benefits>
             <Store></Store>
-            {/* <Achievement></Achievement> */}
+            <Achievement></Achievement>
             {/* <EkoNews></EkoNews>  */}
             
           </div>

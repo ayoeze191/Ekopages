@@ -9,6 +9,7 @@ export const About = () => {
 
     return (
         <div className="">
+            
             <div className="flex flex-col md:flex-row section items-center font-lato gap-[40px] md:py-[100px]">
                <div data-aos="fade-right">
                    <p className="text-[#232323] font-[700] text-[24px] text-center mb-[2rem] md:text-[44px] md:hidden">About Us</p>
