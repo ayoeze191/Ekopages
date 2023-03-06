@@ -23,10 +23,9 @@ const LandingComponent = () => {
             <OurPartners></OurPartners>
             <About></About>
             <Benefits></Benefits>
-            <Store></Store>
-            <Achievement></Achievement>
-            <EkoNews></EkoNews>
-            {/* <Footer></Footer> */}
+            {/* <Store></Store> */}
+            {/* <Achievement></Achievement> */}
+            {/* <EkoNews></EkoNews>  */}
             
           </div>
     )

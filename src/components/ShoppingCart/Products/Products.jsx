@@ -6,17 +6,19 @@ import GeneralUiOverlay from '../../ui/GeneralUiOverlayLoader';
 // import { intialState } from '../../../reducer/Nav';
 import Product from './Product';
 import { get_cart } from '../../../store/Actions/Cart';
+import { useAuthContext } from '../../../context/auth/auth';
 
 
 
 
 
 const Products = () => {
+  const {isAuth} = useAuthContext()
   const disptach = useDispatch()
   const cart = useSelector(state => state.cart)
 
 useEffect(() => {
-  disptach(get_cart())
+  disptach(get_cart(isAuth))
 }, [])
 
   console.log(cart, "get calaa")

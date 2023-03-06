@@ -34,10 +34,9 @@ export const AuthProvider = ( { children }) => {
 
     const Login = (details) => {
       setIsloading(true)
-      //("logging in")
       loginUser(details)
         .then((res) => {
-          // //(res.data.access_token, "data")
+          console.log(res.data)
           setsucess(true);
           setError("");
           localStorage.setItem('access', res.data.access_token)
@@ -49,7 +48,7 @@ export const AuthProvider = ( { children }) => {
       })
       .catch((err) => {
         setisAuth(false)
-        //(err.response.data, "logging in error")
+        console.log(err.response.data, "logging in error")
           setIsloading(true)
           setIsloading(false)
           setsucess(false);

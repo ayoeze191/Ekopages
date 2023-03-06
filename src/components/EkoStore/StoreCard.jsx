@@ -17,14 +17,9 @@ const StoreCard = ({name, image, available, author, price, id}) => {
   const navigate = useNavigate()
 
   const addTocart = () => {
-    if(isAuth) {
-      dispatch(Add_to_cart(id))
+      dispatch(Add_to_cart(id, isAuth))
       navigate('/cart')
       dispatch(finished_adding())
-    }
-    else {
-      setloginMode()
-    }
   }
 
 

@@ -7,7 +7,7 @@ import { BsCart } from 'react-icons/bs'
 import Overlay from '../Overlay'
 import { useAuthContext } from '../../../context/auth/auth'
 const Side_bar = ({show, sideFunc}) => {
-  const {isAuth, user, logout} = useAuthContext()
+  const {isAuth, user, logout, setloginMode} = useAuthContext()
 
   const LogOut = () => {
     console.log("logging out")
@@ -30,7 +30,7 @@ const Side_bar = ({show, sideFunc}) => {
                         <AiOutlineUser></AiOutlineUser>
                     </Link>
                     {isAuth &&<p className="text-[#4A4A4A] text-[0.875rem] lg:text-[1rem] font-[400] ">Hello, {user.username}</p>} 
-                    {!isAuth && <p className="text-[#4A4A4A] text-[0.875rem] lg:text-[1rem] font-[400] ">Log in/Sign up</p> }
+                    {!isAuth && <button className="text-[#4A4A4A] text-[0.875rem] lg:text-[1rem] font-[400]" onClick={() => setloginMode()}>Log in/Sign up</button> }
 
         </div>
         <div>  <BsCart className='block lg:hidden'></BsCart></div>

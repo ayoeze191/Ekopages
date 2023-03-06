@@ -4,12 +4,25 @@ import { useState } from 'react';
 import instance from '../../../axios';
 import del from "./../../../assets/cart/delete.png"
 import { SyncLoader, BarLoader } from 'react-spinners';
+import { update_cart_items } from '../../../store/Actions/Cart';
 import useProduct from './useProduct';
+import { useAuthContext } from '../../../context/auth/auth';
 
 const Product = ({id}) => {
     const {product, loading} = useProduct(id)
-
-
+    const {isAuth} = useAuthContext()
+    
+    const update_cart = (type, initialVal) => {
+        let quantity = initialVal
+        if(type === "add"){
+            quantity = quantity + 1
+        }
+        else {
+            quantity = quantity - 1
+        }
+        update_cart_items(id, quantity, isAuth)
+    }
+    
   return (product?
     <div className='flex justify-between w-full  mx-auto max-w-[77rem] font-lato border-b-solid border-b-[1px] border-b-[#BBBBBB] py-[2.53125rem]' >
         <div className='flex gap-[13.15px] md:gap-[3.25rem]'>
@@ -25,7 +38,7 @@ const Product = ({id}) => {
 
         <div className='flex md:gap-[6.5rem] items-center flex-col md:flex-row justify-between'>
             <div className='border-[#705E5E] border-solid border-[1px]  flex items-center rounded-[0.3125rem]'>
-                <button className='px-[10px]  py-[3.2px] md:py-[0.32rem] md:px-[1rem] flex items-center text-[15px] md:text-[1rem]'>-</button> 1 <button className='px-[10px]  py-[3.2px] md:py-[0.32rem] md:px-[1rem] flex items-center'>+</button>
+                <button className='px-[10px]  py-[3.2px] md:py-[0.32rem] md:px-[1rem] flex items-center text-[15px] md:text-[1rem]' onClick={() => update_cart('substract', product.quantity)}>-</button> {product.quantity} <button className='px-[10px]  py-[3.2px] md:py-[0.32rem] md:px-[1rem] flex items-center' onClick={() => update_cart('add', product.quantity)}>+</button>
             </div>
             <p className='text-[14px] md:text-[1rem] '>
                 Subtotal: {product.data.price}

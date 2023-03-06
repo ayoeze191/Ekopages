@@ -1,6 +1,6 @@
 import { useModalContext } from "../../context/modal/modal"
 import { AdBx } from "./adBx"
-
+import Group from "./../../assets/landingpage/Group.svg"
 
 
 const WelcomeComponent = () => {
@@ -8,15 +8,43 @@ const WelcomeComponent = () => {
 
 
     return (
-        <div className="relative">
-        <div className='relative w-full h-[908px] bg-backImg flex  pt-[198px] pl-[8%] justify-around ' >
+        <div className="relative font-lato bg-backImg py-[40.11px] md:py-[80px]">
+
+
+            <div className="section ">
+                <div className="flex gap-[15px] justify-between">
+                    <div>
+                    <h1 className="text-[#ffffff] font-[700] text-[24px] md:text-[80px] md:font-[700]">Education <span className="text-[#EFA30C]"> for </span> <br />  Sustainability</h1>
+                    <p className="font-[500] text-[#D7D7D7] text-[12px] md:text-[20px] md:font-[400] font-lato">An “Edtech” Platform for Sustainability Literacy for <br/> Children through Literature, Animation and Courses.</p>
+                    </div>
+                    <div className="w-[147.59px] h-[132.36px] md:w-[521px] md:h-[465px]"> <img src={Group} className="w-full h-full" /> </div>
+                </div>
+
+                <div className="flex gap-[1rem]">
+                    <button className="bg-[#EFA30C] text-[#480A74] text-[12px] md:text-[20px] rounded-[5px] md:rounded-[10px] px-[8.5px] md:px-[20px] md:py-[17px] py-[10.5px]">Explore Courses</button>
+                    <button className="text-[white] border-[#EFE7F4] text-[12px] md:text-[20px] rounded-[5px] md:rounded-[10px] border-[0.5px] md:px-[20px] md:py-[17px] px-[8.5px] py-[10.5px]">Become a Partner</button>
+                    <button></button>
+                </div>
+            </div>
+        
+            {/* <AdBx></AdBx> */}
+            </div>
+    )
+    
+}
+
+export default WelcomeComponent
+
+
+
+{/* <div className='relative w-full h-[908px] bg-backImg flex  pt-[198px] pl-[8%] justify-between ' >
         <section className="">
             <h2 className="text-white font-bold text-[64px] mb-2 leading-tight ">
-               <span className="font-bold font-Poppins  m-0 p-0">Education</span> 
-                <span className="text-[35px] text-[#efa30c] ml-[5px]" >for</span>
+               <span className="font-bold font-Poppins  m-0 p-0"></span> 
+                <span className="text-[35px] text-[#efa30c] ml-[5px]" ></span>
                
             </h2>
-            <h2 className="leading-10 font-bold mb-10 text-white font-bold text-[64px]"> Sustainability</h2>
+            <h2 className="leading-10 font-bold mb-10 text-white font-bold text-[64px]"> </h2>
             <p className="text-white font-Poppins">
                 An “Edtech” Platform for Sustainability Literacy <br></br> for Children through Literature<br></br>
                 Animation and Courses.
@@ -33,11 +61,4 @@ const WelcomeComponent = () => {
         </section>
         <section  className="bg-illustrate  w-[620px] h-auto object-cover  bg-no-repeat"></section>
     
-            </div>
-            <AdBx></AdBx>
-            </div>
-    )
-    
-}
-
-export default WelcomeComponent
+            </div> */}

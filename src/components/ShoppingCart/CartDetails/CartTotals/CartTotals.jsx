@@ -4,11 +4,11 @@ import { useSelector } from 'react-redux'
 import { useDispatch } from 'react-redux'
 import { ClipLoader } from 'react-spinners'
 import { get_cart_total } from '../../../../store/Actions/Cart'
-const CartTotals = () => {
+const CartTotals = ({submit}) => {
     const disptach = useDispatch()
     const total = useSelector((state) => state.cart.total)
 
-    console.log(total)
+    // console.log(total)
 
     useEffect(() => {
         disptach(get_cart_total())
@@ -20,7 +20,7 @@ const CartTotals = () => {
     <div className='font-lato px-[2rem] border-[1px] border-solid border-[#232323]  py-[3rem] rounded-[5px] h-fit'>
         <p className='mb-[1.5rem] text-[1.5rem] font-[500]'>Cart Totals</p>
         <div className='py-[1.5rem] flex justify-between border-solid border-y-[1px] border-[#9E9E9E]'>
-            <p className='text-[1rem] font-[400]'>SUBTOTAL</p> <p className='font-[600]'>#{total? total: null}</p>
+            <p className='text-[1rem] font-[400]'>SUBTOTAL</p> <p className='font-[600]'>#{total? total: "null"}</p>
         </div>
         <div>
             <p className='py-[1.5rem] my-[1rem] text-[1rem] font-[400]'>
@@ -77,7 +77,7 @@ const CartTotals = () => {
         </div>
     </div>
 
-    <button className='bg-[#5A0C91] py-[0.937rem] w-full text-center text-white text-[1.25rem] font-lato font-normal rounded-[5px] mt-[2rem]'>Place Order</button>
+    <button className='bg-[#5A0C91] py-[0.937rem] w-full text-center text-white text-[1.25rem] font-lato font-normal rounded-[5px] mt-[2rem]' type='submit'>Place Order</button>
     </div>
   )
 }
