@@ -8,6 +8,7 @@ import Achievement from "./achievement"
 import { About } from "./about.js/about";
 import { EkoNews } from "./news";
 import { Footer } from "../footer/footer";
+import Partners from "../about/Partners";
 
 
 
@@ -21,9 +22,10 @@ const LandingComponent = () => {
             {/* <NavHeader></NavHeader> */}
             <WelcomeComponent></WelcomeComponent>
             {/* <OurPartners></OurPartners> */}
+            <Partners />
             <About></About>
             <Benefits></Benefits>
-            {/* <Store></Store> */}
+            <Store></Store>
             {/* <Achievement></Achievement> */}
             {/* <EkoNews></EkoNews>  */}
             

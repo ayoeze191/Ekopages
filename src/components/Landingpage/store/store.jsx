@@ -57,9 +57,9 @@ const CustomLeftArrow = ({ onClick, ...rest }) => {
 
 const Store = () => {
     return (
-        <div className="pt-[20px] mb-[20px] font-lato bg-[#F6F6F6] min-h-auto">
+        <div className=" section mb-[20px] font-lato bg-[#F6F6F6] min-h-auto">
             <p className="text-center text-[43px] font-[700] mb-[10px] ">Eko Store</p>
-        <section className='ml-[5%] mr-[5%] flex justify-around'>
+        <section className=' flex justify-around flex-col md:flex-row'>
           <StoreItems></StoreItems>
           <StoreItems></StoreItems>
       </section>
