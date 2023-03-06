@@ -22,7 +22,7 @@ const WelcomeComponent = () => {
 
                 <div className="flex gap-[1rem]">
                     <button className="bg-[#EFA30C] text-[#480A74] text-[12px] md:text-[20px] rounded-[5px] md:rounded-[10px] px-[8.5px] md:px-[20px] md:py-[17px] py-[10.5px]">Explore Courses</button>
-                    <button className="text-[white] border-[#EFE7F4] text-[12px] md:text-[20px] rounded-[5px] md:rounded-[10px] border-[0.5px] md:px-[20px] md:py-[17px] px-[8.5px] py-[10.5px]">Become a Partner</button>
+                    <button className="text-[white] border-[#EFE7F4] text-[12px] md:text-[20px] rounded-[5px] md:rounded-[10px] border-[0.5px] md:px-[20px] md:py-[17px] px-[8.5px] py-[10.5px]" onClick={() => setpartnerModal()}>Become a Partner</button>
                     <button></button>
                 </div>
             </div>

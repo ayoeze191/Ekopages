@@ -20,7 +20,7 @@ const LandingComponent = () => {
         <div className="w-full ">
             {/* <NavHeader></NavHeader> */}
             <WelcomeComponent></WelcomeComponent>
-            <OurPartners></OurPartners>
+            {/* <OurPartners></OurPartners> */}
             <About></About>
             <Benefits></Benefits>
             {/* <Store></Store> */}
