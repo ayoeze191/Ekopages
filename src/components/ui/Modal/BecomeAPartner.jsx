@@ -27,8 +27,8 @@ const BecomeAPartner = () => {
             <img src={amico} className='w-full h-full' alt="" />
         </div>
         <div className='font-[500] text-[12px] flex flex-col mt-[4px] mb-[11px] md:hidden'>
-        <p className='font-[700] font-lato text-[1.25rem] w-full md:fit'>Are you passionate about SDG projects for children?</p>
-                <p>Then fill the form below detailing your intentions</p>
+        <p className='font-[700] font-lato md:text-[1.25rem] w-full md:fit'>Are you passionate about SDG projects for children?</p>
+                <p className='font-[500] text-[12px] md:text-[1rem]'>Then fill the form below detailing your intentions</p>
                     <p> OR </p>
  
                 <p> Shoot us a mail at <span className='text-[#5A0C91] mt-[4px]'> sales@ekopages.com </span></p>
