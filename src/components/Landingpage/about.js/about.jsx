@@ -11,7 +11,7 @@ export const About = () => {
         <div className="">
             
             <div className="flex flex-col md:flex-row section items-center font-lato gap-[40px] md:py-[100px]">
-               <div data-aos="fade-right">
+               <div data-aos="zoom-out-right">
                    <p className="text-[#232323] font-[700] text-[24px] text-center mb-[2rem] md:text-[44px] md:hidden">About Us</p>
                    <div className="flex gap-[13.75px]">
                        <div className="flex flex-col gap-[8.5px]  relative md:-mt-[2.5rem] ">
@@ -33,7 +33,7 @@ export const About = () => {
                    </div>
                </div>
 
-               <div className="flex flex-col items-center" data-aos="fade-left">
+               <div className="flex flex-col items-center" data-aos="fade-out-left">
                    <p className="hidden md:block text-[44px] font-[700] text-[#232323] md:mr-auto">About Us</p>
                     <p className="font-[500] text-[20px] text-center md:text-left mt-[24px] md:mr-auto mb-[16px]">Our <span className="text-[#5A0C91]"> purpose </span> is simple- <span className="text-[#5A0C91]">Catch  them young. </span></p>
                     <p className="text-[14px] font-[500] font-lato text-center md:text-left md:font-[400] text-[#4A4A4A] lg:text-[20px]">

@@ -4,7 +4,7 @@ import assets from "../../assets/landingpage/export"
 
 const Benefits = () => {
     return (
-        <section className="bg-[#EFA30C] relative">
+        <section className="bg-[#EFA30C] relative font-lato ">
              <section className="bg-rippaperTexture h-[80px] w-full absolute top-[-1px] rotate-180  "></section>
          <div className="relative  w-full h-[495px] flex justify-between pl-[5%] pr-[5%] pt-[76px]">
         <section className="md:w-[60%]">

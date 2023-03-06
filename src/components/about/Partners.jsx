@@ -11,7 +11,7 @@ import partners from "./../../assets/landingpage/partners.svg"
 const Partners = () => {
   return (
     <div className='relative'>
-      <section className="bg-rippaperTexture h-[80px] w-full absolute top-[-1px] rotate-180  "></section>
+      <section className="md:bg-rippaperTexture h-[80px] w-full absolute top-[-1px] rotate-180  "></section>
     <div className='section py-12 mx-auto lg:px-0 px-6 font-lato font-bold '>
       {/* <div className=''><img src={partners} /></div> */}
         <h2 className='text-[#480A74] text-lg md:text-[2.75rem] mx-auto w-fit mb-12'>Our Partners</h2>

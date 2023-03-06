@@ -8,7 +8,7 @@ export const StoreItems = () => {
     
 
     return (
-        <div className="w-full  md:w-[400px] h-[524px] relative">
+        <div className="storecard w-full   md:w-[400px] h-[524px] relative">
             <section className="flex w-[100%] justify-center relative z-[100]">
                 <img className="w-[125px] h-[178px]" src={assets.cartItemsImg} alt="" />
                 <img className="w-[125px] h-[178px]" src={assets.cartItemsImgRight} alt="" />
@@ -39,8 +39,8 @@ export const StoreItems = () => {
                 
                     <div  className="flex justify-between " >
                     
-                        <p  className="flex justify-between items-center"> <img src={assets.NairaSym} alt="" /> <span className="text-[27px] pt-[7px]">700</span></p>
-                        <button className="w-[120px] h-[40px] bg-[#5A0C91] rounded text-white">Add to Cart</button>
+                        <p  className="flex justify-between items-center"> <img src={assets.NairaSym} alt="" /> <span className="text-[27px] md:pt-[7px]">700</span></p>
+                        <button className="w-[75px] h-[28px] text-[10px] md:text-[1rem] md:w-[120px] md:h-[40px] bg-[#5A0C91] rounded text-white">Add to Cart</button>
                 </div>
                 </section>
                 </section>
