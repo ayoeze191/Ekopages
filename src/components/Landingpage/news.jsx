@@ -4,6 +4,7 @@ import {IoArrowForwardCircle,IoArrowBackCircleSharp} from "react-icons/io5"
 
 //styles
 import "react-responsive-carousel/lib/styles/carousel.min.css"; 
+import { Link } from "react-router-dom";
 
 
 const arrowStyles = {
@@ -25,7 +26,7 @@ export const EkoNews = () => {
 
     return (
         <section  className="font-lato w-[100%] bg-[#5A0C91] p-[20px] mt-[55.9px]">
-            <p className="text-center text-[48px] text-white mb-[40px] mt-[40px]">Eko News</p>
+            <p className="text-center text-[24px] font-[700]  md:text-[44px] text-white mb-[40px] mt-[40px]">Eko News</p>
             <Carousel
                 autoPlay={true}
                 interval={5000}
@@ -55,9 +56,10 @@ export const EkoNews = () => {
                         <li>19 Aug, 2022</li>
                     </ul>
 
-                    <button type="button"
-                        className=" block mr-auto w-[230px] h-[59px] bg-[#EFA30C] rounded mt-[30px] text-[24px] font-[500]">
+                    <button type="button" className=" block mr-auto w-[230px] h-[59px] bg-[#EFA30C] rounded mt-[30px] text-[24px] font-[500]">
+                        <Link to={'ekonews/sdg'}>
                             Read More
+                        </Link>
                     </button>
                 </section>
                 <div className=" w-[280px] h-[413px] md:w-[55%]">
@@ -82,9 +84,11 @@ export const EkoNews = () => {
                         <li>19 Aug, 2022</li>
                     </ul>
 
-                    <button type="button"
-                        className=" block mr-auto w-[230px] h-[59px] bg-[#EFA30C] rounded mt-[30px] text-[24px] font-[500]">
+                    <button type="button" className=" block mr-auto w-[230px] h-[59px] bg-[#EFA30C] rounded mt-[30px] text-[24px] font-[500]">
+                        <Link to={'ekonews/sdg'}>
+                        
                             Read More
+                        </Link>
                     </button>
                 </div>
                 <div className=" w-[280px] h-[413px] md:w-[55%]">

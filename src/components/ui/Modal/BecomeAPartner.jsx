@@ -21,7 +21,7 @@ const BecomeAPartner = () => {
 
   return (
     <div className='flex flex-col md:flex-row rounded-[10px 0px 0px 10px] text-center font-lato'>
-        <div className='w-full md:w-[50%] bg-[#EFA30C] flex items-center justify-center'>
+        <div className='w-full md:w-[50%] bg-[#EFA30C] flex items-center justify-center py-[27px]'>
         <div className='flex gap-[6px] items-center py-[20px] px-[20px] md:px-[0] md:py-[0]'>
         <div className='w-[120.97px] h-[136.12px] md:w-[initial] md:h-[initial]'>
             <img src={amico} className='w-full h-full' alt="" />
@@ -36,7 +36,7 @@ const BecomeAPartner = () => {
         </div>
 
         </div>
-        <div className='w-full md:w-[50%] bg-[#F9F9F9] px-[33px] md:px-[79px] py-[80px]'>
+        <div className='w-full md:w-[50%] bg-[#F9F9F9] px-[33px] md:px-[79px] py-[17px] md:py-[80px]'>
             <p className='hidden md:block font-[700] font-lato text-[1.25rem] w-full md:fit'>Are you passionate about SDG projects for children?</p>
             <div className='hidden font-[500] text-[12px] md:flex flex-col gap-[1rem] mt-[4px] mb-[11px]'>
                 <p>Then fill the form below detailing your intentions</p>

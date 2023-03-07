@@ -20,7 +20,7 @@ import { SignupValidate } from "./validate/validate";
 const Signup = () => {
   const signupObject = useLogic()
   // const {signUp, signupOnChangeHandler, details} = useSignupOnchange()
-  const {loading, signup} =  useSignupContext()
+  const {loading, signup, success} =  useSignupContext()
   const formik = useFormik({
     initialValues: {
       email: "",
@@ -73,7 +73,7 @@ const Signup = () => {
 
           </section>
           <AuthButton isLoading={loading} name="Sign Up"></AuthButton>
-          
+          {success?"Check Your Email For Verification":null}
          </form>
 
          <section className="w-full flex flex-col gap-[1.5rem] mt-[0.5rem] mb-[168px] md:mb-[111px]">

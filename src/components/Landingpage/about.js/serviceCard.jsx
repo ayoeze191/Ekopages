@@ -1,7 +1,8 @@
+import { Link } from "react-router-dom"
 
 
 
-export const ServiceCard = ({styles,Icons,textStyle,title,content}) => {
+export const ServiceCard = ({styles,Icons,textStyle,title,content, url}) => {
     
 
     return (
@@ -16,9 +17,10 @@ export const ServiceCard = ({styles,Icons,textStyle,title,content}) => {
              {content}
             </p>
             
-
             <button className="mt-[16px] text-[10px] md:text-[1rem] md:mt-[40px] md:w-[120px] md:h-[40px] w-[75px] h-[28px] bg-[#5A0C91] text-[white] rounded">
+            <Link to={`${url}`} >
                     Learn more
+            </Link>
             </button>
             
         </div>

@@ -4,11 +4,14 @@ import composeWithDevTools from 'redux';
 import {configureStore} from  "@reduxjs/toolkit"
 import productReducer from "./reducers/Products"
 import cartReducer from "./reducers/Cart"
+import billing from './reducers/billing';
+import profile from './reducers/profils';
 
 export const store = configureStore({
     reducer: {
         products: productReducer,
-        cart: cartReducer
+        cart: cartReducer,
+        profile
     },
     devTools: true
 })

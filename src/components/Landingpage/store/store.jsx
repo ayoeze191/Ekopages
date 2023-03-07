@@ -1,12 +1,12 @@
 import { StoreItems } from './storeItem';
-
+import { useEffect } from 'react';
 import Carousel from 'react-multi-carousel';
 import 'react-multi-carousel/lib/styles.css';
-
+import { get_products } from '../../../store/Actions/Product';
 import assets from "../../../assets/landingpage/export"
-
-
-
+import { useDispatch, useSelector } from 'react-redux';
+import StoreCard from '../../EkoStore/StoreCard';
+import GeneralUiOverlayLoader from '../../ui/GeneralUiOverlayLoader';
 
 //carousel configuration
 const responsive = {
@@ -52,21 +52,28 @@ const CustomLeftArrow = ({ onClick, ...rest }) => {
           <img src={assets.leftArrowBtn} alt="left arrow button"></img>
     </button>;
   };
-
+ 
 
 
   
 
 
 const Store = () => {
+  const store = useSelector(state => state.products)
+  const disptach = useDispatch()
+
+  useEffect(() => {
+    disptach(get_products('All', "All"))
+  }, [])
     return (
-        <div className=" section mb-[20px] font-lato  min-h-auto">
-            <p className="text-center text-[43px] font-[700] mb-[10px] mt-[57px]">Eko Store</p>
-        <section className=' flex justify-around flex-col md:flex-row gap-[27px]'>
-          <StoreItems></StoreItems>
-          <StoreItems></StoreItems>
-      </section>
-        
+        <div className=" section mb-[20px] font-lato  min-h-auto mt-[49.78px]">
+            <p className="text-center text-[24px] mdLtext-[44px] font-[700] mb-[10px] mt-[57px]">Eko Store</p>
+            {store.isloading ? <GeneralUiOverlayLoader /> :store.products?
+    <div className='sm:grid sm:grid-cols-2  md:grid-cols-3 mx-auto section gap-x-[2rem] gap-y-[12.25rem] items-center mb-[60px]'>
+        {store.products.slice(0, 2).map((prod) => <StoreCard {...prod}/>)}
+    </div>
+    :<div className='h-[50vh] w-full text-center font-lato text-[2rem]'>Empty Product</div>
+    }
     </div>
     )
 }

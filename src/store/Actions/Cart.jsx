@@ -9,7 +9,7 @@ export const get_cart = (isauth) => (dispatch) => {
         dispatch(getting_Cart())
         instance.get('cart/list', tokenConfig())
         .then((res) => {
-            console.log(res.data, "get cart")
+            // console.log(res.data, "get cart")
             dispatch(getCart(res.data))
         })
         .catch((err) => {
@@ -66,7 +66,7 @@ export const Add_to_cart = (id, isauth) => (dispatch) => {
 }
 
 export const update_cart_items = (id, quantity, isauth) => (dispatch) => {
-
+    console.log("updating level 2")
     if(isauth){
     instance.put(`cart/cart-item/${id}`, {quantity}, tokenConfig())
     .then((res) => {
@@ -92,11 +92,12 @@ export const update_cart_items = (id, quantity, isauth) => (dispatch) => {
 // export const unauthenticated_update_cart_items = () =>
 
 
-export const get_cart_total = ({isauth}) => (dispatch) => {
+export const get_cart_total = (isauth) => (dispatch) => {
+    console.log("getTotalauth", isauth)
     if(isauth) {
         instance.get('cart/total/', tokenConfig())
         .then((res) => {
-            console.log(res)
+            console.log(res, "getting")
             dispatch(get_total(res.data.data.total))
         })
         .catch(err => {
@@ -106,7 +107,7 @@ export const get_cart_total = ({isauth}) => (dispatch) => {
     else {
         instance.get('unregistered-cart/total/')
         .then((res) => {
-            console.log(res)
+            console.log(res, "unregistered")
             dispatch(get_total(res.data.data.total))
         })
         .catch(err => {

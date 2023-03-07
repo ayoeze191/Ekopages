@@ -12,7 +12,7 @@ const useProduct = (id) => {
         instance.get(`store/product_detail/${id}`)
         .then((res) => {
             console.log("product success")
-            console.log(res.data)
+            // console.log(res.data)
             setProduct(res.data)
             setloading(false)
         })
