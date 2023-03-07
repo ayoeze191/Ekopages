@@ -14,14 +14,17 @@ export const profile = () => (picture) => {
 
 
 export const setPAssword = ( data ) => (dispatch) => {
+    console.log("resetting")
     dispatch(reseting_password())
-    instance.put("auth/password-reset/", data, tokenConfig())
+    instance.post("auth/password/change/", data, tokenConfig())
     .then((res) => {
-        console.log(res)
-        dispatch(password_reset())
+        console.log(res, "reseted")
+        dispatch(password_reset(res.data.detail))
     })
     .catch((err) => {
-        dispatch(password_reset_failed(err.response.data.error))
-        console.log(err)
+        dispatch(password_reset_failed(err.response.data))
+        console.log(err, "error in resetting")
     })
 }
+
+// https://ekopages-production.up.railway.app/auth/password/reset/confirm/

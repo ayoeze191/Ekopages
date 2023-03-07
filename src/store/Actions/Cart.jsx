@@ -68,7 +68,7 @@ export const Add_to_cart = (id, isauth) => (dispatch) => {
 export const update_cart_items = (id, quantity, isauth) => (dispatch) => {
     console.log("updating level 2")
     if(isauth){
-    instance.put(`cart/cart-item/${id}`, {quantity}, tokenConfig())
+    instance.patch(`cart/cart-item/${id}`, {quantity}, tokenConfig())
     .then((res) => {
         console.log(res)
     })
@@ -77,7 +77,7 @@ export const update_cart_items = (id, quantity, isauth) => (dispatch) => {
     })
     }
     else {
-        instance.put(`unregistered-cart/cart-item/${id}`, {quantity})
+        instance.patch(`unregistered-cart/cart-item/${id}`, {quantity})
         .then((res) => {
             console.log(res)
         })
@@ -114,5 +114,4 @@ export const get_cart_total = (isauth) => (dispatch) => {
             console.log(err)
         } )
     }
-   
 }

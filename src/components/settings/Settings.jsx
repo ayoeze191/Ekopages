@@ -6,12 +6,15 @@ import bi_upload from "./../../assets/dashboard/bi_upload.png";
 import bx_user from "./../../assets/dashboard/bx_user.png";
 import { useFormik } from 'formik';
 import { useDispatch } from 'react-redux';
-import { setPAssword } from '../../store/Actions/profile';
-
+import { profile, setPAssword } from '../../store/Actions/profile';
+import { useSelector } from 'react-redux';
+import GeneralUiOverlay from '../ui/GeneralUiOverlayLoader';
+import { ClipLoader } from 'react-spinners';
 
 const Settings = () => {
     const [passwordReset, setPasswordReset] = useState(false)
     const {user} =  useAuthContext()
+    const password = useSelector(profile => profile.profile)
     const dispatch = useDispatch()
     const [userprofile, setUserprofile] = useState(user.profile_picture)
     const handle__profile_picture = (Picture) => {
@@ -22,13 +25,18 @@ const Settings = () => {
     const formik = useFormik({
         initialValues: {
             'password1': "",
-            'current_password': "",
-            'new_password': ""
+            'new_password1': "",
+            'new_password2': ""
         },
         onSubmit: (values) => {
-            dispatch(setPAssword(values))
+            const data = {
+                new_password1: values.new_password1,
+                new_password2: values.new_password2   
+            }
+            dispatch(setPAssword(data))
         }
     })
+    console.log(password)
 
   return (
     <div className='px-[1.5rem] md:px-[3.625rem] py-[3rem] w-full md:border-solid md:border-[#CDCDCD] md:border-[1px] md:border-l-none h-[100%] flex flex-col font-lato'>
@@ -69,11 +77,13 @@ const Settings = () => {
             {passwordReset?
             <div className='flex flex-col gap-[3.5rem]'>
             <div className='grid grid-cols-1 md:grid-cols-2 mt-[1rem] gap-x-[1.625rem] gap-y-[2.5rem]'>
-                <div className='flex flex-col'> <label htmlFor="current password"><div className='font-lato font-[500] md:font-[600] text-[1rem]'> Current Password </div></label> <input type="password" onChange={formik.handleChange} value={formik.values.password1} name='password1' className='outline-none border-solid border-[#888888] border-[1px] rounded-[5px]'/> </div>
-                <div className='flex flex-col'>  <label htmlFor="current password2"> <div className='font-lato font-[500] md:font-[600] text-[1rem]'> Enter Current Password</div></label><input type="password" onChange={formik.handleChange} value={formik.values.current_password} name='current_password' className='outline-none border-solid border-[#888888] border-[1px] rounded-[5px]'/> </div>
-                <div className='flex flex-col'> <label htmlFor="new password"> <div className='font-lato font-[500] md:font-[600] text-[1rem]'>New password</div> </label> <input type="password" onChange={formik.handleChange} value={formik.values.new_password} name='new_password' className='outline-none border-solid border-[#888888] border-[1px] rounded-[5px]'/> </div>
+                <div className='flex flex-col'> <label htmlFor="current password"><div className='font-lato font-[500] md:font-[600] text-[1rem]'> Current Password </div></label> <input type="password" onChange={formik.handleChange} value={formik.values.password1} name='password1' className='outline-none border-solid border-[#888888] border-[1px] rounded-[5px] px-5'/> </div>
+                <div className='flex flex-col'>  <label htmlFor="current password2"> <div className='font-lato font-[500] md:font-[600] text-[1rem]'> Enter Current Password</div></label><input type="password" onChange={formik.handleChange} value={formik.values.new_password1} name='new_password1' className='outline-none border-solid border-[#888888] border-[1px] rounded-[5px] px-5'/> </div>
+                <div className='flex flex-col '> <label htmlFor="new password"> <div className='font-lato font-[500] md:font-[600] text-[1rem]'>New password</div> </label> <input type="password" onChange={formik.handleChange} value={formik.values.new_password2} name='new_password2' className='outline-none border-solid border-[#888888] border-[1px] rounded-[5px] px-5'/> </div>
             </div>
-            <button className='bg-[#5A0C91] rounded-[5px] font-[500] text-[1rem] py-[0.625rem] w-fit px-[2.125rem] text-[#EFE7F4]' onClick={formik.handleSubmit}>Update</button>
+            <p className='text-green-600 font-lato '> {password.password_reset_success?password.password_reset_success:null}</p>
+            
+            <button className='bg-[#5A0C91] rounded-[5px] font-[500] text-[1rem] py-[0.625rem] w-fit px-[2.125rem] text-[#EFE7F4]' onClick={formik.handleSubmit}>Update {password.passwordResetloading? <ClipLoader color='white' />:null}  </button>
             </div>
 :null}
 </div>

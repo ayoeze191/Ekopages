@@ -4,7 +4,8 @@ import { createSlice, PayloadAction } from "@reduxjs/toolkit"
 
 const initialState = {
     passwordResetloading: false  ,
-    passwordReseterror: null
+    passwordReseterror: null,
+    password_reset_success: null
 }  
 
 const ProfileSlice = createSlice({
@@ -16,10 +17,18 @@ const ProfileSlice = createSlice({
         },
         password_reset: (state,action) => {
             state.passwordResetloading = false
+            state.password_reset_success = action.payload
         },
         password_reset_failed: (state, action) => {
             state.passwordReseterror = action.payload
+            state.passwordResetloading = false
+        },
+        clear_all: (state, action) => {
+            state.passwordReseterror = null
+            state.passwordResetloading = false
+            state.password_reset_success = null
         }
+        
     }
 })
 

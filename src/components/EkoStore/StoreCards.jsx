@@ -14,6 +14,7 @@ const StoreCards = () => {
 
   const store = useSelector(state => state.products)
   const disptach = useDispatch()
+  console.log(store)
 
   useEffect(() => {
     disptach(get_products('All', "All"))
@@ -25,7 +26,7 @@ const StoreCards = () => {
     <div className='sm:grid sm:grid-cols-2  md:grid-cols-3 mx-auto section gap-x-[2rem] gap-y-[12.25rem] items-center mb-[60px]'>
         {store.products.map((prod) => <StoreCard {...prod}/>)}
     </div>
-    :<div className='h-[50vh] w-full text-center font-lato text-[2rem]'>Empty Product</div>
+    :<div className='h-[50vh] w-full text-center font-lato text-[2rem]'>Empty Store</div>
   )
 }
 
