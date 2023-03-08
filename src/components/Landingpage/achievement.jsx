@@ -4,9 +4,9 @@
 
 const Achievement = () => {
     return (
-        <section className="w-full bg-greyBg h-[fit] min-h-[379px] bg-no-repeat  pt-[40px] relative font-lato">
+        <section className=" w-full bg-greyBg h-[fit] min-h-[379px] bg-no-repeat  pt-[40px] relative font-lato">
                          {/* <section className="bg-rippaperTexture h-[80px] w-full absolute top-[-1px] rotate-180  "></section> */}
-
+          <div  className="section">
                          <p className="w-full hidden md:block  mx-auto px-6 lg:px-0 md:max-w-3xl md:text-[24px] mb-[2rem] font-[600] text-[1rem] text-[#232323] md:font-[500] font-Poppins text-center mt-[55px]">
             Our Immersive Learning Environment for kids
             is on course for astronomical interactions</p>
@@ -29,7 +29,8 @@ const Achievement = () => {
         </p>
          </div>
 
-        <div className=" absolute bottom-[-1px]  bg-no-repeat bg-rippaperTexture w-full h-[80px]"></div>
+        <div className="absolute bottom-[-1px]  bg-no-repeat bg-rippaperTexture w-full h-[80px]"></div>
+        </div>
 </section>
     )
 }

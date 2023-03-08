@@ -25,7 +25,8 @@ export const EkoNews = () => {
 
 
     return (
-        <section  className="font-lato w-[100%] bg-[#5A0C91] p-[20px] mt-[55.9px]">
+        <section  className="font-lato w-[100%] bg-[#5A0C91] p-[20px] mt-[55.9px] ">
+            <div className="section">
             <p className="text-center text-[24px] font-[700]  md:text-[44px] text-white mb-[40px] mt-[40px]">Eko News</p>
             <Carousel
                 autoPlay={true}
@@ -100,7 +101,7 @@ export const EkoNews = () => {
                 
                
             </Carousel>
-          
+            </div>
         </section>
     )
 }
