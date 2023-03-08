@@ -1,7 +1,11 @@
 // import axios from "axios"
 import instance from "../../axios"
 import { tokenConfig } from "../../Config/Config"
-import { added_to_cart, adding__to__Cart, getCart, getting_Cart, get_total } from "../reducers/Cart"
+import { added_to_cart, adding__to__Cart, 
+getCart, getting_Cart,
+get_total,
+update_cart,
+updating_cart } from "../reducers/Cart"
 export const get_cart = (isauth) => (dispatch) => {
     // console.log("kemi")
     
@@ -65,26 +69,32 @@ export const Add_to_cart = (id, isauth) => (dispatch) => {
 
 }
 
-export const update_cart_items = (id, quantity, isauth) => (dispatch) => {
-    console.log("updating level 2")
+export const update_cart_items = (id, quantity, isauth) => (dispatch, getState) => {
+    let present_cart = getState().cart.cart
+    present_cart = present_cart.map(cart => cart.id === id? {...cart, quantity:quantity}:{...cart})
+    dispatch(updating_cart())
+    console.log("updating level 2", id)
+    const url = `cart/cart-item/${id}/`
+    const data = {quantity}
     if(isauth){
-    instance.patch(`cart/cart-item/${id}`, {quantity}, tokenConfig())
+    instance.patch(url, data, tokenConfig())
     .then((res) => {
+        dispatch(update_cart(present_cart))
         console.log(res)
     })
     .catch((err) => {
         console.log(err)
     })
     }
-    else {
-        instance.patch(`unregistered-cart/cart-item/${id}`, {quantity})
-        .then((res) => {
-            console.log(res)
-        })
-        .catch((err) => {
-            console.log(err)
-        })
-    }
+    // else {
+    //     instance.patch(`unregistered-cart/cart-item/${id}`, {quantity})
+    //     .then((res) => {
+    //         console.log(res)
+    //     })
+    //     .catch((err) => {
+    //         console.log(err)
+    //     })
+    // }
     
 }
 

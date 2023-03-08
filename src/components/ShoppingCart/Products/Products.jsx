@@ -27,7 +27,7 @@ console.log(cart.cart)
     cart.cart?
     <div className='px-6 lg:px-0'>
         <p className='text-[#5A0C91] md:hidden'>Continue Shopping</p>
-        {cart.cart.map((prod) => <Product id={prod.product} qty={prod.quantity}/>)}
+        {cart.cart.map((prod) => <Product id={prod.product} cartit={prod.id} qty={prod.quantity}/>)}
     </div>: "no product"
   )
 }

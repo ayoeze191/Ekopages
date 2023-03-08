@@ -9,6 +9,7 @@ import AuthButton from '../authButton'
 import AddToCartbtn from './AddToCartbtn'
 import { useNavigate } from 'react-router-dom'
 import { useAuthContext } from '../../context/auth/auth'
+import GeneralUiOverlay from '../ui/GeneralUiOverlayLoader'
 const StoreCard = ({name, image, available, author, price, id}) => {
   const cart = useSelector(state => state.cart)
   const dispatch = useDispatch()
@@ -27,6 +28,7 @@ const StoreCard = ({name, image, available, author, price, id}) => {
   //(image)
   const myArray = [Star, Star, Star, Star, Star]
   return (
+    cart.cartLoading?<GeneralUiOverlay /> :
     <div className='storecard flex items-center justify-center flex-col px-[2rem] pb-[2.5rem] w-full h-[420px]'>
         <div className='w-full'>
             {image ?<div className='relative mb-[2rem] -mt-24'><img src={image}  className='mx-auto w-[14.6875rem] h-[12.5625rem]' /></div>:null}
@@ -48,6 +50,7 @@ const StoreCard = ({name, image, available, author, price, id}) => {
             {/* <button className='px-[1.18rem] bg-[#5A0C91] text-[#ffffff] py-[0.656rem] rounded-[0.3125rem] font-lato font-[500] text-[1rem]' onClick={() => dispatch(Add_to_cart(id))}>
             
             </button> */}
+            
             <AddToCartbtn name={"Add to Cart"} isLoading={(cart.prodid===id && cart.loading)? true:false} add={addTocart}></AddToCartbtn>
         </div>
     </div>

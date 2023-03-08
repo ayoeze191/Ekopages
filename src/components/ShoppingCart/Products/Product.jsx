@@ -9,7 +9,7 @@ import useProduct from './useProduct';
 import { useAuthContext } from '../../../context/auth/auth';
 import { useDispatch } from 'react-redux';
 
-const Product = ({id, qty}) => {
+const Product = ({id, qty, cartit}) => {
     const {product, loading} = useProduct(id)
     const {isAuth} = useAuthContext()
     const dispatch = useDispatch()
@@ -23,8 +23,8 @@ const Product = ({id, qty}) => {
         else {
             quantity = quantity - 1
         }
-
-      dispatch(update_cart_items(id, quantity, isAuth))
+        console.log(cartit)
+      dispatch(update_cart_items(cartit, quantity, isAuth))
     }
     // console.log(product)
     

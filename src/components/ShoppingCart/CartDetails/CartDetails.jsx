@@ -30,7 +30,7 @@ const CartDetails = () => {
 
 
   return (
-    <form className='mx-auto lg:px-0 px-6 max-w-[77rem] mt-[1.5rem]' onSubmit={formik.handleSubmit}>
+    <form className='mx-auto lg:px-0 px-6 max-w-[77rem] mt-[1.5rem] mb-[100px]' onSubmit={formik.handleSubmit} >
          <p className='mb-[1rem]'>Have a discount code?</p><div className='flex  flex-col md:flex-row gap-[6rem]'>
         <BillingDetails formik={formik}/>
         <CartTotals submit={formik.handleSubmit}/>

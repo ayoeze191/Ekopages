@@ -33,7 +33,7 @@ const Side_bar = ({show, sideFunc}) => {
                     {!isAuth && <button className="text-[#4A4A4A] text-[0.875rem] lg:text-[1rem] font-[400]" onClick={() => setloginMode()}>Log in/Sign up</button> }
 
         </div>
-        <div>  <BsCart className='block lg:hidden'></BsCart></div>
+        <Link to={'/cart'}>  <BsCart className='block lg:hidden'></BsCart></Link>
 
         </div>
       <div className='px-[1.7rem] mb-[26px] w-full'>
