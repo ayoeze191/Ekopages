@@ -32,7 +32,7 @@ export const MeetTeam = () => {
     return (
         <div className=" min-h-auto section mb-[10.875rem] mt-[56px]">
                 <p className="text-center text-[1.5rem]  font-Poppins text-lg md:text-[2.75rem] font-[600]">Meet the team</p>
-                <section className=" gap-5 mx-auto w-full px-0 mt-10 grid grid-cols-2  lg:flex lg:flex-row justify-between">
+                <section className=" gap-5 mx-auto w-full px-0 mt-10 grid grid-cols-2  lg:flex lg:flex-row justify-between" data-aos="zoom-out-up">
                     {teamDetails.map((member) => <MeetTeamCard name={member.name} img={member.img} post={member.post}/>)}
                 </section>
 
