@@ -71,9 +71,6 @@ const NavHead = ({sideHandler}) => {
     return (
         // <div className='bg-[#F6F6F6] w-full'>
     <div className="headersection w-full  flex items-center justify-between text-[24px] font-normal font-lato relative">
-
-
-
             <Rodal
                 customStyles={{
                 width: "90%",
@@ -121,7 +118,7 @@ const NavHead = ({sideHandler}) => {
 
 
             <section className="flex items-center w-fit mx-auto lg:mx-0">
-                <Link to="/" className='className="w-[70px] h-[38.89px] lg:w-[121px] text-[24px] lg:h-[67px]"'>
+                <Link to="/" className='className="w-[60px] h-[30.89px] lg:w-[121px] text-[24px] lg:h-[67px]"'>
                     <img  src={asset.Logo} alt="logo" className='w-full h-full'/>
                 </Link>
  </section>
