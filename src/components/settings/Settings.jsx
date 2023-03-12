@@ -13,14 +13,20 @@ import { ClipLoader } from 'react-spinners';
 
 const Settings = () => {
     const [passwordReset, setPasswordReset] = useState(false)
-    const {user} =  useAuthContext()
+    const {change_profile_pics, profile_pics, isAuth} =  useAuthContext()
+    
     const password = useSelector(profile => profile.profile)
     const dispatch = useDispatch()
-    const [userprofile, setUserprofile] = useState(user.profile_picture)
+    const [userprofile, setUserprofile] = useState(profile_pics)
     const handle__profile_picture = (Picture) => {
-        console.log("changed")
-        setUserprofile(Picture)
+        console.log(Picture)
+        change_profile_pics(Picture)
+        finish()
     }
+    const finish = () => {
+        setUserprofile(profile_pics)
+    }
+    console.log(userprofile)
 
     const formik = useFormik({
         initialValues: {
@@ -36,7 +42,7 @@ const Settings = () => {
             dispatch(setPAssword(data))
         }
     })
-    console.log(password)
+    console.log(userprofile)
 
   return (
     <div className='px-[1.5rem] md:px-[3.625rem] py-[3rem] w-full md:border-solid md:border-[#CDCDCD] md:border-[1px] md:border-l-none h-[100%] flex flex-col font-lato'>
@@ -48,13 +54,13 @@ const Settings = () => {
 
             <div className='flex gap-[0.75rem] items-center'>
                 <div className='rounded-full border-[2px] border-solid border-[#888888] w-[3.75rem] h-[3.75rem] flex items-center justify-center'>
-                    <img src={userprofile?userprofile:bx_user} alt="" />
+                    <img src={userprofile?userprofile:bx_user} alt="" className='w-full h-full rounded-full object-cover' />
                 </div>
                 <div className=''>
                 <label htmlFor="profpics"><div className=' border-solid border-[1px] border-[#888888] px-[0.5rem] font-[400] text-[1rem] text-[#232323] flex items-center gap-[0.5rem]'> <p>Upload New</p>
                 <div className='cursor-pointer'><img src={bi_upload} alt="" /></div>
                 </div></label>
-                <input type="file" src="" alt="" value={userprofile} placeholder='Upload New' accept="image/*" name='profpics' id='profpics' className='hidden' onChange={(e) => handle__profile_picture(e.value)}/>
+                <input type="file"  placeholder='Upload New' accept="image/*" name='profpics' id='profpics' className='hidden' onChange={(e) => handle__profile_picture(e.target.files[0])}/>
                 </div>
             </div>
         </div> 

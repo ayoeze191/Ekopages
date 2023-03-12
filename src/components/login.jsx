@@ -48,6 +48,7 @@ const handleError = (error) => {
     return error.non_field_errors
   }
 }
+console.log(formik.errors)
 
     return (
       <div className="w-full flex h-full  items-center font-lato flex-col md:flex-row md:rounded-[20px] bg-[#F6F6F6]" 

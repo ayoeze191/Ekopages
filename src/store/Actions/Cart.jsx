@@ -22,9 +22,9 @@ export const get_cart = (isauth) => (dispatch) => {
     }
     else {
         dispatch(getting_Cart())
-        instance.get('unregistered-cart/list/')
+        instance.get('unregistered-cart/list/', tokenConfig())
         .then((res) => {
-            console.log(res.data, "get cart")
+            console.log(res.data, "get unregisteredcart")
             dispatch(getCart(res.data))
         })
         .catch((err) => {
@@ -54,9 +54,9 @@ export const Add_to_cart = (id, isauth) => (dispatch) => {
 }
 
     else{
-        instance.post('unregistered-cart/create/', data)
+        instance.post('unregistered-cart/create/', data, tokenConfig())
         .then(res => {
-            console.log("added")
+            console.log("unregistereradded")
             console.log(res)
             dispatch(added_to_cart())
         })
@@ -86,15 +86,15 @@ export const update_cart_items = (id, quantity, isauth) => (dispatch, getState) 
         console.log(err)
     })
     }
-    // else {
-    //     instance.patch(`unregistered-cart/cart-item/${id}`, {quantity})
-    //     .then((res) => {
-    //         console.log(res)
-    //     })
-    //     .catch((err) => {
-    //         console.log(err)
-    //     })
-    // }
+    else {
+        instance.patch(`unregistered-cart/cart-item/${id}`, {quantity})
+        .then((res) => {
+            console.log(res)
+        })
+        .catch((err) => {
+            console.log(err)
+        })
+    }
     
 }
 

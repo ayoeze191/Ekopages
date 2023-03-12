@@ -39,8 +39,11 @@ export function validate(values) {
         }
 
         if(!values.password) {
-            errors.password = "required"
+            errors.password = "password is required"
         }
+        if(!values.username) {
+          errors.username = "username is required"
+      }
 
         return errors;
 }

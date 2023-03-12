@@ -1,16 +1,25 @@
 import instance from "../../axios"
 import { tokenConfig } from "../../Config/Config"
+import { useAuthContext } from "../../context/auth/auth"
 import { reseting_password, password_reset, password_reset_failed } from "../reducers/profils"
 
-export const profile = () => (picture) => {
+
+
+
+export const profile = (picture) => (dispatch) => {
     instance.put("auth/user/", {profile_picture: picture} ,tokenConfig())
     .then((res) => {
-
+        
     })
     .catch(err => {
         console.log(err)
     })
 }
+
+
+// export const get_picture = () => () => {
+//     instance.get('')
+// }
 
 
 export const setPAssword = ( data ) => (dispatch) => {

@@ -15,3 +15,18 @@ import axios from "axios"
     // console.log(config)
     return config;
   }
+
+  export const imageConfig = () => {
+    const access = localStorage.getItem('access')? localStorage.getItem('access'):null
+      const config = {
+        headers: {
+          "Content-Type": "multipart/form-data",
+          'Authorization': ''
+        },
+      };
+      if(access !== null){
+      config.headers["Authorization"] = `Bearer ${access}`;
+      }
+      // console.log(config)
+      return config;
+    }
