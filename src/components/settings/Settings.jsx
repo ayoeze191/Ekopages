@@ -10,6 +10,8 @@ import { profile, setPAssword } from '../../store/Actions/profile';
 import { useSelector } from 'react-redux';
 import GeneralUiOverlay from '../ui/GeneralUiOverlayLoader';
 import { ClipLoader } from 'react-spinners';
+import  { motion, AnimatePresence } from "framer-motion"
+
 
 const Settings = () => {
     const [passwordReset, setPasswordReset] = useState(false)
@@ -80,18 +82,32 @@ const Settings = () => {
                 <p>Password setting</p>
                 <p className='text-[#5A0C91] cursor-pointer font-[400]' onClick={() => setPasswordReset(!passwordReset)}>Edit</p>
             </div>
-            {passwordReset?
-            <div className='flex flex-col gap-[3.5rem]'>
+            <AnimatePresence>
+            {passwordReset&&
+            <div className='flex flex-col gap-[3.5rem]' 
+            >
+            
             <div className='grid grid-cols-1 md:grid-cols-2 mt-[1rem] gap-x-[1.625rem] gap-y-[2.5rem]'>
-                <div className='flex flex-col'> <label htmlFor="current password"><div className='font-lato font-[500] md:font-[600] text-[1rem]'> Current Password </div></label> <input type="password" onChange={formik.handleChange} value={formik.values.password1} name='password1' className='outline-none border-solid border-[#888888] border-[1px] rounded-[5px] px-5'/> </div>
-                <div className='flex flex-col'>  <label htmlFor="current password2"> <div className='font-lato font-[500] md:font-[600] text-[1rem]'> Enter Current Password</div></label><input type="password" onChange={formik.handleChange} value={formik.values.new_password1} name='new_password1' className='outline-none border-solid border-[#888888] border-[1px] rounded-[5px] px-5'/> </div>
-                <div className='flex flex-col '> <label htmlFor="new password"> <div className='font-lato font-[500] md:font-[600] text-[1rem]'>New password</div> </label> <input type="password" onChange={formik.handleChange} value={formik.values.new_password2} name='new_password2' className='outline-none border-solid border-[#888888] border-[1px] rounded-[5px] px-5'/> </div>
+                <motion.div initial = {{opacity: 0}}
+            animate = {{opacity: [0, 1]}}
+            exit={{opacity: 0}}
+            transition={{ duration: 0.5,}} className='flex flex-col'> <label htmlFor="current password"><div className='font-lato font-[500] md:font-[600] text-[1rem]'> Current Password </div></label> <input type="password" onChange={formik.handleChange} value={formik.values.password1} name='password1' className='outline-none border-solid border-[#888888] border-[1px] rounded-[5px] px-5'/> </motion.div>
+                <motion.div initial = {{opacity: 0}}
+            animate = {{opacity: [0, 1]}}
+            exit={{opacity: 0 ,dur:""}}
+            transition={{ duration: 0.5, delay:0.2 }} className='flex flex-col'>  <label htmlFor="current password2"> <div className='font-lato font-[500] md:font-[600] text-[1rem]'> Enter Current Password</div></label><input type="password" onChange={formik.handleChange} value={formik.values.new_password1} name='new_password1' className='outline-none border-solid border-[#888888] border-[1px] rounded-[5px] px-5'/> </ motion.div>
+                <motion.div initial = {{opacity: 0}}
+            animate = {{opacity: [0, 1]}}
+            exit={{opacity: 0, allowReorder: "yes"}}
+            transition={{ duration: 0.5, delay: 0.4}} className='flex flex-col '> <label htmlFor="new password"> <div className='font-lato font-[500] md:font-[600] text-[1rem]'>New password</div> </label> <input type="password" onChange={formik.handleChange} value={formik.values.new_password2} name='new_password2' className='outline-none border-solid border-[#888888] border-[1px] rounded-[5px] px-5'/> </motion.div>
             </div>
             <p className='text-green-600 font-lato '> {password.password_reset_success?password.password_reset_success:null}</p>
             
             <button className='bg-[#5A0C91] rounded-[5px] font-[500] text-[1rem] py-[0.625rem] w-fit px-[2.125rem] text-[#EFE7F4]' onClick={formik.handleSubmit}>Update {password.passwordResetloading? <ClipLoader color='white' />:null}  </button>
             </div>
-:null}
+            }
+            </AnimatePresence>
+            
 </div>
                 <p>Log Out</p>
             </div>
@@ -101,5 +117,8 @@ const Settings = () => {
     </div>
   )
 }
+
+
+
 
 export default Settings

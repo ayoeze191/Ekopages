@@ -44,7 +44,7 @@ export const service = [
         img: book, 
         h: "Book a Tutor",
         p: "Parents and children will be able to book our certified tutors online to teach them about the Sustainable Development Goals.",
-        button: "comming soon",
+        button: "coming soon",
         imagefirst: false,
         btntext: "Coming Soon",
         bg: "#C3EFC2", 

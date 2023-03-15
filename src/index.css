@@ -79,6 +79,7 @@ html {
 }                       
 .as{
     background:  rgba(90, 12, 145, 0.1);
+    /* transform: translateX(0); */
 }
 
 .shadow {

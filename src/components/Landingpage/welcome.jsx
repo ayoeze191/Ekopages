@@ -8,25 +8,24 @@ const WelcomeComponent = () => {
 
 
     return (
-        <div className="relative font-lato bg-backImg py-[40.11px] md:py-[80px]">
+        <div className="relative font-lato bg-backImg py-[40.11px] md:py-[80px] ">
 
 
-            <div className="section ">
-                <div className="flex gap-[15px] justify-between">
-                    <div>
-                    <h1 className="text-[#ffffff] font-[700] text-[24px] md:text-[80px] md:font-[700] mb-[12px]">Education <span className="text-[#EFA30C]"> for </span> <br />  Sustainability</h1>
-                    <p className="font-[500] text-[#D7D7D7] text-[12px] md:text-[20px] md:font-[400] font-lato mb-[40px]">An “Edtech” Platform for Sustainability Literacy for <br/> Children through Literature, Animation and Courses.</p>
+            <div className="section flex justify-between items-center">
+                <div className="flex flex-col">
+                    <div className="">
+                    <h1 className="text-[#ffffff] font-[700] text-[24px] md:text-[80px] md:font-[700] mb-[12px] md:leading-[5.5rem]">Education <span className="text-[#EFA30C] text-[15px] md:text-[40px]"> for </span> <br />  Sustainability</h1>
+                    <p className="font-[500] text-[#D7D7D7] text-[12px] md:text-[20px] md:font-[400] font-lato mb-[20px] md:mb-[40px]">An “Edtech” Platform for Sustainability Literacy for <br/> Children through Literature, Animation and Courses.</p>
                     </div>
-                    <div className="w-[147.59px] h-[132.36px] md:w-[521px] md:h-[465px]"> <img src={Group} className="w-full h-full" /> </div>
-                </div>
-
                 <div className="flex gap-[1rem]">
-                    <button className="bg-[#EFA30C] text-[#480A74] text-[12px] md:text-[20px] rounded-[5px] md:rounded-[10px] px-[8.5px] md:px-[20px] md:py-[17px] py-[10.5px]">Explore Courses</button>
-                    <button className="text-[white] border-[#EFE7F4] text-[12px] md:text-[20px] rounded-[5px] md:rounded-[10px] border-[0.5px] md:px-[20px] md:py-[17px] px-[8.5px] py-[10.5px]" onClick={() => setpartnerModal()}>Become a Partner</button>
-                    <button></button>
+                    <button className="bg-[#EFA30C] text-[#480A74] border-[#EFE7F4] text-[10px] md:text-[20px] rounded-[5px] md:rounded-[10px] border-[0.5px] md:px-[20px] md:py-[17px] px-[7.5px] py-[10.5px]">Explore Courses</button>
+                    <button className="text-[white] border-[#EFE7F4] text-[10px] md:text-[20px] rounded-[5px] md:rounded-[10px] border-[0.5px] md:px-[20px] md:py-[17px] px-[7.5px] py-[10.5px]" onClick={() => setpartnerModal()}>Become a Partner</button>
+                    {/* <button></button> */}
                 </div>
+                </div>
+            <div className="w-[147.59px] h-[132.36px] md:w-[521px] md:h-[465px]"> <img src={Group} className="w-full h-full" /> </div>
             </div>
-        
+
             {/* <AdBx></AdBx> */}
             </div>
     )

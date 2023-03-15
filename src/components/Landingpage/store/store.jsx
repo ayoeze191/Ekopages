@@ -67,7 +67,7 @@ const Store = () => {
   }, [])
     return (
         <div className=" section mb-[20px] font-lato  min-h-auto mt-[49.78px]">
-            <p className="text-center text-[24px] mdLtext-[44px] font-[700] mb-[10px] mt-[57px]">Eko Store</p>
+            <p className="text-center text-[24px] md:text-[44px] font-[700] mb-[10px] mt-[57px]">Eko Store</p>
             {store.isloading ? <GeneralUiOverlayLoader /> :store.products?
     <div className='sm:grid sm:grid-cols-2  md:grid-cols-3 mx-auto section gap-x-[2rem] gap-y-[12.25rem] items-center mb-[60px]'>
         {store.products.slice(0, 2).map((prod) => <StoreCard {...prod}/>)}

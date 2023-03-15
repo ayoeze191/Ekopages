@@ -2,8 +2,8 @@ import React from 'react'
 import AboutBg from "./../../assets/about/aboutBg.png"
 const QualityEducation = () => {
   return (
-    <div className='mt-12'>
-        <img src={AboutBg} className='w-full' />
+    <div className='h-[30rem]'>
+        <img src={AboutBg} className='w-full h-full object-cover' />
     </div>
   )
 }
