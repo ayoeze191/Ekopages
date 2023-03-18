@@ -19,7 +19,8 @@ export const AuthContext = React.createContext({
     showLoginModal: false,
     setloginMode: () => {},
     profpics: "",
-    change_profile_pics: () => {}
+    change_profile_pics: () => {},
+    verifyEmail: (value) => {}
 });
 
 
@@ -34,6 +35,13 @@ export const AuthProvider = ( { children }) => {
     console.log("initial profpics", profpics)
     const ChangeLoginModalMode = () => {
         setLoginModal(!loginModal)
+    }
+
+    const verifyEmail = (token) => {
+      instance.post("registration/verify-email/", {key: token})
+      .then((res) => {
+        console.log(res.data)
+      })
     }
 
     
@@ -114,7 +122,8 @@ export const AuthProvider = ( { children }) => {
           setloginMode: ChangeLoginModalMode,
           logout,
           change_profile_pics: changeProfilePics,
-          profile_pics: profpics
+          profile_pics: profpics,
+          verifyEmail
         }}
       >
         {children}

@@ -1,7 +1,11 @@
 import React from 'react'
 import ApprovedOrder from './ApprovedOrder'
 import { motion } from 'framer-motion'
+import { useState } from 'react'
+import instance from '../../../../../axios'
+import { useEffect } from 'react'
 const orders = [
+
     {
         OrderNo: "Eko hoodie",
         DateCreated: "30-11-2022",
@@ -26,8 +30,33 @@ const orders = [
 ]
 
 
+
+
 const Approved = () => {
-  return (
+    const [loading, setLoading] = useState(true) 
+    const [orders, setOrders] = useState(null)
+
+    const getOrderCompletedOrder = () => {
+        // setLoading(true)
+        instance.get('history/completed')
+        .then(res => {
+            setLoading(false)
+            setOrders(res.data.orders)
+        })
+        .catch((err) => {
+            setLoading(false)
+            console.log(err)
+        })
+    }
+    
+
+
+useEffect(() => {
+    getOrderCompletedOrder()
+}, [])
+
+
+  return loading? "Loading" :(
       
     <motion.div style={{overflowX: "hidden"}}
     initial = {{marginRight:"-100%", opacity:0}}

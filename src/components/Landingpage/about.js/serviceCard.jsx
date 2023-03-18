@@ -6,14 +6,14 @@ export const ServiceCard = ({styles,Icons,textStyle,title,content, url}) => {
     
 
     return (
-        <div data-aos="flip-up" className=" relative md:w-[284px] text-left md:h-[361px] bg-[#E6DBEF] rounded px-[1rem] md:px-[20px] py-[10px] md:pt-[23px] md:pb-[26px] border-box" style={{ ...styles }}>
+        <div data-aos="flip-up" className="flex flex-col justify-between relative md:w-[284px] text-left md:h-[361px] bg-[#E6DBEF] rounded px-[1rem] md:px-[20px] py-[10px] md:pt-[23px] md:pb-[26px] border-box" style={{ ...styles }}>
             <section className="md:w-[78px]  md:h-[78px] w-[41.63px] h-[41.63px] rounded bg-white flex items-center justify-center">
                 {Icons}
             </section>
             <p className="mt-[15px] text-left font-[700] text-[13px] md:text-[24px] font-lato "
                 style={{ ...textStyle }}>{title}
             </p>
-            <p className="text-[#4A4A4A] text-[12px] md:text-[16px] h-[83px]">
+            <p className="text-[#4A4A4A] text-[12px] md:text-[16px] ">
              {content}
             </p>
             
@@ -22,7 +22,6 @@ export const ServiceCard = ({styles,Icons,textStyle,title,content, url}) => {
                     Learn more
             </Link>
             </button>
-            
         </div>
     )
 }

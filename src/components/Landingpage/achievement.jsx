@@ -29,7 +29,7 @@ const Achievement = () => {
         </p>
          </div>
 
-        <div className="absolute bottom-[-1px]  bg-no-repeat bg-rippaperTexture w-full h-[80px]"></div>
+        {/* <div className="absolute bottom-[-1px]  bg-no-repeat bg-rippaperTexture w-full h-[80px]"></div> */}
         </div>
 </section>
     )

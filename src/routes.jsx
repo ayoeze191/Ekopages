@@ -15,6 +15,7 @@ import WhishlistContainer from "./pages/WhishlistContainer/WhishlistContainer"
 import Login from "./components/Login/Login"
 import StoreDetails from "./components/EkoStore/StoreDetails/StoreDetails"
 import Test from "./components/Test"
+import VerifyEmail from "./pages/Verify-email"
 
 
 export const BasicRoutes = [
@@ -80,8 +81,8 @@ export const BasicRoutes = [
         component: <Login />
     },
     {
-        // path: "/test", 
-        // component: <Test />
+        path: "/registration/account-confirm-email/:token", 
+        component: <VerifyEmail />
     }
 ]
 

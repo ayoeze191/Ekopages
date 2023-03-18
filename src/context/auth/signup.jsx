@@ -18,17 +18,18 @@ export const SignUpProvider = ( { children }) => {
     const [loading, setIsloading] = useState(false)
 
     const Signup = (data) => {
-        //("signing up 2")
+        console.log("signing up 2")
         setIsloading(true)
         signUp(data)
         .then((res) => {
             //(res)
+            console.log("signingup")
             setIsloading(false)
             setsucess(true);
             setError(null);
         })
         .catch((err) => {
-            //(err, "signup error")
+            console.log(err, "signup error")
             setIsloading(false);
             setsucess(false);
             setError(err.response);
