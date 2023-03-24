@@ -38,7 +38,6 @@ export const get_cart = (isauth) => (dispatch) => {
 export const Add_to_cart = (id, isauth) => (dispatch) => {
     const data = {"product": id}
     if(isauth) {
-        
     dispatch(adding__to__Cart(id))
     instance.post(`cart/create/`, data , tokenConfig())
     .then(res => {
@@ -57,6 +56,8 @@ export const Add_to_cart = (id, isauth) => (dispatch) => {
         instance.post('unregistered-cart/create/', data, tokenConfig())
         .then(res => {
             console.log("unregistereradded")
+            const headerArray = Object.entries(res.headers).map(([name, value]) => ({name, value}));
+            console.log(headerArray )
             console.log(res)
             dispatch(added_to_cart())
         })
@@ -66,7 +67,6 @@ export const Add_to_cart = (id, isauth) => (dispatch) => {
             dispatch(added_to_cart())
         })
     }
-
 }
 
 export const update_cart_items = (id, quantity, isauth) => (dispatch, getState) => {

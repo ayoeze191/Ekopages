@@ -15,7 +15,7 @@ import  { motion, AnimatePresence } from "framer-motion"
 
 const Settings = () => {
     const [passwordReset, setPasswordReset] = useState(false)
-    const {change_profile_pics, profile_pics, isAuth} =  useAuthContext()
+    const {change_profile_pics, profile_pics, isAuth, logout} =  useAuthContext()
     
     const password = useSelector(profile => profile.profile)
     const dispatch = useDispatch()
@@ -109,7 +109,7 @@ const Settings = () => {
             </AnimatePresence>
             
 </div>
-                <p>Log Out</p>
+                <button className='mr-auto cursor-pointer' onClick={() => logout()}>Log Out</button>
             </div>
             <div>
             
@@ -117,8 +117,6 @@ const Settings = () => {
     </div>
   )
 }
-
-
 
 
 export default Settings

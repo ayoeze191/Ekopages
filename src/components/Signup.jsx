@@ -20,7 +20,7 @@ import { SignupValidate } from "./validate/validate";
 const Signup = () => {
   const signupObject = useLogic()
   // const {signUp, signupOnChangeHandler, details} = useSignupOnchange()
-  const {loading, signup, success} =  useSignupContext()
+  const {loading, signup, success, error} =  useSignupContext()
   const formik = useFormik({
     initialValues: {
       email: "",
@@ -33,6 +33,12 @@ const Signup = () => {
     },
     validate: SignupValidate
 })
+
+let err = null
+
+if(error) {
+  err = Object.keys(error).map((text) => <div className="text-[12px] text-red-500"> {error[text][0]} </div>)
+}
 
   
   // //(details[5].error, "error")
@@ -48,26 +54,29 @@ const Signup = () => {
         <form  onSubmit={formik.handleSubmit} className="flex flex-col w-full w-full md:max-w-[20.37rem] gap-[1.5rem] ">
         <section className="flex flex-col">
             <InputField blurHandler={signupObject.SignupFormObj}  type="email" id="email" onChangeHandler={formik.handleChange} value={formik.values.email} src={assets.profileIcon} fieldName={"Email Address"} name={"email"} desc="profile icons"  ></InputField>
-            {signupObject.SignupFormObj.errors.email  && signupObject.SignupFormObj.touched.email ? <p className="text-[12px] text-red-500">
-            
+            {formik.errors.email  && formik.touched.email ? <p className="text-[12px] text-red-500">
+              {formik.errors.email}
             </p>:null}
           </section>
       
           <section className="flex flex-col">
                 <InputField  blurHandler={signupObject.SignupFormObj.handleBlur} type="text" id="" onChangeHandler={formik.handleChange} value={formik.values.username} src={assets.profileIcon} fieldName={"Username"} name={"username"} desc="profile icons"  ></InputField>
-                {signupObject.SignupFormObj.errors.username && signupObject.SignupFormObj.touched.username ? <p className="text-[12px] text-red-500">{ signupObject.SignupFormObj.errors.username}</p>:null}
+                {formik.errors.username && formik.touched.username ? <p className="text-[12px] text-red-500 mt-4">{ formik.errors.username}</p>:null}
           </section>
 
           <section className="flex flex-col">
                 <InputField blurHandler={signupObject.SignupFormObj.handleBlur} type="password" onChangeHandler={formik.handleChange} value={formik.values.password1} src={assets.inboxIcon} fieldName={"Password"} desc="Email icons" name={"password1"} ></InputField>
-                {signupObject.SignupFormObj.errors.password1 && signupObject.SignupFormObj.touched.password1 ? <p className="text-[12px] text-red-500">{ signupObject.SignupFormObj.errors.password1}</p>:null}
+                {formik.errors.password1 && formik.touched.password1 ? <p className="text-[12px] text-red-500 mt-4">{ formik.errors.password1}</p>:null}
           </section>
 
           <section className="">
                 <InputField blurHandler={signupObject.SignupFormObj.handleBlur} type="password" onChangeHandler={formik.handleChange} value={formik.values.password2} src={assets.callIcon} fieldName={"password2"} name={"password2"} desc="call icons"  ></InputField>
-                {/* <p className="text-[12px] text-red-500">{details[5].error?details[5].error:null }</p> */}
+                {formik.errors.password2 && formik.touched.password2 ? <p className="text-[12px] text-red-500 mt-4">{ formik.errors.password2}</p>:null}
 
           </section>
+          <div>
+            {err}
+          </div>
           <AuthButton isLoading={loading} name="Sign Up"></AuthButton>
           {success?"Check Your Email For Verification Link":null}
          </form>

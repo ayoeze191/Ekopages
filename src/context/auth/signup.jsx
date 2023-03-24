@@ -32,7 +32,7 @@ export const SignUpProvider = ( { children }) => {
             console.log(err, "signup error")
             setIsloading(false);
             setsucess(false);
-            setError(err.response);
+            setError(err.response.data);
         })
     }
     return (

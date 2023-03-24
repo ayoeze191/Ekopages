@@ -38,10 +38,10 @@ export const AuthProvider = ( { children }) => {
     }
 
     const verifyEmail = (token) => {
-      instance.post("registration/verify-email/", {key: token})
-      .then((res) => {
-        console.log(res.data)
-      })
+      // instance.post("registration/verify-email/", {key: token})
+      // .then((res) => {
+      //   console.log(res.data)
+      // })
     }
 
     

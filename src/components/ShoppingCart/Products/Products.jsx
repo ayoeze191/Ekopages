@@ -20,9 +20,7 @@ const Products = () => {
 useEffect(() => {
   disptach(get_cart(isAuth))
 }, [])
-console.log(cart.cart)
-  // console.log(cart, "get calaa")
-  //  const [state, dispatch] = useReducer(storeReducer, initialState) 
+console.log(cart.cart, "the cart")
   return (
     cart.cart?
     <div className='px-6 lg:px-0'>

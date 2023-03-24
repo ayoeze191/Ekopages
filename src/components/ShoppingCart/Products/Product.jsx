@@ -8,6 +8,7 @@ import { update_cart_items } from '../../../store/Actions/Cart';
 import useProduct from './useProduct';
 import { useAuthContext } from '../../../context/auth/auth';
 import { useDispatch } from 'react-redux';
+import {Shimmer, Image} from "react-shimmer"
 
 const Product = ({id, qty, cartit}) => {
     const {product, loading} = useProduct(id)
@@ -32,7 +33,7 @@ const Product = ({id, qty, cartit}) => {
     <div className='flex justify-between w-full  mx-auto max-w-[77rem] font-lato border-b-solid border-b-[1px] border-b-[#BBBBBB] py-[2.53125rem]' >
         <div className='flex gap-[13.15px] md:gap-[3.25rem]'>
             <div>
-            <img className='w-[62.85px] h-[full]' src={product.data.image} alt="" />
+            <Image className='w-[62.85px] h-[full]' src={product.data.image} alt=""  fallback={<Shimmer width={300} height={300}/> } />
             </div>
             <div>
                 <p className='font-[600] text-[1rem] md:text-[1.5rem]'>{product.data.name}</p>

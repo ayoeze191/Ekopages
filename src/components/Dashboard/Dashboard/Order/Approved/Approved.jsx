@@ -4,6 +4,7 @@ import { motion } from 'framer-motion'
 import { useState } from 'react'
 import instance from '../../../../../axios'
 import { useEffect } from 'react'
+import { tokenConfig } from '../../../../../Config/Config'
 const orders = [
 
     {
@@ -38,10 +39,11 @@ const Approved = () => {
 
     const getOrderCompletedOrder = () => {
         // setLoading(true)
-        instance.get('history/completed')
+        instance.get('history/completed/', tokenConfig())
         .then(res => {
+            // console.log(res.data.data.completed)
             setLoading(false)
-            setOrders(res.data.orders)
+            setOrders(res.data.data.completed)
         })
         .catch((err) => {
             setLoading(false)
@@ -57,7 +59,6 @@ useEffect(() => {
 
 
   return loading? "Loading" :(
-      
     <motion.div style={{overflowX: "hidden"}}
     initial = {{marginRight:"-100%", opacity:0}}
             animate = {{marginRight: ["-100%", "0"], opacity: [0, 1]}}
@@ -69,7 +70,7 @@ useEffect(() => {
             <div>Paid on</div>
             <div>Status</div>
         </div>
-        {orders.map((order) => <ApprovedOrder {...order}/>)}
+        {orders.length > 0? orders.map((order) => <ApprovedOrder {...order}/>): <div className='flex w-full font-lato text-[24px] font-[500] mx-auto justify-center h-full items-center mt-[2rem]'>You are yet to complete any Order</div> }
     </motion.div>
   )
 }
