@@ -1,7 +1,8 @@
 import React from 'react'
 import arrow from "./../../assets/projects/arrow.png"
 import { Link } from 'react-router-dom'
-import {Shimmer, Image} from "react-shimmer"
+import { Image} from "react-shimmer"
+import Shimmer from '../ui/Shimmer/Shimmer'
 
 const Project = ({img, h1, p, path}) => {
   return (
@@ -17,7 +18,6 @@ const Project = ({img, h1, p, path}) => {
             {p}
         </p>
         </div>
-
         <Link className='flex items-center gap-[0.7rem]' to={path}>
             <p className='text-[1rem] font-[700] text-[#4A4A4A]'>View Project</p><div><img src={arrow} alt="" />
             </div>
