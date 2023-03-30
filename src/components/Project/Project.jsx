@@ -1,8 +1,8 @@
 import React from 'react'
 import arrow from "./../../assets/projects/arrow.png"
 import { Link } from 'react-router-dom'
-import { Image} from "react-shimmer"
-import Shimmer from '../ui/Shimmer/Shimmer'
+import { Image, Shimmer} from "react-shimmer"
+// import Shimmer from '../ui/Shimmer/Shimmer'
 
 const Project = ({img, h1, p, path}) => {
   return (
