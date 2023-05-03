@@ -6,6 +6,8 @@ getCart, getting_Cart,
 get_total,
 update_cart,
 updating_cart } from "../reducers/Cart"
+import generateRandomString from "../../Utils/randomChar"
+
 export const get_cart = (isauth) => (dispatch) => {
     // console.log("kemi")
     
@@ -17,7 +19,7 @@ export const get_cart = (isauth) => (dispatch) => {
             dispatch(getCart(res.data))
         })
         .catch((err) => {
-            console.log(err, "error tiwaoo")
+            // console.log(err, "error tiwaoo")
         })
     }
     else {
@@ -28,7 +30,7 @@ export const get_cart = (isauth) => (dispatch) => {
             dispatch(getCart(res.data))
         })
         .catch((err) => {
-            console.log(err, "error tiwaoo")
+            // console.log(err, "error tiwaoo")
         })
     }
 }
@@ -46,8 +48,8 @@ export const Add_to_cart = (id, isauth) => (dispatch) => {
         dispatch(added_to_cart())
     })
     .catch((err) => {
-        console.log("Adding failed")
-        console.log(err)
+        // console.log("Adding failed")
+        // console.log(err)
         dispatch(added_to_cart())
     })   
 }
@@ -57,13 +59,13 @@ export const Add_to_cart = (id, isauth) => (dispatch) => {
         .then(res => {
             console.log("unregistereradded")
             const headerArray = Object.entries(res.headers).map(([name, value]) => ({name, value}));
-            console.log(headerArray )
-            console.log(res)
+            // console.log(headerArray )
+            // console.log(res)
             dispatch(added_to_cart())
         })
         .catch((err) => {
             console.log("Adding failed")
-            console.log(err)
+            // console.log(err)
             dispatch(added_to_cart())
         })
     }

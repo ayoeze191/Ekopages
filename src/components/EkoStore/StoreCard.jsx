@@ -26,20 +26,20 @@ const StoreCard = ({name, image, available, author, price, id}) => {
 
 
   //(image)
-  const myArray = [Star, Star, Star, Star, Star]
+  // const myArray = [Star, Star, Star, Star, Star]
   return (
-    cart.cartLoading?<GeneralUiOverlay /> :
+    // cart.cartLoading?<GeneralUiOverlay /> :
     <div className='storecard flex items-center justify-center flex-col px-[2rem] pb-[2.5rem] w-full h-[420px]'>
         <div className='w-full'>
             {image ?<div className='relative mb-[2rem] -mt-24 w-[9rem] h-[9rem] mx-auto'><img src={image}  className=' w-full h-full' /></div>:null}
             <div className='flex justify-between font-lato font-[700] text-1.47rem mb-[0.5rem]'>{name}<p><img src={Vector15} /></p></div>
             <div className='font-lato font-[400] text-[1.125rem]'>Written by: {author}</div>
-            <div className='flex gap-2 my-2 justify-left'>
+            {/* <div className='flex gap-2 my-2 justify-left'>
               {
                myArray.map((value ,index) => <img src={value} key={index} /> ) 
               }
               
-            </div>
+            </div> */}
             <div className='text-[0.8rem] mb-[1rem]'>{available?'In Stock': ''}</div>
         </div>
         

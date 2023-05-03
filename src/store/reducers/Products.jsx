@@ -22,7 +22,6 @@ const productSlice = createSlice({
         setproducts: (state, action) => {
             state.products = action.payload
             state.isloading = false
-            // state.category = action.payload.category
         },
         setcategories: (state, action) => {
             state.category = action.payload

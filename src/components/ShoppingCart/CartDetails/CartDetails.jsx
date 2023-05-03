@@ -22,7 +22,7 @@ const CartDetails = () => {
     },
     // validate,
     onSubmit: ({First_name, Last_name, Company_name, country, street_address, city, apartment, state, phone_number, email, shipping_location, create_Account}) => {
-        console.log(create_Account)
+        // console.log(create_Account)
     }
     // onsubmit: 
   })

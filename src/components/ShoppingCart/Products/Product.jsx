@@ -27,7 +27,7 @@ const Product = ({id, qty, cartit}) => {
         console.log(cartit)
       dispatch(update_cart_items(cartit, quantity, isAuth))
     }
-    // console.log(product)
+    
     
   return (product?
     <div className='flex justify-between w-full  mx-auto max-w-[77rem] font-lato border-b-solid border-b-[1px] border-b-[#BBBBBB] py-[2.53125rem]' >

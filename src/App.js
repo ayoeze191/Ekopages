@@ -17,8 +17,13 @@ import { get_cart } from "./store/Actions/Cart";
 import BecomeAPartner from "./components/ui/Modal/BecomeAPartner";
 import { useModalContext } from "./context/modal/modal";
 import StayIntouch from "./components/ui/Modal/StayIntouch";
+import { useCookies } from 'react-cookie';
+
 function App() {
   const [side, setSide] = useState(false)  
+  // const [cookies, setCookie] = useCookies(['name']);
+
+  // console.log(cookies.cart, "all cookies")
   const dispatch = useDispatch()
   const sidebarHandler = () => {
     setSide(!side)
@@ -26,7 +31,7 @@ function App() {
   
   const {isAuth} = useAuthContext()
   const {partnerModal, setpartnerModal, stayIntouchModal, setstayIntouchModal} = useModalContext()
-  console.log(isAuth)
+  // console.log(isAuth)
   // localStorage.removeItem('access')
   // localStorage.removeItem('refresh')
   // localStorage.removeItem('user')

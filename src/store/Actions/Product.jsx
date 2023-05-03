@@ -36,12 +36,12 @@ export const get_products = (id, name) => (dispatch) => {
     //(url)
     instance.get(url)
     .then(res => {
-        //(res.data.data)
+        console.log(res.data)
         dispatch(setproducts(res.data.data))
     })
     .catch((err) => {
-        //(err)
         dispatch(productError())
+        console.log("new error", err)
     })
 }
 
