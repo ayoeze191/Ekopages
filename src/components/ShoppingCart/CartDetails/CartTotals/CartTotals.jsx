@@ -1,19 +1,27 @@
-import React from 'react'
+import React, {useContext} from 'react'
 import { useEffect } from 'react'
 import { useSelector } from 'react-redux'
 import { useDispatch } from 'react-redux'
 import { ClipLoader } from 'react-spinners'
 import { useAuthContext } from '../../../../context/auth/auth'
 import { get_cart_total } from '../../../../store/Actions/Cart'
+import { cookieContext } from '../../../../App'
+
+
 const CartTotals = ({submit}) => {
     const disptach = useDispatch()
     const {isAuth} = useAuthContext()
     const total = useSelector((state) => state.cart.total)
+    const {cookie} = useContext(cookieContext)
+    
 
     // console.log(is)
 
     useEffect(() => {
-        disptach(get_cart_total(isAuth))
+        // disptach(get_cart_total({
+        //     isAuth,
+        //     session_id: cookie
+        // }))
     }, [])
 
 

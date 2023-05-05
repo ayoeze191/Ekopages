@@ -10,15 +10,23 @@ import AddToCartbtn from './AddToCartbtn'
 import { useNavigate } from 'react-router-dom'
 import { useAuthContext } from '../../context/auth/auth'
 import GeneralUiOverlay from '../ui/GeneralUiOverlayLoader'
+import { useContext } from 'react'
+import { cookieContext } from '../../App'
+
 const StoreCard = ({name, image, available, author, price, id}) => {
   const cart = useSelector(state => state.cart)
   const dispatch = useDispatch()
   const {isAuth, setloginMode} = useAuthContext()
-  
+  const {cookie} = useContext(cookieContext)
+
   const navigate = useNavigate()
 
   const addTocart = () => {
-      dispatch(Add_to_cart(id, isAuth))
+    const authVerification = {
+      isAuth,
+      session_id: cookie
+  }
+      dispatch(Add_to_cart(id, authVerification))
       navigate('/cart')
       dispatch(finished_adding())
   }

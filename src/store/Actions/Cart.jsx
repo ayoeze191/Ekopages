@@ -1,6 +1,6 @@
 // import axios from "axios"
 import instance from "../../axios"
-import { tokenConfig } from "../../Config/Config"
+import { tokenConfig, VisitorTokenConfig } from "../../Config/Config"
 import { added_to_cart, adding__to__Cart, 
 getCart, getting_Cart,
 get_total,
@@ -8,10 +8,11 @@ update_cart,
 updating_cart } from "../reducers/Cart"
 import generateRandomString from "../../Utils/randomChar"
 
+import { useCookies, withCookies } from "react-cookie"
+
+
 export const get_cart = (isauth) => (dispatch) => {
-    // console.log("kemi")
-    
-    if(isauth) {
+    if(isauth.isAuth) {
         dispatch(getting_Cart())
         instance.get('cart/list', tokenConfig())
         .then((res) => {
@@ -19,18 +20,18 @@ export const get_cart = (isauth) => (dispatch) => {
             dispatch(getCart(res.data))
         })
         .catch((err) => {
-            // console.log(err, "error tiwaoo")
+            console.log(err, "error wa ni cart waooo")
         })
     }
     else {
         dispatch(getting_Cart())
-        instance.get('unregistered-cart/list/', tokenConfig())
+        instance.get('unregistered-cart/list/', VisitorTokenConfig(isauth.session_id))
         .then((res) => {
             console.log(res.data, "get unregisteredcart")
             dispatch(getCart(res.data))
         })
         .catch((err) => {
-            // console.log(err, "error tiwaoo")
+            console.log(err, "error tiwaoo")
         })
     }
 }
@@ -39,7 +40,8 @@ export const get_cart = (isauth) => (dispatch) => {
 
 export const Add_to_cart = (id, isauth) => (dispatch) => {
     const data = {"product": id}
-    if(isauth) {
+
+    if(isauth.isAuth) {
     dispatch(adding__to__Cart(id))
     instance.post(`cart/create/`, data , tokenConfig())
     .then(res => {
@@ -55,7 +57,7 @@ export const Add_to_cart = (id, isauth) => (dispatch) => {
 }
 
     else{
-        instance.post('unregistered-cart/create/', data, tokenConfig())
+        instance.post('unregistered-cart/create/', data, VisitorTokenConfig(isauth.session_id))
         .then(res => {
             console.log("unregistereradded")
             const headerArray = Object.entries(res.headers).map(([name, value]) => ({name, value}));
@@ -78,7 +80,7 @@ export const update_cart_items = (id, quantity, isauth) => (dispatch, getState) 
     console.log("updating level 2", id)
     const url = `cart/cart-item/${id}/`
     const data = {quantity}
-    if(isauth){
+    if(isauth.isAuth){
     instance.patch(url, data, tokenConfig())
     .then((res) => {
         dispatch(update_cart(present_cart))
@@ -89,7 +91,7 @@ export const update_cart_items = (id, quantity, isauth) => (dispatch, getState) 
     })
     }
     else {
-        instance.patch(`unregistered-cart/cart-item/${id}`, {quantity})
+        instance.patch(`unregistered-cart/cart-item/${id}`, {quantity}, VisitorTokenConfig(isauth.session_id))
         .then((res) => {
             console.log(res)
         })
@@ -105,8 +107,8 @@ export const update_cart_items = (id, quantity, isauth) => (dispatch, getState) 
 
 
 export const get_cart_total = (isauth) => (dispatch) => {
-    console.log("getTotalauth", isauth)
-    if(isauth) {
+    // console.log("getTotalauth", isauth)
+    if(isauth.isAuth) {
         instance.get('cart/total/', tokenConfig())
         .then((res) => {
             console.log(res, "getting")
@@ -117,7 +119,7 @@ export const get_cart_total = (isauth) => (dispatch) => {
         } )
     }
     else {
-        instance.get('unregistered-cart/total/')
+        instance.get('unregistered-cart/total/', VisitorTokenConfig(isauth.session_id))
         .then((res) => {
             console.log(res, "unregistered")
             dispatch(get_total(res.data.data.total))

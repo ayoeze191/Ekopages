@@ -13,29 +13,46 @@ import { useState } from "react";
 import Overlay from "./components/ui/Overlay";
 import { useEffect } from "react";
 import { useDispatch } from "react-redux";
-import { get_cart } from "./store/Actions/Cart";
 import BecomeAPartner from "./components/ui/Modal/BecomeAPartner";
 import { useModalContext } from "./context/modal/modal";
 import StayIntouch from "./components/ui/Modal/StayIntouch";
-import { useCookies } from 'react-cookie';
+import { useCookies, Cookies } from 'react-cookie';
+import { createContext } from "react";
+import generateRandomString from "./Utils/randomChar";
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+
+
+export const cookieContext = createContext({cookie: "", setContext: () => {}})
+
 
 function App() {
   const [side, setSide] = useState(false)  
-  // const [cookies, setCookie] = useCookies(['name']);
+  const [cookies, setCookie] = useCookies(['eko_session_id']);
+  const {isAuth} = useAuthContext()
 
-  // console.log(cookies.cart, "all cookies")
-  const dispatch = useDispatch()
+  console.log(cookies.eko__session_id)
   const sidebarHandler = () => {
     setSide(!side)
   }
+
+  const setCookieContext = () => {
+      setCookie('eko_session_id', generateRandomString(15), { path: '/' })
+  }
+
   
-  const {isAuth} = useAuthContext()
+  
+  // if(cookie == undefined)
+
+  console.log(cookies, "app")
+  
   const {partnerModal, setpartnerModal, stayIntouchModal, setstayIntouchModal} = useModalContext()
   // console.log(isAuth)
   // localStorage.removeItem('access')
   // localStorage.removeItem('refresh')
   // localStorage.removeItem('user')
   return (
+    <cookieContext.Provider value={{cookie: cookies.eko_session_id !== (undefined || null)? cookies.eko_session_id:null, setContext: setCookieContext }}>
     <div className="bg-[#F6F6F6] flex">
 
       <Rodal 
@@ -77,6 +94,7 @@ function App() {
       >
         <StayIntouch />
       </Rodal>
+      <ToastContainer />
 
       <BrowserRouter>
       <Routes>
@@ -101,6 +119,7 @@ function App() {
       </BrowserRouter>
       
     </div>
+    </cookieContext.Provider>
   );
 }
 

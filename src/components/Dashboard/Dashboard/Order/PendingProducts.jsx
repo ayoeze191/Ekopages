@@ -1,4 +1,4 @@
-import React, {useEffect} from 'react'
+import React, {useEffect, useContext} from 'react'
 import { useReducer } from 'react'
 import { storeReducer, initialState } from '../../../../reducer/StoreCardReducer'
 // import 
@@ -10,14 +10,20 @@ import { useDispatch } from 'react-redux'
 import { useSelector } from 'react-redux'
 import { get_cart } from '../../../../store/Actions/Cart'
 import { useAuthContext } from '../../../../context/auth/auth'
+import { cookieContext } from '../../../../App'
 const PendingProducts = () => {
     const {isAuth} = useAuthContext()
+    const {cookie} = useContext(cookieContext)
+
     const cart = useSelector(state => state.cart)
     const dispatch = useDispatch()
     console.log(cart)
 
   useEffect(() => {
-    dispatch(get_cart(isAuth))
+    dispatch(get_cart({
+      isAuth,
+      session_id: cookie
+  }))
   }, [])
 
   return (

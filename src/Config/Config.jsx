@@ -27,6 +27,22 @@ import axios from "axios"
       if(access !== null){
       config.headers["Authorization"] = `Bearer ${access}`;
       }
-      // console.log(config)
       return config;
     }
+
+
+
+  export const VisitorTokenConfig = (session_id) => {
+    const config = {
+      headers: {
+        "Content-Type": "application/json",
+        'session_id': session_id
+      },
+    };
+ 
+    
+    return config
+  }
+
+
+     // config.headers['Authorization'] = `Token ${session_id}`

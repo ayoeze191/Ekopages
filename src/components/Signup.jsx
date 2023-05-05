@@ -78,7 +78,7 @@ if(error) {
             {err}
           </div>
           <AuthButton isLoading={loading} name="Sign Up"></AuthButton>
-          {success?"Check Your Email For Verification Link":null}
+          {success?<div className="text-[12px] text-green-500 mt-4 ">Check Your Email For Verification Link"</div>:null}
          </form>
 
          <section className="w-full flex flex-col gap-[1.5rem] mt-[0.5rem] mb-[168px] md:mb-[111px]">

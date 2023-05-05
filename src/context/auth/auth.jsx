@@ -5,12 +5,14 @@ import { loginUser,  logoutUser} from "./comp/Login";
 import instance from "../../axios";
 import { imageConfig, tokenConfig } from "../../Config/Config";
 import { setProfilePic } from "../../store/reducers/profils";
+import {toast} from "react-toastify"
+
 export const AuthContext = React.createContext({
     isAuth: localStorage.getItem('access')?true:false, 
     access: localStorage.getItem('access'),
     refresh: localStorage.getItem('refresh'),
     user: JSON.parse(localStorage.getItem("user")),
-    error: "",
+    error: null,
     success: false,
     loading: false,
     logoutLoading: false,
@@ -68,7 +70,7 @@ export const AuthProvider = ( { children }) => {
         .then((res) => {
           console.log(res.data)
           setsucess(true);
-          setError("");
+          setError(null);
           localStorage.setItem('access', res.data.access_token)
           setisAuth(true)
           localStorage.setItem('refresh', res.data.refresh_token)
@@ -77,6 +79,7 @@ export const AuthProvider = ( { children }) => {
           // setProfpics(res.data.user.profile_picture)
           setIsloading(false)
           setLoginModal(!loginModal)
+          toast.success("Sucessfully Logged In ")
       })
       .catch((err) => {
         setisAuth(false)
@@ -84,10 +87,11 @@ export const AuthProvider = ( { children }) => {
           setIsloading(true)
           setIsloading(false)
           setsucess(false);
-          setError(err.response);
+          setError(err.response.data);
           localStorage.removeItem('access')
           localStorage.removeItem('refresh')
           localStorage.removeItem('user')
+          toast.error("unable to login")
       })
 }
 

@@ -28,12 +28,15 @@ import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 
 import { get_cart } from '../../store/Actions/Cart';
+import { useContext } from 'react';
+import { cookieContext } from '../../App';
 
 const NavHead = ({sideHandler}) => {
     const loc = useLocation()
     const [side, setside] = useState(false)
     const NavLogicObject = useLogic()
     const {isAuth, access, user, showLoginModal, setloginMode, loading} = useAuthContext()
+    const {cookie} = useContext(cookieContext)
     const dispatch = useDispatch()
     const cart = useSelector((state) => state.cart.cart)
     // //(isAuth, "authentication")
@@ -62,9 +65,13 @@ const NavHead = ({sideHandler}) => {
             path:"faq"
     }
     ]
+    
 
     useEffect(() => {
-        dispatch(get_cart())
+        dispatch(get_cart({
+            isAuth,
+            session_id: cookie
+        }))
     }, [])
 
 

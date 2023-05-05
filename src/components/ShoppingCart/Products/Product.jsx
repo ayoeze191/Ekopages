@@ -9,13 +9,21 @@ import useProduct from './useProduct';
 import { useAuthContext } from '../../../context/auth/auth';
 import { useDispatch } from 'react-redux';
 import {Shimmer, Image} from "react-shimmer"
+import { cookieContext } from '../../../App';
+import { useContext } from 'react';
 
 const Product = ({id, qty, cartit}) => {
     const {product, loading} = useProduct(id)
     const {isAuth} = useAuthContext()
     const dispatch = useDispatch()
-    
+    const {cookie} = useContext(cookieContext)
     const update_cart = (type, initialVal) => {
+
+        const authVerification = {
+            isAuth,
+            session_id: cookie
+        }
+
         console.log("updating ")
         let quantity = initialVal
         if(type === "add"){
@@ -25,10 +33,10 @@ const Product = ({id, qty, cartit}) => {
             quantity = quantity - 1
         }
         console.log(cartit)
-      dispatch(update_cart_items(cartit, quantity, isAuth))
+      dispatch(update_cart_items(cartit, quantity, authVerification))
     }
     
-    
+
   return (product?
     <div className='flex justify-between w-full  mx-auto max-w-[77rem] font-lato border-b-solid border-b-[1px] border-b-[#BBBBBB] py-[2.53125rem]' >
         <div className='flex gap-[13.15px] md:gap-[3.25rem]'>

@@ -3,7 +3,7 @@ import CartDetails from './CartDetails/CartDetails'
 import Products from './Products/Products'
 import ShoppingCartsText from './ShoppingCartsText'
 import { useSelector, useDispatch } from 'react-redux'
-import { get_cart } from '../../store/Actions/Cart' 
+// import { get_cart } from '../../store/Actions/Cart' 
 
 const ShoppingCartsContainer = () => {
   const cart = useSelector(state => state.cart)

@@ -14,7 +14,7 @@ import { validate } from "./validate/validate"
 // import Overlay from "./Overlay"
 import { useFormik } from 'formik'
 import Link from "antd/es/typography/Link"
-
+import {toast} from "react-toastify"
 
 
 
@@ -22,7 +22,7 @@ const Login = () => {
 
   const loginObject = useLogic()
   
-  const { login, loading, error } = useAuthContext()
+  const { login, loading, error, success } = useAuthContext()
 
 
   //(error)
@@ -44,11 +44,16 @@ const Login = () => {
 })
 
 const handleError = (error) => {
+  console.log(error)
   if(error.non_field_errors) {
     return error.non_field_errors
   }
 }
-console.log(formik.errors)
+if(error) {
+  console.log(error)
+}
+
+
 
     return (
       <div className="w-full flex h-full  items-center font-lato flex-col md:flex-row md:rounded-[20px] bg-[#F6F6F6]" 

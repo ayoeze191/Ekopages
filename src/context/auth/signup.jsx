@@ -2,6 +2,8 @@
 import React from "react";
 import { useState, useContext } from "react";
 import { signUp } from "./comp/signup";
+import { toast } from "react-toastify";
+
 
 export const SignUpContext = React.createContext({
     error: null,
@@ -22,18 +24,22 @@ export const SignUpProvider = ( { children }) => {
         setIsloading(true)
         signUp(data)
         .then((res) => {
-            //(res)
+            console.log(res.data)
             console.log("signingup")
             setIsloading(false)
             setsucess(true);
             setError(null);
+            toast.success("Your Registration is Sucessfull")
         })
         .catch((err) => {
             console.log(err, "signup error")
             setIsloading(false);
             setsucess(false);
             setError(err.response.data);
+            setTimeout(() => setError(""), 5000)
+            toast.success("Registration Fail")
         })
+
     }
     return (
       <SignUpContext.Provider

@@ -95,7 +95,12 @@ const Settings = () => {
                 <motion.div initial = {{opacity: 0}}
             animate = {{opacity: [0, 1]}}
             exit={{opacity: 0 ,dur:""}}
-            transition={{ duration: 0.5, delay:0.2 }} className='flex flex-col'>  <label htmlFor="current password2"> <div className='font-lato font-[500] md:font-[600] text-[1rem]'> Enter Current Password</div></label><input type="password" onChange={formik.handleChange} value={formik.values.new_password1} name='new_password1' className='outline-none border-solid border-[#888888] border-[1px] rounded-[5px] px-5'/> </ motion.div>
+            transition={{ duration: 0.5, delay:0.2 }} className='flex flex-col'>
+                  <label htmlFor="current password2">
+                       <div className='font-lato font-[500] md:font-[600] text-[1rem]'> Enter Current Password</div>
+                       </label><input type="password" onChange={formik.handleChange} value={formik.values.new_password1} name='new_password1' className='outline-none border-solid border-[#888888] border-[1px] rounded-[5px] px-5'/>
+                        <a  className='text-red-500 font-Lato font-[600] text-[1rem] line-[1.2rem] mt-1 cursor-pointer'>Forgot password?</a>
+                        </ motion.div>
                 <motion.div initial = {{opacity: 0}}
             animate = {{opacity: [0, 1]}}
             
