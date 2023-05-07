@@ -27,10 +27,11 @@ const StoreCard = ({name, image, available, author, price, id}) => {
       session_id: cookie
   }
       dispatch(Add_to_cart(id, authVerification))
-      navigate('/cart')
       dispatch(finished_adding())
   }
-
+if(cart.sucess) {
+  navigate('/cart')
+}
 
 
   //(image)

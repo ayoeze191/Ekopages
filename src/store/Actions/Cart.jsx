@@ -25,7 +25,7 @@ export const get_cart = (isauth) => (dispatch) => {
     }
     else {
         dispatch(getting_Cart())
-        instance.get('unregistered-cart/list/', VisitorTokenConfig(isauth.session_id))
+        instance.get(`unregistered-cart/list/${isauth.session_id}`, VisitorTokenConfig())
         .then((res) => {
             console.log(res.data, "get unregisteredcart")
             dispatch(getCart(res.data))
@@ -57,17 +57,15 @@ export const Add_to_cart = (id, isauth) => (dispatch) => {
 }
 
     else{
-        instance.post('unregistered-cart/create/', data, VisitorTokenConfig(isauth.session_id))
+        instance.post(`unregistered-cart/create/${isauth.session_id}`, data, VisitorTokenConfig())
         .then(res => {
             console.log("unregistereradded")
-            const headerArray = Object.entries(res.headers).map(([name, value]) => ({name, value}));
-            // console.log(headerArray )
-            // console.log(res)
+            console.log(res)
             dispatch(added_to_cart())
         })
         .catch((err) => {
             console.log("Adding failed")
-            // console.log(err)
+            console.log(err)
             dispatch(added_to_cart())
         })
     }

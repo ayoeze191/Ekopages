@@ -32,11 +32,11 @@ import axios from "axios"
 
 
 
-  export const VisitorTokenConfig = (session_id) => {
+  export const VisitorTokenConfig = () => {
     const config = {
       headers: {
-        "Content-Type": "application/json",
-        'session_id': session_id
+        // "Content-Type": "application/json",
+        // 'session_id': session_id
       },
     };
  
