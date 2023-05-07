@@ -6,6 +6,8 @@ getCart, getting_Cart,
 get_total,
 update_cart,
 updating_cart } from "../reducers/Cart"
+import axios from "axios"
+
 import generateRandomString from "../../Utils/randomChar"
 
 import { useCookies, withCookies } from "react-cookie"
@@ -25,15 +27,16 @@ export const get_cart = (isauth) => (dispatch) => {
     }
     else {
         dispatch(getting_Cart())
-        instance.get('unregistered-cart/list/', VisitorTokenConfig(isauth.session_id))
+        instance.get(`unregistered-cart/list/${isauth.session_id}`, VisitorTokenConfig(isauth.session_id))
         .then((res) => {
-            console.log(res.data, "get unregisteredcart")
-            dispatch(getCart(res.data))
+            console.log(res.data.data.list, "get unregisteredcart")
+            dispatch(getCart(res.data.data.list))
         })
         .catch((err) => {
+            // console.log(err.response, "get unregisteredcart")
             console.log(err, "error tiwaoo")
         })
-    }
+        }
 }
 
 
@@ -52,12 +55,12 @@ export const Add_to_cart = (id, isauth) => (dispatch) => {
     .catch((err) => {
         // console.log("Adding failed")
         // console.log(err)
-        dispatch(added_to_cart())
+        // dispatch(added_to_cart())
     })   
 }
 
     else{
-        instance.post('unregistered-cart/create/', data, VisitorTokenConfig(isauth.session_id))
+        instance.post(`unregistered-cart/create/${isauth.session_id}`, data, VisitorTokenConfig())
         .then(res => {
             console.log("unregistereradded")
             const headerArray = Object.entries(res.headers).map(([name, value]) => ({name, value}));
@@ -66,8 +69,8 @@ export const Add_to_cart = (id, isauth) => (dispatch) => {
             dispatch(added_to_cart())
         })
         .catch((err) => {
-            console.log("Adding failed")
-            // console.log(err)
+            console.log("")
+            console.log(err, "Adding failed")
             dispatch(added_to_cart())
         })
     }

@@ -31,18 +31,30 @@ import axios from "axios"
     }
 
 
+  // export const VisitorTokenConfig = (session_id) => {
 
-  export const VisitorTokenConfig = (session_id) => {
-    const config = {
-      headers: {
-        "Content-Type": "application/json",
-        'session_id': session_id
-      },
-    };
- 
-    
-    return config
-  }
+  //   var myHeaders = new Headers();
+  //   myHeaders.append("session_id", session_id);
+  //   var requestOptions = {
+  //       "Content-Type": "application/json",
+  //       headers: myHeaders,
+  //       redirect: 'follow'
+  //       };
+  //       return requestOptions
+  // }
 
 
      // config.headers['Authorization'] = `Token ${session_id}`
+
+
+     
+  export const VisitorTokenConfig = () => {
+    // console.log(localStorage.getItem('access'), "access token")
+      const config = {
+        headers: {
+          "Content-Type": "application/json",
+          // session_id
+        },
+      };
+      return config;
+    }

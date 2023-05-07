@@ -28,21 +28,26 @@ export const cookieContext = createContext({cookie: "", setContext: () => {}})
 
 function App() {
   const [side, setSide] = useState(false)  
-  const [cookies, setCookie] = useCookies(['eko_session_id']);
+  const [cookies, setCookie, removeCookie] = useCookies(['eko_session_id']);
   const {isAuth} = useAuthContext()
 
   console.log(cookies.eko__session_id)
   const sidebarHandler = () => {
     setSide(!side)
+    
   }
 
   const setCookieContext = () => {
       setCookie('eko_session_id', generateRandomString(15), { path: '/' })
+
   }
 
-  
-  
-  // if(cookie == undefined)
+  // removeCookie('eko_session_id')
+
+  if(!cookies.eko_session_id) {
+    setCookieContext()
+
+  }
 
   console.log(cookies, "app")
   

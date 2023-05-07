@@ -25,9 +25,11 @@ useEffect(() => {
     isAuth,
     session_id: cookie
 }
-  disptach(get_cart(authVerification))
+
+// disptach(get_cart(authVerification))
+console.log(cart, "the cart")
 }, [])
-console.log(cart.cart, "the cart")
+
   return (
     cart.cart?
     <div className='px-6 lg:px-0'>
