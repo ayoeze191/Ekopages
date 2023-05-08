@@ -52,11 +52,15 @@ export const Add_to_cart = (id, isauth) => (dispatch) => {
     .then(res => {
         console.log("added")
         console.log(res)
+        toast.success("Sucessfully added to cart")
         dispatch(added_to_cart())
     })
     .catch((err) => {
         console.log("Adding failed")
-        console.log(err.response.data)
+        console.log(err)
+        if(err.response.data.message == "item already in cart"){
+            toast.info("item already in cart")
+        }
         dispatch(add_failed(err.response.data))
     })
     setTimeout(() => dispatch(finished_adding()), 2000)
@@ -95,10 +99,12 @@ export const update_cart_items = (id, quantity, isauth) => (dispatch, getState) 
     instance.patch(url, data, tokenConfig())
     .then((res) => {
         dispatch(update_cart(present_cart))
+        toast.success("sucessfully updated")
         console.log(res)
     })
     .catch((err) => {
         console.log(err)
+        toast.info("Update failed")
     })
     }
     else {
