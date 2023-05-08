@@ -70,7 +70,7 @@ export const Add_to_cart = (id, isauth) => (dispatch) => {
             console.log("unregistereradded")
             console.log(res)
             dispatch(added_to_cart())
-            toast.info("Sucessfully added to cart")
+            toast.success("Sucessfully added to cart")
         })
         .catch((err) => {
             console.log("Adding failed")
@@ -102,12 +102,14 @@ export const update_cart_items = (id, quantity, isauth) => (dispatch, getState) 
     })
     }
     else {
-        instance.patch(`unregistered-cart/cart-item/${id}/`, {quantity}, VisitorTokenConfig(isauth.session_id))
+        instance.patch(`unregistered-cart/cart-item/${id}/${isauth.session_id}/`, {quantity}, VisitorTokenConfig())
         .then((res) => {
             console.log(res)
+            toast.success("sucessfully updated")
         })
         .catch((err) => {
             console.log(err)
+            toast.info("Update failed")
         })
     }
     
