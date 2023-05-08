@@ -18,10 +18,10 @@ const CartTotals = ({submit}) => {
     // console.log(is)
 
     useEffect(() => {
-        // disptach(get_cart_total({
-        //     isAuth,
-        //     session_id: cookie
-        // }))
+        disptach(get_cart_total({
+            isAuth,
+            session_id: cookie
+        }))
     }, [])
 
 

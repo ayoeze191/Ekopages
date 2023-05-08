@@ -12,6 +12,7 @@ import { useAuthContext } from '../../context/auth/auth'
 import GeneralUiOverlay from '../ui/GeneralUiOverlayLoader'
 import { useContext } from 'react'
 import { cookieContext } from '../../App'
+import { toast } from 'react-toastify'
 
 const StoreCard = ({name, image, available, author, price, id}) => {
   const cart = useSelector(state => state.cart)
@@ -27,16 +28,21 @@ const StoreCard = ({name, image, available, author, price, id}) => {
       session_id: cookie
   }
       dispatch(Add_to_cart(id, authVerification))
-      navigate('/cart')
-      dispatch(finished_adding())
   }
+if(cart.sucess) {
+  // toast.info("Sucessfully added to cart")
+  navigate('/cart')
+}
 
+if(cart.error  && cart.error.message === "item already in cart"){
+  navigate('/cart')
+}
 
 
   //(image)
   // const myArray = [Star, Star, Star, Star, Star]
   return (
-    // cart.cartLoading?<GeneralUiOverlay /> :
+    // cart.loading?<GeneralUiOverlay /> :
     <div className='storecard flex items-center justify-center flex-col px-[2rem] pb-[2.5rem] w-full h-[420px]'>
         <div className='w-full'>
             {image ?<div className='relative mb-[2rem] -mt-24 w-[9rem] h-[9rem] mx-auto'><img src={image}  className=' w-full h-full' /></div>:null}

@@ -83,7 +83,7 @@ export const AuthProvider = ( { children }) => {
       })
       .catch((err) => {
         setisAuth(false)
-        console.log(err.response.data, "logging in error")
+        console.log({err}, "logging in error")
           setIsloading(true)
           setIsloading(false)
           setsucess(false);
