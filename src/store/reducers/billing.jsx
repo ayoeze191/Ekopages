@@ -7,7 +7,8 @@ import axios from "axios"
 
 
 const initialState = {
-    loading: false  
+    loading: false, 
+    success: false
 }  
 
 const billingSlice = createSlice({

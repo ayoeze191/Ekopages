@@ -1,12 +1,19 @@
 import instance from "../../axios";
+import { tokenConfig } from "../../Config/Config";
 import { billing_sent, sending_bill } from "../reducers/billing";
 
 
 
-const send_billing = (data) => (dispatch) => {
+export const create_billings = (data) => (dispatch) => {
     dispatch(sending_bill())
-    instance.post("billing-details/create-billing-details/address/")
+    instance.post("billing-details/create-billing-details/address/", data, tokenConfig())
     .then(res => {
         console.log(res)
+        dispatch(billing_sent())
+    })
+    .catch((error) => {
+        console.log(error)
     })
 }
+
+

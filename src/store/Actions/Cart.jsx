@@ -6,7 +6,8 @@ getCart, getting_Cart, finished_adding,
 get_total,
 update_cart,
 updating_cart, 
-add_failed} from "../reducers/Cart"
+add_failed,
+getting_total} from "../reducers/Cart"
 import axios from "axios"
 import { toast } from 'react-toastify'
 
@@ -127,6 +128,7 @@ export const update_cart_items = (id, quantity, isauth) => (dispatch, getState) 
 
 export const get_cart_total = (isauth) => (dispatch) => {
     // console.log("getTotalauth", isauth)
+    dispatch(getting_total())
     if(isauth.isAuth) {
         instance.get('cart/total/', tokenConfig())
         .then((res) => {

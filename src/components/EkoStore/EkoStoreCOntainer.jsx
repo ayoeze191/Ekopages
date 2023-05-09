@@ -8,6 +8,8 @@ import { useEffect } from 'react'
 import { get_all_categories } from '../../store/Actions/Product'
 import { useSelector } from 'react-redux'
 import { useDispatch } from 'react-redux'
+import instance from '../../axios'
+import withErrorHandler from '../withErrHandler'
 
 const EkoStoreCOntainer = () => {
   const categories = useSelector(state => state.products.category)
@@ -22,5 +24,4 @@ const EkoStoreCOntainer = () => {
     </div>
   )
 }
-
-export default EkoStoreCOntainer
+export default withErrorHandler(EkoStoreCOntainer, instance)

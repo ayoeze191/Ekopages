@@ -21,13 +21,15 @@ import { createContext } from "react";
 import generateRandomString from "./Utils/randomChar";
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import instance from "./axios";
+import withErrorHandler from "./components/withErrHandler";
 
 
 export const cookieContext = createContext({cookie: "", setContext: () => {}})
 
 
 function App() {
-  const [side, setSide] = useState(false)  
+  const [side, setSide] = useState(false)
   const [cookies, setCookie, removeCookie] = useCookies(['eko_session_id']);
   const {isAuth} = useAuthContext()
 
@@ -128,4 +130,4 @@ function App() {
   );
 }
 
-export default App;
+export default App

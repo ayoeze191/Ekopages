@@ -14,7 +14,8 @@ const initialState = {
     cartLoading: false,
     error:null,
     total: null,
-    update_loading: false
+    update_loading: false,
+    total_loading: false
 }  
 
 const cartSlice = createSlice({
@@ -48,6 +49,10 @@ const cartSlice = createSlice({
         },
         get_total: (state,action) => {
             state.total = action.payload
+            state.total_loading = false
+        },
+        getting_total: (state) => {
+            state.total_loading = true
         },
         updating_cart: (state, action) => {
             state.cartLoading = true
@@ -63,7 +68,7 @@ const cartSlice = createSlice({
 })
 
 
-export const {getCart, adding__to__Cart, added_to_cart, finished_adding, getting_Cart, get_total, update_cart, updating_cart, add_failed} = cartSlice.actions
+export const {getCart, adding__to__Cart, added_to_cart, finished_adding, getting_Cart, get_total, update_cart, updating_cart, add_failed, getting_total} = cartSlice.actions
 
 
 export default cartSlice.reducer;
