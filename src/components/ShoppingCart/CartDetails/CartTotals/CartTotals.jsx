@@ -2,11 +2,11 @@ import React, {useContext} from 'react'
 import { useEffect } from 'react'
 import { useSelector } from 'react-redux'
 import { useDispatch } from 'react-redux'
-import { ClipLoader } from 'react-spinners'
+import { ClipLoader, MoonLoader } from 'react-spinners'
 import { useAuthContext } from '../../../../context/auth/auth'
 import { get_cart_total } from '../../../../store/Actions/Cart'
 import { cookieContext } from '../../../../App'
-import { TbLoader, TbLoaderQuarter } from 'react-icons/tb'
+import { TbLoaderQuarter,  } from 'react-icons/tb'
 
 
 
@@ -15,6 +15,7 @@ const CartTotals = ({formi}) => {
     const {isAuth} = useAuthContext()
     const total = useSelector((state) => state.cart.total)
     const total_loading = useSelector((state) => state.cart.total_loading)
+    const cart = useSelector(state => state.cart.cart)
     const {cookie} = useContext(cookieContext)
     
 
@@ -25,7 +26,8 @@ const CartTotals = ({formi}) => {
             isAuth,
             session_id: cookie
         }))
-    }, [])
+    }, [cart])
+    console.log(total_loading)
 
 
   return (
@@ -33,7 +35,7 @@ const CartTotals = ({formi}) => {
     <div className='font-lato px-[2rem] border-[1px] border-solid border-[#232323]  py-[3rem] rounded-[5px] h-fit'>
         <p className='mb-[1.5rem] text-[1.5rem] font-[500]'>Cart Totals</p>
         <div className='py-[1.5rem] flex justify-between border-solid border-y-[1px] border-[#9E9E9E]'>
-            <p className='text-[1rem] font-[400]'>SUBTOTAL</p> <p className='font-[600]'>{total? total: `#${total_loading}`?<TbLoader size={'2rem'} color='#5A0C91' />:0}</p>
+            <p className='text-[1rem] font-[400]'>SUBTOTAL</p> <p className='font-[600]'>{total? total:total_loading ?<ClipLoader size={'2rem'} color='#5A0C91' />:0}</p>
         </div>
         <div>
             <p className='py-[1.5rem] my-[1rem] text-[1rem] font-[400]'>

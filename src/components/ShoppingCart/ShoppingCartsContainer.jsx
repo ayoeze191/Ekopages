@@ -11,8 +11,7 @@ const ShoppingCartsContainer = () => {
   return (
     <div>
         <ShoppingCartsText />
-        
-        {/* <Products /> */}
+        <Products />
         <CartDetails />
     </div>
   )

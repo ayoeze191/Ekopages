@@ -10,7 +10,7 @@ const BillingDetails = ({formik}) => {
         <div className='font-[400] text-[1rem]'>
         <div className='mb-[5rem]'>
         <input type="text" placeholder='Enter coupon code' name="" id="" className='py-[1rem] px-[2.1rem] bg-inherit border-solid border-[1px] border-[#9E9E9E] rounded-[5px] relative -mr-[10px] x-[1]' />
-        <button className='bg-[#5A0C91] text-white rounded-[5px] py-[1rem] px-[2.1rem] relative z-[100]'>
+        <button className='bg-[#5A0C91] text-white rounded-[5px] py-[1rem] px-[2.1rem] relative z-[50]'>
         Apply Coupon
         </button>
         </div>

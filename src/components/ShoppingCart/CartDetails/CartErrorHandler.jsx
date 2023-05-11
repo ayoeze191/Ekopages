@@ -1,13 +1,14 @@
 import React, { Component } from 'react';
 
-import Modal from './ui/Modal'
 
 
-const withErrorHandler = ( WrappedComponent, axios ) => {
+const withCartErrorHandler = ( WrappedComponent, axios ) => {
     return class extends Component {
         state = {
-            error: null
+            error: null,
+            showModal: true
         }
+        
         
         componentWillMount () {
             this.reqInterceptor = axios.interceptors.request.use( req => {
@@ -29,17 +30,14 @@ const withErrorHandler = ( WrappedComponent, axios ) => {
 
         render () {
             return (
-                <>
-                    <Modal
-                        show={this.state.error}
-                        modalClosed={this.errorConfirmedHandler}>
-                        {this.state.error ? this.state.error.message : null}
-                    </Modal>
+                this.showModal &&
+                <div className='bg-black-900 opacity-[0.5]' onClick={this.setState({...this.state, showModal:false})}>
+                    <div className='bg-white px-14 py-14'>{this.state.error ? this.state.error.message : null}</div>
                     <WrappedComponent {...this.props} />
-                </>
+                </div>
             );
         }
     }
 }
 
-export default withErrorHandler;
+export default withCartErrorHandler;

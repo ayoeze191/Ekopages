@@ -8,7 +8,8 @@ import axios from "axios"
 
 const initialState = {
     loading: false, 
-    success: false
+    success: false,
+    error: ""
 }  
 
 const billingSlice = createSlice({
@@ -20,12 +21,15 @@ const billingSlice = createSlice({
         },
         billing_sent: (state,action) => {
             state.loading = false
+        },
+        billing_error: (state, action) => {
+            state.error = action.payload
         }
     }
 })
 
 
-export const {sending_bill, billing_sent} = billingSlice.actions
+export const {sending_bill, billing_sent, billing_error} = billingSlice.actions
 
 
 export default billingSlice.reducer;

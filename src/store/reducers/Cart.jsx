@@ -14,7 +14,8 @@ const initialState = {
     cartLoading: false,
     error:null,
     total: null,
-    update_loading: false,
+    update_addloading: false,
+    update_subloading: false,
     total_loading: false
 }  
 
@@ -55,11 +56,14 @@ const cartSlice = createSlice({
             state.total_loading = true
         },
         updating_cart: (state, action) => {
-            state.cartLoading = true
+            state.update_addloading = action.payload === "add"?true:false
+            state.update_subloading = action.payload === "sub"?true:false
         },
         update_cart: (state, action) => {
             state.cart = action.payload
             state.cartLoading = false
+            state.update_addloading=false
+            state.update_subloading = false
         },
         add_failed: (state, action) => {
             state.error = action.payload

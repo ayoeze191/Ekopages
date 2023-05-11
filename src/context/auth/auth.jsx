@@ -104,6 +104,7 @@ export const AuthProvider = ( { children }) => {
         localStorage.removeItem('eko_refresh')
         localStorage.removeItem('eko_user')
         setisAuth(false)
+        toast.info("Logged out")
       })
       .catch((err) => {
         console.log(err)

@@ -22,11 +22,11 @@ export const get_cart = (isauth) => (dispatch) => {
         dispatch(getting_Cart())
         instance.get('cart/list/', tokenConfig())
         .then((res) => {
-            // console.log(res.data, "get cart")
+            console.log(res.data, "get cart")
             dispatch(getCart(res.data))
         })
         .catch((err) => {
-            console.log(err, "error wa ni cart waooo")
+            // console.log(err, "error wa ni cart waooo")
         })
     }
     else {
@@ -37,7 +37,7 @@ export const get_cart = (isauth) => (dispatch) => {
             dispatch(getCart(res.data.data.list))
         })
         .catch((err) => {
-            console.log(err, "error tiwaoo")
+            // console.log(err, "error tiwaoo")
         })
         }
 }
@@ -51,35 +51,34 @@ export const Add_to_cart = (id, isauth) => (dispatch) => {
     dispatch(adding__to__Cart(id))
     instance.post(`cart/create/`, data , tokenConfig())
     .then(res => {
-        console.log("added")
-        console.log(res)
+        // console.log("added")
+        // console.log(res)
         toast.success("Sucessfully added to cart")
         dispatch(added_to_cart())
     })
     .catch((err) => {
-        console.log("Adding failed")
-        console.log(err)
+        // console.log("Adding failed")
+        // console.log(err)
         if(err.response.data.message == "item already in cart"){
             toast.info("item already in cart")
         }
         dispatch(add_failed(err.response.data))
     })
     setTimeout(() => dispatch(finished_adding()), 2000)
-
 }
 
     else{   
         dispatch(adding__to__Cart(id))
         instance.post(`unregistered-cart/create/${isauth.session_id}/`, data, VisitorTokenConfig())
         .then(res => {
-            console.log("unregistereradded")
+            // console.log("unregistereradded")
             console.log(res)
             dispatch(added_to_cart())
             toast.success("Sucessfully added to cart")
         })
         .catch((err) => {
-            console.log("Adding failed")
-            console.log(err)
+            // console.log("Adding failed")
+            // console.log(err)    
             if(err.response.data.message == "item already in cart"){
                 toast.info("item already in cart")
             }
@@ -89,33 +88,37 @@ export const Add_to_cart = (id, isauth) => (dispatch) => {
     }
 }
 
-export const update_cart_items = (id, quantity, isauth) => (dispatch, getState) => {
+
+export const update_cart_items = (id, quantity, isauth, type) => (dispatch, getState) => {
     let present_cart = getState().cart.cart
     present_cart = present_cart.map(cart => cart.id === id? {...cart, quantity:quantity}:{...cart})
-    dispatch(updating_cart())
+    dispatch(updating_cart(type))
     console.log("updating level 2", id)
-    const url = `cart/cart-item/${id}/`
+    
     const data = {quantity}
     if(isauth.isAuth){
+    const url = `cart/cart-item/${id}/`
     instance.patch(url, data, tokenConfig())
     .then((res) => {
         dispatch(update_cart(present_cart))
         toast.success("sucessfully updated")
-        console.log(res)
     })
     .catch((err) => {
-        console.log(err)
+        // console.log(err)
+        dispatch(update_cart(present_cart))
+
         toast.info("Update failed")
     })
     }
     else {
-        instance.patch(`unregistered-cart/cart-item/${id}/${isauth.session_id}/`, {quantity}, VisitorTokenConfig())
+        instance.patch(`/unregistered-cart/cart-item/${isauth.session_id}/${id}/`, data, VisitorTokenConfig())
         .then((res) => {
-            console.log(res)
+            dispatch(update_cart(present_cart)) 
             toast.success("sucessfully updated")
         })
         .catch((err) => {
-            console.log(err)
+            console.log(err, "update failed")
+            console.log(err.response)
             toast.info("Update failed")
         })
     }
@@ -123,7 +126,6 @@ export const update_cart_items = (id, quantity, isauth) => (dispatch, getState) 
 }
 
 
-// export const unauthenticated_update_cart_items = () =>
 
 
 export const get_cart_total = (isauth) => (dispatch) => {

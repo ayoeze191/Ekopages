@@ -32,12 +32,12 @@ export const SignUpProvider = ( { children }) => {
             toast.success("Your Registration is Sucessfull")
         })
         .catch((err) => {
-            console.log(err, "signup error")
+            console.log(err)
             setIsloading(false);
             setsucess(false);
             setError(err.response.data);
             setTimeout(() => setError(""), 5000)
-            toast.success("Registration Fail")
+            toast.success("Registration Failed")
         })
 
     }
