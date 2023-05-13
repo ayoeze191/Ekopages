@@ -160,10 +160,10 @@ const formik = useFormik({
         "shipping_location": shipping_location,  
         "Order_Notes": Order_Notes
     }, authVerification))
-//   paymentFunc({
-// amount:OverallAmount,
-// email
-//       })
+  paymentFunc({
+amount:OverallAmount,
+email
+      })
     }})
 
 

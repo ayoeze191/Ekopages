@@ -4,7 +4,7 @@ import { useState } from 'react';
 import instance from '../../../axios';
 import del from "./../../../assets/cart/delete.png"
 import { ClipLoader, BarLoader } from 'react-spinners';
-import { update_cart_items } from '../../../store/Actions/Cart';
+import { update_cart_items, delete_item } from '../../../store/Actions/Cart';
 import useProduct from './useProduct';
 import { useAuthContext } from '../../../context/auth/auth';
 import { useDispatch } from 'react-redux';
@@ -22,14 +22,20 @@ const Product = ({id, qty, cartit}) => {
     const update__loading = useSelector((state) => state.cart)
     // const cart_total = useSelector(state => state.cart.total)
 
+    const authVerification = {
+        isAuth,
+        session_id: cookie
+    }
+
+    const remove_item = () => {
+        dispatch(delete_item(id, cartit, authVerification))
+    }
+
     console.log(cartit)
 
     const update_cart = (type, initialVal) => {
 
-        const authVerification = {
-            isAuth,
-            session_id: cookie
-        }
+        
 
         console.log("updating ")
         let quantity = initialVal
@@ -64,7 +70,7 @@ const Product = ({id, qty, cartit}) => {
             <p className='text-[14px] md:text-[1rem] '>
                 Subtotal: {product.data.price * qty}
             </p>
-            <div>
+            <div onClick={() => remove_item()}>
                 <img src={del} className='w-[19.5px] h-[21px] md:w-initial md:h-initial' alt="" />
             </div>
         </div>

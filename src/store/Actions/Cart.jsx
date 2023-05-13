@@ -7,7 +7,8 @@ get_total,
 update_cart,
 updating_cart, 
 add_failed,
-getting_total} from "../reducers/Cart"
+getting_total,
+delete_cart_item} from "../reducers/Cart"
 import axios from "axios"
 import { toast } from 'react-toastify'
 
@@ -155,9 +156,45 @@ export const get_cart_total = (isauth) => (dispatch) => {
 
 
 
-
-
-
-const clearCart = () => {
+export const delete_item = (prodId,cartId, isauth) => (dispatch, getState) => {
+    let present_cart = getState().cart.cart
+    present_cart = present_cart.map(prod => prod.id !== prodId)
+    const data = {id:prodId}
+    console.log(prodId)
+    if(isauth.isAuth){
+    instance.delete(`cart/cart-item/${cartId}/`, data, tokenConfig())
+    .then((res) => {
+        console.log(res)
+        console.log("sucessfully deleted")
+        dispatch(delete_cart_item(present_cart))
+        toast.success("sucessfully deleted")
+    })
+    .catch((err) => {
+        console.log(err)
+        console.log("deleting failed")
+        toast.info("deleting failed")
+    })
+    }
+    // else {
+    //     instance.patch(`/unregistered-cart/cart-item/${isauth.session_id}/${id}/`, data, VisitorTokenConfig())
+    //     .then((res) => {
+    //         dispatch(update_cart(present_cart)) 
+    //         toast.success("sucessfully updated")
+    //     })
+    //     .catch((err) => {
+    //         console.log(err, "update failed")
+    //         console.log(err.response)
+    //         toast.info("Update failed")
+    //     })
+    // }
     
 }
+
+
+
+
+
+
+// const clearCart = () => {
+       
+// }

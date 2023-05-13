@@ -34,6 +34,7 @@ disptach(get_cart(authVerification))
 console.log(cart.cart, "the cart")
 }, [])
 
+
   return (
     cart.cart?
     <div className='px-6 lg:px-0'>

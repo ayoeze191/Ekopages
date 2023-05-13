@@ -67,12 +67,15 @@ const cartSlice = createSlice({
         },
         add_failed: (state, action) => {
             state.error = action.payload
+        },
+        delete_cart_item: (state, action) => {
+            state.cart = action.payload
         }
     }
 })
 
 
-export const {getCart, adding__to__Cart, added_to_cart, finished_adding, getting_Cart, get_total, update_cart, updating_cart, add_failed, getting_total} = cartSlice.actions
+export const {getCart, adding__to__Cart, added_to_cart, finished_adding, getting_Cart, get_total, update_cart, updating_cart, add_failed, getting_total, delete_cart_item} = cartSlice.actions
 
 
 export default cartSlice.reducer;
