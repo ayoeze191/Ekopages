@@ -81,7 +81,7 @@ const BillingDetails = ({formik}) => {
             </div>
             <div className=' flex flex-col gap-[0.5rem] ' >
                 Order Notes
-                <textarea name="SpecialNotes" id="" cols="30" rows="5" placeholder='Special Notes about your delivery' className='border-[#9E9E9E] border-solid border-[1px] bg-inherit p-[1.5rem] rounded-[5px]'></textarea>
+                <textarea name="Order_Notes" id="" cols="30" rows="5" placeholder='Special Notes about your delivery'  className='border-[#9E9E9E] border-solid border-[1px] bg-inherit p-[1.5rem] rounded-[5px]' onChange={formik.handleChange}></textarea>
             </div>
             </div>
         </div>

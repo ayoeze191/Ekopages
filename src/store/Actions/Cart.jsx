@@ -152,3 +152,12 @@ export const get_cart_total = (isauth) => (dispatch) => {
         } )
     }
 }
+
+
+
+
+
+
+const clearCart = () => {
+    
+}

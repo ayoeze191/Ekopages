@@ -14,13 +14,15 @@ import axios from 'axios'
 import { useContext } from 'react'
 import { cookieContext } from '../../../App'
 import { useEffect } from 'react'
+import { useDispatch } from 'react-redux'
 
 const CartDetails = () => {
 
   const {cookie} = useContext(cookieContext)
   const cart = useSelector(state => state.cart)
   const {isAuth} = useAuthContext()
-
+  const dispatch = useDispatch()
+  
   console.log(isAuth)
 
   
@@ -33,20 +35,23 @@ const CartDetails = () => {
   
   const paymentFunc = (data) => {
     if(isAuth) {
-      instance.post('/cart_payment/payment/', data,tokenConfig())
+      instance.post('/cart_payment/payment/', data, tokenConfig())
     .then((res) => {
+      console.log(res)
       setPayment({error:false, sucess:true})
-      window.location.href = res.data
+      window.location.assign(res.data.data.data.authorization_url);
     })   
     .catch((err) => {
+      console.log(err)
       setPayment({sucess:false, error:true})
     })
     }
     else{
-      instance.post('/cart_payment/payment/', data,tokenConfig())
+      instance.post('/unregistered-cart-payment/payment/', data,tokenConfig())
       .then((res) => {
+      console.log(res.data.data.data.authorization_url)
       setPayment({error:false, sucess:true})
-      window.location.href = res.data
+      window.location.assign(res.data.data.data.authorization_url);
       })
       .catch((err) => {
         setPayment({sucess:false, error:true})
@@ -74,68 +79,92 @@ const CartDetails = () => {
       getBillingsDetails()
     }
   }, [])
+
+
   //
+const [Locations, setLocations] = useState([])
 
 
+    
+  const billing_locations = () => {
+    instance.get('/checkout/shipping_locations/')
+    .then((res) => {
+        // console.log(res, "billing Location")
+        setLocations(res.data.data)
+    })
+    .catch((err) => {
+        console.log(err, "billing Location error")
+    })
+}
 
-  const formik = useFormik({
-    initialValues: {
-      "First_name": initialbillingDetails?initialbillingDetails.First_name:"",
-      "Last_name": initialbillingDetails?initialbillingDetails.Last_name:"",
-      "Company_name": initialbillingDetails?initialbillingDetails.Company_name:"",
-      "country": initialbillingDetails?initialbillingDetails.country:"",
-      "street_address": initialbillingDetails?initialbillingDetails.street_address:"",
-      "city": initialbillingDetails?initialbillingDetails.city:"lagos",
-      "apartment": initialbillingDetails?initialbillingDetails.apartment:"",
-      "state": initialbillingDetails?initialbillingDetails.state:"",
-      "phone_number": initialbillingDetails?initialbillingDetails.phone_number:"",
-      "email": initialbillingDetails?initialbillingDetails.email:"",
-      "shipping_location": initialbillingDetails?initialbillingDetails.shipping_location:"",
-      "amount": total?total:null,
-      "Order_Notes": initialbillingDetails?initialbillingDetails.Order_Notes:"",
-      // "create_Account": false,
-      // "Deliver_to_a_different_address": false
-    },
-    // validate,
-    onSubmit: ({amount, First_name, Last_name, Company_name, country,
-       street_address, city,
-      apartment, state, phone_number,
-      email, shipping_location,
-      create_Account, 
-      Order_Notes}) => {
-        const authVerification = {
-          isAuth,
-          session_id: cookie
-        }
-        create_billings({
-          "First_name": First_name,
-          "Last_name": Last_name,
-          "Company_name": Company_name,
-          "country": country,
-          "street_address": street_address,
-          "city": city,
-          "Apartment": apartment,
-          "state": state,
-          "phone_number": phone_number,
-          "email": email,
-          "shipping_location": shipping_location,  
-          "Order_Notes": Order_Notes
-      }, authVerification)
-    paymentFunc({
-  amount,
-  email
-        })
-      }})
+const [OverallAmount, setOverAmount] = useState(total?total:0)
+const Totalfunc = () => {
+      
+  let  OverallTotalCost = parseInt(total)
+  if(Locations) {
+      const list =  Locations.map(loc => loc.id == formik.values.shipping_location?parseInt(loc.price):0)
+      OverallTotalCost += list[0]
+  }
+  setOverAmount(OverallTotalCost)
+}
+  useEffect(() => {
+      billing_locations()
+  }, [])
 
+ 
 
+useEffect(() => {
+    Totalfunc()
+})
 
-
-
-
-
-
-
-
+const formik = useFormik({
+  initialValues: {
+    "First_name": initialbillingDetails?initialbillingDetails.First_name:"",
+    "Last_name": initialbillingDetails?initialbillingDetails.Last_name:"",
+    "Company_name": initialbillingDetails?initialbillingDetails.Company_name:"",
+    "country": initialbillingDetails?(initialbillingDetails.country.length > 0 ?initialbillingDetails.country: "nigeria"):"nigeria",
+    "street_address": initialbillingDetails?initialbillingDetails.street_address:"",
+    "city": initialbillingDetails?(initialbillingDetails.city.length > 0 ?initialbillingDetails.city: "lagos"):"lagos",
+    "apartment": initialbillingDetails?initialbillingDetails.apartment:"",
+    "state": initialbillingDetails?(initialbillingDetails.state.length > 0 ?initialbillingDetails.city: "lagos"):"lagos",
+    "phone_number": initialbillingDetails?initialbillingDetails.phone_number:"",
+    "email": initialbillingDetails?initialbillingDetails.email:"",
+    "shipping_location": initialbillingDetails?initialbillingDetails.shipping_location.location:0,
+    "amount": total?total:null,
+    "Order_Notes": initialbillingDetails?initialbillingDetails.Order_Notes:"",
+  },
+  
+  // validate,
+  onSubmit: ({First_name, Last_name, Company_name, country,
+     street_address, city,
+    apartment, state, phone_number,
+    email, shipping_location,
+    create_Account, 
+    Order_Notes}) => {
+      const authVerification = {
+        isAuth,
+        session_id: cookie
+      }
+      console.log(Order_Notes)
+      dispatch( create_billings({
+        "First_name": First_name,
+        "Last_name": Last_name,
+        "Company_name": Company_name,
+        "country": country,
+        "street_address": street_address,
+        "city": city,
+        "Apartment": apartment,
+        "state": state,
+        "phone_number": phone_number,
+        "email": email,
+        "shipping_location": shipping_location,  
+        "Order_Notes": Order_Notes
+    }, authVerification))
+//   paymentFunc({
+// amount:OverallAmount,
+// email
+//       })
+    }})
 
 
 
@@ -143,7 +172,7 @@ const CartDetails = () => {
     <div className='mx-auto lg:px-0 px-6 max-w-[77rem] mt-[1.5rem] mb-[100px]' >
          <p className='mb-[1rem]'>Have a discount code?</p><div className='flex  flex-col md:flex-row gap-[6rem]'>
         <BillingDetails formik={formik}/>
-        <CartTotals formi={formik}/>
+        <CartTotals formi={formik} Locations = {Locations} OverallAmount={OverallAmount}/>
         </div>
     </div>
   )

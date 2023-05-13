@@ -44,4 +44,6 @@ console.log(cart.cart, "the cart")
     )
 }
 
-export default withErrorHandler(Products, instance)
+// export default withErrorHandler(Products, instance)
+
+export default Products
