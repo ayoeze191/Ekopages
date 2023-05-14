@@ -9,11 +9,13 @@ import { cookieContext } from '../../../../App'
 import { TbLoaderQuarter,  } from 'react-icons/tb'
 import { useState } from 'react'
 import instance from '../../../../axios'
+import { BeatLoader } from "react-spinners"
 
 
 
 
-const CartTotals = ({formi, Locations,OverallAmount}) => {
+
+const CartTotals = ({formi, Locations,OverallAmount, loading}) => {
     const disptach = useDispatch()
     const {isAuth} = useAuthContext()
     const total = useSelector((state) => state.cart.total)
@@ -68,7 +70,7 @@ const CartTotals = ({formi, Locations,OverallAmount}) => {
         </div>
     </div>
 
-    <button className='bg-[#5A0C91] py-[0.937rem] w-full text-center text-white text-[1.25rem] font-lato font-normal rounded-[5px] mt-[2rem]' type='submit' onClick={() => formi.handleSubmit()}>Place Order</button>
+    <button className='bg-[#5A0C91] py-[0.937rem] w-full text-center text-white text-[1.25rem] font-lato font-normal rounded-[5px] mt-[2rem]' type='submit' onClick={() => formi.handleSubmit()}>{loading?<BeatLoader color="#ffffff" ></BeatLoader>:"Place Order"}</button>
     </div>
   )
 }

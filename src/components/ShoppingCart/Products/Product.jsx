@@ -27,8 +27,12 @@ const Product = ({id, qty, cartit}) => {
         session_id: cookie
     }
 
+
+    
+
+
     const remove_item = () => {
-        dispatch(delete_item(id, cartit, authVerification))
+        dispatch(delete_item(cartit, authVerification))
     }
 
     console.log(cartit)

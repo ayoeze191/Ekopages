@@ -156,13 +156,14 @@ export const get_cart_total = (isauth) => (dispatch) => {
 
 
 
-export const delete_item = (prodId,cartId, isauth) => (dispatch, getState) => {
+export const delete_item = (cartId, isauth) => (dispatch, getState) => {
     let present_cart = getState().cart.cart
-    present_cart = present_cart.map(prod => prod.id !== prodId)
-    const data = {id:prodId}
-    console.log(prodId)
+    console.log(present_cart)
+    present_cart = present_cart.map(prod => prod.id !== cartId&&prod)
+    console.log(present_cart, "new cart after deleting")
+    
     if(isauth.isAuth){
-    instance.delete(`cart/cart-item/${cartId}/`, data, tokenConfig())
+    instance.delete(`cart/cart-item/${cartId}/`, tokenConfig())
     .then((res) => {
         console.log(res)
         console.log("sucessfully deleted")
@@ -175,26 +176,54 @@ export const delete_item = (prodId,cartId, isauth) => (dispatch, getState) => {
         toast.info("deleting failed")
     })
     }
-    // else {
-    //     instance.patch(`/unregistered-cart/cart-item/${isauth.session_id}/${id}/`, data, VisitorTokenConfig())
-    //     .then((res) => {
-    //         dispatch(update_cart(present_cart)) 
-    //         toast.success("sucessfully updated")
-    //     })
-    //     .catch((err) => {
-    //         console.log(err, "update failed")
-    //         console.log(err.response)
-    //         toast.info("Update failed")
-    //     })
-    // }
-    
+
+    else {
+        instance.delete(`unregistered-cart/cart-item/${isauth.session_id}/${cartId}/`, VisitorTokenConfig())
+        .then((res) => {
+        console.log("sucessfully deleted")
+            dispatch(delete_cart_item(present_cart)) 
+            toast.success("sucessfully updated")
+        })
+        .catch((err) => {
+            console.log(err, "update failed")
+            console.log(err.response)
+            toast.info("Update failed")
+            console.log("deleting failed")
+        })
+    }
 }
 
 
 
 
 
+export const clear_cart = (cartId, isauth) => (dispatch, getState) => {
 
-// const clearCart = () => {
-       
-// }
+    if(isauth.isAuth){
+    instance.delete(`/checkout/cart/checkout/${cartId}/`, tokenConfig())
+    .then((res) => {
+        console.log(res)
+        console.log("cleared")
+        dispatch(update_cart([]))
+    })
+    .catch((err) => {
+        console.log(err)
+        console.log("deleting failed")
+        toast.info("deleting failed")
+    })
+    }
+
+    else {
+        instance.delete(`/checkout/cart/checkout/${cartId}/`, VisitorTokenConfig())
+        .then((res) => {
+        console.log(res)
+        console.log("cleared")
+        dispatch(update_cart([]))
+    })
+    .catch((err) => {
+        console.log(err)
+        console.log("deleting failed")
+        toast.info("deleting failed")
+    })
+    }
+}

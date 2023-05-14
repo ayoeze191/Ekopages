@@ -68,7 +68,7 @@ export const AuthProvider = ( { children }) => {
       setIsloading(true)
       loginUser(details)
         .then((res) => {
-          console.log(res.data)
+          console.log(res)
           setsucess(true);
           setError(null);
           localStorage.setItem('eko_access', res.data.access_token)

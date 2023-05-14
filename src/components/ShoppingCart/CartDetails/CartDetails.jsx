@@ -34,22 +34,23 @@ const CartDetails = () => {
   const [payment, setPayment] = useState({sucess: false, loading: false, error: false })
   
   const paymentFunc = (data) => {
+    setPayment({error:false, sucess:false, loading:true})
     if(isAuth) {
       instance.post('/cart_payment/payment/', data, tokenConfig())
     .then((res) => {
       console.log(res)
-      setPayment({error:false, sucess:true})
+      setPayment({error:false, sucess:true,loading: false})
       window.location.assign(res.data.data.data.authorization_url);
     })   
     .catch((err) => {
       console.log(err)
-      setPayment({sucess:false, error:true})
+      setPayment({sucess:false, error:true, loading: false})
+      
     })
     }
     else{
-      instance.post('/unregistered-cart-payment/payment/', data,tokenConfig())
+      instance.post(`/unregistered-cart-payment/payment/${cookie}/`, data)
       .then((res) => {
-      console.log(res.data.data.data.authorization_url)
       setPayment({error:false, sucess:true})
       window.location.assign(res.data.data.data.authorization_url);
       })
@@ -172,7 +173,7 @@ email
     <div className='mx-auto lg:px-0 px-6 max-w-[77rem] mt-[1.5rem] mb-[100px]' >
          <p className='mb-[1rem]'>Have a discount code?</p><div className='flex  flex-col md:flex-row gap-[6rem]'>
         <BillingDetails formik={formik}/>
-        <CartTotals formi={formik} Locations = {Locations} OverallAmount={OverallAmount}/>
+        <CartTotals formi={formik} Locations = {Locations} OverallAmount={OverallAmount} loading={payment.loading}/>
         </div>
     </div>
   )
