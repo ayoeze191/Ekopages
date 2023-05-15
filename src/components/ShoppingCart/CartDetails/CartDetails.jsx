@@ -20,7 +20,7 @@ const CartDetails = () => {
 
   const {cookie} = useContext(cookieContext)
   const cart = useSelector(state => state.cart)
-  const {isAuth} = useAuthContext()
+  const {isAuth, user} = useAuthContext()
   const dispatch = useDispatch()
   
   console.log(isAuth)
@@ -146,7 +146,10 @@ const formik = useFormik({
         isAuth,
         session_id: cookie
       }
-      console.log(Order_Notes)
+      let shippingemail = email
+      if(isAuth == true && email.length <= 4){
+          shippingemail = user.email
+      }
       dispatch( create_billings({
         "First_name": First_name,
         "Last_name": Last_name,
@@ -157,7 +160,7 @@ const formik = useFormik({
         "Apartment": apartment,
         "state": state,
         "phone_number": phone_number,
-        "email": email,
+        "email": shippingemail,
         "shipping_location": shipping_location,  
         "Order_Notes": Order_Notes
     }, authVerification))

@@ -20,7 +20,6 @@ export const SignUpProvider = ( { children }) => {
     const [loading, setIsloading] = useState(false)
 
     const Signup = (data) => {
-        console.log("signing up 2")
         setIsloading(true)
         signUp(data)
         .then((res) => {
@@ -30,9 +29,9 @@ export const SignUpProvider = ( { children }) => {
             setsucess(true);
             setError(null);
             toast.success("Your Registration is Sucessfull")
+            // setTimeout(setsucess(false) ,5000)
         })
         .catch((err) => {
-            console.log(err)
             setIsloading(false);
             setsucess(false);
             setError(err.response.data);

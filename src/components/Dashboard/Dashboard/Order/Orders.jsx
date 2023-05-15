@@ -22,7 +22,7 @@ const Orders = () => {
     const style = ["border-[#888888] border-[1px] border-solid rounded-[5px] text-[#888888] text-[1rem] py-[0.5rem] px-[2.125rem]", "py-[0.5rem] px-[2.125rem] rounded-[5px] text-[#888888] text-[1rem] bg-[#C54D09] text-[white]"]
 
   return (
-    <div className='pl-[1.68rem] pr-[5.0625rem] my-[6rem]'>
+    <div className=' md:pl-[1.68rem] md:pr-[5.0625rem] my-[6rem]'>
         <Tabs isLazy={true} variant={'unstyled'}>
       <div className='flex justify-between'>
         <div className='mb-[24px] md:mb-[4.68rem] flex  md:justify-between flex-col md:flex-row flex-1 items-center md:items-start'>

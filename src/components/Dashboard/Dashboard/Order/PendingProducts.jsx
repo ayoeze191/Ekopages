@@ -11,6 +11,8 @@ import { useSelector } from 'react-redux'
 import { get_cart } from '../../../../store/Actions/Cart'
 import { useAuthContext } from '../../../../context/auth/auth'
 import { cookieContext } from '../../../../App'
+import { Link } from 'react-router-dom'
+
 const PendingProducts = () => {
     const {isAuth} = useAuthContext()
     const {cookie} = useContext(cookieContext)
@@ -25,23 +27,20 @@ const PendingProducts = () => {
       session_id: cookie
   }))
   }, [])
+  console.log(cart.cart)
 
   return (
-    <motion.div style={{overflowX: "hidden"}}
-    initial = {{marginRight:"-100%", opacity:0}}
-            animate = {{marginRight: ["-100%", "0"], opacity: [0, 1]}}
-            // exit={{opacity: 0, marginRight:"-100%"}}
-            transition={{ duration: 0.5,}}
+    <div
     >
     <div className='mb-[2.5625rem]'>
-    {cart.cart.map(prod => <Product {...prod} cartit={prod.id} qty={prod.quantity} />)}
+   <Products />
     </div>
-    <div className='w-full flex justify-end'>
-    <button className='bg-[#5A0C91] py-[0.9375rem] w-full md:max- w-[29rem] text-white rounded-[5px] font-lato font-[600] text-[1.25rem] '>
+    <div className='w-full flex justify-end px-6 lg:px-0'>
+    <Link to={'/cart'} className='text-center bg-[#5A0C91] py-[0.9375rem] w-full md:max- md:w-[29rem] text-white rounded-[5px] font-lato font-[600] text-[1.25rem]'>
         Place Order
-    </button>
+    </Link>
     </div>
-    </motion.div>
+    </div>
   )
 }
 

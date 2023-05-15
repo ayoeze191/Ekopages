@@ -1,5 +1,6 @@
 //hooks
-import useLogic from "../hooks/signup"
+import useLogic from "../hooks/signup";
+import   useSignup from "../hooks/Nav"
 //componentss
 import InputField from "./inputField"
 import AuthButton from "./authButton"
@@ -9,18 +10,24 @@ import facebook from "./../assets/login/facebook.png"
 import google from "./../assets/login/google.png"
 import * as assets from "../assets/signup";
 import { useSignupContext } from "../context/auth/signup"
-import { Link } from "react-router-dom"
+import { Link, redirect } from "react-router-dom"
 import useSignupOnchange from "./useSignupOnchangeHandler";
 import { useFormik } from "formik";
 import { SignupValidate } from "./validate/validate";
+import { useAuthContext } from "../context/auth/auth"
+
 
 
 
 
 const Signup = () => {
   const signupObject = useLogic()
+  const showsignup = useSignup()
   // const {signUp, signupOnChangeHandler, details} = useSignupOnchange()
-  const {loading, signup, success, error} =  useSignupContext()
+  // const NavLogicObject = useLogic()
+
+  const {loading, signup, success, error,} =  useSignupContext()
+  const {setloginMode} = useAuthContext()
   const formik = useFormik({
     initialValues: {
       email: "",
@@ -33,6 +40,12 @@ const Signup = () => {
     },
     validate: SignupValidate
 })
+if(success == true) {
+    setloginMode()
+    // showsignup.handleSignupModalVisibility()
+    // NavLogicObject.handleSignupModalVisibility()
+}
+  
 
 let err = null
 
@@ -40,8 +53,6 @@ if(error) {
   err = Object.keys(error).map((text) => <div className="text-[12px] text-red-500"> {error[text][0]} </div>)
 }
 
-  
-  // //(details[5].error, "error")
     return (
       <div className="w-full flex h-full  items-center font-lato flex-col md:flex-row md:rounded-[20px] bg-[#F6F6F6]">
           <div className="md:h-full bg-[#5A0C91] w-full md:w-[43%] flex items-center ">
