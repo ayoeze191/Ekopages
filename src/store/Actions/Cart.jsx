@@ -160,7 +160,6 @@ export const delete_item = (cartId, isauth) => (dispatch, getState) => {
     let present_cart = getState().cart.cart
     console.log(present_cart)
     present_cart = present_cart.map(prod => prod.id !== cartId&&prod)
-    console.log(present_cart, "new cart after deleting")
     
     if(isauth.isAuth){
     instance.delete(`cart/cart-item/${cartId}/`, tokenConfig())
@@ -197,10 +196,10 @@ export const delete_item = (cartId, isauth) => (dispatch, getState) => {
 
 
 
-export const clear_cart = (cartId, isauth) => (dispatch, getState) => {
+export const clear_cart = (isauth) => (dispatch, getState) => {
 
     if(isauth.isAuth){
-    instance.delete(`/checkout/cart/checkout/${cartId}/`, tokenConfig())
+    instance.get(`/checkout/cart/checkout/`, tokenConfig())
     .then((res) => {
         console.log(res)
         console.log("cleared")
@@ -214,7 +213,7 @@ export const clear_cart = (cartId, isauth) => (dispatch, getState) => {
     }
 
     else {
-        instance.delete(`/checkout/cart/checkout/${cartId}/`, VisitorTokenConfig())
+        instance.delete(`/checkout/cart/checkout/`, VisitorTokenConfig())
         .then((res) => {
         console.log(res)
         console.log("cleared")

@@ -69,7 +69,7 @@ const Product = ({id, qty, cartit}) => {
 
         <div className='flex md:gap-[6.5rem] items-center flex-col md:flex-row justify-between'>
             <div className='border-[#705E5E] border-solid border-[1px]  flex items-center rounded-[0.3125rem]'>
-                <button className='px-[10px]  py-[3.2px] md:py-[0.32rem] md:px-[1rem] flex items-center text-[15px] md:text-[1rem]' onClick={() => update_cart('sub', qty)}>{update__loading.update_subloading?<ClipLoader size={'15px'} />:"-"}</button> {qty} <button className='px-[10px]  py-[3.2px] md:py-[0.32rem] md:px-[1rem] flex items-center' onClick={() => update_cart('add', qty)}>{update__loading.update_addloading?<ClipLoader size={'15px'} />:"+"}</button>
+                <button className='px-[10px]  py-[3.2px] md:py-[0.32rem] md:px-[1rem] flex items-center text-[15px] md:text-[1rem]' onClick={() => update_cart('sub', qty)}>{update__loading.update_subloading && cartit ?<ClipLoader size={'15px'} />:"-"}</button> {qty} <button className='px-[10px]  py-[3.2px] md:py-[0.32rem] md:px-[1rem] flex items-center' onClick={() => update_cart('add', qty)}>{update__loading.update_addloading?<ClipLoader size={'15px'} />:"+"}</button>
             </div>
             <p className='text-[14px] md:text-[1rem] '>
                 Subtotal: {product.data.price * qty}

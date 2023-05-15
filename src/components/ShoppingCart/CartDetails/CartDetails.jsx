@@ -15,6 +15,8 @@ import { useContext } from 'react'
 import { cookieContext } from '../../../App'
 import { useEffect } from 'react'
 import { useDispatch } from 'react-redux'
+import { clear_cart } from '../../../store/Actions/Cart'
+
 
 const CartDetails = () => {
 
@@ -34,12 +36,17 @@ const CartDetails = () => {
   const [payment, setPayment] = useState({sucess: false, loading: false, error: false })
   
   const paymentFunc = (data) => {
+    const authVerification = {
+      isAuth,
+      session_id: cookie
+    }
     setPayment({error:false, sucess:false, loading:true})
     if(isAuth) {
       instance.post('/cart_payment/payment/', data, tokenConfig())
     .then((res) => {
       console.log(res)
       setPayment({error:false, sucess:true,loading: false})
+      dispatch(clear_cart(authVerification))
       window.location.assign(res.data.data.data.authorization_url);
     })   
     .catch((err) => {
@@ -64,7 +71,7 @@ const CartDetails = () => {
   const getBillingsDetails = () => {
     instance.get('/billing-details/billing-details/', tokenConfig())
     .then((res) => {
-      setinitialbillingDetails(initialbillingDetails)
+      setinitialbillingDetails(res.data.data)
       console.log(res.data.data, "getting billing details")
       
     })
@@ -90,7 +97,6 @@ const [Locations, setLocations] = useState([])
   const billing_locations = () => {
     instance.get('/checkout/shipping_locations/')
     .then((res) => {
-        // console.log(res, "billing Location")
         setLocations(res.data.data)
     })
     .catch((err) => {
@@ -116,11 +122,15 @@ const Totalfunc = () => {
 
 useEffect(() => {
     Totalfunc()
+    console.log(initialbillingDetails, "checking")
 })
 
+
+
 const formik = useFormik({
+  enableReinitialize: true,
   initialValues: {
-    "First_name": initialbillingDetails?initialbillingDetails.First_name:"",
+    "First_name": initialbillingDetails?initialbillingDetails.First_name:"", 
     "Last_name": initialbillingDetails?initialbillingDetails.Last_name:"",
     "Company_name": initialbillingDetails?initialbillingDetails.Company_name:"",
     "country": initialbillingDetails?(initialbillingDetails.country.length > 0 ?initialbillingDetails.country: "nigeria"):"nigeria",
@@ -135,10 +145,12 @@ const formik = useFormik({
     "Order_Notes": initialbillingDetails?initialbillingDetails.Order_Notes:"",
   },
   
+  
+
   // validate,
   onSubmit: ({First_name, Last_name, Company_name, country,
      street_address, city,
-    apartment, state, phone_number,
+    apartment, state, phone_number, 
     email, shipping_location,
     create_Account, 
     Order_Notes}) => {
@@ -147,7 +159,7 @@ const formik = useFormik({
         session_id: cookie
       }
       let shippingemail = email
-      if(isAuth == true && email.length <= 4){
+      if(isAuth === true && email.length <= 4){
           shippingemail = user.email
       }
       dispatch( create_billings({

@@ -25,7 +25,6 @@ const CartTotals = ({formi, Locations,OverallAmount, loading}) => {
     
   
 
-    // console.log(Locations, "Locations")
 
    
 

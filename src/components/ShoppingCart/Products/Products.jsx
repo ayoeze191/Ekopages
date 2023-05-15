@@ -32,7 +32,7 @@ useEffect(() => {
 
 disptach(get_cart(authVerification))
 console.log(cart.cart, "the cart")
-}, [])
+}, [cart.cart])
 
 
   return (
