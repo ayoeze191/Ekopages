@@ -31,7 +31,7 @@ useEffect(() => {
 }
 disptach(get_cart(authVerification))
 
-}, [])
+}, [cart.total])
 
 
   return (
