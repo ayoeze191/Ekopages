@@ -8,7 +8,7 @@ const Project = ({img, h1, p, path}) => {
   return (
     <div className='flex flex-col font-lato'>
         <div className='mb-[1.5rem] w-full h-full'>
-            <Image src={img} className="" fallback={<Shimmer />}/>
+            <Image src={img} className="" fallback={<Shimmer  width={'100%'} height={'100%'}/>}/>
         </div>
         <div className='flex flex-col gap-[0.5rem] mb-2.5rem'>
         <h1 className='font-lato font-[700] text-[24px]'>
