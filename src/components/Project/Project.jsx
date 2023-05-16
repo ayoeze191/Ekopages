@@ -7,7 +7,7 @@ import Shimmer from '../ui/Shimmer/Shimmer'
 const Project = ({img, h1, p, path}) => {
   return (
     <div className='flex flex-col font-lato'>
-        <div className='mb-[1.5rem] w-full h-full'>
+        <div className='mb-[1.5rem] w-full h-[300px]'>
             <Image src={img} className="" fallback={<Shimmer />}/>
         </div>
         <div className='flex flex-col gap-[0.5rem] mb-2.5rem'>
