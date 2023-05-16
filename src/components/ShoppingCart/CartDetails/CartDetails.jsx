@@ -123,7 +123,7 @@ const Totalfunc = () => {
 useEffect(() => {
     Totalfunc()
     console.log(initialbillingDetails, "checking")
-})
+}, )
 
 
 

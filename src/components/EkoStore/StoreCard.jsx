@@ -29,14 +29,11 @@ const StoreCard = ({name, image, available, author, price, id}) => {
   }
       dispatch(Add_to_cart(id, authVerification))
   }
-if(cart.sucess) {
-  // toast.info("Sucessfully added to cart")
-  navigate('/cart')
-}
 
-if(cart.error  && cart.error.message === "item already in cart"){
-  navigate('/cart')
-}
+  if(cart.success) {
+    navigate('/cart')
+  }
+
 
 
   //(image)

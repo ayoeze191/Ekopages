@@ -8,7 +8,8 @@ update_cart,
 updating_cart, 
 add_failed,
 getting_total,
-delete_cart_item} from "../reducers/Cart"
+delete_cart_item,
+clear_cart_success} from "../reducers/Cart"
 import axios from "axios"
 import { toast } from 'react-toastify'
 
@@ -56,6 +57,8 @@ export const Add_to_cart = (id, isauth) => (dispatch) => {
         // console.log(res)
         toast.success("Sucessfully added to cart")
         dispatch(added_to_cart())
+
+        setTimeout(() => dispatch(clear_cart_success()), 200)
     })
     .catch((err) => {
         // console.log("Adding failed")

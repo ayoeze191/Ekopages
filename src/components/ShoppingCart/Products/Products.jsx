@@ -1,4 +1,4 @@
-import React, {useEffect, useContext} from 'react'
+import React, {useEffect, useContext, useMemo} from 'react'
 // import nkem from "./../../assets/EkoStore/nkem.png";
 import { useReducer } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
@@ -12,7 +12,7 @@ import withErrorHandler from '../../withErrHandler';
 import instance from '../../../axios';
 import withCartErrorHandler from '../CartDetails/CartErrorHandler';
 import { ClipLoader, MoonLoader } from 'react-spinners'
-
+import { memo } from 'react';
 
 
 const Products = () => {
@@ -29,10 +29,9 @@ useEffect(() => {
     isAuth,
     session_id: cookie
 }
-
 disptach(get_cart(authVerification))
-console.log(cart.cart, "the cart")
-}, [cart.cart])
+
+}, [])
 
 
   return (
@@ -47,4 +46,4 @@ console.log(cart.cart, "the cart")
 
 // export default withErrorHandler(Products, instance)
 
-export default Products
+export default  Products
