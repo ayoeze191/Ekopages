@@ -1,14 +1,14 @@
 import React from 'react'
 import arrow from "./../../assets/projects/arrow.png"
 import { Link } from 'react-router-dom'
-import { Image, Shimmer} from "react-shimmer"
-// import Shimmer from '../ui/Shimmer/Shimmer'
+import { Image} from "react-shimmer"
+import Shimmer from '../ui/Shimmer/Shimmer'
 
 const Project = ({img, h1, p, path}) => {
   return (
     <div className='flex flex-col font-lato'>
         <div className='mb-[1.5rem] w-full h-full'>
-            <Image src={img} className="" fallback={<Shimmer  width={'100%'} height={'100%'}/>}/>
+            <Image src={img} className="" fallback={<Shimmer />}/>
         </div>
         <div className='flex flex-col gap-[0.5rem] mb-2.5rem'>
         <h1 className='font-lato font-[700] text-[24px]'>
