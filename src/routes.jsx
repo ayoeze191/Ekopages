@@ -16,6 +16,7 @@ import Login from "./components/Login/Login"
 import StoreDetails from "./components/EkoStore/StoreDetails/StoreDetails"
 import Test from "./components/Test"
 import VerifyEmail from "./pages/Verify-email"
+import Beapublisher from "./pages/Beapublisher/Beapublisher"
 
 
 export const BasicRoutes = [
@@ -83,6 +84,10 @@ export const BasicRoutes = [
     {
         path: "/registration/account-confirm-email/:token", 
         component: <VerifyEmail />
+    },
+    {
+        path: "/beapublisher",
+        component: <Beapublisher />
     }
 ]
 
