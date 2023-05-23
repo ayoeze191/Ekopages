@@ -34,6 +34,9 @@ export const items = [
      {
           text: "Wishlist",
           path: "/Wishlist"
-     }
-        
+     },
+     {
+          text: "Be a Publisher",
+          path: "/beapublisher"
+     }       
 ]
