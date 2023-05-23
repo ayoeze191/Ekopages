@@ -57,7 +57,7 @@ const BecomeAPartner = () => {
             </div>
             <div className='flex flex-col w-full'>
                 <div className='font-[600] text-left text-[1rem] font-lato mb-[8px] '>Message</div>
-            <textarea name="message" id="" cols="30" rows="10" placeholder='Type your message here' className='p-[1rem] border-[1px] border-solid border-[#CCB4DD] bg-[inherit] rounded-[2px]'> Type your message herer </textarea>
+            <textarea name="message" id="" cols="30" rows="10" placeholder='Type your message here' className='p-[1rem] border-[1px] border-solid border-[#CCB4DD] bg-[inherit] rounded-[2px]'> Type your message here </textarea>
             </div>
             <AuthButton isLoading={false} name={"Send message"}/>
             </form>
