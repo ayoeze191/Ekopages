@@ -46,8 +46,6 @@ function App() {
 
   }
 
-  // removeCookie('eko_session_id')
-
   if(!cookies.eko_session_id) {
     setCookieContext()
 
@@ -56,10 +54,6 @@ function App() {
   console.log(cookies, "app")
   
   const {partnerModal, setpartnerModal, stayIntouchModal, setstayIntouchModal} = useModalContext()
-  // console.log(isAuth)
-  // localStorage.removeItem('access')
-  // localStorage.removeItem('refresh')
-  // localStorage.removeItem('user')
   return (
     <cookieContext.Provider value={{cookie: cookies.eko_session_id !== (undefined || null)? cookies.eko_session_id:null, setContext: setCookieContext }}>
     <div className="bg-[#F6F6F6] flex">

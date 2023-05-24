@@ -8,11 +8,12 @@ const instance = axios.create({baseURL: 'https://ekopages-production.up.railway.
 export default instance
 
 instance.interceptors.request.use(function (config) {
+    const refresh = localStorage.getItem('eko_refresh')
     const exp = new Date(localStorage.getItem('exp'))
     const presentDate = new Date()
     console.log({"exp":exp}, {"presentDate": presentDate})
     if(presentDate > exp) {
-        refreshToken()
+      axios.post('auth/token/refresh/', {refresh})
         .then((res) => {
             localStorage.setItem('exp', res.data.access_token_expiration)
             localStorage.setItem('eko_access', res.data.access)

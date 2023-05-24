@@ -10,7 +10,6 @@ import { useAuthContext } from '../../../context/auth/auth';
 import { cookieContext } from '../../../App';
 import withErrorHandler from '../../withErrHandler';
 import instance from '../../../axios';
-import withCartErrorHandler from '../CartDetails/CartErrorHandler';
 import { ClipLoader, MoonLoader } from 'react-spinners'
 import { memo } from 'react';
 
