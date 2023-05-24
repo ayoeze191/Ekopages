@@ -14,15 +14,12 @@ import withCartErrorHandler from '../CartDetails/CartErrorHandler';
 import { ClipLoader, MoonLoader } from 'react-spinners'
 import { memo } from 'react';
 
-
 const Products = () => {
+
   const {isAuth} = useAuthContext()
   const disptach = useDispatch()
   const {cookie} = useContext(cookieContext)
-  const cart = useSelector(state => state.cart)
-
-
-  console.log(isAuth)
+  const cart = useSelector(state => state)
 
 useEffect(() => {
   const authVerification = {
@@ -30,7 +27,6 @@ useEffect(() => {
     session_id: cookie
 }
 disptach(get_cart(authVerification))
-
 }, [cart.total])
 
 
@@ -43,7 +39,5 @@ disptach(get_cart(authVerification))
     </div>:cart.cartLoading? <div className='mx-auto w-full flex justify-center mx-center mt-20px'> <ClipLoader color='#5A0C91' className='mx-auto'/> </div>  : "No Product"
     )
 }
-
-// export default withErrorHandler(Products, instance)
 
 export default  Products

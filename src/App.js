@@ -31,16 +31,14 @@ export const cookieContext = createContext({cookie: "", setContext: () => {}})
 function App() {
   const [side, setSide] = useState(false)
   const [cookies, setCookie, removeCookie] = useCookies(['eko_session_id']);
-
-
-
   
-  const {isAuth} = useAuthContext()
+  const {isAuth, update_token} = useAuthContext()
+
+
 
   console.log(cookies.eko__session_id)
   const sidebarHandler = () => {
-    setSide(!side)
-    
+    setSide(!side) 
   }
 
   const setCookieContext = () => {

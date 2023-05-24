@@ -38,7 +38,7 @@ const CartTotals = ({formi, Locations,OverallAmount, loading}) => {
 
     
 
-
+console.log(total, "fucking total")
     
 
 

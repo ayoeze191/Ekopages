@@ -29,32 +29,6 @@ const responsive = {
     }
 }
 
-//carousel custom right arrow
-const CustomRightArrow = ({ onClick, ...rest }) => {
-    const {
-      onMove,
-      carouselState: { currentSlide, deviceType }
-    } = rest;
-    // onMove means if dragging or swiping in progress.
-    return <button className="absolute right-[0px] w-[100px] h-[100px] bg-[#5A0C91] w-[86px] h-[78px] rounded-[80px]" onClick={() => onClick()} >
-        <img src={assets.rightArrowBtn} alt="left arrow button"></img>
-    </button>;
-};
-
-//carousel custom left arrow  
-const CustomLeftArrow = ({ onClick, ...rest }) => {
-    const {
-      onMove,
-      carouselState: { currentSlide, deviceType }
-    } = rest;
-    // onMove means if dragging or swiping in progress.
-    return <button className="absolute w-[100px] h-[100px] bg-[#5A0C91] w-[86px] h-[78px] rounded-[80px]" onClick={() => onClick()} >
-          <img src={assets.leftArrowBtn} alt="left arrow button"></img>
-    </button>;
-  };
- 
-
-
   
 
 
@@ -69,8 +43,8 @@ const Store = () => {
         <div className=" section mb-[20px] font-lato  min-h-auto mt-[49.78px]">
             <p className="text-center text-[24px] md:text-[44px] font-[700] mb-[60px] mt-[57px]">Eko Store</p>
             {store.isloading ? <GeneralUiOverlayLoader /> :store.products?
-    <div className='sm:grid sm:grid-cols-2  md:grid-cols-3 mx-auto section gap-x-[2rem] gap-y-[12.25rem] items-center mb-[60px]'>
-        {store.products.slice(0, 2).map((prod) => <StoreCard {...prod}/>)}
+    <div className='sm:grid sm:grid-cols-4  md:grid-cols-3 mx-auto section gap-x-[2rem] gap-y-[12.25rem] items-center mb-[60px]'>
+        {store.products.slice(0, 4).map((prod) => <StoreCard {...prod}/>)}
     </div>
     :<div className='h-[50vh] w-full text-center font-lato text-[2rem]'>Empty Product</div>
     }

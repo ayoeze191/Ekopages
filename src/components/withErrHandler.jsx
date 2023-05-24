@@ -21,7 +21,7 @@ const withErrorHandler = ( WrappedComponent, axios ) => {
             axios.interceptors.request.eject( this.reqInterceptor );
             axios.interceptors.response.eject( this.resInterceptor );
         }
-
+        
         errorConfirmedHandler = () => {
             this.setState( { error: null } );
             window.location.reload();

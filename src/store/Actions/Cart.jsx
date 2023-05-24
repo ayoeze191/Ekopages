@@ -140,6 +140,7 @@ export const get_cart_total = (isauth) => (dispatch) => {
         .then((res) => {
             console.log(res, "getting")
             dispatch(get_total(res.data.data.total))
+            console.log(res.data.data.total)
         })
         .catch(err => {
             console.log(err)
