@@ -12,7 +12,7 @@ instance.interceptors.request.use(function (config) {
     const exp = new Date(localStorage.getItem('exp'))
     const presentDate = new Date()
     console.log({"exp":exp}, {"presentDate": presentDate})
-    if(presentDate > exp) {
+    if(presentDate > exp && refresh) {
       axios.post('auth/token/refresh/', {refresh})
         .then((res) => {
             localStorage.setItem('exp', res.data.access_token_expiration)
