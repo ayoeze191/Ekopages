@@ -2,14 +2,14 @@ import React from 'react'
 import { Route } from 'react-router-dom'
 import { Routes } from 'react-router-dom'
 import EkoNewsContainer from '../../components/EkoNews/EkoNewsContainer'
-import SdgContainer from '../sdg/SdgContainer'
+import EkoNewsDetails from '../../components/EkoNews/EkoNewsDetails'
 
 // component: <SdgContainer />
 const EkoNewsContain = () => {
   return (
     <Routes>
       <Route element={<EkoNewsContainer />} path='/'/>
-      <Route element= {<SdgContainer />} path='/sdg'/>
+      <Route element= {<EkoNewsDetails />} path='/:id'/>
     </Routes>
   )
 }
