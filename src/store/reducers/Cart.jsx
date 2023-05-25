@@ -8,7 +8,7 @@ import axios from "axios"
 
 const initialState = {
     prodid: null,
-    cart: null,
+    cart: [],
     loading: false,
     success: false,
     cartLoading: false,

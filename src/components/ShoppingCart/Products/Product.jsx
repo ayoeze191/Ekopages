@@ -63,7 +63,7 @@ const Product = ({id, qty, cartit}) => {
 
 
   return (product?
-    <div className='flex justify-between w-full  mx-auto max-w-[77rem] font-lato border-b-solid border-b-[1px] border-b-[#BBBBBB] py-[2.53125rem]' >
+    <div className='flex justify-between w-full  mx-auto max-w-[77rem] font-lato border-b-solid border-b-[1px] border-b-[#BBBBBB] py-[2.53125rem] ' >
         <div className='flex gap-[13.15px] md:gap-[3.25rem]'>
             <div>
             <img className='w-[62.85px] h-[92px]' src={product.data.image} alt=""  fallback={<Shimmer width={300} height={300}/> } />

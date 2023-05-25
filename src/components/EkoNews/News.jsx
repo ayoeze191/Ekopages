@@ -1,13 +1,16 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import SDGLiteracydrive from "./../../assets/EkoNews/SDGLiteracydrive.png"
 import Children from "./../../assets/EkoNews/Children.png"
 import Climate from "./../../assets/EkoNews/Climate.png"
 import Scarcity from "./../../assets/EkoNews/Scarcity.png"
 import Gender from "./../../assets/EkoNews/Gender.png"
 import SingleNews from './SingleNews'
+import instance from '../../axios'
 
 
 export const details = [
+
+
     {   id: 0,
         path: 'sdg',
         img: SDGLiteracydrive,
@@ -44,7 +47,23 @@ export const details = [
     },
 ]
 
+
+
 const News = () => {
+const get_news =  () => {
+    instance.get('news/news_list/')
+    .then((res) => {
+        console.log(res, "our news")
+    })
+    .catch((err) => {
+        console.log(err)
+    })
+}
+    
+    
+useEffect(() => {
+    get_news()
+}, [])
   return (
     <div className='section flex flex-col gap-[6rem]'>
         {details.map((det, index) =><SingleNews {...det} key={index}/>)}

@@ -11,8 +11,8 @@ instance.interceptors.request.use(function (config) {
     const refresh = localStorage.getItem('eko_refresh')
     const exp = new Date(localStorage.getItem('exp'))
     const presentDate = new Date()
-    console.log({"exp":exp}, {"presentDate": presentDate})
     if(presentDate > exp && refresh) {
+      console.log("expired")
       axios.post('auth/token/refresh/', {refresh})
         .then((res) => {
             localStorage.setItem('exp', res.data.access_token_expiration)

@@ -35,7 +35,6 @@ const StoreCard = ({name, image, available, author, price, id}) => {
   }
 
 
-
   //(image)
   // const myArray = [Star, Star, Star, Star, Star]
   return (

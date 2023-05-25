@@ -18,7 +18,7 @@ const Products = () => {
   const {isAuth} = useAuthContext()
   const disptach = useDispatch()
   const {cookie} = useContext(cookieContext)
-  const cart = useSelector(state => state)
+  const cart = useSelector(state => state.cart)
 
 useEffect(() => {
   const authVerification = {
@@ -28,13 +28,11 @@ useEffect(() => {
 disptach(get_cart(authVerification))
 }, [cart.total])
 
-
   return (
     cart.cart?
     <div className='px-6 lg:px-0'>
         <p className='text-[#5A0C91] md:hidden'>Continue Shopping</p>
-          {cart.cart.length > 0? cart.cart.map((prod) => <Product id={prod.product} cartit={isAuth?prod.id:prod.id} qty={prod.quantity}/>):<div className='h-[2rem] mt-[1rem] text-red-500 text-center font-Poppins '>Your cart is empty Consider Adding Product to the cart</div>}
-        {}
+          {cart.cart.filter((prod) => prod.quantity !== 0).length > 0? cart.cart.map((prod) => <Product id={prod.product} cartit={isAuth?prod.id:prod.id} qty={prod.quantity}/>):<div className='h-[2rem] mt-[1rem] text-red-500 text-center font-Poppins '>Your cart is empty consider adding some product to the cart</div>}
     </div>:cart.cartLoading? <div className='mx-auto w-full flex justify-center mx-center mt-20px'> <ClipLoader color='#5A0C91' className='mx-auto'/> </div>  : "No Product"
     )
 }

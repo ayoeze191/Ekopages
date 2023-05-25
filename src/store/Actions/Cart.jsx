@@ -28,7 +28,7 @@ export const get_cart = (isauth) => (dispatch) => {
             dispatch(getCart(res.data))
         })
         .catch((err) => {
-            // console.log(err, "error wa ni cart waooo")
+            console.log(err, "error wa ni cart waooo")
         })
     }
     else {
@@ -53,12 +53,9 @@ export const Add_to_cart = (id, isauth) => (dispatch) => {
     dispatch(adding__to__Cart(id))
     instance.post(`cart/create/`, data , tokenConfig())
     .then(res => {
-        // console.log("added")
-        // console.log(res)
         toast.success("Sucessfully added to cart")
         dispatch(added_to_cart())
-
-        setTimeout(() => dispatch(clear_cart_success()), 200)
+        setTimeout(() => dispatch(clear_cart_success()), 2000)
     })
     .catch((err) => {
         // console.log("Adding failed")
