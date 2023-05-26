@@ -6,6 +6,8 @@ import instance from "../../axios";
 import { imageConfig, tokenConfig } from "../../Config/Config";
 import { setProfilePic } from "../../store/reducers/profils";
 import {toast} from "react-toastify"
+import { useModalContext } from "../modal/modal";
+
 
 export const AuthContext = React.createContext({
     isAuth: localStorage.getItem('eko_access')?true:false, 
@@ -29,10 +31,11 @@ export const AuthContext = React.createContext({
 
 
 export const AuthProvider = ( { children }) => {
+  const {setLoginModal, loginModal} = useModalContext()
     const [success, setsucess] = useState(false);
     const [error, setError] = useState("");
     const [loading, setIsloading] = useState(false)
-    const [loginModal, setLoginModal] = useState(false)
+    // const [loginModal, setLoginModal] = useState(false)
     const [auth, setisAuth] = useState(localStorage.getItem('eko_access')?true:false)
     const [profpics, setProfpics] = useState(JSON.parse(localStorage.getItem("eko_user"))?JSON.parse(localStorage.getItem("eko_user"))['profile_picture']:null)
     console.log("initial profpics", profpics)
@@ -76,6 +79,8 @@ export const AuthProvider = ( { children }) => {
           // setProfpics(res.data.user.profile_picture)
           setIsloading(false)
           setLoginModal(!loginModal)
+          // switchLoginStatus()
+          setLoginModal()
           toast.success("Sucessfully Logged In ")
       })
       .catch((err) => {

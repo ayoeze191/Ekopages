@@ -30,12 +30,14 @@ import { useDispatch, useSelector } from 'react-redux';
 import { get_cart } from '../../store/Actions/Cart';
 import { useContext } from 'react';
 import { cookieContext } from '../../App';
+import { useModalContext } from '../../context/modal/modal';
 
 const NavHead = ({sideHandler}) => {
+    const {loginModal, setLoginModal, signupModal, setSignupModal} = useModalContext()
     const loc = useLocation()
     const [side, setside] = useState(false)
     const NavLogicObject = useLogic()
-    const {isAuth, access, user, showLoginModal, setloginMode, loading} = useAuthContext()
+    const {isAuth,user} = useAuthContext()
     const {cookie} = useContext(cookieContext)
     const dispatch = useDispatch()
     const cart = useSelector((state) => state.cart.cart)
@@ -93,18 +95,14 @@ const NavHead = ({sideHandler}) => {
                 height: "90vh",
                 overflowY:"scroll",
                 maxWidth: "1000px",
-                
-                // background : "bg-[#F6F6F6]"
                 }}
                 
-                visible={showLoginModal}
-                onClose={setloginMode}> 
-
+                visible={loginModal}
+                onClose={setLoginModal}
+                >
             <Login></Login>
-            
             </Rodal>
             
-
             <Rodal
                 customStyles={{
                     width: "90%",
@@ -118,15 +116,14 @@ const NavHead = ({sideHandler}) => {
                     maxWidth: "1000px",
                 
                     }}
-                visible={NavLogicObject.state.showSignupModal}
-                onClose={NavLogicObject.handleSignupModalVisibility}>
+                visible={signupModal}
+                onClose={setSignupModal}>
                 <Signup ></Signup>
             </Rodal>
 
                     <button className='lg:hidden' onClick={() => sideHandler() }>
                         <div><img src={menu} alt="" /></div>
                     </button>
-
 
             <section className="flex items-center w-fit mx-auto lg:mx-0">
                 <Link to="/" className='className="w-[60px] h-[30.89px] lg:w-[121px] text-[24px] lg:h-[67px]"'>
@@ -148,10 +145,10 @@ const NavHead = ({sideHandler}) => {
                     <AiOutlineSearch className=" text-[#888888] mr-[6px]" width={'1rem'} height={"14.4px"}></AiOutlineSearch>
                     <input className="h-full bg-[#E4E4E4] outline-0 text-[12px]" placeholder="Search" type="text" />
                 </div>
-                {!isAuth&& <><button onClick={()=> NavLogicObject.handleSignupModalVisibility(NavLogicObject.state)}  className=" bg-[#5A0C91] text-white rounded-[5px] font-lato text-[1rem] font-[500] lg:w-[7.5rem] w-[5.75rem]  h-[2.187rem] lg:h-[2.5rem] ">
+                {!isAuth&& <><button onClick={()=> setSignupModal(NavLogicObject.state)}  className=" bg-[#5A0C91] text-white rounded-[5px] font-lato text-[1rem] font-[500] lg:w-[7.5rem] w-[5.75rem]  h-[2.187rem] lg:h-[2.5rem] ">
                     Sign Up
                 </button>
-                <button onClick={()=> setloginMode()} className="hidden lg:block bg-inherit border-[solid] border  border-[#5A0C91] text-[#5A0C91] rounded-[5px] font-lato text-[1rem] font-[500] w-[7.5rem] h-[2.5rem]">
+                <button onClick={()=> setLoginModal()} className="hidden lg:block bg-inherit border-[solid] border  border-[#5A0C91] text-[#5A0C91] rounded-[5px] font-lato text-[1rem] font-[500] w-[7.5rem] h-[2.5rem]">
                     Log In
                 </button> </> }
             </section>

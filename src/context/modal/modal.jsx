@@ -6,14 +6,18 @@ export const ModalContext = React.createContext({
     stayIntouchModal: false,
     setpartnerModal: () => {},
     setstayIntouchModal: () => {},
-    loginModal: () => {},
-    setLoginModal: () => {}
+    loginModal: false,
+    setLoginModal: () => {},
+    signupModal: false,
+    setSignupModal: () => {},
 });
 
 export const ModalProvider = ({children}) => {
     const [partner, setpartner] = useState(false)
     const [stay, setStay] = useState(false)
     const [login, setLogin] = useState(false)
+    const [signup, setSignup] = useState(false)
+
 
     const setpartnerFunc = () => {
         setpartner(!partner)
@@ -26,6 +30,9 @@ export const ModalProvider = ({children}) => {
     const setLoginFunc = () => {
         setLogin(!login)
     }
+    const setSignupFunc = () => {
+        setSignup(!signup)
+    }
     return (
         <ModalContext.Provider
         value={{
@@ -34,7 +41,9 @@ export const ModalProvider = ({children}) => {
             stayIntouchModal: stay,
             setstayIntouchModal: setStayFunc,
             loginModal: login,
-            setLoginModal: setLoginFunc
+            setLoginModal: setLoginFunc,
+            setSignupModal: setSignupFunc,
+            signupModal: signup
         }}
         >
             {children}

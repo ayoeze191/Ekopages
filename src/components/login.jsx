@@ -24,12 +24,6 @@ const Login = () => {
   
   const { login, loading, error, success } = useAuthContext()
 
-
-  //(error)
-  const handlesubmit = (data) => {
-    login(data)
- }
-
   const formik = useFormik({
     initialValues: {
       "username": "",
@@ -66,7 +60,7 @@ if(error) {
         <div className="md:w-[57%] flex flex-col md:items-center w-full px-[23px] h-full">     
         
         <p className="font-lato font-[700] text-[1.5rem] md:text-[1.75rem] text-[#232323] text-center mx-auto mt-[24px]  mb-[24px]">Log In</p>
-        <form onSubmit={formik.handleSubmit} className='flex flex-col w-full w-full md:max-w-[20.37rem] gap-[1.5rem]' >
+        <form onSubmit={formik.handleSubmit} className='flex flex-col w-full md:max-w-[20.37rem] gap-[1.5rem]' >
         <section className="flex flex-col">
             <InputField type="email" onChangeHandler={formik.handleChange} value={formik.values.username} fieldName={"Username"} name="username" id="username"></InputField>
             <p className="text-[12px] text-red-600 mt-4">{formik.touched.username && formik.errors.username ? formik.errors.username:null}</p>

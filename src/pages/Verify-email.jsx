@@ -6,12 +6,14 @@ import { useLocation } from 'react-router-dom'
 import { useAuthContext } from '../context/auth/auth';
 import instance from "./../axios.js"
 import { BarLoader } from 'react-spinners'
+import {FcApproval} from 'react-icons/fc'
+import {BiError} from "react-icons/bi"
 
 const VerifyEmail = () => {
     const {token} = useParams()
     const [isloading, setIsloading] = useState(true)
     const [success, seSuccess] = useState(false)
-    const [failed, setFailed] = useState(false)
+    const [failed, setFailed] = useState(null)
 
     const verifyEmail = (token) => {
 
@@ -22,8 +24,9 @@ const VerifyEmail = () => {
         seSuccess(true)
       })
       .catch((err) => {
+        console.log("error", err)
         setIsloading(false)
-        setFailed(true)
+        setFailed("Couldnt Verify Your email")
       })
     }
    
@@ -32,12 +35,24 @@ const VerifyEmail = () => {
   }, [])  
   
   return (
-    <div>
+    <div className='mx-auto h-[50vh] flex items-center font-Poppins'>
         {isloading?
         <div>
             <BarLoader color='#5A0C91'/>
-          <p> Please wait while we verify Your email</p></div>
-        :success?"verification sucessfull you can proceed to login":failed?"couldn't verify":null}
+          <p > Please wait while we verify Your email</p></div>
+        :success === true?
+        <div>
+          <div className='bg-[#5A0C91] '>
+          <FcApproval size={'4rem'} color='white'/>
+          </div>
+           <p> verification sucessfull you can proceed to login</p></div>:failed?
+           <div>
+            <div className=' flex justify-center'>
+            <BiError color='red' size={'4rem'}/>
+            </div>
+            <p className='font'>couldn't verify your email</p>
+           </div>
+           :null}
     </div>
   )
 }
