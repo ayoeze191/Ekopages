@@ -37,7 +37,7 @@ const VerifyEmail = () => {
   return (
     <div className='mx-auto h-[50vh] flex items-center font-Poppins'>
         {isloading?
-        <div>
+        <div className='flex justify-center'>
             <BarLoader color='#5A0C91'/>
           <p > Please wait while we verify Your email</p></div>
         :success === true?
