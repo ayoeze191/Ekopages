@@ -19,8 +19,7 @@ const StoreCards = () => {
   useEffect(() => {
     disptach(get_products('All', "All"))
   }, [])
-
-
+  console.log(store.products)
   return (
     store.isloading ? <GeneralUiOverlayLoader /> :store.products?
     <div className=' flex flex-col sm:grid sm:grid-cols-2  md:grid-cols-3 mx-auto section gap-x-[2rem] gap-y-[12.25rem] items-center mb-[60px]'>

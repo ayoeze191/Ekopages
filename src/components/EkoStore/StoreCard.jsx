@@ -14,7 +14,7 @@ import { useContext } from 'react'
 import { cookieContext } from '../../App'
 import { toast } from 'react-toastify'
 
-const StoreCard = ({name, image, available, author, price, id}) => {
+const StoreCard = ({name, image, available, author, price, id, category, merch_size}) => {
   const cart = useSelector(state => state.cart)
   const dispatch = useDispatch()
   const {isAuth, setloginMode} = useAuthContext()
@@ -36,20 +36,21 @@ const StoreCard = ({name, image, available, author, price, id}) => {
 
 
   //(image)
-  // const myArray = [Star, Star, Star, Star, Star]
+  const myArray = [Star, Star, Star, Star, Star]
   return (
     // cart.loading?<GeneralUiOverlay /> :
     <div className='storecard flex items-center justify-center flex-col px-[2rem] pb-[2.5rem] w-full h-[420px]'>
         <div className='w-full'>
-            {image ?<div className='relative mb-[2rem] -mt-24 w-[8rem] h-[8rem] md:w-[9rem] md:h-[9rem] mx-auto'><img src={image}  className=' w-full h-full' /></div>:null}
+            {image !== 'books'?<div className='relative mb-[2rem] -mt-24 w-[8rem] h-[8rem] md:w-[9rem] md:h-[9rem] mx-auto'><img src={image}  className=' w-full h-full' /></div>:
+            <div className='relative mb-[2rem] -mt-24 w-[8rem] h-[8rem] md:w-[9rem] md:h-[9rem] mx-auto bg-white px-5 py-5'><img src={image}  className=' w-full h-full' /></div>}
             <div className='flex justify-between font-lato font-[700] text-1.47rem mb-[0.5rem]'>{name}<p><img src={Vector15} /></p></div>
-            <div className='font-lato font-[400] text-[1.125rem]'>Written by: {author}</div>
-            {/* <div className='flex gap-2 my-2 justify-left'>
-              {
-               myArray.map((value ,index) => <img src={value} key={index} /> ) 
-              }
-              
-            </div> */}
+           {merch_size && <div className='flex justify-between font-lato font-[700] text-1.47rem mb-[0.5rem]'>{merch_size}</div>}
+          <div className='flex gap-2'> {myArray.map((err) => <div className=''><img src={err} /></div> )}</div>
+
+            {category == "books"&&<div className='font-lato font-[400] text-[1.125rem]'>Written by: {author}</div>}
+            <div className='font-lato font-[500] text-[1.125rem] font-lato '>
+              Category: {category}
+            </div>
             <div className='text-[0.8rem] mb-[1rem]'>{available?'In Stock': ''}</div>
         </div>
         

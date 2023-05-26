@@ -24,4 +24,4 @@ const EkoStoreCOntainer = () => {
     </div>
   )
 }
-export default withErrorHandler(EkoStoreCOntainer, instance)
+export default EkoStoreCOntainer
