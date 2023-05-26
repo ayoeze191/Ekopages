@@ -87,7 +87,9 @@ export const BasicRoutes = [
     {
         path: "/beapublisher",
         component: <Beapublisher />
-    }
+    },
+   
+    
 ]
 
 export const PrivateRoutes = [
