@@ -1,0 +1,94 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@font-face {
+    font-family: 'Aileron';
+    src: url('./font/aileron/Aileron-Regular.otf');
+}
+
+@font-face {
+    font-family: 'Poppins';
+    src: url('./font/Poppins/Poppins-Regular.ttf');
+}
+
+@font-face {
+    font-family: "Source-Sans";
+    src: url("./font/source-sans-pro/SourceSansPro-Regular.ttf");
+}
+
+@font-face {
+    font-family: "Roboto";
+    src: url("./font/Roboto/Roboto-Regular.ttf");
+}
+
+@font-face {
+    font-family: "lato";
+    src: url("./font/lato/Lato2OFLWeb/Lato/fonts/Lato-Regular.ttf");
+}
+
+@font-face {
+    font-family: "latomedium";
+    src: url("./font/lato/Lato2OFLWeb/Lato/fonts/Lato-Medium.ttf");
+}
+body{
+    padding-top: 0px;
+  box-sizing: border-box;
+}
+
+html {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    height: 100%;
+  /* background-color: red; */
+}
+
+/* .BecomeModal{
+    width: "90%";
+    padding-left: "0";
+    padding-right: "0";
+    padding-top: "0";
+    padding-bottom: "0";
+    background: "#F6F6F6";
+    height: "90vh";
+    overflow-y:"scroll";
+    max-width: "1000px";
+}
+
+
+@media (max-width: 100px) {
+    .BecomeModal{
+        border-radius: 10px 0px 0px 10px;
+        background-color: red;
+    }
+} */
+
+
+.section {
+    @apply w-full  mx-auto px-6 lg:px-0 max-w-[77rem]
+}
+.headersection {
+    @apply w-full py-6 mx-auto lg:px-0 px-6 lg:px-0 max-w-[77rem]
+}
+
+.storecard {
+    background: linear-gradient(135.29deg, rgba(90, 12, 145, 0.05) 5.35%, rgba(255, 255, 255, 0.19) 99.63%);
+    box-shadow: 3px 7px 7px 5px rgba(90, 12, 145, 0.02);
+    border-radius: 160px 160px 30px 30px;
+}                       
+.as{
+    background:  rgba(90, 12, 145, 0.1);
+    /* transform: translateX(0); */
+}
+
+.shadow {
+    box-shadow: 0px 4px 2px 0.5px rgba(90, 12, 145, 0.05) ;
+}
+.side_items {
+    @apply bg-[#5A0C91]
+}
+
+.side_items::after{
+    /* display:inline-flex */
+}
