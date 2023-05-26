@@ -2,7 +2,7 @@ import React from 'react'
 import NavHead from '../about/Navhead'
 import Footers from '../footer/Footers'
 import EkoNAv from './EkoNAv'
-import EkoText from '../EkoNews/EkoNewsText'
+import EkoStoreText from './EkoStoreText'
 import StoreCards from './StoreCards'
 import { useEffect } from 'react'
 import { get_all_categories } from '../../store/Actions/Product'
@@ -18,7 +18,7 @@ const EkoStoreCOntainer = () => {
 
   return (
     <div className='bg-[#F6F6F6]'>
-        <EkoText />
+        <EkoStoreText />
         <EkoNAv />
         <StoreCards />
     </div>
