@@ -5,15 +5,9 @@ import { useParams } from 'react-router-dom'
 import { useLocation } from 'react-router-dom'
 import { useAuthContext } from '../context/auth/auth';
 import instance from "./../axios.js"
-<<<<<<< HEAD
 import { BarLoader } from 'react-spinners'
 
 const VerifyEmail = () => {
-=======
-
-const VerifyEmail = () => {
-    const location = useLocation()
->>>>>>> 73618bb8266baee29bb99ca3760d242e690b3c8e
     const {token} = useParams()
     const [isloading, setIsloading] = useState(true)
     const [success, seSuccess] = useState(false)
