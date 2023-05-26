@@ -42,6 +42,11 @@ const Signup = () => {
 })
 if(success == true) {
     setloginMode()
+<<<<<<< HEAD
+=======
+    // showsignup.handleSignupModalVisibility()
+    // NavLogicObject.handleSignupModalVisibility()
+>>>>>>> 73618bb8266baee29bb99ca3760d242e690b3c8e
 }
   
 
