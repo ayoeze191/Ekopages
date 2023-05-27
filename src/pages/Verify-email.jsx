@@ -24,7 +24,7 @@ const VerifyEmail = () => {
         seSuccess(true)
       })
       .catch((err) => {
-        console.log("error", err)
+        console.log("error", err.response)
         setIsloading(false)
         setFailed("Couldnt Verify Your email")
       })
@@ -35,17 +35,22 @@ const VerifyEmail = () => {
   }, [])  
   
   return (
-    <div className='mx-auto h-[50vh] flex items-center font-Poppins'>
+    <div className='mx-auto h-[50vh] flex items-center font-Poppins px-7 md:px-0'>
         {isloading?
         <div className='flex justify-center'>
-            <BarLoader color='#5A0C91'/>
-          <p > Please wait while we verify Your email</p></div>
+          <div >
+          <BarLoader color='#5A0C91'/>
+          </div>
+          <p> Please wait while we verify Your email</p>
+          </div>
         :success === true?
-        <div>
-          <div className='bg-[#5A0C91] '>
+        <div className='flex justify-center'>
+          <div className=''>
           <FcApproval size={'4rem'} color='white'/>
           </div>
-           <p> verification sucessfull you can proceed to login</p></div>:failed?
+           <p> verification sucessfull you can proceed to login</p>
+        </div>:
+           failed?
            <div>
             <div className=' flex justify-center'>
             <BiError color='red' size={'4rem'}/>

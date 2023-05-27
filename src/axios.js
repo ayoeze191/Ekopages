@@ -25,7 +25,6 @@ instance.interceptors.request.use(function (config) {
   });
 
 
-
   const refresh_token = (refresh) => {
     axios.post('https://ekopages-production.up.railway.app/auth/token/refresh/', {refresh})
         .then((res) => {
@@ -37,7 +36,12 @@ instance.interceptors.request.use(function (config) {
           .catch((err) => {
             if(err.response.detail === "token_not_valid"){
               localStorage.clear()
-            }
+              localStorage.removeItem('exp')
+              localStorage.removeItem('eko_access')
+              localStorage.removeItem('eko_refresh')
+              localStorage.removeItem('eko_user')
+              localStorage.removeItem('exp')
+}
             console.log(err, "error refreshing token")
             return;
           })

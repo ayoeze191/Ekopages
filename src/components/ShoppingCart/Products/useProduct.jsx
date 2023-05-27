@@ -6,15 +6,11 @@ import { useSelector } from 'react-redux'
 
 const useProduct = (id) => {
     const [product, setProduct] = useState(null)
-    const [loading, setloading] = useState(false)
+    const [loading, setloading] = useState(true)
     // const cart = usec
     const cart = useSelector(state => state.cart)
 
     const get__product = () => {
-        // // setloading(true)
-        // const idPresent = cart.cart.filter((prod) => prod.product === id)
-        // console.log(idPresent, "idpresent")
-        // if(idPresent.length > 0) {
             instance.get(`store/product_detail/${id}`)
             .then((res) => {
                 console.log("product success")
@@ -24,6 +20,7 @@ const useProduct = (id) => {
             })
             .catch((err) => {
                 console.log(err, "product error")
+                setloading(false)
             })
         // }  
     }
