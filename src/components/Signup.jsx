@@ -40,10 +40,6 @@ const Signup = () => {
     },
     validate: SignupValidate
 })
-if(success == true) {
-    setloginMode()
-}
-  
 
 let err = null
 

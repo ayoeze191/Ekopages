@@ -33,7 +33,6 @@ export const SignUpProvider = ( { children }) => {
             setError(null);
             toast.success("Your Registration is Sucessfull")
             setaccountSuccessfullycreatedModal(true)
-            // setTimeout(setsucess(false) ,5000)
         })
         .catch((err) => {
             setIsloading(false);
