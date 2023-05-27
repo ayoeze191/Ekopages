@@ -9,7 +9,9 @@ export const SignUpContext = React.createContext({
     error: null,
     success: false,
     loading: false,
-    signup: (value) => {}
+    signup: (value) => {},
+    accountSuccessfullycreatedModal: false,
+    setaccountSuccessfullycreatedModal: () => {}
 });
 
 
@@ -18,6 +20,7 @@ export const SignUpProvider = ( { children }) => {
     const [success, setsucess] = useState(false);
     const [error, setError] = useState("");
     const [loading, setIsloading] = useState(false)
+    const [accountSuccessfullycreatedModal, setaccountSuccessfullycreatedModal] = useState(false)
 
     const Signup = (data) => {
         setIsloading(true)
@@ -29,6 +32,7 @@ export const SignUpProvider = ( { children }) => {
             setsucess(true);
             setError(null);
             toast.success("Your Registration is Sucessfull")
+            setaccountSuccessfullycreatedModal(true)
             // setTimeout(setsucess(false) ,5000)
         })
         .catch((err) => {
@@ -37,8 +41,11 @@ export const SignUpProvider = ( { children }) => {
             setError(err.response.data);
             setTimeout(() => setError(""), 5000)
             toast.success("Registration Failed")
+            setaccountSuccessfullycreatedModal(false)
         })
-
+    }
+    const setaccountSuccessfullycreatedModalFunc = () => {
+      setaccountSuccessfullycreatedModal(!accountSuccessfullycreatedModal)
     }
     return (
       <SignUpContext.Provider
@@ -46,7 +53,9 @@ export const SignUpProvider = ( { children }) => {
           error,
           success,
           loading,
-          signup: Signup
+          signup: Signup,
+          accountSuccessfullycreatedModal:accountSuccessfullycreatedModal,
+          setaccountSuccessfullycreatedModal: setaccountSuccessfullycreatedModalFunc
         }}
       >
         {children}

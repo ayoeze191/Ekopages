@@ -27,13 +27,19 @@ import { useState } from 'react';
 import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 
+
+
 import { get_cart } from '../../store/Actions/Cart';
 import { useContext } from 'react';
 import { cookieContext } from '../../App';
 import { useModalContext } from '../../context/modal/modal';
+import AccountSuccesfullyCreated from '../ui/Modal/AccountSuccesfullyCreated';
+import { useSignupContext } from '../../context/auth/signup';
 
 const NavHead = ({sideHandler}) => {
     const {loginModal, setLoginModal, signupModal, setSignupModal} = useModalContext()
+    const {accountSuccessfullycreatedModal, setaccountSuccessfullycreatedModal} = useSignupContext()
+
     const loc = useLocation()
     const [side, setside] = useState(false)
     const NavLogicObject = useLogic()
@@ -105,6 +111,26 @@ const NavHead = ({sideHandler}) => {
             
             <Rodal
                 customStyles={{
+                width: "90%",
+                paddingLeft: "0",
+                paddingRight: "0",
+                paddingTop: "0",
+                paddingBottom: "0",
+                background: "#F6F6F6",
+                height: "fit-content",
+                overflowY:"scroll",
+                maxWidth: "1000px",
+
+                }}
+                
+                
+                visible={accountSuccessfullycreatedModal}
+                onClose={setaccountSuccessfullycreatedModal}
+                >
+            <AccountSuccesfullyCreated />
+            </Rodal>
+            <Rodal
+                customStyles={{
                     width: "90%",
                     paddingLeft: "0",
                     paddingRight: "0",
@@ -114,7 +140,6 @@ const NavHead = ({sideHandler}) => {
                     background: "#F6F6F6",
                     overflowY:"scroll",
                     maxWidth: "1000px",
-                
                     }}
                 visible={signupModal}
                 onClose={setSignupModal}>
