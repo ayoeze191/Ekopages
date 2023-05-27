@@ -102,7 +102,6 @@ const NavHead = ({sideHandler}) => {
                 overflowY:"scroll",
                 maxWidth: "1000px",
                 }}
-                
                 visible={loginModal}
                 onClose={setLoginModal}
                 >
