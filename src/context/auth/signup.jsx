@@ -28,24 +28,25 @@ export const SignUpProvider = ( { children }) => {
         .then((res) => {
             console.log(res.data)
             console.log("signingup")
+            setaccountSuccessfullycreatedModal(!accountSuccessfullycreatedModal)
             setIsloading(false)
             setsucess(true);
             setError(null);
             toast.success("Your Registration is Sucessfull")
-            setaccountSuccessfullycreatedModal(true)
         })
         .catch((err) => {
             setIsloading(false);
             setsucess(false);
-            setError(err.response.data);
+            setError(err.response.data)
             setTimeout(() => setError(""), 5000)
-            toast.success("Registration Failed")
+            toast.error("Registration Failed")
             setaccountSuccessfullycreatedModal(false)
         })
     }
     const setaccountSuccessfullycreatedModalFunc = () => {
       setaccountSuccessfullycreatedModal(!accountSuccessfullycreatedModal)
     }
+    
     return (
       <SignUpContext.Provider
         value={{

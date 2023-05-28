@@ -107,7 +107,6 @@ const NavHead = ({sideHandler}) => {
                 >
             <Login></Login>
             </Rodal>
-            
             <Rodal
                 customStyles={{
                 width: "90%",
