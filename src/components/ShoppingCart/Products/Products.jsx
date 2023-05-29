@@ -1,4 +1,4 @@
-import React, {useEffect, useContext, useMemo} from 'react'
+import React, {useEffect, useContext, useRef} from 'react'
 // import nkem from "./../../assets/EkoStore/nkem.png";
 import { useReducer } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
@@ -13,19 +13,35 @@ import instance from '../../../axios';
 import { ClipLoader, MoonLoader } from 'react-spinners'
 import { memo } from 'react';
 import { BsCart } from 'react-icons/bs';
+
+
+function usePrevious(value) {
+  const ref = useRef();
+  useEffect(() => {
+    if(ref.current != value){
+    ref.current = value;
+    }
+  });
+  return ref.current;
+}
+
+
 const Products = () => {
 
   const {isAuth} = useAuthContext()
   const disptach = useDispatch()
   const {cookie} = useContext(cookieContext)
   const cart = useSelector(state => state.cart)
+  const prevAmount = usePrevious(cart.cart)
 
 useEffect(() => {
   const authVerification = {
     isAuth,
     session_id: cookie
 }
+
 disptach(get_cart(authVerification))
+
 }, [cart.total])
 
   return (
