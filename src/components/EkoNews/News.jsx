@@ -36,11 +36,14 @@ useEffect(() => {
     <div className='section flex flex-col gap-[6rem]'>
         {loading?
         <ClipLoader color='#5A0C91' style={{ margin: 'auto', fontStyle:"bold"}}/>:
-        news.map.length > 0 ?
+        news.length > 0 ?
         news.map((eachNews) => <SingleNews {...eachNews}/>):
-        "No News Yet"}
+        <div className='font-Poppins'>
+            Sorry No News Yet
+
+        </div>}
     </div>
   )
 }
 
-export default News
+export default withErrorHandler(News, instance)

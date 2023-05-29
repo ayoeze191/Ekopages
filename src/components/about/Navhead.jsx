@@ -19,12 +19,8 @@ import asset from "../../assets/NavHeader/export"
 // include styles
 import 'rodal/lib/rodal.css';
 import { useAuthContext } from '../../context/auth/auth';
-import { Overlay } from 'antd/es/popconfirm/PurePanel';
 import { useLocation } from 'react-router-dom';
-import { Navigate } from 'react-router-dom';
-import Side_bar from '../ui/sidebar/Side_bar';
-import { useState } from 'react';
-import { useEffect } from 'react';
+import { useState, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 
 
@@ -40,8 +36,6 @@ const NavHead = ({sideHandler}) => {
     const {loginModal, setLoginModal, signupModal, setSignupModal} = useModalContext()
     const {accountSuccessfullycreatedModal, setaccountSuccessfullycreatedModal} = useSignupContext()
 
-    const loc = useLocation()
-    const [side, setside] = useState(false)
     const NavLogicObject = useLogic()
     const {isAuth,user} = useAuthContext()
     const {cookie} = useContext(cookieContext)
@@ -118,7 +112,6 @@ const NavHead = ({sideHandler}) => {
                 height: "fit-content",
                 overflowY:"scroll",
                 maxWidth: "1000px",
-
                 }}
                 
                 

@@ -3,6 +3,7 @@ import React from "react";
 import { useState, useContext } from "react";
 import { signUp } from "./comp/signup";
 import { toast } from "react-toastify";
+import { useModalContext } from "../modal/modal";
 
 
 export const SignUpContext = React.createContext({
@@ -21,7 +22,7 @@ export const SignUpProvider = ( { children }) => {
     const [error, setError] = useState("");
     const [loading, setIsloading] = useState(false)
     const [accountSuccessfullycreatedModal, setaccountSuccessfullycreatedModal] = useState(false)
-
+    const {setSignupModal} = useModalContext()
     const Signup = (data) => {
         setIsloading(true)
         signUp(data)
@@ -32,6 +33,7 @@ export const SignUpProvider = ( { children }) => {
             setIsloading(false)
             setsucess(true);
             setError(null);
+            setSignupModal()
             toast.success("Your Registration is Sucessfull")
         })
         .catch((err) => {
@@ -46,7 +48,7 @@ export const SignUpProvider = ( { children }) => {
     const setaccountSuccessfullycreatedModalFunc = () => {
       setaccountSuccessfullycreatedModal(!accountSuccessfullycreatedModal)
     }
-    
+
     return (
       <SignUpContext.Provider
         value={{

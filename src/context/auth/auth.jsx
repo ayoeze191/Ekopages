@@ -79,7 +79,6 @@ export const AuthProvider = ( { children }) => {
           // setProfpics(res.data.user.profile_picture)
           setIsloading(false)
           setLoginModal(!loginModal)
-          // switchLoginStatus()
           setLoginModal()
           toast.success("Sucessfully Logged In ")
       })

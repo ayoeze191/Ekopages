@@ -17,13 +17,13 @@ root.render(
   <React.StrictMode>
     <ModalProvider>
     <AuthProvider>
+    <SignUpProvider>
       <Provider store={store}>
-      <SignUpProvider>
      <QueryClientProvider client={queryClient}>
       <App />
     </QueryClientProvider>
-    </SignUpProvider>
     </Provider>
+    </SignUpProvider>
     </AuthProvider>
     </ModalProvider>
   </React.StrictMode>
