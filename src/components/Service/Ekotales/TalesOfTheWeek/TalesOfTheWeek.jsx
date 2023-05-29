@@ -14,7 +14,7 @@ const TalesOfTheWeek = () => {
     .then((res) => {
       console.log(res, "tales")
       setTale(res.data.data[res.data.data.length - 1]);
-      setLoading(true);
+      setLoading(false);
     })
     .catch((err) => {
       setError(err.response);
@@ -27,8 +27,10 @@ const TalesOfTheWeek = () => {
     gettale()
   }, [])
 
+  console.log(tale.body[10])
 
-  return (loading?  <div className='h-[30vh] mx-auto flex flex-col justify-center items-center'> <ClipLoader /> </div>:
+  return (loading? 
+  <div className='h-[30vh] mx-auto flex flex-col justify-center items-center'> <ClipLoader /></div>:
     <div className='font-lato max-w-5xl mx-auto flex- flex-col items-center mt-[7.3125rem] px-6 lg:px-0'>
         <div className='flex flex-col gap-[2rem] text-[#232323] flex flex-col items-center mb-[2rem]'>
             <p className='font-[700] text-[3rem] font-lato'>{tale.title}</p>
@@ -38,7 +40,7 @@ const TalesOfTheWeek = () => {
 
         <div className='flex flex-col gap-[2rem] text-[#232323] text-[1.25rem] mb-[5rem] font-[400] font-lato'>
             <p>
-              {showSmall?tale.body[200]:tale.body}
+              {showSmall?tale.body.slice(0, 200):tale.body}
             </p>
         </div>
 
