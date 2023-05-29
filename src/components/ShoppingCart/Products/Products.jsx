@@ -12,7 +12,7 @@ import withErrorHandler from '../../withErrHandler';
 import instance from '../../../axios';
 import { ClipLoader, MoonLoader } from 'react-spinners'
 import { memo } from 'react';
-
+import { BsCart } from 'react-icons/bs';
 const Products = () => {
 
   const {isAuth} = useAuthContext()
@@ -32,8 +32,14 @@ disptach(get_cart(authVerification))
     cart.cart?
     <div className='px-6 lg:px-0'>
         <p className='text-[#5A0C91] md:hidden'>Continue Shopping</p>
-          {cart.cart.filter((prod) => prod.quantity !== 0).length > 0? cart.cart.map((prod) => <Product id={prod.product} cartit={isAuth?prod.id:prod.id} qty={prod.quantity}/>):<div className='h-[2rem] mt-[1rem] text-red-500 text-center font-Poppins '>Your cart is empty consider adding some product to the cart</div>}
-    </div>:cart.cartLoading? <div className='mx-auto w-full flex justify-center mx-center mt-20px'> <ClipLoader color='#5A0C91' className='mx-auto'/> </div>  : "No Product"
+          {cart.cart.filter((prod) => prod.quantity !== 0).length > 0? cart.cart.map((prod) => <Product id={prod.product} cartit={isAuth?prod.id:prod.id} qty={prod.quantity}/>):
+          <div className='border-t-[orange] border-t-solid border-t-2 py-[14.2px] px-[17.8px] items-center font-[400] text-[12px] md:text-base font-lato mt-[1rem] text-[#4A4A4A] text-center bg-[#F8F8F8] w-fit mx-auto flex gap-2 md:gap-[17.9px]' >
+            <div><BsCart className=''></BsCart></div>
+            <p> Your Cart is currently empty consider adding some product</p>
+          </div>}
+    </div>:cart.cartLoading? 
+    <div className='mx-auto w-full flex justify-center mx-center mt-20px'> <ClipLoader color='#5A0C91' className='mx-auto'/> </div> : 
+    "No Product"
     )
 }
 

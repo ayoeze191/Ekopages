@@ -16,6 +16,7 @@ import StoreDetails from "./components/EkoStore/StoreDetails/StoreDetails"
 import Test from "./components/Test"
 import VerifyEmail from "./pages/Verify-email"
 import Beapublisher from "./pages/Beapublisher/Beapublisher"
+import Productdetails from "./components/ProductDetails/Productdetails"
 
 
 export const BasicRoutes = [
@@ -46,7 +47,7 @@ export const BasicRoutes = [
     },
     {
         path: '/ekostore/product/:id',
-        component: <StoreDetails />
+        component: <Productdetails />
     },
     {
         path: '/ekonews/*',

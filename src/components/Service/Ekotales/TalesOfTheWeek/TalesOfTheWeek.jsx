@@ -1,6 +1,32 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import Frame247 from "./../../../../assets/Service/ekotales/Frame247.png"
+import { useState } from 'react'
+import instance from '../../../../axios'
 const TalesOfTheWeek = () => {
+  const [loading, setLoading] = useState(false)
+  const [tale, setTale] = useState(null);
+  const [error, setError] = useState(false);
+  
+
+  const gettale = () => {
+    instance.get('/services/tale_of_the_week')
+    .then((res) => {
+      console.log(res, "tales")
+      setTale(res.data.data);
+      setLoading(true);
+    })
+    .catch((err) => {
+      setError(err.response);
+      setLoading(false);
+      console.log(err);
+    })
+  }
+
+  useEffect(() => {
+    gettale()
+  }, [])
+
+
   return (
     <div className='font-lato max-w-5xl mx-auto flex- flex-col items-center mt-[7.3125rem] px-6 lg:px-0'>
         <div className='flex flex-col gap-[2rem] text-[#232323] flex flex-col items-center mb-[2rem]'>

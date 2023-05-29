@@ -1,28 +1,28 @@
 import React from 'react'
-import assets from "./../../../assets/NavHeader/export"
+import image from "./../../../assets/emailverification/creationsuccesful.png"
 import { useSignupContext } from '../../../context/auth/signup'
 import {BsXLg} from "react-icons/bs"
 const AccountSuccesfullyCreated = () => {
   const {setaccountSuccessfullycreatedModal} = useSignupContext()
   return (
-    <div className='h-[90vh] flex flex-col items-center justify-center'>
+    <div className=' flex flex-col items-center justify-center font-lato text-center p-10 gap-[29.63px] '>
       <div className='h-mx-auto w-full  flex justify-center items-center'>
-        <div className='mx-auto w-32'>
-      <img src={assets.Logo}  className='w-full'/>
+        <div className='mx-auto'>
+      <img src={image}  className='w-full h-full'/>
         </div>
       </div>
-
-      <div className='flex gap-6 w-full flex-col py-10'>
-        <div>
-        <p className='font-bold text-center text-[20px] md:text-3xl'>Great!</p>
-        <p className='text-center'>You have succesfully created an account <br /> check your email for verification</p>
-        </div>
-        <button className='w-fit mx-auto rounded-3xl px-10 py-2 text-white bg-red-500 text-lato flex gap-2 items-center' onClick={() => setaccountSuccessfullycreatedModal()}>
-         <BsXLg size={'20px'}/> <p> Close </p>
-        </button>
+      <div className='flex flex-col gap-[16px]'>
+      <p className='font-[600] text-[20px] text-[#232323] md:text-[28px] '>
+        Account successfully created!
+      </p>
+      <p className='font-[400]  text-[14px] md:text-[1rem]'>
+      A confirmation link has been sent to your email address.
+      </p>
       </div>
+      <p className='font-[400] text-base mt-3'>
+      Didn’t receive the mail? <span className='text-[#5A0C91]'> Resend confirmation link </span>
+      </p>
     </div>
   )
 }
-
 export default AccountSuccesfullyCreated

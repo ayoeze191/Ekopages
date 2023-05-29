@@ -1,10 +1,34 @@
 import React from 'react'
 import { service } from '../../Services'
 import uil_info_circle from "./../../../../assets/Service/uil_info_circle.png"
+import instance from '../../../../axios'
+import { useState } from 'react'
+import { useEffect } from 'react'
 
 
 
 const EkotalesAbout = () => {
+    const [tale, setTale] = useState()
+    const [ loading, setLoading] = useState(false)
+
+    const get_tale = ( ) => {
+        setLoading(true)
+        instance.get('/services/tales')
+        .then((res) => {
+        console.log(res, "all tales")
+        setLoading(false)
+        console.log(res.data)
+        })
+    .catch((err) => {  
+        setLoading(false)
+        console.log(err.response)
+    })
+}
+
+useEffect(() => {
+    get_tale()
+}, [])
+
   return (
     <div className='font-lato flex flex-col md:flex-row gap-[3.25rem] section items-center'>
     <div className='rounded-[10px] w-full  md:w-[50%]'><img src={service[1].img} alt="" className='w-full' /></div> 

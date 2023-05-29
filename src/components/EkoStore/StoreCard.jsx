@@ -32,6 +32,7 @@ const StoreCard = ({name, image, available, author, price, id, category, merch_s
 
   if(cart.success) {
     navigate('/cart')
+    // navigate(`/ekostore/product/${id}`)
   }
 
 
@@ -65,7 +66,7 @@ const StoreCard = ({name, image, available, author, price, id, category, merch_s
             <AddToCartbtn name={"Add to Cart"} isLoading={(cart.prodid===id && cart.loading)? true:false} add={addTocart}></AddToCartbtn>
         </div>
     </div>
-  )
+  ) 
 }
 
 export default StoreCard
