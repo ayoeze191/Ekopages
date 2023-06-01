@@ -40,7 +40,6 @@ useEffect(() => {
         news.map((eachNews) => <SingleNews {...eachNews}/>):
         <div className='font-Poppins'>
             Sorry No News Yet
-
         </div>}
     </div>
   )
