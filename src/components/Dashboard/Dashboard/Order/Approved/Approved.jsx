@@ -5,6 +5,7 @@ import { useState } from 'react'
 import instance from '../../../../../axios'
 import { useEffect } from 'react'
 import { tokenConfig } from '../../../../../Config/Config'
+import { ClipLoader } from 'react-spinners'
 const orders = [
 
     {
@@ -58,7 +59,7 @@ useEffect(() => {
 }, [])
 
 
-  return loading? "Loading" :(
+  return loading? <div className='mx-auto w-full flex justify-center items-center'><ClipLoader /></div> :(
     <motion.div style={{overflowX: "hidden"}}
     initial = {{marginRight:"-100%", opacity:0}}
             animate = {{marginRight: ["-100%", "0"], opacity: [0, 1]}}

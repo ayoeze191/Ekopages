@@ -1,6 +1,7 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
 import bell from "./../../assets/dashboard/bell.png"
+import { useAuthContext } from '../../context/auth/auth'
 const dashElement = [
     {
         name: "Dashboard",
@@ -40,6 +41,8 @@ const NavItem = ({logo, name, path}) => {
 
 
 const MyAccount = () => {
+    const {user} = useAuthContext()
+    console.log(user)
   return (
     <div className='block md:hidden px-[20px] mb-[56px]'>
         <p className='bg-[#5A0C91] font-[700] text-[1.5rem] font-lato w-full flex justify-center text-[white] py-[20px]'>My Account</p>
@@ -54,7 +57,7 @@ const MyAccount = () => {
             </div>
             </div>
             <p className='font-[600] font-lato text-[white] text-[1rem]'>
-            Oyindamola Ahmed
+            {user.username}
             </p>
             </div>
 

@@ -15,13 +15,14 @@ import { validate } from "./validate/validate"
 import { useFormik } from 'formik'
 import Link from "antd/es/typography/Link"
 import {toast} from "react-toastify"
+import { useModalContext } from "../context/modal/modal"
 
 
 
 const Login = () => {
 
   const loginObject = useLogic()
-  
+  const {setLoginModal, setSignupModal} = useModalContext()
   const { login, loading, error, success } = useAuthContext()
 
   const formik = useFormik({
@@ -91,7 +92,12 @@ console.log(formik.touched)
           
         <div className="flex flex-row items-center w-full gap-[22px] text-[1rem] font-[500] font-lato mt-[40px] md:mt-[0]">
 <span className="flex-1 md:h-[1px] bg-[#CCB4DD]"></span>
-<span className="">Or Sign In using </span>
+<span className="" onClick={
+    () => {
+      setLoginModal()
+      setSignupModal()
+    }
+  }>Or Sign Up using </span>
 <span className="flex-1 md:h-[1px] bg-[#CCB4DD] "></span>
          </div>
 

@@ -15,6 +15,7 @@ import useSignupOnchange from "./useSignupOnchangeHandler";
 import { useFormik } from "formik";
 import { SignupValidate } from "./validate/validate";
 import { useAuthContext } from "../context/auth/auth"
+import { useModalContext } from "../context/modal/modal";
 
 
 
@@ -23,6 +24,7 @@ import { useAuthContext } from "../context/auth/auth"
 const Signup = () => {
   const signupObject = useLogic()
   const showsignup = useSignup()
+  const {setLoginModal, setSignupModal} = useModalContext()
   // const {signUp, signupOnChangeHandler, details} = useSignupOnchange()
   // const NavLogicObject = useLogic()
 
@@ -56,7 +58,7 @@ if(error) {
         <div className="md:w-[57%] flex flex-col md:items-center w-full px-[23px] h-full">     
         
         <p className="font-lato font-[700] text-[1.5rem] md:text-[1.75rem] text-[#232323] text-center mx-auto mt-[24px]  mb-[24px] ">Create an Account</p>
-        <form  onSubmit={formik.handleSubmit} className="flex flex-col w-full w-full md:max-w-[20.37rem] gap-[1.5rem] ">
+        <form  onSubmit={formik.handleSubmit} className="flex flex-col  w-full md:max-w-[20.37rem] gap-[1.5rem] ">
         <section className="flex flex-col">
             <InputField blurHandler={signupObject.SignupFormObj}  type="email" id="email" onChangeHandler={formik.handleChange} value={formik.values.email} src={assets.profileIcon} fieldName={"Email Address"} name={"email"} desc="profile icons"  ></InputField>
             {formik.errors.email  && formik.touched.email ? <p className="text-[12px] text-red-500">
@@ -90,7 +92,12 @@ if(error) {
           
           <div className="flex flex-row items-center w-full gap-[22px] text-[1rem] font-[500] font-lato mt-[40px] md:mt-[0]">
   <span className="flex-1 md:h-[1px] bg-[#CCB4DD]"></span>
-  <span className="">Or Sign Up using </span>
+  <span className="" onClick={
+    () => {
+      setLoginModal()
+      setSignupModal()
+    }
+  }>Or Sign In using </span>
   <span className="flex-1 md:h-[1px] bg-[#CCB4DD] "></span>
            </div>
   

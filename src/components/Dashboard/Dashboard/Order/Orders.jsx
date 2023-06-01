@@ -40,7 +40,7 @@ const Orders = () => {
                borderRadius: "5px",
                border: "solid 1px #88888888"
              }}> <button >Pending</button> </Tab>
-             <Tab _selected={{ bg: "#C54D09", color:"white", border: "0px none" }} style={{
+             <Tab _selected={{ bg: "#174D00", color:"white", border: "0px none" }} style={{
                padding: "0.5rem 2.125rem",
                borderRadius: "5px",
                border: "solid 1px #88888888"
