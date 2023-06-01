@@ -27,7 +27,7 @@ const navigate = useNavigate()
 </p>
 <div className='font-lato font-[400] text-[16px] md:text-[1.25rem] text-[#232E52]'>    
     <div className=''>{body.slice(0, 140)}</div>
-    <div className='text-[#5A0C91] text-[18.75px]' to={`/new/${id}`} onClick={() => navigate(`${id}`, {state: {image, title, body, id , date_created}})}>
+    <div className='text-[#5A0C91] text-[18.75px] cursor-pointer' to={`/new/${id}`} onClick={() => navigate(`${id}`, {state: {image, title, body, id , date_created}})}>
     Read More
     </div>
 </div>
