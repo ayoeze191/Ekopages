@@ -101,6 +101,7 @@ export const update_cart_items = (id, quantity, isauth, type) => (dispatch, getS
     const url = `cart/cart-item/${id}/`
     instance.patch(url, data, tokenConfig())
     .then((res) => {
+        console.log("updated cartitem", res)
         dispatch(update_cart(present_cart))
         toast.success("sucessfully updated")
     })

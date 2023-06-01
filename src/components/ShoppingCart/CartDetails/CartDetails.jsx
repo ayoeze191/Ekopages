@@ -52,7 +52,6 @@ const CartDetails = () => {
     .catch((err) => {
       console.log(err)
       setPayment({sucess:false, error:true, loading: false})
-      
     })
     }
     else{
