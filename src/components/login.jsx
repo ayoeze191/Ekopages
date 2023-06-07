@@ -53,14 +53,13 @@ console.log(formik.touched)
 
 
     return (
-      <div className="w-full flex h-full  items-center font-lato flex-col md:flex-row md:rounded-[20px] bg-[#F6F6F6]" 
-      
+      <div className="w-full flex h-[90vh]  items-center font-lato flex-col md:flex-row md:rounded-[20px] bg-[#F6F6F6]  " 
       >
         <div className="md:h-full bg-[#5A0C91] w-full md:w-[43%]">
       <div className="relative md:left-32 w-[169px] md:w-[initial] mx-auto pb-2 pt-[22.29px]"><img src={logi} className=' w-full h-full'  alt="" /></div>
       </div>
 
-        <div className="md:w-[57%] flex flex-col md:items-center w-full px-[23px] h-full">     
+        <div className="md:w-[57%] flex flex-col md:items-center w-full px-[23px] h-full overflow-y-scroll">     
         
         <p className="font-lato font-[700] text-[1.5rem] md:text-[1.75rem] text-[#232323] text-center mx-auto mt-[24px]  mb-[24px]">Log In</p>
         <form onSubmit={formik.handleSubmit} className='flex flex-col w-full md:max-w-[20.37rem] gap-[1.5rem]' >
@@ -69,7 +68,8 @@ console.log(formik.touched)
             <p className="text-[12px] text-red-600 mt-4">{formik.touched.username && formik.errors.username ? formik.errors.username:null}</p>
           </section>
               <section className="flex flex-col">
-            <InputField type="email" onBlur={formik.handleBlur} onChangeHandler={formik.handleChange} value={formik.values.email} fieldName={"Email Address"} name="email" id="email"></InputField>
+                
+            <InputField type="email" onBlur={formik.handleBlur} onChangeHandler={formik.handleChange} value={formik.values.email} fieldName={"Email "} name="email" id="email"></InputField>
             <p className="text-[12px] text-red-600 mt-4">{formik.touched.email && formik.errors.email ? formik.errors.email:null}</p>
           </section>
           <section className="flex  flex-col">
@@ -92,12 +92,7 @@ console.log(formik.touched)
           
         <div className="flex flex-row items-center w-full gap-[22px] text-[1rem] font-[500] font-lato mt-[40px] md:mt-[0]">
 <span className="flex-1 md:h-[1px] bg-[#CCB4DD]"></span>
-<span className="" onClick={
-    () => {
-      setLoginModal()
-      setSignupModal()
-    }
-  }>Or Sign Up using </span>
+<span className="">Or Sign Up using </span>
 <span className="flex-1 md:h-[1px] bg-[#CCB4DD] "></span>
          </div>
 
@@ -105,7 +100,12 @@ console.log(formik.touched)
           <div> <img src = {google} /> </div>
           <div> <img src = {facebook} /> </div>
         </div>
-         <p className=" text-[#000000] text-center text-[1rem] font-lato font-[500] ">Don’t have an account? <Link className="text-[#5A0C91] text-[1rem] font-[500] md:text-[1rem]">Sign up here</Link></p>
+         <p className=" text-[#000000] text-center text-[1rem] font-lato font-[500] ">Don’t have an account? <Link className="text-[#5A0C91] text-[1rem] font-[500] md:text-[1rem]"  onClick={
+    () => {
+      setLoginModal()
+      setSignupModal()
+    }
+  }>Sign up here</Link></p>
         </section>
 
         

@@ -31,6 +31,12 @@
     font-family: "latomedium";
     src: url("./font/lato/Lato2OFLWeb/Lato/fonts/Lato-Medium.ttf");
 }
+
+input::-ms-reveal,
+    input::-ms-clear {
+    display: none;
+}
+
 body{
     padding-top: 0px;
   box-sizing: border-box;
@@ -92,3 +98,4 @@ html {
 .side_items::after{
     /* display:inline-flex */
 }
+

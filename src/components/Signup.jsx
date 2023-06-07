@@ -50,12 +50,12 @@ if(error) {
 }
 
     return (
-      <div className="w-full flex h-full  items-center font-lato flex-col md:flex-row md:rounded-[20px] bg-[#F6F6F6]">
-          <div className="md:h-full bg-[#5A0C91] w-full md:w-[43%] flex items-center ">
+      <div className="w-full flex h-[90vh]  items-center font-lato flex-col md:flex-row md:rounded-[20px] bg-[#F6F6F6]">
+          <div className="md:h-[90vh] bg-[#5A0C91] w-full md:w-[43%] flex items-center ">
       <div className="relative md:left-32 w-[169px] md:w-[initial] mx-auto pb-2 pt-[22.29px]"><img src={logi} className=' w-full h-full'  alt="" /></div>
       </div>
 
-        <div className="md:w-[57%] flex flex-col md:items-center w-full px-[23px] h-full">     
+        <div className="md:w-[57%] flex flex-col md:items-center w-full px-[23px] h-full overflow-y-scroll">     
         
         <p className="font-lato font-[700] text-[1.5rem] md:text-[1.75rem] text-[#232323] text-center mx-auto mt-[24px]  mb-[24px] ">Create an Account</p>
         <form  onSubmit={formik.handleSubmit} className="flex flex-col  w-full md:max-w-[20.37rem] gap-[1.5rem] ">
@@ -92,12 +92,7 @@ if(error) {
           
           <div className="flex flex-row items-center w-full gap-[22px] text-[1rem] font-[500] font-lato mt-[40px] md:mt-[0]">
   <span className="flex-1 md:h-[1px] bg-[#CCB4DD]"></span>
-  <span className="" onClick={
-    () => {
-      setLoginModal()
-      setSignupModal()
-    }
-  }>Or Sign In using </span>
+  <span className="">Or Sign In using </span>
   <span className="flex-1 md:h-[1px] bg-[#CCB4DD] "></span>
            </div>
   
@@ -105,7 +100,12 @@ if(error) {
             <div> <img src = {google} /> </div>
             <div> <img src = {facebook} /> </div>
           </div>
-           <p className=" text-[#000000] text-center text-[1rem] font-lato font-[500] ">Already have an account? <Link className="text-[#5A0C91] text-[1rem] font-[500] md:text-[1rem]">Log In here</Link></p>
+           <p className=" text-[#000000] text-center text-[1rem] font-lato font-[500] ">Already have an account? <button className="text-[#5A0C91] text-[1rem] font-[500] md:text-[1rem]"  onClick={
+    () => {
+      setLoginModal()
+      setSignupModal()
+    }
+  }>Log In here</button></p>
           </section>
          </div>
         </div>

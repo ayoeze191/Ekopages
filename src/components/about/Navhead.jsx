@@ -92,8 +92,8 @@ const NavHead = ({sideHandler}) => {
                 paddingTop: "0",
                 paddingBottom: "0",
                 background: "#F6F6F6",
-                height: "90vh",
-                overflowY:"scroll",
+                overflowY:"hidden",
+                height: "fit-content",
                 maxWidth: "1000px",
                 }}
                 visible={loginModal}
@@ -126,10 +126,10 @@ const NavHead = ({sideHandler}) => {
                     paddingLeft: "0",
                     paddingRight: "0",
                     paddingTop: "0",
-                    height: "90vh",
                     paddingBottom: "0",
                     background: "#F6F6F6",
-                    overflowY:"scroll",
+                    overflowY:"hidden",
+                    height: "fit-content",
                     maxWidth: "1000px",
                     }}
                 visible={signupModal}
