@@ -50,7 +50,7 @@ const OtherTales = () => {
     }, [])
 
   return (
-    <div className='w-full h-full'>
+    <div className='w-full h-full mb-[86px]'>
         <p className='mx-auto font-[500] text-[24px] md:text-[36px] md:leading-[43.2px] font-lato text-center'>Check out other Eko tales</p>
         <div className='w-[100vw] h-full'>
             <Swiper 

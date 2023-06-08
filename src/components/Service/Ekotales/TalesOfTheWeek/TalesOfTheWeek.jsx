@@ -3,6 +3,7 @@ import Frame247 from "./../../../../assets/Service/ekotales/Frame247.png"
 import { useState } from 'react'
 import {BarLoader, ClipLoader} from "react-spinners"
 import instance from '../../../../axios'
+import { useNavigate } from 'react-router-dom'
 const TalesOfTheWeek = () => {
   const [loading, setLoading] = useState(true)
   const [tale, setTale] = useState(null);
@@ -22,6 +23,7 @@ const TalesOfTheWeek = () => {
       console.log(err);
     })
   }
+  const navigate = useNavigate()
 
   useEffect(() => {
     gettale()
@@ -46,7 +48,7 @@ const TalesOfTheWeek = () => {
         </div>
 
     <div className='w-full flex justify-center'>
-        <button className='rounded-[10px] bg-[#5A0C91] md:py-[0.937rem] px-[1.875rem] py-[0.93rem]  md:px-[0.875rem] mb-[6.25rem] text-[1.25rem] md:text-[1.5rem]  text-[#EFE7F4]' onClick={() => setShowsmall(!showSmall)}> Continue Reading </button>
+        <button className='rounded-[10px] bg-[#5A0C91] md:py-[0.937rem] px-[1.875rem] py-[0.93rem]  md:px-[0.875rem] mb-[6.25rem] text-[1.25rem] md:text-[1.5rem]  text-[#EFE7F4]' onClick={()=>navigate('/ekotales/details')}> Continue Reading </button>
         </div>
     </div>
   )
