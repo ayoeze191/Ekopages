@@ -33,7 +33,7 @@ const EkoTalesDetails = () => {
     <div className='font-lato max-w-5xl mx-auto flex- flex-col items-center mt-[7.3125rem] px-6 lg:px-0'>
         <div className='flex flex-col gap-[2rem] text-[#232323] items-center mb-[2rem]'>
             <p className='font-[700] text-[1.7rem] md:text-[3rem] font-lato'>{tale.title}</p>
-            {/* <div><img src={tale.image} alt="" /></div> */}
+            <div><img src={tale.image} alt="" /></div>
         </div>
 
         <div className='flex flex-col gap-[2rem] text-[#232323] text-[1.25rem] mb-[5rem] font-[400] font-lato'>
