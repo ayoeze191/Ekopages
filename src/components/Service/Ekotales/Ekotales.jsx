@@ -8,7 +8,7 @@ const Ekotales = () => {
   return (
     <div>
         <EkotalesText />
-        {/* <EkotalesAbout /> */}
+        <EkotalesAbout />
         <TalesOfTheWeek />
     </div>
   )
