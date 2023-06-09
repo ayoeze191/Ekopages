@@ -46,7 +46,7 @@ const EkoTalesDetails = () => {
             }
             
         </div>
-          <div className='w-full h-full'>
+          <div className='relative w-full '>
         <OtherTales />
         </div>
     </div>

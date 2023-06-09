@@ -10,8 +10,8 @@ import 'swiper/css/scrollbar';
 import "swiper/css/autoplay";
 import { Link } from 'react-router-dom';
 
-
 import  SwiperCore, { Navigation, Pagination, Scrollbar, A11y, Autoplay } from 'swiper';
+
 SwiperCore.use([Autoplay])
 
 
@@ -44,21 +44,24 @@ const OtherTales = () => {
             setAlltales(res.data.data)
         })
     }
-    
+
     useEffect(() => {
         get_tales()
     }, [])
 
   return (
-    <div className='w-full h-full mb-[86px]'>
+    <div className='w-full h-full mb-[86px] relative overflow-x-hidden'>
         <p className='mx-auto font-[500] text-[24px] md:text-[36px] md:leading-[43.2px] font-lato text-center'>Check out other Eko tales</p>
-        <div className='w-[100vw] h-full'>
+        <div className='w-full h-full'>
             <Swiper 
-        slidesPerView={1}
-        modules={[Autoplay, A11y]}
-        loop
-        freeMode
+            slidesPerView={1}
+            autoplay = {{delay: 100 }}
+            speed={100}
         breakpoints={{
+            300: {
+                slidesPerView: 1,
+                spaceBetween: 20
+            },
             640: {
                 slidesPerView: 3,
                 spaceBetween: 20
@@ -66,7 +69,7 @@ const OtherTales = () => {
         }}
         >
 
-            {allTales.map((tale, index) =><SwiperSlide key={index}> <Tales {...tale}/></SwiperSlide> )}
+            {allTales.map((tale, index) =><SwiperSlide key={index} style={{width: "100%"}}> <Tales {...tale}/></SwiperSlide> )}
             </Swiper>
         </div>
     </div>

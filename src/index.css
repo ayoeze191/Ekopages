@@ -42,6 +42,14 @@ padding-top: 0px;
   box-sizing: border-box;
 }
 
+.swiper, .swiper-container {
+    width: 100% !important;
+}
+
+.swiper-slide {
+    width: 100% !important;
+}
+
 html {
     padding: 0;
     margin: 0;
