@@ -18,7 +18,7 @@ SwiperCore.use([Autoplay])
 const Tales = ({image, title, date_created, id}) => {
     return (
         <Link className='flex flex-col w-full h-full' to={`/details/${id}`}>
-            <div className='mt-[24px] mb-[8px] w-full h-full'>
+            <div className='mt-[24px] mb-[8px]'>
                 <img src={image} className='w-[280px] h-[220px] md:w-[350px] md:h-[300px]'/> 
             </div>
             <div className=''>
@@ -55,13 +55,12 @@ const OtherTales = () => {
         <div className='w-full h-full'>
             <Swiper 
             slidesPerView={1}
-            autoplay = {{delay: 100 }}
+            spaceBetween= {10}
+
+            autoplay = {{delay: 100, pauseOnMouseEnter: false}}
+            loop={true}
             speed={100}
         breakpoints={{
-            300: {
-                slidesPerView: 1,
-                spaceBetween: 20
-            },
             640: {
                 slidesPerView: 3,
                 spaceBetween: 20

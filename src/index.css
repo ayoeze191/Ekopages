@@ -47,7 +47,16 @@ padding-top: 0px;
 }
 
 .swiper-slide {
-    width: 100% !important;
+    width: 100% !important;   
+}
+.swiper-wrapper {
+    width: 100%;
+}
+
+@media (min-width: 640px) {
+    .swiper-slide {
+        width:  fit-content !important;
+    }
 }
 
 html {
@@ -55,7 +64,6 @@ html {
     margin: 0;
     box-sizing: border-box;
     height: 100%;
-  /* background-color: red; */
 }
 
 /* .BecomeModal{
