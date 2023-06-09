@@ -10,7 +10,7 @@ const ServicesContainer = () => {
        <Route  element={<ServiceContainer/>} path={'/'} />
        <Route element={<EkoLearn />} path={'/ekolearn'} />
        <Route element = {<Ekotales/>} path={'/ekotales'} />
-       <Route element={<EkoTalesDetails />} path='/ekotales/details' />
+       <Route element={<EkoTalesDetails />} path='/ekotales/details/:id' />
     </Routes>
   )
 }

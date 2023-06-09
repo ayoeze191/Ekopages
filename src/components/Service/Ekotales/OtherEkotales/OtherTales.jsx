@@ -8,14 +8,16 @@ import 'swiper/css/navigation';
 import 'swiper/css/pagination';
 import 'swiper/css/scrollbar';
 import "swiper/css/autoplay";
+import { Link } from 'react-router-dom';
+
 
 import  SwiperCore, { Navigation, Pagination, Scrollbar, A11y, Autoplay } from 'swiper';
 SwiperCore.use([Autoplay])
 
 
-const Tales = ({image, title, date_created}) => {
+const Tales = ({image, title, date_created, id}) => {
     return (
-        <div className='flex flex-col w-full h-full'>
+        <Link className='flex flex-col w-full h-full' to={`/details/${id}`}>
             <div className='mt-[24px] mb-[8px] w-full h-full'>
                 <img src={image} className='w-[280px] h-[220px] md:w-[350px] md:h-[300px]'/> 
             </div>
@@ -27,7 +29,7 @@ const Tales = ({image, title, date_created}) => {
                 {date_created}
                 </p>
             </div>
-        </div>
+        </Link>
     )
 }
 
@@ -43,8 +45,6 @@ const OtherTales = () => {
         })
     }
     
-
-
     useEffect(() => {
         get_tales()
     }, [])

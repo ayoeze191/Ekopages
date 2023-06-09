@@ -3,7 +3,7 @@ import first from "./../../assets/projects/first.png"
 import second from "./../../assets/projects/second.png"
 import third from "./../../assets/projects/third.png"
 import Project from './Project'
-// import first from "./../../assets/projects/first.png"
+import sdgart from "./../../assets/projects/sdgart.png"
 
 const projects = [
     {   path: "sdg",
@@ -12,7 +12,7 @@ const projects = [
         p: "Queen College, Lagos"
     }, 
     {
-        img: second, 
+        img: sdgart, 
         h1: "The SDG Art Exhibition",
         path: "sdgart",
     },

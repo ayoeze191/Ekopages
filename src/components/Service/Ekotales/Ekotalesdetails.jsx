@@ -3,17 +3,19 @@ import { useState } from 'react'
 import { ClipLoader} from "react-spinners"
 import instance from '../../../axios'
 import OtherTales from './OtherEkotales/OtherTales'
+import { useParams } from 'react-router-dom'
 const EkoTalesDetails = () => {
   const [loading, setLoading] = useState(true)
   const [tale, setTale] = useState(null);
   const [error, setError] = useState(false);
   const [showSmall, setShowsmall] = useState(true)
+  const {id} = useParams()
 
   const gettale = () => {
-    instance.get('/services/tale_of_the_week')
+    instance.get(`/services/read/${id}/`)
     .then((res) => {
-      console.log(res, "tales")
-      setTale(res.data.data[res.data.data.length - 1]);
+      console.log(res.data.data, "tales")
+      setTale(res.data.data);
       setLoading(false);
     })
     .catch((err) => {
