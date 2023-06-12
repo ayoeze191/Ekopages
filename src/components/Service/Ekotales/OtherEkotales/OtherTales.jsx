@@ -8,7 +8,7 @@ import 'swiper/css/navigation';
 import 'swiper/css/pagination';
 import 'swiper/css/scrollbar';
 import "swiper/css/autoplay";
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 
 import  SwiperCore, { Navigation, Pagination, Scrollbar, A11y, Autoplay } from 'swiper';
 
@@ -16,8 +16,11 @@ SwiperCore.use([Autoplay])
 
 
 const Tales = ({image, title, date_created, id}) => {
+
+    const navigate = useNavigate()
+
     return (
-        <Link className='flex flex-col w-full h-full' to={`/details/${id}`}>
+        <div className='flex flex-col w-full h-full' onClick={() =>navigate(`/services/ekotales/details/${id}`, {replace: true})}>
             <div className='mt-[24px] mb-[8px]'>
                 <img src={image} className='w-[280px] h-[220px] md:w-[350px] md:h-[300px]'/> 
             </div>
@@ -29,7 +32,7 @@ const Tales = ({image, title, date_created, id}) => {
                 {date_created}
                 </p>
             </div>
-        </Link>
+        </div>
     )
 }
 
@@ -56,10 +59,9 @@ const OtherTales = () => {
             <Swiper 
             slidesPerView={1}
             spaceBetween= {10}
-
-            autoplay = {{delay: 100, pauseOnMouseEnter: false}}
+            
+            autoplay = {{pauseOnMouseEnter: false}}
             loop={true}
-            speed={100}
         breakpoints={{
             640: {
                 slidesPerView: 3,
