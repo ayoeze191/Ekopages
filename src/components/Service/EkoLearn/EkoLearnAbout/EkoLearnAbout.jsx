@@ -6,7 +6,7 @@ const EkoLearnAbout = () => {
     <div className='font-lato flex gap-[3.25rem] section items-center flex-col md:flex-row'>
         <div className='rounded-[10px] w-full md:w-[50%]'><img src={service[0].img} alt=""  className='w-full'/></div> 
         <div className='font-[400] text-[#444444] md:text-[20px] text-[13px] w-full md:w-[50%]'> <p> This is a subscription-based platform for schools to subscribe their students to.
-Each School can register as many as 10,000 students on Eko Learn for N5,000 each per year.</p>
+Each School can register as many as 10,000 students on Eko Learn for N15,000 each per year.</p>
     <div className='w-full flex justify-between items-center my-[3rem]'><p className='text-[20.67px] md:text-[2rem] font-[600]'> #15000 </p> <button className='bg-[#5A0C91] py-[9.25px] px-[18.5px] md:py-[0.9375rem] md:px-[1.9375rem] text-white rounded-[10px] text-[14.4px] md:text-[24px] font-[500] md:font-[400]'>Subscribe Now</button> </div>
 
     <div className='px-[1.6rem] py-[2.0625rem] rounded-[10px] bg-[#EFE7F4] text-[1rem] flex items-start'>
