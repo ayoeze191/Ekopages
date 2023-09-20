@@ -1,5 +1,6 @@
 import React from 'react'
 import Sdgtext from '../sdg/Sdgtext'
+import ReusableComponent from '../reusableComponent'
 const TeachHer = () => {
     return (
         <div className="section mb-[4rem]">
@@ -36,6 +37,10 @@ Gender roles are deeply ingrained in society, influencing our behaviors, expecta
         <p>
         Teach Her Teach Him: Empowering minds, shaping futures.
         </p>
+        </div>
+        <div className='mt-32'>
+          <p className='font-[500] text-[1.25rem] md:text-[2.25rem] text-center'>Check out other Projects</p>
+        <ReusableComponent filter={'theteach'}/>
         </div>
         </div>
     )

@@ -1,5 +1,6 @@
 import react from "react"
 import Sdgtext from "../sdg/Sdgtext"
+import ReusableComponent from "../reusableComponent"
 
 
 const SdgArt = () => {
@@ -15,6 +16,10 @@ const SdgArt = () => {
 <p> Whether you are an art enthusiast, a sustainability advocate, or simply curious about the interconnectedness of art and global goals, the SDG Art Exhibition offers a captivating and enlightening experience for all.</p>
 
 <p> By embracing art and its ability to evoke change, we can all become agents of transformation and work towards a better future for generations to come.</p>
+        </div>
+        <div className="mt-30">
+          <p className='font-[500] text-[1.25rem] md:text-[2.25rem] text-center'>Check out other Projects</p>
+        <ReusableComponent filter={'sdgart'}/>
         </div>
         </div>
     )
