@@ -16,7 +16,7 @@ const Dashboardcontainer = () => {
   const navigate = useNavigate()
     if(!isAuth){
       navigate('/')
-      console.log("redirecting")
+      //("redirecting")
     }
 
 

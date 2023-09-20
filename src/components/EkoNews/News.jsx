@@ -22,7 +22,7 @@ const get_news =  () => {
         setLoading(false)
     })
     .catch((err) => {
-        console.log(err)
+        //(err)
         setNews([])
         setLoading(false)
     })

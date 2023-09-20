@@ -13,14 +13,14 @@ const TalesOfTheWeek = () => {
   const gettale = () => {
     instance.get('/services/tale_of_the_week')
     .then((res) => {
-      console.log(res, "tales")
+      //(res, "tales")
       setTale(res.data.data[res.data.data.length - 1]);
       setLoading(false);
     })
     .catch((err) => {
       setError(err.response);
       setLoading(false);
-      console.log(err);
+      //(err);
     })
   }
   const navigate = useNavigate()

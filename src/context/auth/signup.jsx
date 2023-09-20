@@ -27,8 +27,8 @@ export const SignUpProvider = ( { children }) => {
         setIsloading(true)
         signUp(data)
         .then((res) => {
-            console.log(res.data)
-            console.log("signingup")
+            //(res.data)
+            //("signingup")
             setaccountSuccessfullycreatedModal(!accountSuccessfullycreatedModal)
             setIsloading(false)
             setsucess(true);

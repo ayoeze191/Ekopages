@@ -7,26 +7,26 @@ import { billing_sent,
 
 
 export const create_billings = (data, isAuth) => (dispatch) => {
-    console.log("creating billings")
+    //("creating billings")
     dispatch(sending_bill())
     if(isAuth.isAuth){
         instance.patch("billing-details/billing-details-update/", data, tokenConfig())
         .then(res => {
-        console.log(res, "billing sent")
+        //(res, "billing sent")
         dispatch(billing_sent())
     })
     .catch((error) => {
-        console.log("billing_details")
-        console.log(error)
+        //("billing_details")
+        //(error)
     })}
     else{
         instance.post(`unregistered-billing-details/create-billing-details/address/${isAuth.session_id}/`, data, VisitorTokenConfig())
         .then((res) => {
-            console.log(res.data)
+            //(res.data)
             dispatch(billing_sent())
         })
         .catch((err) => {
-            console.log(err, "biling _error")
+            //(err, "biling _error")
             dispatch(billing_error())
         })
     }    

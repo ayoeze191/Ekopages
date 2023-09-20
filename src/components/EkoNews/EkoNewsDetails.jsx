@@ -3,7 +3,7 @@ import Otherinteresting from './otherInteresting/Otherinteresting'
 import { useLocation } from 'react-router-dom'
 const EkoNewsDetails = () => {
     const {state} = useLocation()
-    console.log(state)
+    //(state)
   return (
     <div className='font-lato'>
     <p className=' py-4 mx-auto h-fit px-7 rounded-md text-[1.5rem] md:text-[3rem] font-[700] h-[10.625rem] text-center '>{state.title}</p>

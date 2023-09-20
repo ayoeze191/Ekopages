@@ -10,7 +10,7 @@ const Side_bar = ({show, sideFunc}) => {
   const {isAuth, user, logout, setloginMode} = useAuthContext()
 
   const LogOut = () => {
-    console.log("logging out")
+    //("logging out")
     logout()
   }
 

@@ -42,13 +42,13 @@ const Approved = () => {
         // setLoading(true)
         instance.get('history/completed/', tokenConfig())
         .then(res => {
-            // console.log(res.data.data.completed)
+            // //(res.data.data.completed)
             setLoading(false)
             setOrders(res.data.data.completed)
         })
         .catch((err) => {
             setLoading(false)
-            console.log(err)
+            //(err)
         })
     }
     

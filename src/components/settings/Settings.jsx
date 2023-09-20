@@ -21,14 +21,14 @@ const Settings = () => {
     const dispatch = useDispatch()
     const [userprofile, setUserprofile] = useState(profile_pics)
     const handle__profile_picture = (Picture) => {
-        // console.log(Picture)
+        // //(Picture)
         change_profile_pics(Picture)
         finish()
     }
     const finish = () => {
         setUserprofile(profile_pics)
     }
-    // console.log(userprofile)
+    // //(userprofile)
 
     const formik = useFormik({
         initialValues: {
@@ -44,7 +44,7 @@ const Settings = () => {
             dispatch(setPAssword(data))
         }
     })
-    // console.log(userprofile)
+    // //(userprofile)
 
   return (
     <div className='px-[1.5rem] md:px-[3.625rem] py-[3rem] w-full md:border-solid md:border-[#CDCDCD] md:border-[1px] md:border-l-none h-[100%] flex flex-col font-lato'>

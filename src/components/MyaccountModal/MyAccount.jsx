@@ -42,7 +42,7 @@ const NavItem = ({logo, name, path}) => {
 
 const MyAccount = () => {
     const {user} = useAuthContext()
-    console.log(user)
+    //(user)
   return (
     <div className='block md:hidden px-[20px] mb-[56px]'>
         <p className='bg-[#5A0C91] font-[700] text-[1.5rem] font-lato w-full flex justify-center text-[white] py-[20px]'>My Account</p>

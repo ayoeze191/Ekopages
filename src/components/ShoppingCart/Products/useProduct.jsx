@@ -13,13 +13,13 @@ const useProduct = (id) => {
     const get__product = () => {
             instance.get(`store/product_detail/${id}`)
             .then((res) => {
-                console.log("product success")
-                // console.log(res.data)
+                //("product success")
+                // //(res.data)
                 setProduct(res.data)
                 setloading(false)
             })
             .catch((err) => {
-                console.log(err, "product error")
+                //(err, "product error")
                 setloading(false)
             })
         // }  

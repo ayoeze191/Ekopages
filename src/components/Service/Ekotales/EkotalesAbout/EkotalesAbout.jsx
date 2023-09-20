@@ -15,13 +15,13 @@ const EkotalesAbout = () => {
         setLoading(true)
         instance.get('/services/tales')
         .then((res) => {
-        console.log(res, "all tales")
+        //(res, "all tales")
         setLoading(false)
-        console.log(res.data)
+        //(res.data)
         })
     .catch((err) => {  
         setLoading(false)
-        console.log(err.response)
+        //(err.response)
     })
 }
 

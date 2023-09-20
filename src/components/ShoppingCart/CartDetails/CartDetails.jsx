@@ -25,7 +25,7 @@ const CartDetails = () => {
   const {isAuth, user} = useAuthContext()
   const dispatch = useDispatch()
   
-  console.log(isAuth)
+  //(isAuth)
 
   
 
@@ -44,13 +44,13 @@ const CartDetails = () => {
     if(isAuth) {
       instance.post('/cart_payment/payment/', data, tokenConfig())
     .then((res) => {
-      console.log(res)
+      //(res)
       setPayment({error:false, sucess:true,loading: false})
       dispatch(clear_cart(authVerification))
       window.location.assign(res.data.data.data.authorization_url);
     })   
     .catch((err) => {
-      console.log(err)
+      //(err)
       setPayment({sucess:false, error:true, loading: false})
     })
     }
@@ -71,12 +71,12 @@ const CartDetails = () => {
     instance.get('/billing-details/billing-details/', tokenConfig())
     .then((res) => {
       setinitialbillingDetails(res.data.data)
-      console.log(res.data.data, "getting billing details")
+      //(res.data.data, "getting billing details")
       
     })
     .catch((err) => {
       setinitialbillingDetails(null)
-      console.log(err, "getting error for billing details")
+      //(err, "getting error for billing details")
     })
   }
 
@@ -99,7 +99,7 @@ const [Locations, setLocations] = useState([])
         setLocations(res.data.data)
     })
     .catch((err) => {
-        console.log(err, "billing Location error")
+        //(err, "billing Location error")
     })
 }
 
@@ -121,7 +121,7 @@ const Totalfunc = () => {
 
 useEffect(() => {
     Totalfunc()
-    console.log(initialbillingDetails, "checking")
+    //(initialbillingDetails, "checking")
 }, )
 
 

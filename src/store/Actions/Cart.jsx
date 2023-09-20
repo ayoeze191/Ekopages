@@ -24,22 +24,22 @@ export const get_cart = (isauth) => (dispatch) => {
         dispatch(getting_Cart())
         instance.get('cart/list/', tokenConfig())
         .then((res) => {
-            console.log(res.data, "get cart")
+            //(res.data, "get cart")
             dispatch(getCart(res.data))
         })
         .catch((err) => {
-            console.log(err, "error wa ni cart waooo")
+            //(err, "error wa ni cart waooo")
         })
     }
     else {
         dispatch(getting_Cart())
         instance.get(`unregistered-cart/list/${isauth.session_id}/`, VisitorTokenConfig())
         .then((res) => {
-            console.log(res.data.data.list, "get unregisteredcart")
+            //(res.data.data.list, "get unregisteredcart")
             dispatch(getCart(res.data.data.list))
         })
         .catch((err) => {
-            // console.log(err, "error tiwaoo")
+            // //(err, "error tiwaoo")
         })
         }
 }
@@ -58,8 +58,8 @@ export const Add_to_cart = (id, isauth) => (dispatch) => {
         setTimeout(() => dispatch(clear_cart_success()), 2000)
     })
     .catch((err) => {
-        // console.log("Adding failed")
-        // console.log(err)
+        // //("Adding failed")
+        // //(err)
         if(err.response.data.message == "item already in cart"){
             toast.info("item already in cart")
         }
@@ -72,14 +72,14 @@ export const Add_to_cart = (id, isauth) => (dispatch) => {
         dispatch(adding__to__Cart(id))
         instance.post(`unregistered-cart/create/${isauth.session_id}/`, data, VisitorTokenConfig())
         .then(res => {
-            // console.log("unregistereradded")
-            console.log(res)
+            // //("unregistereradded")
+            //(res)
             dispatch(added_to_cart())
             toast.success("Sucessfully added to cart")
         })
         .catch((err) => {
-            // console.log("Adding failed")
-            // console.log(err)    
+            // //("Adding failed")
+            // //(err)    
             if(err.response.data.message == "item already in cart"){
                 toast.info("item already in cart")
             }
@@ -94,19 +94,19 @@ export const update_cart_items = (id, quantity, isauth, type) => (dispatch, getS
     let present_cart = getState().cart.cart
     present_cart = present_cart.map(cart => cart.id === id? {...cart, quantity:quantity}:{...cart})
     dispatch(updating_cart(type))
-    console.log("updating level 2", id)
+    //("updating level 2", id)
     
     const data = {quantity}
     if(isauth.isAuth){
     const url = `cart/cart-item/${id}/`
     instance.patch(url, data, tokenConfig())
     .then((res) => {
-        console.log("updated cartitem", res)
+        //("updated cartitem", res)
         dispatch(update_cart(present_cart))
         toast.success("sucessfully updated")
     })
     .catch((err) => {
-        // console.log(err)
+        // //(err)
         dispatch(update_cart(present_cart))
 
         toast.info("Update failed")
@@ -119,8 +119,8 @@ export const update_cart_items = (id, quantity, isauth, type) => (dispatch, getS
             toast.success("sucessfully updated")
         })
         .catch((err) => {
-            console.log(err, "update failed")
-            console.log(err.response)
+            //(err, "update failed")
+            //(err.response)
             toast.info("Update failed")
         })
     }
@@ -131,27 +131,27 @@ export const update_cart_items = (id, quantity, isauth, type) => (dispatch, getS
 
 
 export const get_cart_total = (isauth) => (dispatch) => {
-    // console.log("getTotalauth", isauth)
+    // //("getTotalauth", isauth)
     dispatch(getting_total())
     if(isauth.isAuth) {
         instance.get('cart/total/', tokenConfig())
         .then((res) => {
-            console.log(res, "getting")
+            //(res, "getting")
             dispatch(get_total(res.data.data.total))
-            console.log(res.data.data.total)
+            //(res.data.data.total)
         })
         .catch(err => {
-            console.log(err)
+            //(err)
         } )
     }
     else {
         instance.get(`unregistered-cart/total/${isauth.session_id}/`, VisitorTokenConfig())
         .then((res) => {
-            console.log(res, "unregistered")
+            //(res, "unregistered")
             dispatch(get_total(res.data.data.total))
         })
         .catch(err => {
-            console.log(err)
+            //(err)
         } )
     }
 }
@@ -160,20 +160,20 @@ export const get_cart_total = (isauth) => (dispatch) => {
 
 export const delete_item = (cartId, isauth) => (dispatch, getState) => {
     let present_cart = getState().cart.cart
-    console.log(present_cart)
+    //(present_cart)
     present_cart = present_cart.map(prod => prod.id !== cartId&&prod)
     
     if(isauth.isAuth){
     instance.delete(`cart/cart-item/${cartId}/`, tokenConfig())
     .then((res) => {
-        console.log(res)
-        console.log("sucessfully deleted")
+        //(res)
+        //("sucessfully deleted")
         dispatch(delete_cart_item(present_cart))
         toast.success("sucessfully deleted")
     })
     .catch((err) => {
-        console.log(err)
-        console.log("deleting failed")
+        //(err)
+        //("deleting failed")
         toast.info("deleting failed")
     })
     }
@@ -181,15 +181,15 @@ export const delete_item = (cartId, isauth) => (dispatch, getState) => {
     else {
         instance.delete(`unregistered-cart/cart-item/${isauth.session_id}/${cartId}/`, VisitorTokenConfig())
         .then((res) => {
-        console.log("sucessfully deleted")
+        //("sucessfully deleted")
             dispatch(delete_cart_item(present_cart)) 
             toast.success("sucessfully updated")
         })
         .catch((err) => {
-            console.log(err, "update failed")
-            console.log(err.response)
+            //(err, "update failed")
+            //(err.response)
             toast.info("Update failed")
-            console.log("deleting failed")
+            //("deleting failed")
         })
     }
 }
@@ -203,13 +203,13 @@ export const clear_cart = (isauth) => (dispatch, getState) => {
     if(isauth.isAuth){
     instance.get(`/checkout/cart/checkout/`, tokenConfig())
     .then((res) => {
-        console.log(res)
-        console.log("cleared")
+        //(res)
+        //("cleared")
         dispatch(update_cart([]))
     })
     .catch((err) => {
-        console.log(err)
-        console.log("deleting failed")
+        //(err)
+        //("deleting failed")
         toast.info("deleting failed")
     })
     }
@@ -217,13 +217,13 @@ export const clear_cart = (isauth) => (dispatch, getState) => {
     else {
         instance.delete(`/checkout/cart/checkout/`, VisitorTokenConfig())
         .then((res) => {
-        console.log(res)
-        console.log("cleared")
+        //(res)
+        //("cleared")
         dispatch(update_cart([]))
     })
     .catch((err) => {
-        console.log(err)
-        console.log("deleting failed")
+        //(err)
+        //("deleting failed")
         toast.info("deleting failed")
     })
     }

@@ -36,7 +36,7 @@ const BookProductDetail = ({id, qty, cartit}) => {
 
 
     const update_cart = (type, initialVal) => {
-        console.log("updating ")
+        //("updating ")
         let quantity = initialVal
         if(type === "add"){
             quantity = quantity + 1

@@ -24,12 +24,12 @@ const VerifyEmail = () => {
 
       instance.post("registration/verify-email/", {key: token})
       .then((res) => {
-        console.log(res.data)
+        //(res.data)
         setIsloading(false)
         seSuccess(true)
       })
       .catch((err) => {
-        console.log("error", err.response)
+        //("error", err.response)
         setIsloading(false)
         setFailed("Couldnt Verify Your email")
       })

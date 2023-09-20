@@ -38,7 +38,7 @@ export const AuthProvider = ( { children }) => {
     // const [loginModal, setLoginModal] = useState(false)
     const [auth, setisAuth] = useState(localStorage.getItem('eko_access')?true:false)
     const [profpics, setProfpics] = useState(JSON.parse(localStorage.getItem("eko_user"))?JSON.parse(localStorage.getItem("eko_user"))['profile_picture']:null)
-    console.log("initial profpics", profpics)
+    //("initial profpics", profpics)
     const ChangeLoginModalMode = () => {
         setLoginModal(!loginModal)
     }
@@ -47,17 +47,17 @@ export const AuthProvider = ( { children }) => {
 
     
     const changeProfilePics = (picture) => {
-      console.log("changing profile pics")
+      //("changing profile pics")
       instance.put("auth/user/", {profile_picture: picture} ,imageConfig())
       
       .then((res) => {
-      console.log("profile pics changed", res)
+      //("profile pics changed", res)
       setProfpics(res.data.profile_picture)
       localStorage.setItem('eko_user', JSON.stringify(res.data))
       })
       .catch(err => {
-        console.log("unable to change ")
-          console.log(err)
+        //("unable to change ")
+          //(err)
       })
     }
 
@@ -67,7 +67,7 @@ export const AuthProvider = ( { children }) => {
       setIsloading(true)
       loginUser(details)
         .then((res) => {
-          console.log(res.data)
+          //(res.data)
           setsucess(true);
           setError(null);
           localStorage.setItem('exp', res.data.access_token_expiration)
@@ -84,7 +84,7 @@ export const AuthProvider = ( { children }) => {
       })
       .catch((err) => {
         setisAuth(false)
-        console.log({err}, "logging in error")
+        //({err}, "logging in error")
           setIsloading(true)
           setIsloading(false)
           setsucess(false);
@@ -101,7 +101,7 @@ export const AuthProvider = ( { children }) => {
     const logout = () => {
       logoutUser()
       .then((res) => {
-        console.log(res)
+        //(res)
         localStorage.removeItem('eko_access')
         localStorage.removeItem('eko_refresh')
         localStorage.removeItem('eko_user')
@@ -110,25 +110,25 @@ export const AuthProvider = ( { children }) => {
         toast.info("Logged out")
       })
       .catch((err) => {
-        console.log(err)
+        //(err)
       })
     }
 
     const RefreshToken = () => {
         const exp = new Date(localStorage.getItem('exp'))
         const presentDate = new Date()
-        console.log({"exp":exp}, {"presentDate": presentDate})
-        console.log(exp >= presentDate, "checking for expiration date")
+        //({"exp":exp}, {"presentDate": presentDate})
+        //(exp >= presentDate, "checking for expiration date")
         if(presentDate >= exp){
         refreshToken()
         .then((res) => {
-          console.log(res, "refresshing token")
+          //(res, "refresshing token")
           localStorage.setItem('exp', res.data.access_token_expiration)
           localStorage.setItem('eko_access', res.data.access)
           setisAuth(true)
         })
         .catch((err) => {
-          console.log(err, "error refreshing token")
+          //(err, "error refreshing token")
         })
         }
 

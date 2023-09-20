@@ -19,7 +19,7 @@ const PendingProducts = () => {
 
     const cart = useSelector(state => state.cart)
     const dispatch = useDispatch()
-    console.log(cart)
+    //(cart)
 
   useEffect(() => {
     dispatch(get_cart({
@@ -27,7 +27,7 @@ const PendingProducts = () => {
       session_id: cookie
   }))
   }, [])
-  console.log(cart.cart)
+  //(cart.cart)
 
   return (
     <div

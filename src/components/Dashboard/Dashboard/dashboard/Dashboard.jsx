@@ -8,7 +8,7 @@ import clarity_certificate_line from "./../../../../assets/dashboard/clarity_cer
 import { useAuthContext } from '../../../../context/auth/auth';
 const Dashboard = () => {
   const {user} = useAuthContext()
-  // console.log(user)
+  // //(user)
   return (
     <div  className='px-[1.5rem] md:px-[3.625rem] py-[3rem] flex-1 border-solid border-[#CDCDCD] border-[1px] border-l-none h-[100%] flex flex-col'>
         <div className='flex md:justify-between py-0 mb-[1rem] md:mb-[71px] item-center'><p className='font-lato text-[20px] md:text-[2rem] font-[700] md:font-[500] text-center flex-1 md:flex-0'>Welcome back, {user.username}</p> <div><img src={bell} alt="" srcset="" /></div></div>

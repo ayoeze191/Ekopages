@@ -38,13 +38,13 @@ const Product = ({id, qty, cartit}) => {
         dispatch(delete_item(cartit, authVerification))
     }
 
-    console.log(cartit)
+    //(cartit)
 
     const update_cart = (type, initialVal) => {
 
         
 
-        console.log("updating ")
+        //("updating ")
         let quantity = initialVal
         if(type === "add"){
             quantity = quantity + 1

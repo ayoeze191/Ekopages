@@ -36,7 +36,7 @@ function App() {
 
 
 
-  console.log(cookies.eko__session_id)
+  //(cookies.eko__session_id)
   const sidebarHandler = () => {
     setSide(!side) 
   }
@@ -50,7 +50,7 @@ function App() {
     setCookieContext()
   }
 
-  console.log(cookies, "app")
+  //(cookies, "app")
   
   const {partnerModal, setpartnerModal, stayIntouchModal, setstayIntouchModal} = useModalContext()
   return (

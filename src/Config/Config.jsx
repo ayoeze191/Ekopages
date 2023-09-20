@@ -1,7 +1,7 @@
 import axios from "axios"
 
   export const tokenConfig = () => {
-  // console.log(localStorage.getItem('access'), "access token")
+  // //(localStorage.getItem('access'), "access token")
   const access = localStorage.getItem('eko_access')? localStorage.getItem('eko_access'):null
     const config = {
       headers: {
@@ -12,7 +12,7 @@ import axios from "axios"
     if(access !== null){
     config.headers["Authorization"] = `Bearer ${access}`;
     }
-    // console.log(config)
+    // //(config)
     return config;
   }
 

@@ -49,7 +49,7 @@ const handleError = (error) => {
   }
 }
 
-console.log(formik.touched)
+//(formik.touched)
 
 
     return (

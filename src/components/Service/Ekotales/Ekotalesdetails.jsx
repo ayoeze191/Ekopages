@@ -11,19 +11,19 @@ const EkoTalesDetails = () => {
   const [showSmall, setShowsmall] = useState(true)
   const {id} = useParams()
 
-  console.log(id)
+  //(id)
 
   const gettale = () => {
     instance.get(`/services/read/${id}/`)
     .then((res) => {
-      console.log(res.data.data, "tales")
+      //(res.data.data, "tales")
       setTale(res.data.data);
       setLoading(false);
     })
     .catch((err) => {
       setError(err.response);
       setLoading(false);
-      console.log(err);
+      //(err);
     })
   }
 

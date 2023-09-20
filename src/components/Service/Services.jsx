@@ -6,6 +6,8 @@ import ekotales from "./../../assets/Service/ekotales.png"
 import SDG_Literacy_drive from "./../../assets/Service/SDG_Literacy_drive.png"
 import material_symbols_library_books_outline from "./../../assets/Service/material_symbols_library_books_outline.png"
 import gis_story_map from "./../../assets/Service/gis_story_map.png"
+import publisher from "./../../assets/Service/publisher.jpeg"
+import publishing from "./../../assets/Service/publishing.jpeg"
 
 
 export const service = [
@@ -31,12 +33,12 @@ export const service = [
         smallimg: material_symbols_library_books_outline
     },
     {
-        img: SDG_Literacy_drive, 
-        h: "SDG Literacy Drive",
-        p: "This is a social initiative created to educate the African child on the SDGs using literature and other fun channels.",
-        button: "Learn more",
+        img: publishing, 
+        h: "Be a Publisher",
+        p: "Publish your SDG-themed books and courses for children and educators on our platform and start earning.",
+        button: "coming soon",
         imagefirst: true,
-        btntext: "learn more",
+        btntext: "coming soon",
         bg: "#B6E0FF",
         smallimg: material_symbols_library_books_outline
     },

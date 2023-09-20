@@ -17,7 +17,7 @@ const Productdetails = () => {
   const {isAuth} = useAuthContext()
   const {cookie} = useContext(cookieContext)
   const [presentId, setpresentId] = useState(null)
-  // console.log(, "sas")
+  // //(, "sas")
   useEffect(() => {
     const authVerification = {
       isAuth,

@@ -12,7 +12,7 @@ export const profile = (picture) => (dispatch) => {
         
     })
     .catch(err => {
-        console.log(err)
+        //(err)
     })
 }
 
@@ -23,16 +23,16 @@ export const profile = (picture) => (dispatch) => {
 
 
 export const setPAssword = ( data ) => (dispatch) => {
-    console.log("resetting")
+    //("resetting")
     dispatch(reseting_password())
     instance.post("auth/password/change/", data, tokenConfig())
     .then((res) => {
-        console.log(res, "reseted")
+        //(res, "reseted")
         dispatch(password_reset(res.data.detail))
     })
     .catch((err) => {
         dispatch(password_reset_failed(err.response.data))
-        console.log(err, "error in resetting")
+        //(err, "error in resetting")
     })
 }
 

@@ -10,7 +10,7 @@ export default instance
 instance.interceptors.request.use(function (config) {
     const refresh = localStorage.getItem('eko_refresh')
     const exp = new Date(localStorage.getItem('exp'))
-    console.log(exp)
+    //(exp)
     const presentDate = new Date()
     if(presentDate > exp && refresh) {
       const token = refresh_token(refresh)
@@ -28,7 +28,7 @@ instance.interceptors.request.use(function (config) {
   const refresh_token = (refresh) => {
     axios.post('https://ekopages-production.up.railway.app/auth/token/refresh/', {refresh})
         .then((res) => {
-            console.log(res)
+            //(res)
             localStorage.setItem('exp', res.data.access_token_expiration)
             localStorage.setItem('eko_access', res.data.access)
             return res.data.access
@@ -42,7 +42,7 @@ instance.interceptors.request.use(function (config) {
               localStorage.removeItem('eko_user')
               localStorage.removeItem('exp')
 }
-            console.log(err, "error refreshing token")
+            //(err, "error refreshing token")
             return;
           })
   }
