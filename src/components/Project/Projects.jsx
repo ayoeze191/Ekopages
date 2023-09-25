@@ -8,7 +8,7 @@ export const  projects = [
     {   path: "sdg",
         img: first, 
         h1: "SDG Literacy Drive", 
-        p: "Queen College, Lagos"
+        // p: "Queen College, Lagos"
     }, 
     {
         img: sdgart, 

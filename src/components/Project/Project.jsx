@@ -17,9 +17,9 @@ const Project = ({img, h1, p, path}) => {
         <h1 className='font-lato font-[700] text-[24px]'>
             {h1}
         </h1>
-        <p className='font-[400]  mb-[2.5rem] text-[1rem]'>
+        {/* <p className='font-[400]  mb-[2.5rem] text-[1rem]'>
             {p}
-        </p>
+        </p> */}
         </div>
         <Link className='flex items-center gap-[0.7rem]' to={path}>
             <p className='text-[1rem] font-[700] text-[#4A4A4A]'>View Project</p><div><img src={arrow} alt="" />

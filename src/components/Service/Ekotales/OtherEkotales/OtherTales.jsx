@@ -20,7 +20,7 @@ const Tales = ({image, title, date_created, id}) => {
     const navigate = useNavigate()
 
     return (
-        <Link className='flex flex-col w-full h-full' to={`/services/ekotales/details/${id}`}>
+        <div className='flex flex-col w-full h-full cursor-pointer'  onClick={() =>navigate(`/services/ekotales/details/${id}`, {replace: true})}>
             <div className='mt-[24px] mb-[8px]'>
                 <img src={image} className='w-[280px] h-[220px] md:w-[350px] md:h-[300px]'/> 
             </div>
@@ -32,7 +32,7 @@ const Tales = ({image, title, date_created, id}) => {
                 {date_created}
                 </p>
             </div>
-        </Link>
+        </div>
     )
 }
 
@@ -47,7 +47,6 @@ const OtherTales = () => {
             setAlltales(res.data.data)
         })
     }
-
     useEffect(() => {
         get_tales()
     }, [])
@@ -55,16 +54,15 @@ const OtherTales = () => {
   return (
     <div className='w-full h-full mb-[86px] relative overflow-x-hidden'>
         <p className='mx-auto font-[500] text-[24px] md:text-[36px] md:leading-[43.2px] font-lato text-center'>Check out other Eko tales</p>
-        <div className='w-full h-full'>
+        <div className='w-full h-full ] overflow-hidden' >
             <Swiper 
             modules={[Navigation]}
-            slidesPerView={1}
-            spaceBetween= {10}
-            navigation={true}
+            slidesPerView={2}
+            spaceBetween= {0}
+            // navigation={true}
             autoplay = {{pauseOnMouseEnter: false}}
             loop={true}
             breakpoints={{
-                
             640: {
                 slidesPerView: 3,
                 spaceBetween: 20
