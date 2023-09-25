@@ -2,6 +2,10 @@ import { MeetTeamCard } from "./teamCard"
 import images1 from "./../../assets/about/images1.png"
 import images2 from "./../../assets/about/images2.png"
 import {Swiper, SwiperSlide} from "swiper/react"
+import 'swiper/css/navigation';
+import 'swiper/css/pagination';
+import SwiperCore, { Navigation, Pagination, Scrollbar, A11y, Autoplay } from 'swiper';
+SwiperCore.use([Navigation, Pagination, Scrollbar, A11y, Autoplay])
 const teamDetails = [
 
     {
@@ -46,7 +50,6 @@ export const MeetTeam = () => {
                 <Swiper className=" gap-5 mx-auto w-full px-0 mt-10 grid grid-cols-2  lg:flex lg:flex-row justify-between" data-aos="zoom-out-up"
                 slidesPerView={1}
                 spaceBetween= {10.5}
-                
                 autoplay = {{pauseOnMouseEnter: true}}
                 loop={true}
                 breakpoints={{

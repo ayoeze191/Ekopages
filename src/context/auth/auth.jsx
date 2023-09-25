@@ -130,9 +130,7 @@ export const AuthProvider = ( { children }) => {
         .catch((err) => {
           //(err, "error refreshing token")
         })
-        }
-
-        
+        }   
     }
 
     return (

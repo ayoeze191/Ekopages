@@ -33,7 +33,7 @@ const TalesOfTheWeek = () => {
   return (loading? 
   <div className='h-[30vh] mx-auto flex flex-col justify-center items-center'> <ClipLoader /></div>:
     <div className='font-lato max-w-5xl mx-auto flex- flex-col items-center mt-[7.3125rem] px-6 lg:px-0'>
-        <div className='flex flex-col gap-[2rem] text-[#232323] flex  items-center mb-[2rem]'>
+        <div className='flex flex-col gap-[2rem] text-[#232323] items-center mb-[2rem]'>
             <p className='font-[700] text-[1.7rem] md:text-[3rem] font-lato'>{tale.title}</p>
             <div><img src={tale.image} alt="" /></div>
         </div>

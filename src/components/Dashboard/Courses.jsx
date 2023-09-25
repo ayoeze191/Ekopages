@@ -1,6 +1,7 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import Course from './Course'
-
+import instance from '../../axios'
+import { tokenConfig } from '../../Config/Config'
 
 
 const courseDetails = [
@@ -26,6 +27,21 @@ const courseDetails = [
 
 
 const Courses = () => {
+    const getCourse = () => {
+        instance.get('/services/all_courses/', tokenConfig())
+        .then((res) => {
+          console.log(res)
+        })
+        .catch((err) => {
+          console.log(err)
+        })
+      }
+    
+
+    useEffect(() => {
+        getCourse()
+    }, [])
+
   return (
     <div className='flex flex-col md:flex-row justify-between w-full gap-[2rem]'>
         {courseDetails.map(course => <Course {...course} />)}
