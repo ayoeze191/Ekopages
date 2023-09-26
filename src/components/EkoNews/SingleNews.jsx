@@ -38,7 +38,7 @@ const navigate = useNavigate()
 
 
         <div className=''>
-            <img src={image}  alt="" className='h-[210px] md:h-[306px] md:w-[655px]'/>
+            <img src={image}  alt="" className='h-[210px] w-full md:h-[306px] md:w-[655px]'/>
         </div>
     </div>
   )

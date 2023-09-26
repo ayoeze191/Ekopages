@@ -23,8 +23,8 @@ const get_news =  () => {
       setLoading(false)
   })
 }
-  
-  
+
+
 useEffect(() => {
   get_news()
 }, [])

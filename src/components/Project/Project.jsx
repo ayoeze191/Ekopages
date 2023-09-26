@@ -11,7 +11,7 @@ const Project = ({img, h1, p, path}) => {
     <div className='flex flex-col font-lato w-full '>
         <div className='mb-[1.5rem] w-full h-[300px] relative object-contain'>
             {!loaded?<Shimmer />:null}
-            <img src={img} className='h-full ' onLoad={() => setLoaded(true)}/>
+            <img src={img} className='h-full w-full' onLoad={() => setLoaded(true)}/>
         </div>
         <div className='flex flex-col gap-[0.5rem] mb-2.5rem'>
         <h1 className='font-lato font-[700] text-[24px]'>
