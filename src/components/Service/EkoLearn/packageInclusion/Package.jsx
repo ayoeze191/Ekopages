@@ -1,6 +1,26 @@
 import React from 'react'
+import { useAuthContext } from '../../../../context/auth/auth'
+import { useNavigate } from 'react-router-dom'
+import instance from '../../../../axios'
+import {tokenConfig} from "./../../../../Config/Config"
 
-const Package = ({image, title, text, btnValue}) => {
+
+const Package = ({image, title, text, btnValue, link, mode}) => {
+  const {isAuth} = useAuthContext()
+  const navigate = useNavigate()
+
+  const runOnMount = () => {
+    instance.get('/dashboard-payment/payment/verify/', tokenConfig())
+  } 
+
+  const onClickHandler = () => {
+    if(mode == "free" && isAuth ) {
+      navigate(`/dashboard/${link}`) 
+    }
+    // if(mode == "paid" && isAuth) 
+  }
+
+
   return (
     <div className='flex font-lato gap-[1rem] flex-col'>
         <div> <img src={image} alt="" srcset="" /> </div>

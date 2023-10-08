@@ -10,13 +10,12 @@ import { RxDashboard } from "react-icons/rx"
 import {TbCertificate} from "react-icons/tb"
 import { useLocation } from 'react-router-dom';
 import { useAuthContext } from '../../../context/auth/auth';
-
+import {BsBookshelf} from "react-icons/bs"
 
 
 
 const Sidebar = () => {
   const loc = useLocation()
-  const {logout} = useAuthContext()
 
 
 
@@ -25,31 +24,36 @@ const sidedetails = [
     img: <RxDashboard />,
     url: '',
     text: "Dashboard",
-    check : loc.pathname=="/dashboard"?true:false
+    check : loc.pathname === "/dashboard"?true:false
   },
   {
     img: <TbCertificate />,
     url: 'MyCourses',
     text: "My Courses",
-    check : loc.pathname=="/dashboard/MyCourses"?true:false
+    check : loc.pathname ==="/dashboard/MyCourses"?true:false
+  },
+  {
+    img: <BsBookshelf />,
+    url: 'books',
+    text: "Books",
+    check : loc.pathname === "/dashboard/books"?true:false
   },
   {
     img: <AiOutlineShoppingCart />,
     url: 'orders',
     text: "My Orders",
-    check : loc.pathname=="/dashboard/orders"?true:false
+    check : loc.pathname === "/dashboard/orders"?true:false
   },
   {
     img: <FiSettings />,
     url: 'settings',
     text: "Settings",
-    check : loc.pathname=="/dashboard/settings"?true:false
+    check : loc.pathname === "/dashboard/settings"?true:false
   },
+  
 ]
 
-//(loc.pathname)
-  // const loc = useLocation()
-  // //()
+
   return (
     <div className='hidden md:flex flex-col gap-[2.5rem] py-[2.5rem] border-r-solid border-[#CDCDCD] border-r-[1px] border-t-[solid] border-t-[1px] w-full h-full'>
         {sidedetails.map((item) => <SideItem {...item}/>)}

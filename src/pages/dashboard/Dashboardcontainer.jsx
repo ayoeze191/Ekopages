@@ -10,6 +10,7 @@ import MyAccount from '../../components/MyaccountModal/MyAccount'
 import Settings from '../../components/settings/Settings'
 import Sidebar from './sidebar/Sidebar'
 import { useAuthContext } from '../../context/auth/auth'
+import { Books } from '../../components/Dashboard/Dashboard/dashboard/Books'
 
 const Dashboardcontainer = () => {
   const {isAuth} = useAuthContext()
@@ -31,7 +32,9 @@ const Dashboardcontainer = () => {
         <Route element={<Settings />} path="/settings" />
         <Route element={<OrderContainer />} path='/orders/*' />
         <Route element={<CourseDetails />} path = {"/course/:id"} />
-        <Route element={<MyAccount />} path="/account" />         </Routes>
+        <Route element={<MyAccount />} path="/account" />
+        <Route element={<Books/>} path='/books' />
+        </Routes>
         </div>
     </div>
   )

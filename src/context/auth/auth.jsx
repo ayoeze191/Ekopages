@@ -67,7 +67,7 @@ export const AuthProvider = ( { children }) => {
       setIsloading(true)
       loginUser(details)
         .then((res) => {
-          //(res.data)
+          // console.log(res)
           setsucess(true);
           setError(null);
           localStorage.setItem('exp', res.data.access_token_expiration)

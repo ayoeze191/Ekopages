@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react'
+import React, { useEffect, useState } from 'react'
 import Course from './Course'
 import instance from '../../axios'
 import { tokenConfig } from '../../Config/Config'
@@ -6,19 +6,19 @@ import { tokenConfig } from '../../Config/Config'
 
 const courseDetails = [
     {
-        title: "Introduction to SDGs",
+      subject: "Introduction to SDGs",
         moduleLevel: "Module 5 of 12",
         completionLevel: "65%",
         timeleft: "5h 12m left",
     },
     {
-        title: "History of SDGs",
+      subject: "History of SDGs",
         moduleLevel: "Module 5 of 12",
         completionLevel: "42%",
         timeleft: "7h 31m left",
     },
     {
-        title: "History of SDGs",
+      subject: "History of SDGs",
         moduleLevel: "Module 5 of 12",
         completionLevel: "42%",
         timeleft: "7h 31m left",
@@ -27,10 +27,11 @@ const courseDetails = [
 
 
 const Courses = () => {
+  const [courses, setCourses] = useState([])
     const getCourse = () => {
-        instance.get('/services/all_courses/', tokenConfig())
+        instance.get('/services/all_courses', tokenConfig())
         .then((res) => {
-          console.log(res)
+          setCourses(res.data.data)
         })
         .catch((err) => {
           console.log(err)

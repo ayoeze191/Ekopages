@@ -1,10 +1,10 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
 
-const Course = ({title, moduleLevel, completionLevel, timeleft, id}) => {
+const Course = ({subject, moduleLevel, completionLevel, timeleft, id}) => {
   return (
     <Link className='flex flex-col pt-[2rem] px-[1.5rem] pb-[2.3125rem] bg-[#DCDEF9] rounded-[5px] w-full font-lato' to={`/dashboard/course/${id}`}>
-        <p className='mb-[1rem] font-[500] text-[1.5rem]'>{title}</p>
+        <p className='mb-[1rem] font-[500] text-[1.5rem]'>{subject}</p>
         <p className='mb-[1rem] text-[12px] font-normal font-[500] text-[#4A4A4A]'>{moduleLevel}</p>
         <div className='mb-[2.5rem]'>
         <div className='flex justify-between mb-[0.5rem]'>

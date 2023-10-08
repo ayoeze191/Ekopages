@@ -6,22 +6,27 @@ import Package from './Package'
 
 const details = [
     {
+        link: "dashboard/courses",
+        mode :"free",
         image: clarity_certificate_line,
         title: "SDG COURSES",
         text: "Subscribe to our affordable school and group packages to access our books, courses, quizzes and games",
         btnValue: "See Courses"
     },
-    {
+    {   mode :"free",
         image: fluent_quiz_new_28_regular,
         title: "POP QUIZZES",
         text: "Subscribe to our affordable school and group packages to access our books, courses, quizzes and games",
         btnValue: "Take a Quiz",
+        link: "dashboard/courses",
     },
     {
+        mode :"paid",
         image: ph_books_light,
         title: "SDG THEMED BOOKS",
         text: "Subscribe to our affordable school and group packages to access our books, courses, quizzes and games",
         btnValue: "See Books",
+        link: "/dashboard/books"
     },
 ]
 

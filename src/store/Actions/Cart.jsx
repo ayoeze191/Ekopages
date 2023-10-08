@@ -214,7 +214,7 @@ export const clear_cart = (isauth) => (dispatch, getState) => {
     })
     }
 
-    else {
+    else { 
         instance.delete(`/checkout/cart/checkout/`, VisitorTokenConfig())
         .then((res) => {
         //(res)
