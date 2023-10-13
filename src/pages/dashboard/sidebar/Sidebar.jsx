@@ -39,6 +39,12 @@ const sidedetails = [
     check : loc.pathname === "/dashboard/books"?true:false
   },
   {
+    img: <BsBookshelf />,
+    url: 'quizes',
+    text: "quiz",
+    check : loc.pathname === "/dashboard/quiz"?true:false
+  },
+  {
     img: <AiOutlineShoppingCart />,
     url: 'orders',
     text: "My Orders",
@@ -50,7 +56,6 @@ const sidedetails = [
     text: "Settings",
     check : loc.pathname === "/dashboard/settings"?true:false
   },
-  
 ]
 
 
