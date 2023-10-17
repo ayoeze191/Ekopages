@@ -44,7 +44,7 @@ const teamDetails = [
         img: images1
     },
     {
-        'name': 'Ayomide Emmanuel Adewale',
+        'name': 'Ayomide Adewale',
         'post': 'Bankend Engineer',
         img: images1
     },
