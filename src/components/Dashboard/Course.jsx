@@ -15,8 +15,8 @@ const Course = ({ subject,
       .get(`/services/percent_complete/${id}/`, tokenConfig())
       .then((res) => {
         console.log(res, "cou");
-        
-        setPercent(res.data.data.completion_percentage);
+
+        setPercent(res.data.completion_percentage);
       })
       .catch((err) => {
         console.log(err);

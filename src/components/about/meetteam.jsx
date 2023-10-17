@@ -29,6 +29,16 @@ const teamDetails = [
         img: images1
     },
     {
+        'name': 'Oyinda Ahmed',
+        'post': 'Product Desginer/ Manager',
+        img: images1
+    },
+    {
+        'name': 'Lateefah Rufai',
+        'post': 'Product Desginer/ Manager',
+        img: images1
+    },
+    {
         'name': 'Olabode Ezekiel',
         'post': 'Frontend Developer',
         img: images1

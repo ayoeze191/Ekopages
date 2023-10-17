@@ -15,7 +15,7 @@ const CourseDetails = () => {
     const param = useParams()
     const [modules, setModules]= useState([]);
     const [moduleDetails, setmoduleDetails] = useState([])
-    const [current, setCurrent] = useState(2)
+    const [current, setCurrent] = useState(1)
     const get_modules = () => {
       console.log("working")
       instance.get(`services/study_all/${param.id}`, tokenConfig())

@@ -52,8 +52,6 @@ const Courses = () => {
         getCourse()
         console.log("working")
     }, [])
-    console.log(courses)
-
   return (
     <div className='flex flex-col md:grid md:grid-cols-3 justify-between w-full gap-[2rem]'>
         {isLoading ? <BarLoader /> : courses.length > 
