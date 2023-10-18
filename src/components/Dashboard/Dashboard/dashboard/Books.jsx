@@ -3,7 +3,7 @@ import clarity_certificate_line from "./../../../../assets/dashboard/clarity_cer
 import { tokenConfig } from '../../../../Config/Config'
 import instance from '../../../../axios'
 import { Document, Page, PDFViewer, View  } from '@react-pdf/renderer';
-import {Buffer} from 'buffer';
+// import {Buffer} from 'buffer';
 import ReactPDF from '@react-pdf/renderer';
 import mypdf from './../../../../assets/my.pdf'
 // ReactPDF.render(<Books />, `${__dirname}/example.pdf`);
@@ -35,22 +35,22 @@ export const Books = () => {
       useEffect(() => {
         // getCourse()
       }, [])
-    const getBlob = async () => {
-      const url = 'https://ekopages1.s3.amazonaws.com/static/pdf_files/hauwaking.pdf'
-      let buf = await fetch(url, { mode: 'no-cors'}).then((r) => r.arrayBuffer());
-      const data = Buffer.from(buf).toString("base64")
-      console.log(data)
-      // var f = new FileReader()
-      // f.readAsDataURL(blob)
-      // f.onload = d => {
-      //   var uri = d.target.result;
+    // const getBlob = async () => {
+    //   const url = 'https://ekopages1.s3.amazonaws.com/static/pdf_files/hauwaking.pdf'
+    //   let buf = await fetch(url, { mode: 'no-cors'}).then((r) => r.arrayBuffer());
+    //   const data = Buffer.from(buf).toString("base64")
+    //   console.log(data)
+    //   // var f = new FileReader()
+    //   // f.readAsDataURL(blob)
+    //   // f.onload = d => {
+    //   //   var uri = d.target.result;
       
-      //   var link = document.creat
-      // }
-    } 
-    useEffect(() => {
-      getBlob()
-    }, [])
+    //   //   var link = document.creat
+    //   // }
+    // } 
+    // useEffect(() => {
+    //   // getBlob()
+    // }, [])
     
   return (
     <div className='w-full'>

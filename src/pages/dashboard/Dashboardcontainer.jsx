@@ -34,6 +34,7 @@ const Dashboardcontainer = () => {
         <Route element={<CourseDetails />} path = {"/course/:id"} />
         <Route element={<MyAccount />} path="/account" />
         <Route element={<Books/>} path='/books' />
+        <Route element={<>hello</>} path='/MyCourses' />
         </Routes>
         </div>
     </div>

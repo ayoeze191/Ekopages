@@ -2,11 +2,7 @@ import React, {useEffect, useState} from 'react'
 import { Link } from 'react-router-dom'
 import { useLocation, useParams } from 'react-router-dom'
 
-import History from './History'
-import Introduction from './Introduction'
-import MDGs from './MDGs'
-import Objective from './Objective'
-import SDGs from './SDGs'
+
 import instance from '../../../../axios'
 import { tokenConfig } from '../../../../Config/Config'
 
@@ -50,7 +46,6 @@ const CourseDetails = () => {
     src={moduleDetails.find((mod) => mod.lesson_number === current&&mod).video !== 'null' ? moduleDetails.find((mod) => mod.lesson_number === current&&mod).video:'' }
     >
     </video>
-
     </div>
 }
 
