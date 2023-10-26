@@ -77,7 +77,7 @@ if(error) {
           </section>
 
           <section className="">
-                <InputField blurHandler={signupObject.SignupFormObj.handleBlur} type="password" onChangeHandler={formik.handleChange} value={formik.values.password2} src={assets.callIcon} fieldName={"password2"} name={"password2"} desc="call icons"  ></InputField>
+                <InputField blurHandler={signupObject.SignupFormObj.handleBlur} type="password" onChangeHandler={formik.handleChange} value={formik.values.password2} src={assets.callIcon} fieldName={"confirm password"} name={"password2"} desc="call icons"  ></InputField>
                 {formik.errors.password2 && formik.touched.password2 ? <p className="text-[12px] text-red-500 mt-4">{ formik.errors.password2}</p>:null}
 
           </section>

@@ -1,6 +1,6 @@
 //compoents
 import LandingPage from "./pages/landingpage/landingPage";
-import {Route,Routes,Navigate,BrowserRouter} from "react-router-dom"
+import {Route,Routes,Navigate,BrowserRouter, Link} from "react-router-dom"
 import { BasicRoutes, PrivateRoutes } from "./routes";
 import NavHead from "./components/about/Navhead";
 import Footers from "./components/footer/Footers";
@@ -23,7 +23,7 @@ import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import instance from "./axios";
 import withErrorHandler from "./components/withErrHandler";
-
+import {GoQuestion} from "react-icons/go"
 
 export const cookieContext = createContext({cookie: "", setContext: () => {}})
 
@@ -104,6 +104,7 @@ function App() {
 
       </Routes>
       <Overlay showSmallOnly={side} remove={sidebarHandler}/>
+      <Link className="fixed bottom-20 right-20 text-[#5A0C91] font-bold" to={'/faq'}><GoQuestion size={50} color="#5A0C91" /></Link>
       <Side_bar show={side} sideFunc={sidebarHandler}/>
       <div className="min-h-screen h-full w-full flex flex-col  justify-center">
       <NavHead sideHandler ={sidebarHandler}/>

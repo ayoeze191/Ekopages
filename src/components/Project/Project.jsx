@@ -3,6 +3,7 @@ import arrow from "./../../assets/projects/arrow.png"
 import { Link } from 'react-router-dom'
 import { Image} from "react-shimmer"
 import Shimmer from '../ui/Shimmer/Shimmer'
+import {AiOutlineArrowRight} from "react-icons/ai"
 
 const Project = ({img, h1, p, path}) => {
     const [loaded, setLoaded] = useState(false) 
@@ -21,8 +22,8 @@ const Project = ({img, h1, p, path}) => {
             {p}
         </p> */}
         </div>
-        <Link className='flex items-center gap-[0.7rem]' to={path}>
-            <p className='text-[1rem] font-[700] text-[#4A4A4A]'>View Project</p><div><img src={arrow} alt="" />
+        <Link className='flex items-center gap-[0.7rem] text-[#4A4A4A] hover:text-[#5A0C91] hover:underline mt-4' to={path}>
+            <p className='text-[1rem] font-[700] text-[#4A4A4A] hover:text-[#5A0C91] hover:underline'>View Project</p><div><AiOutlineArrowRight />                                                                       
             </div>
         </Link>
     </div>

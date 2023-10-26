@@ -12,7 +12,7 @@ const Service = ({ img, h, p, button, imagefirst, url }) => {
           className="h-full w-full"
           fallback={<Shimmer width={300} height={300} />}
         /> */}
-        <img src={img}  className="h-full w-full"/>
+        <img src={img}  className="h-full w-full rounded-lg"/>
       </div>
       <div className=" w-1/2">
         <h1 className="text-[#232E52] mb-[0.5rem] lg:mb-[1rem] font-[700] text-[18px] lg:text-[2.25rem]">
@@ -22,7 +22,7 @@ const Service = ({ img, h, p, button, imagefirst, url }) => {
           {p}
         </p>
         <Link
-          className="bg-[#5A0C91] text-[#EFE7F4] py-[0.75rem] px-[1.25rem] rounded-md text-[10px] lg:text-[1rem]"
+          className={`${button === 'coming soon'?'bg-[#888]':"bg-[#5A0C91]"} text-[#EFE7F4] py-[0.75rem] px-[1.25rem] rounded-md text-[10px] lg:text-[1rem]`}
           to={url}
         >
           {button}
@@ -42,7 +42,7 @@ const Service = ({ img, h, p, button, imagefirst, url }) => {
           {p}
         </p>
         <Link
-          className="bg-[#5A0C91] text-[#EFE7F4] py-[0.75rem] px-[1.25rem] rounded-md text-[10px] lg:text-[1rem]"
+          className={`${button === 'coming soon'?'bg-[#888]':"bg-[#5A0C91]"} text-[#EFE7F4] py-[0.75rem] px-[1.25rem] rounded-md text-[10px] lg:text-[1rem]`}
           to={url}
         >
           {button}

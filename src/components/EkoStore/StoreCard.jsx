@@ -40,7 +40,7 @@ const StoreCard = ({name, image, available, author, price, id, category, merch_s
   const myArray = [Star, Star, Star, Star, Star]
   return (
     // cart.loading?<GeneralUiOverlay /> :
-    <div className='storecard flex items-center justify-center flex-col px-[2rem] pb-[2.5rem] w-full h-[420px]'>
+    <div className='storecard flex items-center justify-center flex-col px-[2rem] pb-[2.5rem] w-full h-[420px] hover:border-[1px] hover:border-solid hover:border-[#5A0C91] transition-all cursor-pointer'>
         <div className='w-full'>
             {category !== 'books'?<div className='relative mb-[2rem] -mt-24 w-[8rem] h-[8rem] md:w-[9rem] md:h-[9rem] mx-auto bg-white px-6 py-6'><img src={image}  className=' w-full h-full' /></div>:
             <div className='relative mb-[2rem] -mt-24 w-[8rem] h-[8rem] md:w-[9rem] md:h-[9rem] mx-auto '><img src={image}  className=' w-full h-full' /></div>}

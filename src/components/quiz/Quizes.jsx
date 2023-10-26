@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import Question from '../FAQ/Question'
 import back from "./../../assets/back.png"
-import { questions } from './questionsLiteral'
+// import { questions } from './questionsLiteral'
 import { Link } from 'react-router-dom'
 import Quiz from './Quiz'
 import { useLocation, useParams } from 'react-router-dom'
@@ -9,18 +9,21 @@ import AuthButton from '../authButton'
 import { BeatLoader } from 'react-spinners'
 import instance from '../../axios'
 import { tokenConfig } from '../../Config/Config'
+import { Reform_to_suitable_form } from '../../Utils/reformQuestions'
 
 const Quizes = () => {
   const params = useParams()
   const loc = useLocation()
-  const [all_question] = useState([])
+  const [all_question, setAll_questions] = useState([])
   const [start, setStart] = useState(0)
   const [step, setStep] = useState(4)
 
   const get_allquizzes = () => {
-    instance.get('/Quiz/list_Quizes', tokenConfig())
+    instance.get('/dashboard-quizzes/start', tokenConfig())
     .then((res) => {
-      console.log(res)
+      console.log(res.data.data)
+        setAll_questions(res.data.data)
+        
     })
     .catch((err) => {
       console.log(err)
@@ -28,7 +31,7 @@ const Quizes = () => {
   }
   useEffect(() => {
     get_allquizzes()
-  })
+  }, [])
 
   // const [handle, Submit]
   const getCourse__Module = (search) => {
@@ -43,7 +46,7 @@ const Quizes = () => {
     <div className='font-[700] text-[3rem] flex h-full items-center '>  POP QUIZZES </div> <div></div> </div>
 </section>
     <div className='section flex flex-col gap-[4.125rem]'>
-        {questions.map((quest) => <Quiz {...quest}/>)}
+        {all_question.map((quest) => <Quiz {...Reform_to_suitable_form(quest)}/>)}
         <div className='ml-auto'>
         <button  className=" text-[#5A0C91] text-[17.6px] md:text-[1rem] font-[700] py-[10.5px] px-[33px] rounded-[8px]  border-solid border-2 border-[#5A0C91]  font-lato w-fit mx-auto">
         Next

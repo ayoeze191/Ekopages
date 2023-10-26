@@ -31,7 +31,6 @@ const LandingComponent = () => {
             is on course for astronomical interactions</p>
             <Achievement></Achievement>
             <EkoNews></EkoNews> 
-            
           </div>
     )
 }

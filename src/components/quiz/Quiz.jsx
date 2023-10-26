@@ -2,7 +2,8 @@ import React, { useEffect, useState } from 'react'
 import Options from './Options'
 import instance from '../../axios'
 import GeneralUiOverlay from '../ui/GeneralUiOverlayLoader'
-const Quiz = ({number, question, mark, options}) => {
+import { tokenConfig } from '../../Config/Config'
+const Quiz = ({id, number, question, mark, options}) => {
   const [loading, setLoading] = useState(false)
   const [answer, setAnswer] = useState(null)
   const onClickHandler = (label) => {
@@ -11,7 +12,7 @@ const Quiz = ({number, question, mark, options}) => {
 
   const SubmitAnswer = () => {
     setLoading(true)
-    instance.post() 
+    instance.post('/dashboard-quizzes/answer_quiz', {question: id, answer}, tokenConfig()) 
     .then((res) => {
       console.log(res)
       setLoading(false)

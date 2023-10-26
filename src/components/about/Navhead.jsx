@@ -63,10 +63,6 @@ const NavHead = ({sideHandler}) => {
             path:"/ekonews"
         },
         {
-            name: "FAQs",
-            path:"faq",
-        },
-        {
             name: "Be a Publisher",
             path: "/beapublisher"
         }
