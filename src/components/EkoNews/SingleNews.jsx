@@ -19,26 +19,25 @@ const navigate = useNavigate()
     }} >
         <div className='lg:w-[50%]'>
 <div className='font-lato flex mb-[1.4rem]'>
-    <p className='text-[0.8rem] font-lato font-900 px-[11.25px] py-[9.3px] as text-center flex items-center justify-center rounded-[30.62637px 0px 0px 30.62637px]'>Weekly updates</p>
-    <p className='rounded-[0px 5.62637px 5.62637px 0px] bg-[white] px-[11.25px] py-[9.3px] flex items-center justify-center'>{date} </p>
+    <p className='text-[0.8rem] font-Poppins font-[900] px-[11.25px] py-[9.3px] as text-center flex items-center justify-center rounded-[30.62637px 0px 0px 30.62637px]'>Weekly updates</p>
+    <p className='rounded-[0px 5.62637px 5.62637px 0px] bg-[white] px-[11.25px] py-[9.3px] font-Poppins flex items-center justify-center'>{date} </p>
 </div>
-<p className='text-[2.25rem] font-lato font-[700]'>
+<p className='text-[2.25rem] font-lato font-[700] text-[#232323] mb-[11.25px]'>
     {title}
 </p>
 <div className='font-lato font-[400] text-[16px] md:text-[1.25rem] text-[#232E52]'>    
-    <div className=''>{body.slice(0, 140)}</div>
-    <div className='text-[#5A0C91] text-[18.75px] cursor-pointer'  onClick={() => navigate(`/ekonews/${id}`, {state: {image, title, body, id , date_created}})}>
+    <span className=''>{body.slice(0, 140)}... </span>
+    <span className='text-[#5A0C91] text-[18.75px] cursor-pointer hover:underline transition-all'  onClick={() => navigate(`/ekonews/${id}`, {state: {image, title, body, id , date_created}})}>
     Read More
-    </div>
+    </span>
 </div>
         </div>
 
 
 
 
-
         <div className=''>
-            <img src={image}  alt="" className='h-[210px] w-full md:h-[306px] md:w-[655px]'/>
+            <img src={image}  alt="" className='h-[210px] w-full md:h-[306px] md:w-[655px] object-cover'/>
         </div>
     </div>
   )

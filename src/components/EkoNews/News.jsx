@@ -33,9 +33,9 @@ useEffect(() => {
     get_news()
 }, [])
   return (
-    <div className='section flex flex-col gap-[6rem]'>
+    <div className='section flex flex-col gap-[6rem] md:mb-[95px]'>
         {loading?
-        <ClipLoader color='#5A0C91' style={{ margin: 'auto', fontStyle:"bold"}}/>:
+        <ClipLoader color='#5A0C91' size={100} className='mx-auto font-bold'/>:
         news.length > 0 ?
         news.map((eachNews) => <SingleNews {...eachNews}/>):
         <div className='font-Poppins'>
