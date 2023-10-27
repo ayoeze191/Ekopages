@@ -40,10 +40,6 @@ const linkVal2 = [
         to: "/projects"
     },
     {
-        name: "About us",
-        to: "/about"
-    },
-    {
         name: "Services",
         to: "/services"
     },
@@ -63,8 +59,8 @@ const Footers = () => {
   return ( 
    <div className='bg-[#DACDAE]'>
       <div className=' pt-[3.5rem] font-lato section'>
-    <div className='w-full  mx-auto lg:px-0 px-6 max-w-[77rem] '>
-          <div className='flex justify-between flex-col lg:flex-row items-center gap-[2rem] lg:gap-[4rem] lg:gap-[0] lg:items-left'>
+    <div className='w-full  mx-auto lg:px-0 px-6  '>
+          <div className='flex justify-between flex-col lg:flex-row items-center gap-[2rem] lg:gap-[3rem]  lg:items-left'>
         <div className='flex flex-col  text-left mr-[5.5rem]'>
             <div className=' w-fit mb-[1rem]'><img src={Logo} alt="" /></div>
             <p className='max-w-xs font-[Lato] text-[#4A4A4A] mb-5 font-[400] text-[14px] md:text-[1rem]'>Eko Pages is a publishing outfit that immerses children into the act of environmental sustainability with our top books, stories and publications.   </p>
@@ -81,7 +77,7 @@ const Footers = () => {
     <div className='flex flex-col gap-3 h-full'>
         {linkVal.map(li => <NavItem {...li}/>)}
     </div>
-    <div className='flex flex-col'>
+    <div className='flex flex-col gap-3'>
     {linkVal2.map(li => <NavItem {...li}/>)}
     
     </div>
