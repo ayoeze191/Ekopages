@@ -11,7 +11,7 @@ const EkoNewsDetails = () => {
     <div className='w-full md:h-[602px]'>
         <img src={state.image}  className="w-full h-full object-cover" alt="" />
     </div>
-    <div className='px-7 tracking-wide text-[#4A4A4A] leading-[150.5%] text-[20px] font-lato'>
+    <div className='px-7 tracking-wide text-[#4A4A4A] leading-[150.5%] md:text-[20px] font-lato'>
        {state.body.split("</p>").map((p) => <p>{p}</p>)}
 </div>
     </div>

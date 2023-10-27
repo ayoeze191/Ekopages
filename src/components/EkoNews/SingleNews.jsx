@@ -22,10 +22,10 @@ const navigate = useNavigate()
     <p className='text-[0.8rem] font-Poppins font-[900] px-[11.25px] py-[9.3px] as text-center flex items-center justify-center rounded-[30.62637px 0px 0px 30.62637px]'>Weekly updates</p>
     <p className='rounded-[0px 5.62637px 5.62637px 0px] bg-[white] px-[11.25px] py-[9.3px] font-Poppins flex items-center justify-center'>{date} </p>
 </div>
-<p className='text-[2.25rem] font-lato font-[700] text-[#232323] mb-[11.25px]'>
+<p className='text-[20px] md:text-[2.25rem] font-lato font-[700] text-[#232323] mb-[11.25px]'>
     {title}
 </p>
-<div className='font-lato font-[400] text-[16px] md:text-[1.25rem] text-[#232E52]'>    
+<div className='font-lato font-[400] text-[14px] md:text-[1.25rem] text-[#232E52]'>    
     <span className=''>{body.slice(0, 140)}... </span>
     <span className='text-[#5A0C91] text-[18.75px] cursor-pointer hover:underline transition-all'  onClick={() => navigate(`/ekonews/${id}`, {state: {image, title, body, id , date_created}})}>
     Read More
