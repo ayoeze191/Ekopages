@@ -1,5 +1,5 @@
 import React from 'react'
-import Question from './Question'
+import Question, { HowdoISubscribeToEkolearn, HowdoIbuybooks, WHatIsEkoLearn, WHatIsEkoPages } from './Question'
 
 const Questions = () => {
     const questions = [
@@ -17,7 +17,11 @@ const Questions = () => {
 
   return (
     <div className='flex flex-col gap-5 items-center mt-[4rem] mb-[11.5rem] px-5 md:px-0'>
-        {questions.map(quest => <Question  {...quest}/>)}
+        {/* {questions.map(quest => <Question  {...quest}/>)} */}
+        <WHatIsEkoPages />
+        <HowdoIbuybooks />
+        <WHatIsEkoLearn />
+        <HowdoISubscribeToEkolearn />
     </div>
   )
 }
