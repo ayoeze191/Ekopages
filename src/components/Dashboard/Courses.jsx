@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react'
 import Course from './Course'
 import instance from '../../axios'
 import { tokenConfig } from '../../Config/Config'
-import {BarLoader} from "react-spinners"
+import {ClipLoader} from "react-spinners"
 
 const courseDetails = [
     {
@@ -54,7 +54,7 @@ const Courses = () => {
     }, [])
   return (
     <div className='flex flex-col md:grid md:grid-cols-3 justify-between w-full gap-[2rem]'>
-        {isLoading ? <BarLoader /> : courses.length > 
+        {isLoading ? <ClipLoader  className='mx-auto'/> : courses.length > 
         0&&courseDetails.map(course => <Course {...course} />)
         }
     </div>

@@ -57,7 +57,7 @@ const Footers = () => {
     // //(loc.pathname)
 
   return ( 
-   <div className='bg-[#DACDAE]'>
+   <div className='bg-[#EFE7F4]'>
       <div className=' pt-[3.5rem] font-lato section'>
     <div className='w-full  mx-auto lg:px-0 px-6  '>
           <div className='flex justify-between flex-col lg:flex-row items-center gap-[2rem] lg:gap-[3rem]  lg:items-left'>

@@ -104,7 +104,7 @@ function App() {
 
       </Routes>
       <Overlay showSmallOnly={side} remove={sidebarHandler}/>
-      <Link className="fixed bottom-20 right-20 text-[#5A0C91] font-bold" to={'/faq'}><GoQuestion size={50} color="#5A0C91" /></Link>
+      {/* <Link className="fixed bottom-20 right-20 text-[#5A0C91] font-bold" to={'/faq'}><GoQuestion size={50} color="#5A0C91" /></Link> */}
       <Side_bar show={side} sideFunc={sidebarHandler}/>
       <div className="min-h-screen h-full w-full flex flex-col  justify-center">
       <NavHead sideHandler ={sidebarHandler}/>
