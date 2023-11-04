@@ -4,7 +4,7 @@ import React from 'react'
 import Login from "../login";
 import Signup from "../Signup";
 import Rodal from 'rodal';
-import { Link } from "react-router-dom"
+import { Link, NavLink } from "react-router-dom"
 import { AiOutlineSearch, AiOutlineUser, AiOutlineHeart } from "react-icons/ai"
 import {BsCart} from "react-icons/bs"
 import menu from "./../../assets/menu.png"
@@ -146,7 +146,7 @@ const NavHead = ({sideHandler}) => {
                 <div  className="text-[16px] font-lato flex justify-between gap-[20px]">
 
 {
-    arrauOfNavs.map((eachItems) => <Link className=" text-[#303030]" to={eachItems.path}  >{eachItems.name}</Link>)
+    arrauOfNavs.map((eachItems) => <NavLink style={(props) => props.isActive ? {color: '#5A0C91', fontWeight: 600}:null}  className=" text-[#303030]" to={eachItems.path}  >{eachItems.name}</NavLink>)
 }
 
 </div>
