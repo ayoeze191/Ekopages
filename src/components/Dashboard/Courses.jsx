@@ -55,7 +55,7 @@ const Courses = () => {
   return (
     <div className='flex flex-col md:grid md:grid-cols-3 justify-between w-full gap-[2rem]'>
         {isLoading ? <BarLoader /> : courses.length > 
-        0&&courses.map(course => <Course {...course} />)
+        0&&courseDetails.map(course => <Course {...course} />)
         }
     </div>
   )

@@ -48,7 +48,7 @@ export const service = [
         p: "Parents and children will be able to book our certified tutors online to teach them about the Sustainable Development Goals.",
         button: "coming soon",
         imagefirst: false,
-        btntext: "Coming Soon",
+        btntext: "coming soon",
         bg: "#C3EFC2", 
         smallimg: gis_story_map
     }

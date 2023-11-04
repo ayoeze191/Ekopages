@@ -27,7 +27,7 @@ const Login = () => {
 
   const formik = useFormik({
     initialValues: {
-      "username": "",
+      // "username": "",
         "email": "",
         "password": ""
     },
@@ -55,7 +55,7 @@ const handleError = (error) => {
     return (
       <div className="w-full flex h-[90vh]  items-center font-lato flex-col md:flex-row md:rounded-[20px] bg-[#F6F6F6]  " 
       >
-        <div className="md:h-full bg-[#5A0C91] w-full md:w-[43%]">
+        <div className="md:h-[90vh] bg-[#5A0C91] w-full md:w-[43%] flex items-center ">
       <div className="relative md:left-32 w-[169px] md:w-[initial] mx-auto pb-2 pt-[22.29px]"><img src={logi} className=' w-full h-full'  alt="" /></div>
       </div>
 
@@ -63,10 +63,10 @@ const handleError = (error) => {
         
         <p className="font-lato font-[700] text-[1.5rem] md:text-[1.75rem] text-[#232323] text-center mx-auto mt-[24px]  mb-[24px]">Log In</p>
         <form onSubmit={formik.handleSubmit} className='flex flex-col w-full md:max-w-[20.37rem] gap-[1.5rem]' >
-        <section className="flex flex-col">
+        {/* <section className="flex flex-col">
             <InputField type="email" onBlur={formik.handleBlur} onChangeHandler={formik.handleChange} value={formik.values.username} fieldName={"Username"} name="username" id="username"></InputField>
             <p className="text-[12px] text-red-600 mt-4">{formik.touched.username && formik.errors.username ? formik.errors.username:null}</p>
-          </section>
+          </section> */}
               <section className="flex flex-col">
                 
             <InputField type="email" onBlur={formik.handleBlur} onChangeHandler={formik.handleChange} value={formik.values.email} fieldName={"Email "} name="email" id="email"></InputField>
