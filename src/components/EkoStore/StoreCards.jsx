@@ -22,7 +22,7 @@ const StoreCards = () => {
   return store.isloading ? (
     <GeneralUiOverlayLoader />
   ) : store.products ? (
-    <div className=" flex flex-col sm:grid sm:grid-cols-2  md:grid-cols-3 mx-auto section gap-x-[2rem] gap-y-[12.25rem] items-center mb-[60px]">
+    <div className=" flex flex-col sm:grid md:grid-cols-2  lg:grid-cols-3 mx-auto section gap-x-[2rem] gap-y-[12.25rem] items-center mb-[60px]">
       {store.products.map((prod) => (
         <StoreCard {...prod} />
       ))}
