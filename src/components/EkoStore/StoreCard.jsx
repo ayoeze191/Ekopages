@@ -43,7 +43,7 @@ const StoreCard = ({name, image, available, author, price, id, category, merch_s
   return (
     // cart.loading?<GeneralUiOverlay /> :
     <div className='
-    flex items-center rounded-[10px] bg-[#EFE7F4] h-[184px] lg:h-[266px]  md:max-w-none mx-auto'>
+    flex items-center rounded-[10px] bg-[#EFE7F4] h-[184px] lg:h-[266px] mx-auto'>
         {/* <div className='w-full'>
             {category !== 'books'?<div className='relative mb-[2rem] -mt-24 w-[8rem] h-[8rem] md:w-[9rem] md:h-[9rem] mx-auto bg-white px-6 py-6'><img src={image}  className=' w-full h-full' /></div>:
             <div className='relative mb-[2rem] -mt-24 w-[8rem] h-[8rem] md:w-[9rem] md:h-[9rem] mx-auto '><img src={image}  className=' w-full h-full' /></div>}
@@ -69,7 +69,7 @@ const StoreCard = ({name, image, available, author, price, id, category, merch_s
             {/* <AddToCartbtn name={"Add to Cart"} isLoading={(cart.prodid===id && cart.loading)? true:false} add={addTocart}></AddToCartbtn> */}
         {/* </div> */}
 
-            <div className='w-[130.05px] h-[184px] lg:h-[266px] '>
+            <div className='w-[130.05px] h-[184px] lg:w-[188px] lg:h-[266px] '>
               <img src={image} className='w-full h-full object-cover' alt={name} style={{
                 'borderRadius': "10px 0px 0px 10px"
               }}/>
