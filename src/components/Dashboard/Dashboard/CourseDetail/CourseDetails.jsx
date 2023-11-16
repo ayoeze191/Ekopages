@@ -34,6 +34,7 @@ const CourseDetails = () => {
 
   return (
     <div className='flex px-[2.06rem] pb-[3.75rem] pt-[4.0rem] font-lato gap-[2rem]'>
+      {/* drop money */}
    {moduleDetails.length > 0 &&   <div>
 <div className='bg-[#FFFFFF] shadow rounded-[5px] px-[1.5rem] py-[1.5rem] mb-10'>
     <h1 className='font-[600] text-[1.25rem]'>{moduleDetails[0].subject}</h1>
@@ -45,6 +46,7 @@ const CourseDetails = () => {
      controls
     src={moduleDetails.find((mod) => mod.lesson_number === current&&mod).video !== 'null' ? moduleDetails.find((mod) => mod.lesson_number === current&&mod).video:'' }
     >
+      
     </video>
     </div>
 }
