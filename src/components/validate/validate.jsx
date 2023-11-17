@@ -33,9 +33,9 @@ export function SignupValidate(values, name) {
 
 export function validate(values) {
         const errors = {};
-        if(!values.email) {
-            errors.email = 'Required';
-        }
+        // if(!values.email) {
+        //     errors.email = 'Required';
+        // }
         // if (!values.email) {
         //   errors.email = 'Required';
         // } else if (!/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i.test(values.email)) {
@@ -49,6 +49,5 @@ export function validate(values) {
         if(!values.username) {
           errors.username = "username is required"
       }
-
         return errors;
 }

@@ -21,6 +21,9 @@ const ExploreCoursesComp = () => {
       setCourses(res.data.data)
       setIsLoading(false)
     })
+    .catch(() => {
+      
+    })
   }
   const navigate = useNavigate()
 
