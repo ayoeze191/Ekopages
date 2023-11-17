@@ -1,6 +1,7 @@
 import { useModalContext } from "../../context/modal/modal"
 import { AdBx } from "./adBx"
 import Group from "./../../assets/landingpage/Group.svg"
+import { Link } from "react-router-dom"
 
 
 const WelcomeComponent = () => {
@@ -18,7 +19,7 @@ const WelcomeComponent = () => {
                     <p className="font-[500] text-[#D7D7D7] text-[12px] md:text-[20px] md:font-[400] font-lato mb-[20px] md:mb-[40px]">An “Edtech” Platform for Sustainability Literacy for <br/> Children through Literature, Animation and Courses.</p>
                     </div>
                 <div className="flex gap-[1rem]">
-                    <button className="bg-[#EFA30C] text-[#480A74] border-[#EFE7F4] text-[10px] md:text-[20px] rounded-[5px] md:rounded-[10px] border-[0.5px] md:px-[20px] md:py-[17px] px-[7.5px] py-[10.5px]">Explore Courses</button>
+                    <Link to={'/explore-courses'} className="bg-[#EFA30C] text-[#480A74] border-[#EFE7F4] text-[10px] md:text-[20px] rounded-[5px] md:rounded-[10px] border-[0.5px] md:px-[20px] md:py-[17px] px-[7.5px] py-[10.5px]">Explore Courses</Link>
                     <button className="text-[white] border-[#EFE7F4] text-[10px] md:text-[20px] rounded-[5px] md:rounded-[10px] border-[0.5px] md:px-[20px] md:py-[17px] px-[7.5px] py-[10.5px]" onClick={() => setpartnerModal()}>Become a Partner</button>
                     {/* <button></button> */}
                 </div>

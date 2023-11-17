@@ -17,6 +17,7 @@ import Test from "./components/Test"
 import VerifyEmail from "./pages/Verify-email"
 import Beapublisher from "./pages/Beapublisher/Beapublisher"
 import Productdetails from "./components/ProductDetails/Productdetails"
+import ExploreCourses from "./pages/ExploreCourses/ExploreCourses"
 
 
 export const BasicRoutes = [
@@ -89,6 +90,10 @@ export const BasicRoutes = [
         path: "/beapublisher",
         component: <Beapublisher />
     },
+    {
+        path: "/explore-courses",
+        component: <ExploreCourses />
+    }
    
     
 ]

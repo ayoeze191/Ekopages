@@ -11,6 +11,7 @@ import Settings from '../../components/settings/Settings'
 import Sidebar from './sidebar/Sidebar'
 import { useAuthContext } from '../../context/auth/auth'
 import { Books } from '../../components/Dashboard/Dashboard/dashboard/Books'
+import MyCourses from '../../components/Dashboard/Dashboard/Mycourses/MyCourses'
 
 const Dashboardcontainer = () => {
   const {isAuth} = useAuthContext()
@@ -34,7 +35,7 @@ const Dashboardcontainer = () => {
         <Route element={<CourseDetails />} path = {"/course/:id"} />
         <Route element={<MyAccount />} path="/account" />
         <Route element={<Books/>} path='/books' />
-        <Route element={<>hello</>} path='/MyCourses' />
+        <Route element={<MyCourses/>} path='/MyCourses' />
         </Routes>
         </div>
     </div>
