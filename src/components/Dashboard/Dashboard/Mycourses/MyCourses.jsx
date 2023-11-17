@@ -10,7 +10,7 @@ const MyCourses = () => {
         <p className='text-[24px]'>
         Would you like to take a course? 
         </p>
-     <button onClick={() => navigate('/explore-courses')} className='font-[400] text-[#E9E9E9] py-[15px] px-[30px] bg-[#5A0C91] rounded-[10px] font-lato mx-auto text-sm md:text-base'>Return to Home Page</button>
+     <button onClick={() => navigate('/explore-courses')} className='font-[400] text-[#E9E9E9] py-[15px] px-[30px] bg-[#5A0C91] rounded-[10px] font-lato mx-auto text-sm md:text-base mt-[50px]'>View Courses</button>
       
     </div>
     </div>
