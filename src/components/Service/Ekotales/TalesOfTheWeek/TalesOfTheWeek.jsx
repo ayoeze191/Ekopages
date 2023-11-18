@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react'
+import React, { useEffect, useRef } from 'react'
 import Frame247 from "./../../../../assets/Service/ekotales/Frame247.png"
 import { useState } from 'react'
 import {BarLoader, ClipLoader} from "react-spinners"
@@ -27,21 +27,24 @@ const TalesOfTheWeek = () => {
 
   useEffect(() => {
     gettale()
-  }, [])
+    // console.log("scrolling")
 
+  }, [])
+ 
 
   return (loading? 
   <div className='h-[30vh] mx-auto flex flex-col justify-center items-center'> <ClipLoader /></div>:
     <div className='font-lato max-w-5xl mx-auto flex- flex-col items-center mt-[7.3125rem] px-6 lg:px-0'>
         <div className='flex flex-col gap-[2rem] text-[#232323] items-center mb-[2rem]'>
-            <p className='font-[700] text-[1.7rem] md:text-[3rem] font-lato'>{tale.title}</p>
+            <p className='font-[700] text-[1.7rem] md:text-[3rem] font-lato'>Tales of The Week</p>
             <div><img src={tale.image} alt="" /></div>
+            <p className='font-[700] text-[1.7rem] md:text-[3rem] font-lato'>{tale.title}</p>
         </div>
 
         <div className='flex flex-col gap-[2rem] text-[#232323] text-[1.25rem] mb-[5rem] font-[400] font-lato'>
             
               {showSmall?
-              <p>{tale.body.slice(0, 200).split("<p>").map((p) => <p>{p}</p>)}</p>:
+              <p>{tale.body.slice(0, 1000).split("<p>").map((p) => <p>{p}</p>)}</p>:
               tale.body.split("<p>").map((p) => <p>{p}</p>)
             }
             

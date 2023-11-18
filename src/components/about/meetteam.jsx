@@ -31,12 +31,12 @@ const teamDetails = [
     {
         'name': 'Oyinda Ahmed',
         'post': 'Product Desginer/ Manager',
-        img: images1
+        img: images2
     },
     {
         'name': 'Lateefah Rufai',
         'post': 'Product Desginer/ Manager',
-        img: images1
+        img: images2
     },
     {
         'name': 'Olabode Ezekiel',
@@ -45,9 +45,21 @@ const teamDetails = [
     },
     {
         'name': 'Ayomide Adewale',
-        'post': 'Bankend Engineer',
-        img: images1
+        'post': 'Bankend Developer',
+        img: images2
     },
+    {},
+    {
+        'name': 'Akinfolarin Stephen',
+        'post': 'Head, Frontend Developer',
+        img: images2
+    },
+    {
+        'name': 'Adigun Kunle',
+        'post': 'Legal Advisory',
+        img: images2
+    },
+    {}
 ]
 
 

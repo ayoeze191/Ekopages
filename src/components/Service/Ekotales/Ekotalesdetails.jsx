@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react'
+import React, { useEffect, useRef } from 'react'
 import { useState } from 'react'
 import { ClipLoader} from "react-spinners"
 import instance from '../../../axios'
@@ -30,7 +30,13 @@ const EkoTalesDetails = () => {
   useEffect(() => {
     gettale()
   }, [id])
-
+  const imgRef = useRef(null)
+  useEffect(() => {
+    console.log("scrolling")
+    console.log(imgRef)
+    // imgRef.current.scrollIntoView()
+    console.log("scrolling")
+  }, [tale])
 
   return (loading? 
   <div className='mx-auto flex flex-col justify-center items-center relative w-full h-full'> <ClipLoader /></div>:
@@ -38,7 +44,7 @@ const EkoTalesDetails = () => {
             <p className='font-[700] text-[1.7rem] md:text-[3rem] font-lato'>{tale.title}</p>
 
         {/* <div className='flex flex-col gap-[2rem] text-[#232323] items-center mb-[2rem] w-full bg-red-100'> */}
-            <div className=''><img src={tale.image} className='w-[300px] h-[300px] sm:w-[400px] sm:h-[400px] md:w-[initial] md:h-[initial] mr-auto' alt="" /></div>
+            <div className='' ref={imgRef}><img src={tale.image} className='w-[300px] h-[300px] sm:w-[400px] sm:h-[400px] md:w-[initial] md:h-[initial] mr-auto' alt="" /></div>
         {/* </div> */}
 
         <div className='flex flex-col gap-[2rem] text-[#232323] text-[1rem] md:text-[1.25rem] mb-[5rem] font-[400] font-lato'>

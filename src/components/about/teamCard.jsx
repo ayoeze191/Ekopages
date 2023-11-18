@@ -7,6 +7,7 @@ import linkedln from "./../../assets/about/linkedln.png"
 
 export const MeetTeamCard = ({img, name, post}) => {
     return (
+        img?
         <div className="border border-dashed border-[#5A0C91] w-full sm:w-[fit] px-[17.94px] py-[24px] mx-auto font-lato">
             <div>
             <section className="w-fit mx-auto md:max-w-[16225px] h-[111px] md:h-[200px]"><img src={img} className='w-full h-full'/></section>
@@ -19,5 +20,6 @@ export const MeetTeamCard = ({img, name, post}) => {
                 <div className="md:w-[24px] md:h-[24px] box-border"><img src={linkedln} className='h-full w-full' /></div>
             </div>
         </div>
+        :<div></div>
     )
 }

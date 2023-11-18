@@ -15,7 +15,7 @@ const ExploreCoursesComp = () => {
   }
   const getCourses = () => {
     setIsLoading(true)
-    instance.get(`/services${course_type}/`, tokenConfig())
+    instance.get(`/services${course_type}/`)
     .then((res) => {
       console.log(res)
       setCourses(res.data.data)
