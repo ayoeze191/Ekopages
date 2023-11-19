@@ -17,6 +17,8 @@ SwiperCore.use([Navigation, Pagination, Scrollbar, A11y, Autoplay])
 
 const Tales = ({image, title, date_created, id}) => {
 
+    const datecreated = new Date(date_created)
+    console.log(datecreated)
     const navigate = useNavigate()
 
     return (
@@ -29,7 +31,7 @@ const Tales = ({image, title, date_created, id}) => {
                     {title}
                 </p>
                 <p className='text-[12px] font-[500] text-[#4A4A4A] font-[Lato]'>
-                {date_created}
+                {datecreated.getDate()}.{datecreated.getMonth()}.{datecreated.getFullYear()}
                 </p>
             </div>
         </div>
