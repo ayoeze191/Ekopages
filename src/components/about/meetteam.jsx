@@ -40,7 +40,7 @@ const teamDetails = [
     },
     {
         'name': 'Olabode Ezekiel',
-        'post': 'Frontend Developer',
+        'post': 'Head, Frontend Developer',
         img: images1
     },
     {
@@ -51,7 +51,7 @@ const teamDetails = [
     {},
     {
         'name': 'Akinfolarin Stephen',
-        'post': 'Head, Frontend Developer',
+        'post': 'Frontend Developer',
         img: images2
     },
     {
