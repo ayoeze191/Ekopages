@@ -12,11 +12,12 @@ import { tokenConfig } from '../../Config/Config'
 import { Reform_to_suitable_form } from '../../Utils/reformQuestions'
 
 const Quizes = () => {
+  
   const params = useParams()
   const loc = useLocation()
   const [all_question, setAll_questions] = useState([])
   const [start, setStart] = useState(0)
-  const [step, setStep] = useState(4)
+  const [end, setEnd] = useState(4)
 
   const get_allquizzes = () => {
     instance.get('/dashboard-quizzes/start', tokenConfig())
@@ -33,27 +34,42 @@ const Quizes = () => {
     get_allquizzes()
   }, [])
 
+
+  const forward = () => {
+    setEnd(start)
+    setStart(end + 4)
+  }
+  const backward = () => {
+    setEnd(start)
+    setStart(start - 4)
+  }
   // const [handle, Submit]
   const getCourse__Module = (search) => {
     const [course, module] = search.split("&")
     return {"course": course.split("=")[1], "module":module.split("=")[0]}
   }
-  console.log(loc.search)
+
   return (
     <div>
         <section className=" h-[10.625rem] flex justify-center items-center font-lato bold">
     <div className="w-full  lg:px-0 px-6 max-w-[77rem] py-4 mx-auto h-fit px-7  text-[#444444] flex items-center justify-between"> <Link to={'/services'} className=' h-full flex gap-[1.06rem] items-center text-[#5A0C91] font-[400] text-[1rem] cursor:pointer'> <div><img src={back} alt="" /></div>back </Link> 
     <div className='font-[700] text-[3rem] flex h-full items-center '>  POP QUIZZES </div> <div></div> </div>
 </section>
-    <div className='section flex flex-col gap-[4.125rem]'>
-        {all_question.map((quest) => <Quiz {...Reform_to_suitable_form(quest)}/>)}
-        <div className='ml-auto'>
-        <button  className=" text-[#5A0C91] text-[17.6px] md:text-[1rem] font-[700] py-[10.5px] px-[33px] rounded-[8px]  border-solid border-2 border-[#5A0C91]  font-lato w-fit mx-auto">
+    <div className='section flex flex-col gap-[4.125rem] mb-10'>
+        {all_question.slice(start, end).map((quest, index) => <Quiz {...Reform_to_suitable_form(quest)} number={index + 1}/>)}
+        <div className='flex justify-between w-full px-0'>
+     {start !== 0 &&   <button  className="ml-0 text-white text-[17.6px] md:text-[1rem] font-[700] py-[10.5px]px-[33px]  md:px-0 md:w-[216px] rounded-[8px]  border-solid border-2 bg-[#5A0C91]  font-lato w-fit mx-auto">
+        Previous
+    </button>}
+   {end >= all_question.length ?null: <button className="mr-0 text-white text-[17.6px] md:text-[1rem] font-[700] py-[10.5px] px-[33px]  md:px-0 md:w-[216px] rounded-[8px]  border-solid border-2 bg-[#5A0C91]  font-lato w-fit mx-auto" onClick={forward}>
         Next
     </button>
-    <button className=" text-[#5A0C91] text-[17.6px] md:text-[1rem] font-[700] py-[10.5px] px-[33px] rounded-[8px]  border-solid border-2 border-[#5A0C91]  font-lato w-fit mx-auto">
-        Previous
-    </button>
+  }
+    {end >= all_question.length?
+      <button className="mr-0 text-white text-[17.6px] md:text-[1rem] font-[700] py-[10.5px] px-[33px]  md:px-0 md:w-[216px] rounded-[8px]  border-solid border-2 bg-[#5A0C91]  font-lato w-fit mx-auto" onClick={forward}>
+      Finish
+  </button>:null
+    }
         </div>
     </div>
     </div>

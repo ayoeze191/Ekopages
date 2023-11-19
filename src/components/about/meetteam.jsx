@@ -48,7 +48,7 @@ const teamDetails = [
         'post': 'Bankend Developer',
         img: images2
     },
-    {},
+    // {},
     {
         'name': 'Akinfolarin Stephen',
         'post': 'Frontend Developer',
@@ -59,7 +59,6 @@ const teamDetails = [
         'post': 'Legal Advisory',
         img: images2
     },
-    {}
 ]
 
 
