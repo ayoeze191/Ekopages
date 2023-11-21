@@ -16,6 +16,7 @@ const Quizes = () => {
   const params = useParams()
   const loc = useLocation()
   const [all_question, setAll_questions] = useState([])
+  const [answers, setAnswers] = useState([])
   const [start, setStart] = useState(0)
   const [end, setEnd] = useState(4)
 
@@ -43,7 +44,10 @@ const Quizes = () => {
     setEnd(start)
     setStart(start - 4)
   }
-  // const [handle, Submit]
+  // const handleSubmit = () => {
+      
+  // }
+
   const getCourse__Module = (search) => {
     const [course, module] = search.split("&")
     return {"course": course.split("=")[1], "module":module.split("=")[0]}
