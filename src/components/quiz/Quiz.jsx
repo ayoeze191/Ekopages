@@ -3,8 +3,8 @@ import Options from './Options'
 import instance from '../../axios'
 import GeneralUiOverlay from '../ui/GeneralUiOverlayLoader'
 import { tokenConfig } from '../../Config/Config'
-const Quiz = ({id, number, question, mark, options}) => {
-  console.log(mark)
+const Quiz = ({id, number, question, mark, options, addAnswer}) => {
+  // console.log(mark)
   const [loading, setLoading] = useState(false)
   const [answer, setAnswer] = useState(null)
   // this state is needed for the  user to know that their answer has not been selected if there is a network failure
@@ -14,19 +14,21 @@ const Quiz = ({id, number, question, mark, options}) => {
     setAnswer(label)
   }
 
+  
   const SubmitAnswer = () => {
-    setLoading(true)
-    console.log({question: id, answer})
-    instance.post('/dashboard-quizzes/answer_quiz/', {question: id, answer}, tokenConfig()) 
-    .then((res) => {
-      console.log(res)
-      setLoading(false)
-    })
-    .catch((err) => {
-      setAnswer(prevAnswer)
-      console.log(err)
-      setLoading(false)
-    })
+    // setLoading(true)
+    // console.log({question: id, answer})
+    // instance.post('/dashboard-quizzes/answer_quiz/', {question: id, answer}, tokenConfig()) 
+    // .then((res) => {
+    //   console.log(res)
+    //   setLoading(false)
+    // })
+    // .catch((err) => {
+    //   setAnswer(prevAnswer)
+    //   console.log(err)
+    //   setLoading(false)
+    // })
+    addAnswer(id,answer)
   }
 
   useEffect(() => {
