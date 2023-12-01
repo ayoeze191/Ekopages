@@ -16,21 +16,24 @@ import excelentLogo from "./../../assets/quizzes/excelentLogo.svg";
 // import Overlay from '../Overlay'
 import { motion, transform } from "framer-motion";
 import excelentBg from "./../../assets/quizzes/excelent-bg.svg";
+import Resultviewal from "./Resultviewal";
 const Quizes = () => {
-  const params = useParams();
-  const userScores = useState(null)
-  const loc = useLocation();
+  const [userSelected, setUserSelectedAnswers] = useState([])
+
   const [all_question, setAll_questions] = useState([]);
   const [answers, setAnswers] = useState([]);
   const [start, setStart] = useState(0);
   const [end, setEnd] = useState(4);
   const [loading, setLoading] = useState(false);
+  const [loadingQuestions, setloadingQuestions] = useState(false)
   const [showOverlay, setShowOverlay] = useState(false);
   const [sucessfully_Submited, setSucessfully_Submited] = useState(false);
   const get_allquizzes = () => {
+    setloadingQuestions(false)
     instance
       .get("/dashboard-quizzes/start", tokenConfig())
       .then((res) => {
+        setloadingQuestions(false)
         console.log(res.data.data);
         setAll_questions(res.data.data);
       })
@@ -79,38 +82,46 @@ const Quizes = () => {
         const result = await response.data;
       }
       console.log("All API calls completed successfully");
-      setLoading(false);
-      setShowOverlay(true);
-      setSucessfully_Submited(true);
+      Check()
+      
     } catch (error) {
       console.error("Error making API call", error);
       setLoading(false);
     }
   };
-  const get_scores = async () => {
-    const response = await instance.get(
-      "/dashboard-quizzes/get_score/",
-      tokenConfig()
-    );
-    const result = await response.data;
-    console.log(result)
+ 
+  const Check = () => {
+    instance.get('/dashboard-quizzes/quiz/review/', tokenConfig())
+      .then((res) => {
+        setUserSelectedAnswers(res.data.review_data)
+        setLoading(false);
+      setShowOverlay(true);
+      setSucessfully_Submited(true);
+      })
+      .catch((err) => {
+      })
   }
-  useEffect(() => {
-    get_scores()
-  })
 
-  const getCourse__Module = (search) => {
-    const [course, module] = search.split("&");
-    return { course: course.split("=")[1], module: module.split("=")[0] };
-  };
+  useEffect(() => {
+    
+    
+  }, [setSucessfully_Submited])
+
+  // function that checks if the user has done the test before
+
+
+  const ClearInterface = () => {
+    setShowOverlay(false)
+    setSucessfully_Submited(false)
+  }
 
   return (
     <Wrapper overlay={showOverlay}>
-      {sucessfully_Submited && <Resultviewal result={'passed'} />}
+      {sucessfully_Submited && <Resultviewal ClearInterface={ClearInterface}/>}
       {loading && 
       <div className="fixed z-[99999000000]  w-full h-full flex justify-center items-center top-0 font-lato">
       <div className=" top-0 mx-auto">
-        Computing....
+        Computing...
         <BeatLoader />
         </div></div>
         }
@@ -136,9 +147,10 @@ const Quizes = () => {
           </div>
         </section>
         <div className="section flex flex-col gap-[4.125rem] mb-10">
-          {all_question.slice(start, end).map((quest, index) => (
+          {loadingQuestions?<BeatLoader />:all_question.length == 0 ? "No Questions Yet":all_question.slice(start, end).map((quest, index) => (
             <Quiz
               {...Reform_to_suitable_form(quest)}
+              selectedAnswer = {userSelected.length > 0 && userSelected.find((answer) => answer.question_text === Reform_to_suitable_form(quest).question).user_answer}
               number={index + 1}
               addAnswer={addAnswer}
             />
@@ -182,70 +194,6 @@ const Wrapper = ({ overlay, children }) => {
     </>
   );
 };
-
-const Resultviewal = ({ sucessfully_Submited, result }) => {
-  const mode = {
-    failed: {
-      applaud: "Keep Going!",
-      text: "While you didn’t make it beyond the average this time, we are certain you’ve learned a lot. You will do better next time.",
-    },
-    passed: {
-      applaud: "Congratulations!",
-      text: "You did a great job by above beyond the average.",
-    },
-  };
-
-  return (
-    <motion.div className="fixed top-[10vh] w-full" 
-    initial={{  scale: 0 }}
-    animate={{ scale: [0, 2, 1] }}
-    transition={{ type: "spring", stiffness: 200, duration: 10 }}
-    >
-      <div className="w-[350px] h-[80vh] bg-[#ffffff] z-50 mx-auto overflow-hidden   left-[30vh] flex flex-col items-center">
-        <div className="bg-[#5A0C91] rounded-b-[100%] relative  -top-20  h-[300px] w-[415px] bg-cover right-10 mx-auto">
-          <img src={excelentBg} className="bg-cover h-full" />
-        </div>
-        <div className=" relative -top-40 mx-auto w-fit">
-          <img src={excelentLogo} alt="" srcset="" />
-        </div>
-        {/* body */}
-        <div className="mx-auto w-fit flex flex-col items-center text-center relative -top-[6rem] font-lato">
-          <motion.h3
-            initial={{ x: 100 }}
-            animate={{ x: [100, 0] }}
-            transition={{ type: "spring", delay: 0.2, stiffness: 200 }}
-            className="text-[22px] font-[500] leading-[26.4px] "
-          >
-            {" "}
-            {mode[result].applaud}
-          </motion.h3>
-          <motion.p className="text-[14px] px-[29px] font-[400] leading-[16.8px] font-lato mt-[12px]" initial={{ rotateX: 180, scale: 0 }}
-            animate={{ rotateX: [180,  0], scale: [0, 1]}}
-            transition={{ type: "spring", delay: 0.4, stiffness: 200 }}>
-          {mode[result].text}
-          </motion.p>
-          <p className="text-[16px] font-lato font-[500] leading-[16.8px] mt-[32px]">
-            You Scored
-          </p>
-          <p className="mt-[12px] font-[500] text-[20px] leading-[24px] mb-[32px] flex">
-            64/<span className="text-[24px] flex gap-0">{
-            [1, 0 , 3].map((item, index) => { 
-              console.log(index)
-              return <motion.span initial={{ scale: 0 }}
-            animate={{ scale: [0, 2, 1]}}
-            transition={{ type: "spring", delay: index == 0 ? 0.6:0.4 * 2, stiffness: 200 }}> {item} </motion.span>})
-            }</span>
-          </p>
-          <button className="bg-[#5A0C91] rounded-[5.5px] px-[20px] py-[13.5px] text-[#EFE7F4] text-[14px] mb-[20px]">
-            Review Your Submission
-          </button>
-          <p>Go Back to Courses</p>
-        </div>
-      </div>
-    </motion.div>
-  );
-};
-
 const Overlay = ({ onclick, show }) => {
   console.log(show, "show");
   return (

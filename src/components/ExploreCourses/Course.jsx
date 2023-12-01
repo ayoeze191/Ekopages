@@ -1,7 +1,36 @@
-import React from 'react'
+import React, { useState } from 'react'
 import star from "./../../assets/star.svg"
 import ExploreCoursePicture from  "./../../assets/ExploreCoursePicture.svg"
-const Course = ({picture, subject, Tutor, price, stars, modules}) => {
+import instance from '../../axios'
+import { ClipLoader } from 'react-spinners'
+import { useNavigate } from 'react-router-dom'
+import { tokenConfig } from '../../Config/Config'
+const Course = ({picture, subject, Tutor, price, stars, modules, id}) => {
+    const navigate = useNavigate()
+    const [loading, setLoading] = useState(false)
+    const [enrolled, setEnrolled] = useState(false)
+    const Enrol = async () => {
+        setLoading(true)
+        // instance.post(`/services/enroll/${id}/`, null,tokenConfig())
+        // .then((res) => {
+        //     console.log(res)
+        //     setTimeout(() => setEnrolled(true), 500) 
+        //     // navigate('/dashboard')
+        // })
+        // .catch((error) => {
+        //     console.log(error)
+        // })  
+        try {
+            const res = await instance.post(`/services/enroll/${id}/`, null,tokenConfig())
+            console.log(res)
+            setTimeout(() => setEnrolled(true), 500) 
+            setLoading(true)
+            navigate('/dashboard')
+        }
+        catch(err){
+            console.log(err)
+        }
+    }
   return (
     <div  className='font-lato  rounded-[9.5px] bg-white h-[370px] flex flex-col justify-between'>
         <div className='relative'>
@@ -23,7 +52,12 @@ const Course = ({picture, subject, Tutor, price, stars, modules}) => {
         </div>
         <div className='px-[13.76px] flex justify-between '>
             <p className='font-[500] text-[22px] leading-[26px] font-lato'>{price}</p>
-            <button className='bg-[#5A0C91] text-[#FFFFFF]  font-[400] leading-[18.24px] px-[18.92px] py-[9.46px] rounded-[9.6px] font-lato'>Start learning</button>
+            {loading?
+            <button className='bg-[#5A0C91] text-[#FFFFFF]  font-[400] leading-[18.24px] w-32 h-10 rounded-[9.6px] font-lato' onClick={Enrol}><ClipLoader color='white' size={15}/></button>
+            
+            :
+            <button className='bg-[#5A0C91] text-[#FFFFFF]  font-[400] leading-[18.24px] px-[18.92px] py-[9.46px] rounded-[9.6px] font-lato' onClick={Enrol}>Start learning</button>
+            }
         </div>
     </div>
   )

@@ -3,7 +3,7 @@ import Options from './Options'
 import instance from '../../axios'
 import GeneralUiOverlay from '../ui/GeneralUiOverlayLoader'
 import { tokenConfig } from '../../Config/Config'
-const Quiz = ({id, number, question, mark, options, addAnswer}) => {
+const Quiz = ({id, number, question, mark, options, addAnswer, selectedAnswer}) => {
   // console.log(mark)
   const [loading, setLoading] = useState(false)
   const [answer, setAnswer] = useState(null)
@@ -14,7 +14,7 @@ const Quiz = ({id, number, question, mark, options, addAnswer}) => {
     setAnswer(label)
   }
 
-  
+  console.log(selectedAnswer)
   const SubmitAnswer = () => {
     // setLoading(true)
     // console.log({question: id, answer})
@@ -36,9 +36,10 @@ const Quiz = ({id, number, question, mark, options, addAnswer}) => {
       SubmitAnswer()
     }
   }, [answer])
-  
+  // console.log(selectedAnswer)
   return (
-    <div className='font-lato flex justify-between text-[#4A4A4A]' >
+    <div className='font-lato  text-[#4A4A4A]' >
+      <div className='flex justify-between'>
         <div className=' w-full max-w-[37.5rem] '>
 <div className='flex font-[600] text-[1.25rem] gap-[1rem] items-center'>
     <p>{number}.</p>
@@ -54,6 +55,10 @@ const Quiz = ({id, number, question, mark, options, addAnswer}) => {
 </div>
         </div>
         <div>1 mark</div>
+        </div>
+        <div>
+          {selectedAnswer != null && selectedAnswer}
+        </div>
     </div>
   )
 }

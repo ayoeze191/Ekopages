@@ -1,7 +1,7 @@
 export function Reform_to_suitable_form(questions) {
     const question  = questions['question_text']
     const options = Object.values(questions)
-    console.log(options)
+    // console.log(options)
     return {question, id:options[0],options: [{
         label: "a",
         text: options[2],
