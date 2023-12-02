@@ -47,7 +47,7 @@ const Course = ({ course_name,
         <div className="w-full bg-[#f9f9f9] rounded-[10px] h-[10px]">
           <div
             className="bg-[#5A0C91] rounded-[10px] h-full"
-            style={{ width: `${completion_percentage}` }}
+            style={{ width: `${completion_percentage}%` }}
           ></div>
         </div>
       </div>

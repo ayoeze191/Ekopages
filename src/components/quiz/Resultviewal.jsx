@@ -7,7 +7,7 @@ import { useEffect, useState } from "react";
 import { BeatLoader } from "react-spinners";
 
 
-const Resultviewal = ({ ClearInterface }) => {
+const Resultviewal = ({ ClearInterface, length }) => {
   const [result, setResult] = useState(null) 
   const [Loading, setLoading] = useState(true)
 
@@ -69,7 +69,7 @@ const Resultviewal = ({ ClearInterface }) => {
             </p>
             <p className="mt-[12px] font-[500] text-[20px] leading-[24px] mb-[32px] flex">
               64/<span className="text-[24px] flex gap-0">{
-              [1, 0 , 3].map((item, index) => { 
+              length.toString().split("").map((item, index) => { 
                 console.log(index)
                 return <motion.span initial={{ scale: 0 }}
               animate={{ scale: [0, 2, 1]}}

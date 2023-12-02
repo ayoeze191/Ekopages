@@ -3,7 +3,7 @@ import Options from './Options'
 import instance from '../../axios'
 import GeneralUiOverlay from '../ui/GeneralUiOverlayLoader'
 import { tokenConfig } from '../../Config/Config'
-const Quiz = ({id, number, question, mark, options, addAnswer, selectedAnswer}) => {
+const Quiz = ({id, number, question, mark, options, addAnswer, selectedAnswer, correctAnswer}) => {
   // console.log(mark)
   const [loading, setLoading] = useState(false)
   const [answer, setAnswer] = useState(null)
@@ -14,7 +14,7 @@ const Quiz = ({id, number, question, mark, options, addAnswer, selectedAnswer}) 
     setAnswer(label)
   }
 
-  console.log(selectedAnswer)
+  console.log()
   const SubmitAnswer = () => {
     // setLoading(true)
     // console.log({question: id, answer})
@@ -36,7 +36,7 @@ const Quiz = ({id, number, question, mark, options, addAnswer, selectedAnswer}) 
       SubmitAnswer()
     }
   }, [answer])
-  // console.log(selectedAnswer)
+  console.log(selectedAnswer)
   return (
     <div className='font-lato  text-[#4A4A4A]' >
       <div className='flex justify-between'>
@@ -51,14 +51,17 @@ const Quiz = ({id, number, question, mark, options, addAnswer, selectedAnswer}) 
      {loading && <GeneralUiOverlay />}
     {options.map((option) => {
       // console.log(answer, option.label)
-      return  <Options {...option} selected={answer === option.text} onclick={onClickHandler}/>})}
+      return  <Options {...option} selectedAnswer={selectedAnswer} correct_answer={correctAnswer&&correctAnswer} selected={answer === option.text} onclick={onClickHandler}/>})}
 </div>
         </div>
-        <div>1 mark</div>
+        <div className='text-[12px] md:text-[1rem] flex-nowrap flex'>1 mark</div>
         </div>
-        <div>
-          {selectedAnswer != null && selectedAnswer}
+        {correctAnswer &&
+          answer.toLocaleUpperCase() !== correctAnswer.toLocaleUpperCase() &&
+          <div>
+          Correct answer: {correctAnswer}
         </div>
+}
     </div>
   )
 }

@@ -72,7 +72,6 @@ const CourseDetails = () => {
         
         </div>
 }
-
     </div>
   )
 }
@@ -81,15 +80,27 @@ export default CourseDetails
 
 
 const Module = ({changeCurrentModule, title, id}) => {
+  const [Completed, setCompleted] = useState(false)
 
+  const checkForCompleted = () => {
+    instance.get(`/services/check-completion/${id}`, tokenConfig())
+    .then((res) => {
+      console.log(res.data)
+    })
+  }
+  useEffect(() =>{
+    checkForCompleted()
+  }, [])
 
   return(
-    <div className='flex gap-[8px] items-center w-full '>
-      <div>
-      <IoCheckmarkSharp size={24} color='#5A0C91' width={24} height={24}/>
+    <div className='w-full flex flex-col items-center'>
+    <div className='flex gap-[8px] items-center w-full  text-[#5A0C91]'>
+      <div className=''>
+      {Completed ? <IoCheckmarkSharp size={24} color='#5A0C91' width={24} height={24}/> :<GoDotFill color='#5A0C91'/> }
       </div>
       {/* <GoDotFill size={24} color='#5A0C91'/> */}
-      <button onClick={() => changeCurrentModule(id)} className='mr-auto text-left'>{title}</button>
+      <button onClick={() => changeCurrentModule(id)} className=' text-left w-full flex-1  '>{title}</button>
+    </div>
     </div>
   )
 }

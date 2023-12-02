@@ -117,7 +117,7 @@ const Quizes = () => {
 
   return (
     <Wrapper overlay={showOverlay}>
-      {sucessfully_Submited && <Resultviewal ClearInterface={ClearInterface}/>}
+      {sucessfully_Submited && <Resultviewal ClearInterface={ClearInterface} length={all_question.length}/>}
       {loading && 
       <div className="fixed z-[99999000000]  w-full h-full flex justify-center items-center top-0 font-lato">
       <div className=" top-0 mx-auto">
@@ -127,11 +127,11 @@ const Quizes = () => {
         }
       <div>
         <section className=" h-[10.625rem] flex justify-center items-center font-lato bold">
-          <div className="w-full  lg:px-0 px-6 max-w-[77rem] py-4 mx-auto h-fit px-7  text-[#444444] flex items-center justify-between">
+          <div className="w-full  lg:px-0 px-6 max-w-[77rem] py-4 mx-auto h-fit px-7  text-[#444444] flex flex-col md:flex-row items-center justify-between">
             {" "}
             <Link
               to={"/services"}
-              className=" h-full flex gap-[1.06rem] items-center text-[#5A0C91] font-[400] text-[1rem] cursor:pointer"
+              className=" h-full flex gap-[1.06rem] items-center text-[#5A0C91] font-[400] text-[1rem] cursor:pointer order-2 md:order-1 mr-auto md:mr-0"
             >
               {" "}
               <div>
@@ -139,11 +139,11 @@ const Quizes = () => {
               </div>
               back{" "}
             </Link>
-            <div className="font-[700] text-[3rem] flex h-full items-center ">
+            <div className="font-[700]  text-[24px] md:text-[3rem] flex h-full items-center order-1 md:order-2">
               {" "}
-              POP QUIZZES{" "}
+              Pop Quiz{" "}
             </div>{" "}
-            <div></div>{" "}
+            <div  className="md:order-3"></div>{" "}
           </div>
         </section>
         <div className="section flex flex-col gap-[4.125rem] mb-10">
@@ -151,6 +151,7 @@ const Quizes = () => {
             <Quiz
               {...Reform_to_suitable_form(quest)}
               selectedAnswer = {userSelected.length > 0 && userSelected.find((answer) => answer.question_text === Reform_to_suitable_form(quest).question).user_answer}
+              correctAnswer = {userSelected.length > 0 && userSelected.find((answer) => answer.question_text === Reform_to_suitable_form(quest).question).correct_answer}
               number={index + 1}
               addAnswer={addAnswer}
             />
