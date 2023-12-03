@@ -36,7 +36,7 @@ const CourseDetails = () => {
   return (
     <div className='flex px-[2.06rem] pb-[3.75rem] pt-[4.0rem] font-lato gap-[2rem]'>
       {/* drop money */}
-   {moduleDetails.length > 0 &&   <div>
+   {moduleDetails.length > 0 &&   <div className=''>
 <div className='bg-[#FFFFFF] shadow rounded-[5px] px-[1.5rem] py-[1.5rem] mb-10 w'>
     <h1 className='font-[600] text-[1.25rem]'>{moduleDetails[0].subject}</h1>
     <p className='font-[400] text-[1rem]'>{moduleDetails.find((mod) => mod.lesson_number === current&&mod).topic}</p>
@@ -50,10 +50,14 @@ const CourseDetails = () => {
     >
     </video>
 }
-{     <div className='md:w-[640px] font-lato'>
+{     <div className='md:w-[640px] font-lato bg-[#FFFFFF] md:bg-none'>
       {moduleDetails.find((mod) => mod.lesson_number === current&&mod).lesson}
       </div>
-     } 
+     }
+      <div className='md:hidden flex w-full justify-between mt-[16px]'>
+        <button className='text-[#232323] leading-[25px] font-[600] font-lato '>Back</button>
+        <button className='text-[#232323] leading-[25px] font-[600] font-lato'>Next</button>
+      </div>
     </div>
 }
 

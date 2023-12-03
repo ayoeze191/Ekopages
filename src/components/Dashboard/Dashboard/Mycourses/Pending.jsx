@@ -10,14 +10,16 @@ const Course = ({picture, course_name, Tutor, price, stars, modules,completed_le
     // const [loading, setLoading] = useState(false)
   
   return (
-    <div  className='font-lato  rounded-[9.5px] bg-white h-[370px] flex flex-col justify-between'>
+    <div  className='font-lato  rounded-[9.5px] bg-white h-[353px] flex flex-col justify-between'>
         <div className='relative'>
             {/* <div className={`absolute right-[13px] top-[13.76px] ${price === "FREE"?'bg-[#247A00]':'bg-[#5A0C91]'} h-[23px] w-[45px] text-white font-[500] text-[13.76px] leading-[16.5px] rounded-[2.58px] flex items-center justify-center `}>{price === "FREE"?"FREE":"PRO"}</div> */}
             <img src={ExploreCoursePicture} className='object-cover w-full'/>
         </div>
         <div className='px-[13.76px] flex gap-[6px] flex-col'>
-            <p className='font-[500] text-[20.64px] font-lato '>{course_name}</p>
-            <p className='font-[400] text-[10.32px] leading-[12.38px] text-[#888888]'>Modules {completed_lessons} of {total_lessons} </p>
+            <p className='font-[500] text-[20px] font-lato leading-[24px] '>{course_name}</p>
+            <p className='font-[500] text-[12px] leading-[12.38px] text-[#888888]'>Modules {completed_lessons} of {total_lessons} </p>
+            <div className="">
+              <p>{completion_percentage}% completed</p>
             <div className="w-full bg-[#f9f9f9] rounded-[10px] h-[10px]">
           <div
             className="bg-[#5AAE38] rounded-[10px] h-full"
@@ -25,13 +27,11 @@ const Course = ({picture, course_name, Tutor, price, stars, modules,completed_le
           ></div>
         </div>
         </div>
-        <div className='px-[13.76px] flex justify-between '>
-            {
-            <Link className='bg-[#5A0C91] text-[#FFFFFF]  font-[400] leading-[18.24px] px-[18.92px] py-[9.46px] rounded-[9.6px] font-lato' to={`/dashboard/course/${course_id}`}
-            // onClick={Enrol}
+        </div>
+        <div className='px-[13.76px] flex justify-center w-full'>
+            <Link className='bg-[#5A0C91] text-[#FFFFFF]  font-[400] leading-[18.24px] w-full max-w-[165px] h-[39px] flex items-center justify-center rounded-[10px] font-lato' to={`/dashboard/course/${course_id}`}
             
             >Continue Learning</Link>
-            } 
         </div>
     </div>
   )
@@ -66,7 +66,7 @@ const Pending = () => {
         console.log("working")
     }, [])
   return (
-    <div className="grid grid-cols-3 gap-[16px] px-[16px]">
+    <div className="flex flex-col mx-auto md:grid md:grid-cols-3 gap-[16px] md:px-[16px] flex-1">
         {isLoading?<MoonLoader />:
         courses.map((course) => <Course {...course}/>)
   }

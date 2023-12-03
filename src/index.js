@@ -14,7 +14,7 @@ import { ModalProvider } from './context/modal/modal';
 const root = ReactDOM.createRoot(document.getElementById('root'));
 const queryClient = new QueryClient()
 root.render(
-  <React.StrictMode>
+  // <React.StrictMode>
     <ModalProvider>
     <AuthProvider>
     <SignUpProvider>
@@ -26,7 +26,7 @@ root.render(
     </SignUpProvider>
     </AuthProvider>
     </ModalProvider>
-  </React.StrictMode>
+  // </React.StrictMode>
 );
 
 // If you want to start measuring performance in your app, pass a function

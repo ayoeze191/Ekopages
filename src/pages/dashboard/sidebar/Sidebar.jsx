@@ -32,12 +32,12 @@ const sidedetails = [
     text: "My Courses",
     check : loc.pathname ==="/dashboard/MyCourses"?true:false
   },
-  {
-    img: <BsBookshelf />,
-    url: 'books',
-    text: "Books",
-    check : loc.pathname === "/dashboard/books"?true:false
-  },
+  // {
+  //   img: <BsBookshelf />,
+  //   url: 'books',
+  //   text: "Books",
+  //   check : loc.pathname === "/dashboard/books"?true:false
+  // },
   // {
   //   img: <BsBookshelf />,
   //   url: 'quizes',
