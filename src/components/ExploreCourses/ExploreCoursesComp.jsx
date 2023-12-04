@@ -5,8 +5,12 @@ import Course from './Course'
 import { ClipLoader } from 'react-spinners'
 import withErrorHandler from '../withErrHandler'
 import { useNavigate } from 'react-router-dom'
+import { IoCloseCircleOutline } from "react-icons/io5";
+
 
 const ExploreCoursesComp = () => {
+  const [couserPamentModal, setCoursePaymentModal] = useState(false)
+  
   const [course_type, setCourseType] = useState('/all_courses')
   const [loading, setIsLoading] = useState(false)
   const [courses, setCourses] = useState([])
@@ -32,11 +36,11 @@ const ExploreCoursesComp = () => {
   }, [course_type])
 console.log(course_type)
   return (
-    <div>
+    <div className='overflow-x-hidden'>
       <p className='text-center mt-[43px]  mx-auto text-[#000000] font-lato font-[600] text-[40px] leading-[48px]'>Explore Courses</p>
        <Buttons func={changeCourseType}/>
        
-      <div className='grid grid-cols-4 mt-[61px] mx-auto w-full section gap-[32px]'>
+      <div className='grid md:grid-cols-4 mt-[61px] mx-auto w-full section gap-[32px]'>
       {loading? <ClipLoader  className='mx-auto'/>: courses.length > 0 ? courses.map((course) => 
           <Course {...course}/>
       ):<div className=' border-t-[orange] border-t-solid border-t-2 py-[14.2px] px-[17.8px] items-center font-[400] text-[12px] md:text-base font-lato mt-[1rem] text-[#4A4A4A] text-center bg-[#F8F8F8] w-fit mx-auto flex gap-2 md:gap-[17.9px] flex-col' >
@@ -72,13 +76,39 @@ const Buttons = ({func}) => {
   ])
 
   return (
-  <div className='mx-auto flex gap-[48px] w-fit mt-[40px]'>
+  <div className='mx-auto flex gap-[24px] md:gap-[48px] w-full md:w-fit mt-[40px] overflow-x-scroll md:overflow-hidden px-[26px] md:px-0'>
   
   {course_type.map(({name, url}) => {
-      return <button className='rounded-[10px] border-solid border-[#232323] border-[1px] py-[10px] px-[48px]' onClick={() => func(url)}>
+      return <button className='rounded-[10px] border-solid border-[#232323] border-[1px] py-[10px] px-[15.5px] md:px-[48px] w-full text-[12px] md:text-base' onClick={() => func(url)}>
       {name}
         </button>
   })}
 </div>
+  )
+}
+
+
+const Modal = () => {
+  return (
+    <div>
+<IoCloseCircleOutline />
+    <p>Course Payment</p>
+    <div>
+      <div><img src="" alt="" /></div>
+      <div>
+        <p>
+          introduction to SDG
+        </p>
+      </div>
+    </div>
+    </div>
+  )
+}
+
+const Overlay = () => {
+  return (
+    <div className='w-full h-full fixed bg-black opacity-60'>
+
+    </div>
   )
 }
