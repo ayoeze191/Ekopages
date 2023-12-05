@@ -12,7 +12,8 @@ const initialState = {
     categories: [],
     isloading: false,
     error: null,
-    product: null
+    product: null,
+    url: ""
 }  
 
 const productSlice = createSlice({
@@ -38,11 +39,12 @@ const productSlice = createSlice({
             state.isloading = false
             state.products = null
         },
+        
     },
 })
 
 
-export const {setproducts,  productLoading, setcategories, productError, setcategory} = productSlice.actions
+export const {setproducts,  productLoading, setcategories, productError, setcategory, swictchUserCourseUrl} = productSlice.actions
 
 
 export default productSlice.reducer;

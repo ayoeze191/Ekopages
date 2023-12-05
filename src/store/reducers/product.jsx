@@ -12,7 +12,7 @@ const initialState = {
     loading: false,
     success: false,
     cartLoading: false
-
+    
 }  
 
 const productSlice = createSlice({

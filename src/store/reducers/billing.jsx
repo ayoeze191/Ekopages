@@ -4,14 +4,15 @@ import axios from "axios"
 // import { get_all_doctors } from "../ActionTypes/ActionTypes"
 // type fun = () => void
 
-
+// this state is for the dashboard url so as to know the current page after navigating to the,
 
 const initialState = {
     loading: false, 
     success: false,
-    error: ""
+    error: "",
+    url: ""
 }  
-
+// report item damage
 const billingSlice = createSlice({
     name: "billing",
     initialState,
@@ -24,12 +25,16 @@ const billingSlice = createSlice({
         },
         billing_error: (state, action) => {
             state.error = action.payload
+        },
+        swictchUserCourseUrl: (state, action) => {
+            state.url = action.payload
+            
         }
     }
 })
 
 
-export const {sending_bill, billing_sent, billing_error} = billingSlice.actions
+export const {sending_bill, billing_sent, billing_error, swictchUserCourseUrl} = billingSlice.actions
 
 
 export default billingSlice.reducer;

@@ -18,6 +18,7 @@ import VerifyEmail from "./pages/Verify-email"
 import Beapublisher from "./pages/Beapublisher/Beapublisher"
 import Productdetails from "./components/ProductDetails/Productdetails"
 import ExploreCourses from "./pages/ExploreCourses/ExploreCourses"
+import CourseQuizes from "./components/Dashboard/CourseQuizzes/CoursesQuizzes"
 
 
 export const BasicRoutes = [
@@ -69,6 +70,10 @@ export const BasicRoutes = [
     {
         path: "/quizes/:category",
         component: <Quizes />
+    },
+    {
+        path: "/quizzes/:id",
+        component: <CourseQuizes />
     },
     {
         path: "/story/:category",

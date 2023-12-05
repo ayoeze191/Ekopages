@@ -12,7 +12,7 @@ export const store = configureStore({
         products: productReducer,
         cart: cartReducer,
         profile,
-        
+        billing
     },
     devTools: true
 })
