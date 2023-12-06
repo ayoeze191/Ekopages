@@ -10,7 +10,7 @@ const MyCourses = () => {
     <div>
       <div className='py-[54px] pr-[78px] w-full flex flex-col gap-[1rem]'>
       <div className=' gap-[1rem] pl-[40px] flex ml-auto w-fit'>
-          <Link className='bg-[#5A0C91] w-[125px] h-[40px] hidden md:flex border-solid border-[1px] text-center border-[#888888] text-[#FBFBFB] rounded-[5px] justify-center items-center' to={'/quizes/h'}>
+          <Link className='bg-[#5A0C91] w-[125px] h-[40px] hidden md:flex border-solid border-[1px] text-center border-[#888888] text-[#FBFBFB] rounded-[5px] justify-center items-center' to={'/quizes'}>
           Take a Quiz
           </Link>
           <div>

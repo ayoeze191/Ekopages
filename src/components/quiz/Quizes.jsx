@@ -10,17 +10,21 @@ import { BeatLoader, ClipLoader } from "react-spinners";
 import instance from "../../axios";
 import { tokenConfig } from "../../Config/Config";
 import { Reform_to_suitable_form } from "../../Utils/reformQuestions";
-import axios from "axios";
+import axios, { all } from "axios";
 import GeneralUiOverlay from "../ui/GeneralUiOverlayLoader";
 import excelentLogo from "./../../assets/quizzes/excelentLogo.svg";
 // import Overlay from '../Overlay'
 import { motion, transform } from "framer-motion";
 import excelentBg from "./../../assets/quizzes/excelent-bg.svg";
 import Resultviewal from "./Resultviewal";
-const Quizes = () => {
-  const [userSelected, setUserSelectedAnswers] = useState([])
+import { useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
+import { setQuizzes, setQuizzes_with_answers } from "../../store/reducers/Quizzes";
 
-  const [all_question, setAll_questions] = useState([]);
+const Quizes = () => {
+  const dispatch = useDispatch()
+  const all_question = useSelector((state) => state.quizzes)
+  console.log(all_question)
   const [answers, setAnswers] = useState([]);
   const [start, setStart] = useState(0);
   const [end, setEnd] = useState(4);
@@ -34,8 +38,7 @@ const Quizes = () => {
       .get("/dashboard-quizzes/start", tokenConfig())
       .then((res) => {
         setloadingQuestions(false)
-        console.log(res.data.data);
-        setAll_questions(res.data.data);
+        dispatch(setQuizzes(res.data.data))
       })
       .catch((err) => {
         console.log(err);
@@ -46,9 +49,19 @@ const Quizes = () => {
   }, []);
 
   const forward = () => {
-    setEnd(start);
-    setStart(end + 4);
+    const rem = all_question.quizzes.length - end
+    console.log(rem)
+    if(rem > 4 ) {
+    setStart(end);
+    setEnd(end + 4);
+    }
+    else {
+    setStart(end);
+    setEnd(end + rem)
+    }
   };
+  const rem = all_question.quizzes.length - end
+  console.log(start ,end, rem)
   const backward = () => {
     setEnd(start);
     setStart(start - 4);
@@ -93,17 +106,16 @@ const Quizes = () => {
   const Check = () => {
     instance.get('/dashboard-quizzes/quiz/review/', tokenConfig())
       .then((res) => {
-        setUserSelectedAnswers(res.data.review_data)
+        dispatch(setQuizzes_with_answers(res.data.review_data))
         setLoading(false);
-      setShowOverlay(true);
-      setSucessfully_Submited(true);
+        setShowOverlay(true);
+        setSucessfully_Submited(true);
       })
       .catch((err) => {
       })
   }
 
   useEffect(() => {
-    
     
   }, [setSucessfully_Submited])
 
@@ -117,7 +129,7 @@ const Quizes = () => {
 
   return (
     <Wrapper overlay={showOverlay}>
-      {sucessfully_Submited && <Resultviewal ClearInterface={ClearInterface} length={all_question.length}/>}
+      {sucessfully_Submited && <Resultviewal ClearInterface={ClearInterface} length={all_question.quizzes.length}/>}
       {loading && 
       <div className="fixed z-[99999000000]  w-full h-full flex justify-center items-center top-0 font-lato">
       <div className=" top-0 mx-auto">
@@ -147,22 +159,20 @@ const Quizes = () => {
           </div>
         </section>
         <div className="section flex flex-col gap-[4.125rem] mb-10">
-          {loadingQuestions?<BeatLoader />:all_question.length == 0 ? "No Questions Yet":all_question.slice(start, end).map((quest, index) => (
+          {loadingQuestions?<BeatLoader />:all_question.quizzes.length == 0 ? "No Questions Yet":all_question.quizzes.slice(start, end).map((quest, index) => (
             <Quiz
               {...Reform_to_suitable_form(quest)}
-              selectedAnswer = {userSelected.length > 0 && userSelected.find((answer) => answer.question_text === Reform_to_suitable_form(quest).question).user_answer}
-              correctAnswer = {userSelected.length > 0 && userSelected.find((answer) => answer.question_text === Reform_to_suitable_form(quest).question).correct_answer}
               number={index + 1}
               addAnswer={addAnswer}
             />
           ))}
           <div className="flex justify-between w-full px-0">
             {start !== 0 && (
-              <button className="ml-0 text-white text-[17.6px] md:text-[1rem] font-[700] py-[10.5px]px-[33px]  md:px-0 md:w-[216px] rounded-[8px]  border-solid border-2 bg-[#5A0C91]  font-lato w-fit mx-auto">
+              <button className="ml-0 text-white text-[17.6px] md:text-[1rem] font-[700] py-[10.5px]px-[33px]  md:px-0 md:w-[216px] rounded-[8px]  border-solid border-2 bg-[#5A0C91]  font-lato w-fit mx-auto" onClick={backward}>
                 Previous
               </button>
             )}
-            {end >= all_question.length ? null : (
+            {(all_question.quizzes.length - end) > 0 && (
               <button
                 className="mr-0 text-white text-[17.6px] md:text-[1rem] font-[700] py-[10.5px] px-[33px]  md:px-0 md:w-[216px] rounded-[8px]  border-solid border-2 bg-[#5A0C91]  font-lato w-fit mx-auto"
                 onClick={forward}
@@ -170,7 +180,7 @@ const Quizes = () => {
                 Next
               </button>
             )}
-            {end >= all_question.length ? (
+            {end >= all_question.quizzes.length ? (
               <button
                 onClick={HandleSubmit}
                 className="mr-0 text-white text-[17.6px] md:text-[1rem] font-[700] py-[10.5px] px-[33px]  md:px-0 md:w-[216px] rounded-[8px]  border-solid border-2 bg-[#5A0C91]  font-lato w-fit mx-auto"

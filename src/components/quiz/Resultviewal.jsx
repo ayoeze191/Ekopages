@@ -6,9 +6,11 @@ import instance from "../../axios";
 import { tokenConfig } from "../../Config/Config";
 import { useEffect, useState } from "react";
 import { BeatLoader } from "react-spinners";
+import { Link } from "react-router-dom";
 
-
+import { useNavigate } from "react-router-dom";
 const Resultviewal = ({ ClearInterface, length }) => {
+  const navigate = useNavigate()
   const [result, setResult] = useState(null) 
   const [Loading, setLoading] = useState(true)
   const [total_score, setTotalScore] = useState()
@@ -87,7 +89,7 @@ const Resultviewal = ({ ClearInterface, length }) => {
               transition={{ type: "spring", delay: index == 0 ? 0.6:0.4 * 2, stiffness: 200 }}> {item} </motion.span>})
               }</span>
             </p>
-            <button className="bg-[#5A0C91] rounded-[5.5px] px-[20px] py-[13.5px] text-[#EFE7F4] text-[14px] mb-[20px]" onClick={ClearInterface}>
+            <button className="bg-[#5A0C91] rounded-[5.5px] px-[20px] py-[13.5px] text-[#EFE7F4] text-[14px] mb-[20px]" onClick={() => {navigate('/quizes/reviewQuizzes'); ClearInterface()} }>
               Review Your Submission
             </button>
             <p>Go Back to Courses</p>

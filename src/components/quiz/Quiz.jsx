@@ -3,14 +3,13 @@ import Options from './Options'
 import instance from '../../axios'
 import GeneralUiOverlay from '../ui/GeneralUiOverlayLoader'
 import { tokenConfig } from '../../Config/Config'
-const Quiz = ({id, number, question, mark, options, addAnswer, selectedAnswer, correctAnswer}) => {
+const Quiz = ({id, number, question, mark, options, addAnswer}) => {
   // console.log(mark)
   const [loading, setLoading] = useState(false)
   const [answer, setAnswer] = useState(null)
   // this state is needed for the  user to know that their answer has not been selected if there is a network failure
-  const [prevAnswer, setPrevAnswer] = useState(null)
+
   const onClickHandler = (label) => {
-    setPrevAnswer(answer)
     setAnswer(label)
   }
 
@@ -36,7 +35,7 @@ const Quiz = ({id, number, question, mark, options, addAnswer, selectedAnswer, c
       SubmitAnswer()
     }
   }, [answer])
-  console.log(selectedAnswer)
+  
   return (
     <div className='font-lato  text-[#4A4A4A]' >
       <div className='flex justify-between'>
@@ -51,17 +50,11 @@ const Quiz = ({id, number, question, mark, options, addAnswer, selectedAnswer, c
      {loading && <GeneralUiOverlay />}
     {options.map((option) => {
       // console.log(answer, option.label)
-      return  <Options {...option} selectedAnswer={selectedAnswer} correct_answer={correctAnswer&&correctAnswer} selected={answer === option.text} onclick={onClickHandler}/>})}
+      return  <Options {...option} selected={answer === option.text} onclick={onClickHandler}/>})}
 </div>
         </div>
         <div className='text-[12px] md:text-[1rem] flex-nowrap flex'>1 mark</div>
         </div>
-        {correctAnswer &&
-          answer.toLocaleUpperCase() !== correctAnswer.toLocaleUpperCase() &&
-          <div>
-          Correct answer: {correctAnswer}
-        </div>
-}
     </div>
   )
 }

@@ -177,11 +177,13 @@ const Module = ({ changeCurrentModule, title, id, level, current }) => {
     instance
       .get(`/services/check-completion/${id}`, tokenConfig())
       .then((res) => {
-        console.log(res.data);
+        setCompleted(res.data.completed);
       });
   };
   useEffect(() => {
-    // checkForCompleted()
+    if(id !== undefined){
+    checkForCompleted()
+    }
   }, []);
   const handleGotoQuiz = () => {
     dispatch(swictchUserCourseUrl(param.id))
@@ -194,7 +196,7 @@ const Module = ({ changeCurrentModule, title, id, level, current }) => {
     <div className="w-full flex flex-col items-center h-[20px] ">
       <div className="flex gap-[8px] items-center w-full  text-[#5A0C91] h-full">
         <div className='relative after:content-[""] after:text-[#D9D9D9] after:absolute after:w-[2px] after:h-12 after:bg-[#D9D9D9] after:left-[6.5px] after:top-5'>
-          {Completed ? (
+          {Completed == true ? (
             <IoCheckmarkSharp
               size={24}
               // color="#D9D9D9"

@@ -1,5 +1,6 @@
 import CheckoutContainer from "./components/checkout/CheckoutContainer"
 import Quizes from "./components/quiz/Quizes"
+import Review from "./components/quiz/ReviewQuizzes/Quizes"
 import ShortStory from "./components/shortStory/ShortStory"
 import { AboutPage } from "./pages/About/about"
 import Dashboardcontainer from "./pages/dashboard/Dashboardcontainer"
@@ -68,8 +69,12 @@ export const BasicRoutes = [
         component: <WhishlistContainer />
     },
     {
-        path: "/quizes/:category",
+        path: "/quizes",
         component: <Quizes />
+    },
+    {
+        path: "/quizes/reviewQuizzes",
+        component: <Review />
     },
     {
         path: "/quizzes/:id",
