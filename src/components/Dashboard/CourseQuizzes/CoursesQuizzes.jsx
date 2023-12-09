@@ -7,8 +7,11 @@ import { BeatLoader } from "react-spinners";
 import instance from "./../../../axios";
 import { tokenConfig } from "../../../Config/Config";
 import { Reform_to_suitable_form } from "../../../Utils/reformQuestions";
-import { UseSelector, useSelector } from "react-redux/es/hooks/useSelector";
+import {  useSelector } from "react-redux/es/hooks/useSelector";
+import { useDispatch } from "react-redux";
+import { swicthFinishedCourseQuiz } from "../../../store/reducers/Quizzes";
 const CourseQuizes = () => {
+  const dispatch = useDispatch()
   const url = useSelector((state) => state.billing.url)
   console.log(url)
   const navigate = useNavigate() 
@@ -69,8 +72,8 @@ const CourseQuizes = () => {
         );
         const result = await response.data;
       }
-      navigate(`/dashboard/course/${url}`, {state: {finished: id}})
-      
+      dispatch(swicthFinishedCourseQuiz())
+      navigate(`/dashboard/course/${url}`)
     } catch (error) {
       console.error("Error making API call", error);
       setLoading(false);

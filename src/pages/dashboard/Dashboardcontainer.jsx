@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react'
 import { Route, redirect, useNavigate } from 'react-router-dom'
 import { Routes } from 'react-router-dom'
-import CourseDetails from '../../components/Dashboard/Dashboard/CourseDetail/CourseDetails'
+import CourseDetails from '../../components/Dashboard/Dashboard/CourseDetail/CourseDet'
 import Dashboard from '../../components/Dashboard/Dashboard/dashboard/Dashboard'
 import OrderContainer from '../../components/Dashboard/Dashboard/Order/OrderContainer'
 import Orders from '../../components/Dashboard/Dashboard/Order/Orders'

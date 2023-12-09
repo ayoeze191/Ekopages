@@ -18,6 +18,10 @@ const CourseDetails = () => {
   const [modules, setModules] = useState([]);
   const [moduleDetails, setmoduleDetails] = useState([]);
   const [current, setCurrent] = useState(1);
+
+
+
+
   useEffect (() => {
     // ref.current.scrollIntoView()
     // viewref.current.scrollIntoView({behaviour: "smooth"})
@@ -27,7 +31,7 @@ const CourseDetails = () => {
     instance
       .get(`services/study_all/${param.id}`, tokenConfig())
       .then((res) => {
-        console.log(res);
+        console.log(res.data);
         setModules(
           res.data.data.map(
             (module) =>
@@ -40,9 +44,15 @@ const CourseDetails = () => {
         console.log(err);
       });
   };
+
+  const get_completed = () => {
+    
+  }
+
   useEffect(() => {
     get_modules();
   }, []);
+
   useEffect(() => {
     if(loc.state !== null){
       if(loc.state.finished == 1){
@@ -63,7 +73,6 @@ const CourseDetails = () => {
   const RefactoredModules = [...modules]
   RefactoredModules.splice(3, 0, {level:1, title: "POP Quiz",  current:current})
   RefactoredModules.splice(6, 0, {level:2, title: "POP Quiz", current:current})
-console.log(RefactoredModules)
 
   return (
     <div className="px-[2.06rem]">
@@ -185,6 +194,7 @@ const Module = ({ changeCurrentModule, title, id, level, current }) => {
     checkForCompleted()
     }
   }, []);
+
   const handleGotoQuiz = () => {
     dispatch(swictchUserCourseUrl(param.id))
     navigate(`/quizzes/${level}`)
