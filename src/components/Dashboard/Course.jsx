@@ -31,7 +31,7 @@ const Course = ({ course_name,
   return (
     <Link
       className="flex flex-col pt-[2rem] px-[1.5rem] pb-[2.3125rem] bg-[#DCDEF9] rounded-[5px] w-full font-lato"
-      to={`/dashboard/course/${course_id}`}
+      to={`/dashboard/MyCourses/${course_id}`}
     >
       <p className="mb-[1rem] font-[500] text-[1.5rem]">{course_name}</p>
       <p className="mb-[1rem] text-[12px] font-[500] text-[#4A4A4A]">

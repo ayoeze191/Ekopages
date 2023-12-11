@@ -24,13 +24,13 @@ const sidedetails = [
     img: <RxDashboard />,
     url: '',
     text: "Dashboard",
-    check : loc.pathname === "/dashboard"?true:false
+    check : loc.pathname.endsWith("/dashboard")?true:false
   },
   {
     img: <TbCertificate />,
     url: 'MyCourses',
     text: "My Courses",
-    check : loc.pathname ==="/dashboard/MyCourses"?true:false
+    check : loc.pathname.startsWith("/dashboard/MyCourses")?true:false
   },
   // {
   //   img: <BsBookshelf />,

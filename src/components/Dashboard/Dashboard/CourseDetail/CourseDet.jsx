@@ -59,8 +59,8 @@ const CourseDetails = () => {
               (module) =>
                 module.id && { title: module.topic, id: module.id, completed: module.completed }
             )
-            myModules.splice(3, 0, {level:1, title: "POP Quiz",  current:current})
-            RefactoredModules.splice(6, 0, {level:2, title: "POP Quiz", current:current})
+            // myModules.splice(3, 0, {level:1, title: "POP Quiz",  current:current})
+            // myModules.splice(6, 0, {level:2, title: "POP Quiz", current:current})
             setModules(myModules)
             setCurrent(res.data.data[0].id)
             setCurrentDetails(myModules)

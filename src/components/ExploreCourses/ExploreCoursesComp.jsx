@@ -6,17 +6,20 @@ import { ClipLoader } from 'react-spinners'
 import withErrorHandler from '../withErrHandler'
 import { useNavigate } from 'react-router-dom'
 import { IoCloseCircleOutline } from "react-icons/io5";
+import CourseModal from './CourseModal'
 
 
 const ExploreCoursesComp = () => {
   const [couserPamentModal, setCoursePaymentModal] = useState(false)
-  
+  const [showOverlay, setShowOverlay] = useState(false);
   const [course_type, setCourseType] = useState('/all_courses')
   const [loading, setIsLoading] = useState(false)
   const [courses, setCourses] = useState([])
   const changeCourseType = (value) => {
       setCourseType(value)
   }
+  const [selected, setSelected] = useState(null)
+
   const getCourses = () => {
     setIsLoading(true)
     instance.get(`/services${course_type}/`)
@@ -30,26 +33,40 @@ const ExploreCoursesComp = () => {
     })
   }
   const navigate = useNavigate()
-
   useEffect(() => {
     getCourses()
   }, [course_type])
+const [courseModal, setcourseModal] = useState(false)
+  const handleSelect = (id) => {
+    setShowOverlay(true)
+    setSelected(courses.find((course) => course.id == id))
+    setcourseModal(true)
+  }
+
+  const handleClose = () => {
+    // console.log("closing")
+    setShowOverlay(false)
+    setcourseModal(false)
+  }
+
 console.log(course_type)
   return (
-    <div className='overflow-x-hidden'>
+    <Wrapper overlay={showOverlay} onclick={handleClose}>
+    <CourseModal  courseModal={courseModal} {...selected} handleClose={handleClose}/>
+    <div className='overflow-x-hidden mb-10'>
       <p className='text-center mt-[43px]  mx-auto text-[#000000] font-lato font-[600] text-[40px] leading-[48px]'>Explore Courses</p>
        <Buttons func={changeCourseType}/>
        
       <div className='grid md:grid-cols-4 mt-[61px] mx-auto w-full section gap-[32px]'>
       {loading? <ClipLoader  className='mx-auto'/>: courses.length > 0 ? courses.map((course) => 
-          <Course {...course}/>
+          <Course {...course} handleSelect={handleSelect}/>
       ):<div className=' border-t-[orange] border-t-solid border-t-2 py-[14.2px] px-[17.8px] items-center font-[400] text-[12px] md:text-base font-lato mt-[1rem] text-[#4A4A4A] text-center bg-[#F8F8F8] w-fit mx-auto flex gap-2 md:gap-[17.9px] flex-col' >
         <p> No Courses  Yet</p>
      <button onClick={() => navigate('/')} className='font-[400] text-[#E9E9E9] py-[15px] px-[30px] bg-[#5A0C91] rounded-[5px] font-lato mx-auto text-sm md:text-base'>Return to Home Page</button>
-      
     </div>}
       </div>
     </div>
+    </Wrapper>
   )
 }
 
@@ -88,27 +105,26 @@ const Buttons = ({func}) => {
 }
 
 
-const Modal = () => {
+const Wrapper = ({overlay,children, onclick}) => {
   return (
-    <div>
-<IoCloseCircleOutline />
-    <p>Course Payment</p>
-    <div>
-      <div><img src="" alt="" /></div>
-      <div>
-        <p>
-          introduction to SDG
-        </p>
-      </div>
-    </div>
-    </div>
+      <>
+      <Overlay show={overlay} onclick={onclick}/>
+      {children}
+      </>
   )
 }
 
-const Overlay = () => {
-  return (
-    <div className='w-full h-full fixed bg-black opacity-60'>
 
-    </div>
-  )
-}
+
+
+const Overlay = ({ onclick, show }) => {
+  console.log(show, "show");
+  return (
+    show && (
+      <div
+        className="bg-black opacity-[0.7] fixed w-full h-full top-0 z-10"
+        onClick={onclick}
+      ></div>
+    )
+  );
+};

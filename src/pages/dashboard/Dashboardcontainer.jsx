@@ -32,7 +32,7 @@ const Dashboardcontainer = () => {
         <Route element={<Dashboard />} path='/' />
         <Route element={<Settings />} path="/settings" />
         <Route element={<OrderContainer />} path='/orders/*' />
-        <Route element={<CourseDetails />} path = {"/course/:id"} />
+        <Route element={<CourseDetails />} path = {"/MyCourses/:id"} />
         <Route element={<MyAccount />} path="/account" />
         <Route element={<Books/>} path='/books' />
         <Route element={<MyCourses/>} path='/MyCourses' />

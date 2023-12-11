@@ -29,7 +29,7 @@ const Course = ({picture, course_name, Tutor, price, stars, modules,completed_le
         </div>
         </div>
         <div className='px-[13.76px] flex justify-center w-full'>
-            <Link className='bg-[#5A0C91] text-[#FFFFFF]  font-[400] leading-[18.24px] w-full max-w-[165px] h-[39px] flex items-center justify-center rounded-[10px] font-lato' to={`/dashboard/course/${course_id}`}
+            <Link className='bg-[#5A0C91] text-[#FFFFFF]  font-[400] leading-[18.24px] w-full max-w-[165px] h-[39px] flex items-center justify-center rounded-[10px] font-lato' to={`/dashboard/MyCourses/${course_id}`}
             
             >Continue Learning</Link>
         </div>
