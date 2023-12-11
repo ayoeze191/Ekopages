@@ -13,7 +13,7 @@ import Video from "./components/Video";
 const CourseDetails = () => {
   const viewref = useRef(null);
   const param = useParams();
-  const loc = useLocation()
+  // const loc = useLocation()
   const vidoeRef = useRef(null)
   const [modules, setModules] = useState([]);
   const [moduleDetails, setmoduleDetails] = useState([]);
@@ -53,16 +53,16 @@ const CourseDetails = () => {
     get_modules();
   }, []);
 
-  useEffect(() => {
-    if(loc.state !== null){
-      if(loc.state.finished == 1){
-        setCurrent(4)
-      }
-      else if(loc.state.finished == 2){
-        setCurrent(6)
-      }
-    }
-  }, [])
+  // useEffect(() => {
+  //   if(loc.state !== null){
+  //     if(loc.state.finished == 1){
+  //       setCurrent(4)
+  //     }
+  //     else if(loc.state.finished == 2){
+  //       setCurrent(6)
+  //     }
+  //   }
+  // }, [])
 
 
 

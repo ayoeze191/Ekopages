@@ -37,7 +37,6 @@ const CourseDetails = () => {
       if(indexes_not_allowed.includes(index_of_completed) == false) {
         setCurrent(details[index_of_completed + 1].id)
       }
-      
       else {
         if(completed_CourseQuiz == true){
           setCurrent(details[index_of_completed + 1].id)
@@ -97,29 +96,29 @@ const CourseDetails = () => {
           // }
       }
 
-      useEffect(() => {
-        console.log(completed_CourseQuiz, "completed_CourseQuiz")
-        if(modules.length > 0){
-        if(completed_CourseQuiz  === true){
-          console.log("finie")
-          let last_item;
+      // useEffect(() => {
+      //   console.log(completed_CourseQuiz, "completed_CourseQuiz")
+      //   if(modules.length > 0){
+      //   if(completed_CourseQuiz  === true){
+      //     console.log("finie")
+      //     let last_item;
 
-          for(let i=0; i < modules.length; i ++){
-            if(modules[i].completed == true){
-              last_item = modules[i]
-            }
-          }
-      // find the index in order to set is to identify the next one after it
-          const index_of_completed = modules.findIndex((item) => item.id == last_item.id)
-          console.log(modules, "index_of_completed")
-          dispatch(swicthFinishedCourseQuiz())
-          let NewModules = modules.map((item) => item.id == modules[index_of_completed + 1]? {...item, completed: true}: {...item})
-          setModules(NewModules)
-          setCurrent(modules[index_of_completed + 1].id) 
-        }
+      //     for(let i=0; i < modules.length; i ++){
+      //       if(modules[i].completed == true){
+      //         last_item = modules[i]
+      //       }
+      //     }
+      // // find the index in order to set is to identify the next one after it
+      //     const index_of_completed = modules.findIndex((item) => item.id == last_item.id)
+      //     console.log(modules, "index_of_completed")
+      //     dispatch(swicthFinishedCourseQuiz())
+      //     let NewModules = modules.map((item) => item.id == modules[index_of_completed + 1]? {...item, completed: true}: {...item})
+      //     setModules(NewModules)
+      //     setCurrent(modules[index_of_completed + 1].id) 
+      //   }
 
-      }
-      }, [modules])
+      // }
+      // }, [modules])
 
       useEffect(() => {
         get_modules();
