@@ -73,7 +73,7 @@ const CourseQuizes = () => {
         const result = await response.data;
       }
       dispatch(swicthFinishedCourseQuiz())
-      navigate(`/dashboard/course/${url}`)
+      navigate(`/dashboard/MyCourses/${url}`)
     } catch (error) {
       console.error("Error making API call", error);
       setLoading(false);
