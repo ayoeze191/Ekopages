@@ -58,8 +58,6 @@ const CourseDetails = () => {
               (module) =>
                 module.id && { title: module.topic, id: module.id, completed: module.completed }
             )
-            // myModules.splice(3, 0, {level:1, title: "POP Quiz",  current:current})
-            // myModules.splice(6, 0, {level:2, title: "POP Quiz", current:current})
             setModules(myModules)
             setCurrent(res.data.data[0].id)
             setCurrentDetails(myModules)
@@ -87,7 +85,7 @@ const CourseDetails = () => {
           else {
             setCurrent(id)
           }
-          let  module_three;
+          // let  module_three;
           // let 
           // for(let i=0; i < details.length; i ++){
           //   if(details[i].completed == true){
@@ -125,7 +123,7 @@ const CourseDetails = () => {
       }, []);
 
       const Update_Module_Completed = (id) => {
-        setModules(modules.map((mod) => mod.id == id ? {...mod, completed: true}:{...mod}))
+        // setModules(modules.map((mod) => mod.id == id ? {...mod, completed: true}:{...mod}))
       }
 
       const RefactoredModules = [...modules]

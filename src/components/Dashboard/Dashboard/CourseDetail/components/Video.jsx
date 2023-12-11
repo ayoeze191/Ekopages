@@ -20,6 +20,7 @@ const Video = ({vidoeRef, url, id}) => {
   }
 
   useEffect(() => {
+    if(initialRender.current !== undefined){
     if(!initialRender.current){
       if(!don){
       if(vidoeRef.current.getDuration() - played <= 20){
@@ -31,10 +32,8 @@ const Video = ({vidoeRef, url, id}) => {
     else{
       initialRender.current = false
     }
-    if(vidoeRef.current.getDuration() - played <= 20){
-      console.log(vidoeRef.current.getDuration() - played)
-    }
-    console.log(vidoeRef.current.getDuration() - played, "played without cond")
+  }
+    // console.log(vidoeRef.current.getDuration() - played, "played without cond")
   }, [played])
   return (
     <ReactPlayer
