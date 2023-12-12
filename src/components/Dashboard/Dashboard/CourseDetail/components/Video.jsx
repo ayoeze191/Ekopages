@@ -3,15 +3,18 @@ import { useEffect, useRef, useState } from 'react'
 import ReactPlayer from 'react-player'
 import instance from '../../../../../axios';
 import { tokenConfig } from '../../../../../Config/Config';
-const Video = ({vidoeRef, url, id}) => {
+const Video = ({url, id, update_Module_completed}) => {
+  const vidoeRef = useRef(null)
   const [played, setPlayed] = useState(0);
   const initialRender = useRef(true)
   const [don , setDone] = useState(false)
   const sendRequest = () => {
-    instance.post('/services/completed/', {completed: true, lesson:id} ,tokenConfig())
+    instance.post('/services/completed/', {completed: true, lesson:id,} ,tokenConfig())
     .then((res) => {
       setDone(true)
+      console.log("completing")
       // Update_Module_Completed(id)
+      update_Module_completed(id)
       console.log(res)
     })
     .catch((err) => {
@@ -20,20 +23,18 @@ const Video = ({vidoeRef, url, id}) => {
   }
 
   useEffect(() => {
-    if(initialRender.current !== undefined){
     if(!initialRender.current){
       if(!don){
       if(vidoeRef.current.getDuration() - played <= 20){
         sendRequest()
-        console.log("woking")
     }
-  }
     }
     else{
       initialRender.current = false
     }
   }
-    // console.log(vidoeRef.current.getDuration() - played, "played without cond")
+
+  initialRender.current = false
   }, [played])
   return (
     <ReactPlayer

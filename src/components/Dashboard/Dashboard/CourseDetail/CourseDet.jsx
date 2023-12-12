@@ -12,6 +12,7 @@ import { RiLoader4Fill } from "react-icons/ri";
 import { useLocation } from "react-router-dom";
 import { swicthFinishedCourseQuiz } from "../../../../store/reducers/Quizzes";
 const CourseDetails = () => {
+  const navigate = useNavigate()
   const dispatch = useDispatch()
   const loc = useLocation()
   const completed_CourseQuiz = useSelector((state) => state.quizzes.finished_Course_quiz)
@@ -32,7 +33,7 @@ const CourseDetails = () => {
       }
       // find the index in order to set is to identify the next one after it
       const index_of_completed = details.findIndex((item) => item.id == last_item.id)
-      console.log(index_of_completed)
+      // console.log(index_of_completed)
       const indexes_not_allowed = [2, 4]
       if(indexes_not_allowed.includes(index_of_completed) == false) {
         setCurrent(details[index_of_completed + 1].id)
@@ -56,7 +57,7 @@ const CourseDetails = () => {
           .then((res) => {
             let myModules = res.data.data.map(
               (module) =>
-                module.id && { title: module.topic, id: module.id, completed: module.completed }
+                module.id && { title: module.topic, id: module.id, completed: module.completed, lesson_number: module.lesson_number}
             )
             setModules(myModules)
             setCurrent(res.data.data[0].id)
@@ -74,7 +75,7 @@ const CourseDetails = () => {
           if(id !== modules[0].id) {
               const index_of_the_clicked_module = modules.findIndex((item) => item.id == id)
               const prevMod = modules.find((item) => item.id === modules[index_of_the_clicked_module - 1].id)
-              console.log(prevMod, index_of_the_clicked_module)
+              // console.log(prevMod, index_of_the_clicked_module)
               if(prevMod.completed == true){
                 setCurrent(id)
               }
@@ -85,55 +86,44 @@ const CourseDetails = () => {
           else {
             setCurrent(id)
           }
-          // let  module_three;
-          // let 
-          // for(let i=0; i < details.length; i ++){
-          //   if(details[i].completed == true){
-          //     last_item = details[i]
-          //   }
-          // }
       }
-
-      // useEffect(() => {
-      //   console.log(completed_CourseQuiz, "completed_CourseQuiz")
-      //   if(modules.length > 0){
-      //   if(completed_CourseQuiz  === true){
-      //     console.log("finie")
-      //     let last_item;
-
-      //     for(let i=0; i < modules.length; i ++){
-      //       if(modules[i].completed == true){
-      //         last_item = modules[i]
-      //       }
-      //     }
-      // // find the index in order to set is to identify the next one after it
-      //     const index_of_completed = modules.findIndex((item) => item.id == last_item.id)
-      //     console.log(modules, "index_of_completed")
-      //     dispatch(swicthFinishedCourseQuiz())
-      //     let NewModules = modules.map((item) => item.id == modules[index_of_completed + 1]? {...item, completed: true}: {...item})
-      //     setModules(NewModules)
-      //     setCurrent(modules[index_of_completed + 1].id) 
-      //   }
-
-      // }
-      // }, [modules])
+      const changeCurrentModuleMob = (next) => {
+        if(next){
+            const index_of_current_modules = modules.indexOf((mod) => mod.id == current)
+            console.log(current, modules)
+            console.log(index_of_current_modules)
+            const nextModule = modules.find((mod) => mod.id == modules[index_of_current_modules + 1].id)
+            if(index_of_current_modules !== 0) {
+              if(nextModule.title == "Pop Quiz"){
+                navigate(`/quizzes/${nextModule.lesson_number}`)
+              }
+              else{
+                setCurrent(nextModule.id)
+              }
+            }   
+        }
+        else {
+          const index_of_current_modules = modules.indexOf((mod) => mod.id == current)
+          const prevModule = modules.find((mod) => mod.id == modules[index_of_current_modules - 1].id)
+          if(index_of_current_modules !== 0) {
+            if(prevModule.title == "Pop Quiz"){
+              navigate(`/quizzes/${prevModule.lesson_number}`)
+            }
+            else{
+              setCurrent(prevModule.id)
+            }
+        }
+      }
+    }
+      const update_Module_completed = (id) => {
+        const newModules = modules.map(( mod) => mod.id == id ? {...mod, completed:true}:{...mod})
+        setModules(newModules)
+      }
 
       useEffect(() => {
         get_modules();
       }, []);
 
-      const Update_Module_Completed = (id) => {
-        // setModules(modules.map((mod) => mod.id == id ? {...mod, completed: true}:{...mod}))
-      }
-
-      const RefactoredModules = [...modules]
-      RefactoredModules.splice(3, 0, {level:1, title: "POP Quiz",  current:current})
-      RefactoredModules.splice(6, 0, {level:2, title: "POP Quiz", current:current})
-
-    // console.log( modules.find(
-    //     (mod) => mod.id === current && mod
-    //   ))
-    //   console.log(current, modules)
     return(loading ? <MoonLoader /> :
         <div className="px-[2.06rem]">
             <div className="bg-[#FFFFFF] md:bg-inherit rounded-[5px] px-[1.5rem] py-[1.5rem]">
@@ -150,14 +140,16 @@ const CourseDetails = () => {
           </div>
           <div className="flex  pb-[3.75rem] font-lato gap-[2rem]">
             <div className="mt-[16px]">
-              <ModuleDetail id={current}/>
+              <ModuleDetail id={current} update_Module_completed={update_Module_completed}/>
               <div className="lg:hidden flex w-full justify-between mt-[16px]">
-            <button className="text-[#232323] leading-[25px] font-[600] font-lato " 
+            <button className="text-[#232323] leading-[25px] font-[600] font-lato"
+            onClick={changeCurrentModuleMob}
               >
               Back
             </button>
             <button
               className="text-[#232323] leading-[25px] font-[600] font-lato"
+            onClick={() => changeCurrentModuleMob(true)}
             >
               Next
             </button>
@@ -174,16 +166,17 @@ const CourseDetails = () => {
                 <RiLoader4Fill size={24} color="#5A0C91" />
               </div>
             </div>
-            {RefactoredModules
+            {modules
               .sort((a, b) => a.id - b.id)
               .map((mod) => (
                 <Module
-                Update_Module_Completed={Update_Module_Completed}
+                update_Module_completed={update_Module_completed}
                 current = {current}
                 completed={mod.completed}
                   changeCurrentModule={changeCurrentModule}
                   title={mod.title}
                   id={mod.id}
+                  lesson_number={mod.lesson_number}
                   level={mod.level?mod.level:null}
                 />
               ))}
@@ -202,31 +195,34 @@ const CourseDetails = () => {
 
 
 
-const Module = ({ changeCurrentModule, title, id, level, current, completed, Update_Module_Completed }) => {
+
+  
+
+export default CourseDetails
+
+
+
+const Module = ({ changeCurrentModule, title, id, level, current, completed,update_Module_completed, lesson_number }) => {
     const dispatch = useDispatch()
     const navigate = useNavigate()
-    // console.log(id)
+    // console.log(lesson_number)
     const param = useParams()
-    console.log(completed)
+    // console.log(completed)
     const handleGotoQuiz = () => {
       dispatch(swictchUserCourseUrl(param.id))
-      navigate(`/quizzes/${level}`)
+      navigate(`/quizzes/${lesson_number}`)
     }
 
-    const HandleClick = (val) => {
-      if(id !== undefined) {
-        changeCurrentModule(id)
-        Update_Module_Completed(id)
+    const HandleClick = () => {
+      console.log(title, "title")
+      if(title == "Pop Quiz") {
+        handleGotoQuiz()
+        // Update_Module_Completed(id)
       }
       else {
-        handleGotoQuiz()
+        changeCurrentModule(id)
       }
     }
-
-    
-    // console.log(Completed)
-  
-    // console.log(param.id)
     return (
       <div className="w-full flex flex-col items-center h-[20px] ">
         <div className="flex gap-[8px] items-center w-full  text-[#5A0C91] h-full">
@@ -258,7 +254,5 @@ const Module = ({ changeCurrentModule, title, id, level, current, completed, Upd
         </div>
       </div>
     );
-  };
+  }
   
-
-  export default CourseDetails

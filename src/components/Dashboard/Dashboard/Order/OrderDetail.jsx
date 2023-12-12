@@ -1,10 +1,12 @@
 import React from 'react'
 import bell from "./../../../../assets/dashboard/bell.png"
+import { useNavigate } from 'react-router-dom'
 const OrderDetail = () => {
+    const navigate = useNavigate()
   return (
     <div className='font-lato pl-[1.99rem] pr-[9.4375rem] pt-[5rem]'>
         <div className='flex justify-between items-center'>
-        <p className='text-[#5A0C91]'>Back</p>
+        <p className='text-[#5A0C91]' onClick={navigate(-1)}>Back</p>
 
         <p className='flex flex-col gap-[0.5rem] text-[2rem] text-[#232323] font-[600] mb-[3.5rem]'>
             <p className='text-[#4A4A4A] font-[400] text-center flex flex-col items-center'><div> Order Details </div> <p className='text-[1rem] text-[#4A4A4A]'> #23145 was delivered on November 14,2022 </p></p>

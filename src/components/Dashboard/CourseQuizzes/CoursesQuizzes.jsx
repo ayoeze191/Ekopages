@@ -11,6 +11,7 @@ import {  useSelector } from "react-redux/es/hooks/useSelector";
 import { useDispatch } from "react-redux";
 import { swicthFinishedCourseQuiz } from "../../../store/reducers/Quizzes";
 const CourseQuizes = () => {
+  // const navigate = useNavigate()
   const dispatch = useDispatch()
   const url = useSelector((state) => state.billing.url)
   console.log(url)
@@ -104,14 +105,15 @@ const CourseQuizes = () => {
   //   setShowOverlay(false)
   //   setSucessfully_Submited(false)
   // }
+  
 
   return (
       <div>
         <section className=" h-[10.625rem] flex justify-center items-center font-lato bold">
           <div className="w-full  lg:px-0 px-6 max-w-[77rem] py-4 mx-auto h-fit px-7  text-[#444444] flex flex-col md:flex-row items-center justify-between">
             {" "}
-            <Link
-              to={"/services"}
+            <button
+              onClick={() => navigate(-1)}
               className=" h-full flex gap-[1.06rem] items-center text-[#5A0C91] font-[400] text-[1rem] cursor:pointer order-2 md:order-1 mr-auto md:mr-0"
             >
               {" "}
@@ -119,7 +121,7 @@ const CourseQuizes = () => {
                 <img src={back} alt="" />
               </div>
               back{" "}
-            </Link>
+            </button>
             <div className="font-[700]  text-[24px] md:text-[3rem] flex h-full items-center order-1 md:order-2">
               {" "}
               Pop Quiz{" "}

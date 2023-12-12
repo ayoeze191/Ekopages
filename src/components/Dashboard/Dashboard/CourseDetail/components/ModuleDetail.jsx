@@ -5,8 +5,8 @@ import { tokenConfig } from '../../../../../Config/Config'
 import ReactPlayer from 'react-player'
 import Video from './Video'
 import Text from './Text'
-const ModuleDetail = ({id}) => {
-    const vidoeRef = useRef(null)
+const ModuleDetail = ({id, update_Module_completed}) => {
+    // const vidoeRef = useRef(null)
     const [loading, setLoading] = useState(true)
     const [moduelDetails, setmoduleDetails] = useState(null) 
 
@@ -36,8 +36,9 @@ const ModuleDetail = ({id}) => {
     <div>
         {moduelDetails.video !== null &&
          <Video
+         update_Module_completed={update_Module_completed}
     // onProgress={(progress) => setPlayed(progress.playedSeconds)}
-    ref={vidoeRef}
+    // ref={vidoeRef}
       width={640}
       height={360}
       controls
@@ -56,7 +57,7 @@ const ModuleDetail = ({id}) => {
         }
         {
             moduelDetails.lesson !== null && 
-            <Text id={id} className="md:w-[640px] font-lato bg-[#FFFFFF] md:bg-inherit py-[16px] px-[24px] leading-[28.8px]">
+            <Text update_Module_completed={update_Module_completed} id={id} className="md:w-[640px] font-lato bg-[#FFFFFF] md:bg-inherit py-[16px] px-[24px] leading-[28.8px]">
             {moduelDetails.lesson}
           </Text>
         }

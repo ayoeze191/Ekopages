@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from 'react'
 import instance from '../../../../../axios'
 import { tokenConfig } from '../../../../../Config/Config'
-const Text = ({children, id}) => {
-    const [timer, setTimer] = useState(90000)
+const Text = ({children, id, update_Module_completed}) => {
+    const [timer, setTimer] = useState(10)
     const [completed, setCompleted] = useState(false)
     useEffect(() => {
         const interval = setInterval(() => {
@@ -12,12 +12,12 @@ const Text = ({children, id}) => {
         return () => clearInterval(interval);
       }, []);
       
-    //   console.log(timer)
+      // console.log(timer)
       const sendRequest = () => {
         instance.post('/services/completed/', {completed: true, lesson:id} ,tokenConfig())
         .then((res) => {
-        //   setDone(true)
-        //   Update_Module_Completed(id)
+          update_Module_completed(id)
+          // Update_Module_Completed(id)
           console.log(res)
         })
         .catch((err) => {
