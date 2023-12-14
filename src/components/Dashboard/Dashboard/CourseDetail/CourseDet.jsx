@@ -13,6 +13,7 @@ import { useLocation } from "react-router-dom";
 import { swicthFinishedCourseQuiz } from "../../../../store/reducers/Quizzes";
 const CourseDetails = () => {
   const navigate = useNavigate()
+  
   const dispatch = useDispatch()
   const loc = useLocation()
   const completed_CourseQuiz = useSelector((state) => state.quizzes.finished_Course_quiz)
@@ -31,22 +32,23 @@ const CourseDetails = () => {
           last_item = details[i]
         }
       }
+
       // find the index in order to set is to identify the next one after it
       const index_of_completed = details.findIndex((item) => item.id == last_item.id)
       // console.log(index_of_completed)
-      const indexes_not_allowed = [2, 4]
-      if(indexes_not_allowed.includes(index_of_completed) == false) {
-        setCurrent(details[index_of_completed + 1].id)
-      }
-      else {
-        if(completed_CourseQuiz == true){
-          setCurrent(details[index_of_completed + 1].id)
-        }
-        else {
-          setCurrent(details[index_of_completed].id)
-        }
-      }
+      setCurrent(details[index_of_completed + 1].id)
+      // if(indexes_not_allowed.includes(index_of_completed) == false) {
+      //   setCurrent(details[index_of_completed + 1].id)
+      // }
+        // if(completed_CourseQuiz == true){
+        //   
+        // }
+        
+        // else {
+        //   setCurrent(details[index_of_completed].id)
+        // }
     }
+  
 
 
     const get_modules = () => {
@@ -75,6 +77,7 @@ const CourseDetails = () => {
           if(id !== modules[0].id) {
               const index_of_the_clicked_module = modules.findIndex((item) => item.id == id)
               const prevMod = modules.find((item) => item.id === modules[index_of_the_clicked_module - 1].id)
+              console.log(id)
               // console.log(prevMod, index_of_the_clicked_module)
               if(prevMod.completed == true){
                 setCurrent(id)
@@ -89,17 +92,20 @@ const CourseDetails = () => {
       }
       const changeCurrentModuleMob = (next) => {
         if(next){
-            const index_of_current_modules = modules.indexOf((mod) => mod.id == current)
+            // const index_of_current_modules = modules.indexOf((mod) => mod.id == current)
+            const index_of_current_modules = modules.findIndex((item) => item.id == current)
             console.log(current, modules)
             console.log(index_of_current_modules)
             const nextModule = modules.find((mod) => mod.id == modules[index_of_current_modules + 1].id)
             if(index_of_current_modules !== 0) {
               if(nextModule.title == "Pop Quiz"){
-                navigate(`/quizzes/${nextModule.lesson_number}`)
+              dispatch(swictchUserCourseUrl(param.id))
+                navigate(`/quizzes/${nextModule.lesson_number}/${nextModule.id}`)
               }
               else{
                 setCurrent(nextModule.id)
               }
+              
             }   
         }
         else {
@@ -107,7 +113,9 @@ const CourseDetails = () => {
           const prevModule = modules.find((mod) => mod.id == modules[index_of_current_modules - 1].id)
           if(index_of_current_modules !== 0) {
             if(prevModule.title == "Pop Quiz"){
-              navigate(`/quizzes/${prevModule.lesson_number}`)
+              navigate(`/quizzes/${prevModule.lesson_number}/${prevModule.id}`)
+              dispatch(swictchUserCourseUrl(param.id))
+
             }
             else{
               setCurrent(prevModule.id)
@@ -124,7 +132,7 @@ const CourseDetails = () => {
         get_modules();
       }, []);
 
-    return(loading ? <MoonLoader /> :
+    return(loading ? <MoonLoader /> : modules.find(mod => mod.id == current).title == "Pop Quiz"? navigate(`/quizzes/${modules.find(mod => mod.id == current).lesson_number}/${modules.find(mod => mod.id == current).id}`) :
         <div className="px-[2.06rem]">
             <div className="bg-[#FFFFFF] md:bg-inherit rounded-[5px] px-[1.5rem] py-[1.5rem]">
             {/* <h1 className="font-[600] text-[1.25rem]">
@@ -210,7 +218,7 @@ const Module = ({ changeCurrentModule, title, id, level, current, completed,upda
     // console.log(completed)
     const handleGotoQuiz = () => {
       dispatch(swictchUserCourseUrl(param.id))
-      navigate(`/quizzes/${lesson_number}`)
+      navigate(`/quizzes/${lesson_number}/${id}`)
     }
 
     const HandleClick = () => {

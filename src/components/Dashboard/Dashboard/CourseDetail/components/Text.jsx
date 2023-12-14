@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react'
 import instance from '../../../../../axios'
 import { tokenConfig } from '../../../../../Config/Config'
 const Text = ({children, id, update_Module_completed}) => {
-    const [timer, setTimer] = useState(10)
+    const [timer, setTimer] = useState(50000)
     const [completed, setCompleted] = useState(false)
     useEffect(() => {
         const interval = setInterval(() => {

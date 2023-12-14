@@ -16,7 +16,7 @@ const CourseQuizes = () => {
   const url = useSelector((state) => state.billing.url)
   console.log(url)
   const navigate = useNavigate() 
-  const {id} = useParams()
+  const {redirect_id, completed_id} = useParams()
   const [all_question, setAll_questions] = useState([]);
   const [answers, setAnswers] = useState([]);
   const [start, setStart] = useState(0);
@@ -29,7 +29,7 @@ const CourseQuizes = () => {
     setloadingQuestions(false)
     instance
       // .get("/Quiz/list_Quizes", tokenConfig())
-      .get(`/Quiz/start/${id}`, tokenConfig())
+      .get(`/Quiz/start/${redirect_id}`, tokenConfig())
       .then((res) => {
         setloadingQuestions(false)
         console.log(res.data)
@@ -68,12 +68,12 @@ const CourseQuizes = () => {
         console.log({ question: item.question, answer: item.answer })
         const response = await instance.post(
           "/Quiz/answer_quiz/",
-          { question: item.question, answer: item.answer, quiz: id },
+          { question: item.question, answer: item.answer, quiz: redirect_id },
           tokenConfig()
         );
         const result = await response.data;
       }
-      dispatch(swicthFinishedCourseQuiz())
+      setAsCompleted()
       navigate(`/dashboard/MyCourses/${url}`)
     } catch (error) {
       console.error("Error making API call", error);
@@ -81,6 +81,16 @@ const CourseQuizes = () => {
     }
   };
  
+  const setAsCompleted = async() => {
+    try {
+      const res = await instance.post('/services/completed/', {completed: true, lesson:completed_id} ,tokenConfig())
+      console.log(res.data)
+    }
+    catch{
+      throw("Can't set Completed")
+    }
+  }
+
   // const Check = () => {
   //   instance.get('/dashboard-quizzes/quiz/review/', tokenConfig())
   //     .then((res) => {

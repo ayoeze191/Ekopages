@@ -77,7 +77,7 @@ export const BasicRoutes = [
         component: <Review />
     },
     {
-        path: "/quizzes/:id",
+        path: "/quizzes/:redirect_id/:completed_id",
         component: <CourseQuizes />
     },
     {
