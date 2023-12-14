@@ -57,9 +57,7 @@ const ModuleDetail = ({id, update_Module_completed}) => {
         }
         {
             moduelDetails.lesson !== null && 
-            <Text update_Module_completed={update_Module_completed} id={id} className="md:w-[640px] font-lato bg-[#FFFFFF] md:bg-inherit py-[16px] px-[24px] leading-[28.8px]">
-            {moduelDetails.lesson}
-          </Text>
+            <Text lesson={moduelDetails.lesson} update_Module_completed={update_Module_completed} id={id} className="md:w-[640px] font-lato bg-[#FFFFFF] md:bg-inherit py-[16px] px-[24px] leading-[28.8px]" />
         }
     </div>
   :<div>No lessons here</div>)

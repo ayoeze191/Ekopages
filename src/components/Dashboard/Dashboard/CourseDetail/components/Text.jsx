@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import instance from '../../../../../axios'
 import { tokenConfig } from '../../../../../Config/Config'
-const Text = ({children, id, update_Module_completed}) => {
+const Text = ({ id, update_Module_completed, lesson}) => {
     const [timer, setTimer] = useState(50000)
     const [completed, setCompleted] = useState(false)
     useEffect(() => {
@@ -33,10 +33,9 @@ const Text = ({children, id, update_Module_completed}) => {
 
     // console.log(timer)
   return (
-    <div className="md:w-[640px] font-lato bg-[#FFFFFF] md:bg-inherit py-[16px] px-[24px] leading-[28.8px]">
+    <div className="md:w-[640px] font-lato bg-[#FFFFFF] md:bg-inherit py-[16px] px-[24px] leading-[28.8px] flex flex-col gap-6">
     {/* <h1 className='font-latomedium text-6xl'>{timer} </h1> */}
-
-    {children}
+    {lesson.split("<p>").map((p) => <p>{p}</p>)}
   </div>
   )
 }

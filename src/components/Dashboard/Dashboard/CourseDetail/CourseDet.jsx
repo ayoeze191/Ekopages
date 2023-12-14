@@ -132,23 +132,34 @@ const CourseDetails = () => {
         get_modules();
       }, []);
 
-    return(loading ? <MoonLoader /> : modules.find(mod => mod.id == current).title == "Pop Quiz"? navigate(`/quizzes/${modules.find(mod => mod.id == current).lesson_number}/${modules.find(mod => mod.id == current).id}`) :
+    return(loading ? "" : modules.find(mod => mod.id == current).title == "Pop Quiz"? navigate(`/quizzes/${modules.find(mod => mod.id == current).lesson_number}/${modules.find(mod => mod.id == current).id}`) :
         <div className="px-[2.06rem]">
             <div className="bg-[#FFFFFF] md:bg-inherit rounded-[5px] px-[1.5rem] py-[1.5rem]">
             {/* <h1 className="font-[600] text-[1.25rem]">
               {modules[0].title}
             </h1> */}
-            <p className="font-[400] text-[1rem]">
+           { loading? "" : <p className="font-[400] text-[1rem] flex   flex-col gap-[8px]">
+              <div className="text-[32px] font-lato font-bold">
               {
                 modules.find(
                   (mod) => mod.id === current && mod
-                ).title
+                ).title.split("(")[1].replace(")", "")
               }
+              </div>
+              <div className="text-[#888] text-[20px]">
+              {
+                modules.find(
+                  (mod) => mod.id === current && mod
+                ).title.split("(")[0]
+              }
+              </div>
+              
             </p>
+}
           </div>
           <div className="flex  pb-[3.75rem] font-lato gap-[2rem]">
             <div className="mt-[16px]">
-              <ModuleDetail id={current} update_Module_completed={update_Module_completed}/>
+             {loading ? "": <ModuleDetail id={current} update_Module_completed={update_Module_completed}/>}
               <div className="lg:hidden flex w-full justify-between mt-[16px]">
             <button className="text-[#232323] leading-[25px] font-[600] font-lato"
             onClick={changeCurrentModuleMob}
@@ -171,7 +182,7 @@ const CourseDetails = () => {
                 MODULES IN THIS COURSE
               </div>
               <div>
-                <RiLoader4Fill size={24} color="#5A0C91" />
+              {loading ? <MoonLoader size={24} color="#5A0C91"/> :    ""}
               </div>
             </div>
             {modules
@@ -257,7 +268,7 @@ const Module = ({ changeCurrentModule, title, id, level, current, completed,upda
             onClick={HandleClick}
             className=" text-left w-full flex-1"
           >
-            {title}
+            {title.split("(").length > 1 ? title.split("(")[1].replace(")", ""):title.split("(")[0]}
           </button>
         </div>
       </div>
