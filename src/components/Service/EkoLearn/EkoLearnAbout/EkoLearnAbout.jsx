@@ -11,26 +11,36 @@ const EkoLearnAbout = () => {
   const [loadingPayment, setLoadingPayment] = useState(false)
   const {user} = useAuthContext()
   const navigate = useNavigate(false);
+  
+  const [subscribed, setSubscribe] = useState(false)
   const handleClick = () => {
     setLoadingPayment(true)
-    if (eligible) {
+    if (subscribed) {
       navigate("/dashboard/MyCourses")
       setLoadingPayment(false);
     } else {
-      const data =  {"email": user.email, "amount": 15000}
-      instance.post("/dashboard-payment/payment/", data ,tokenConfig())
-      .then((res) => {
-        console.log(res);
-        setLoadingPayment(false);
-        window.location.assign(res.data.data.data.authorization_url);
-      })
-      .catch((err) => {
-        // console.log(err.response, "my response")
-      })
+      navigate('/explore-courses')
     }
   };
-  const [eligible, setEligible] = useState(false)
-  const [expired, setExpired] = useState(false)
+
+  const getCourses = () => {
+    instance.get('/user_courses/courses_enrolled/', tokenConfig())
+    .then((res) => {
+      console.log("getting")
+      console.log(res, "response")
+      if(res.data.courses_with_progress.length > 0){
+        setSubscribe(true)
+      }
+      else {
+        setSubscribe(false)
+      }
+    })
+  }
+
+  useEffect(() => {
+    getCourses()
+  }, [])
+  // const [expired, setExpired] = useState(false)
 
   // const getDateExpired = () => {
   //   instance.get('auth/user', tokenConfig())
@@ -74,13 +84,13 @@ const EkoLearnAbout = () => {
             {!eligible && "#15000"}{" "}
           </p>{" "} */}
           <button
-            className={`${eligible?"bg-green-900":"bg-[#5A0C91]"} py-[9.25px] px-[18.5px] md:py-[0.9375rem] md:px-[1.9375rem] text-white rounded-[10px] text-[14.4px] md:text-[24px] font-[500] md:font-[400] `}
+            className={`${subscribed?"bg-green-900":"bg-[#5A0C91]"} py-[9.25px] px-[18.5px] md:py-[0.9375rem] md:px-[1.9375rem] text-white rounded-[10px] text-[14.4px] md:text-[24px] font-[500] md:font-[400] `}
             onClick={handleClick}
           >
-            {!eligible ? "Subscribe Now" : loadingPayment?<BiLoaderCircle width={20} color="purple"/>: "Continue"}
+            {!subscribed ? "Subscribe Now": "Continue"}
           </button>
         </div>
-        {expired&&<div className="text-red-900">Currrent subscription has expired</div>}
+        {/* {expired&&<div className="text-red-900">Currrent subscription has expired</div>} */}
         <div className="px-[1.6rem] py-[2.0625rem] rounded-[10px] bg-[#EFE7F4] text-[1rem] flex items-start">
           <div className="flex gap-[1.6rem] items-center mb-[0.5rem] mr-[39.67px]">
             <img src={uil_info_circle} alt="" />

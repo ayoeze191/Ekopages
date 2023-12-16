@@ -50,9 +50,9 @@ const Resultviewal = ({ ClearInterface, length }) => {
     return (
       Loading?<BeatLoader />:
       <motion.div className="fixed top-[10vh] w-full" 
-      initial={{  scale: 0 }}
-      animate={{ scale: [0, 2, 1] }}
-      transition={{ type: "spring", stiffness: 200, duration: 10 }}
+      // initial={{  scale: 0 }}
+      // animate={{ scale: [0, 2, 1] }}
+      // transition={{ type: "spring", stiffness: 200, duration: 10 }}
       >
         <div className="w-[350px] md:w-[688px] h-[80vh] bg-[#ffffff] z-50 mx-auto overflow-hidden   left-[30vh] flex flex-col items-center">
           <div className="bg-[#5A0C91] rounded-b-[100%] relative  -top-20 md:-top-24 md:right-5  h-[300px] w-[415px] md:w-[730px] bg-cover right-10 mx-auto">

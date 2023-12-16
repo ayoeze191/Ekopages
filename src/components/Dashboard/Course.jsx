@@ -24,7 +24,6 @@ const Course = ({ course_name,
         console.log(err);
       });
   }; 
-
   useEffect(() => {
     getPercentCompleted()
   }, [])

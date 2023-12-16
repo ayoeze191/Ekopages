@@ -3,17 +3,18 @@ import Options from './Options'
 import instance from '../../axios'
 import GeneralUiOverlay from '../ui/GeneralUiOverlayLoader'
 import { tokenConfig } from '../../Config/Config'
-const Quiz = ({id, number, question, mark, options, addAnswer}) => {
+const Quiz = ({id, number, question, mark, options, addAnswer, answers}) => {
   // console.log(mark)
   const [loading, setLoading] = useState(false)
-  const [answer, setAnswer] = useState(null)
-  // this state is needed for the  user to know that their answer has not been selected if there is a network failure
-
+  const [answer, setAnswer] = useState(answers.find(ans => ans.question == id) != undefined ? answers.find(ans => ans.question == id).answer: null)
   const onClickHandler = (label) => {
     setAnswer(label)
   }
-
-  console.log()
+  useEffect(() => {
+    if(answers.find(ans => ans.question == id) != undefined){
+      setAnswer(answers.find(ans => ans.question == id).answer)
+    }
+  }, [answers.find(ans => ans.question == id || null)])
   const SubmitAnswer = () => {
     // setLoading(true)
     // console.log({question: id, answer})
@@ -49,7 +50,7 @@ const Quiz = ({id, number, question, mark, options, addAnswer}) => {
 <div className='flex flex-col gap-[1rem]'>
      {loading && <GeneralUiOverlay />}
     {options.map((option) => {
-      // console.log(answer, option.label)
+      console.log(answer, option.text, answer === option.text)
       return  <Options {...option} selected={answer === option.text} onclick={onClickHandler}/>})}
 </div>
         </div>

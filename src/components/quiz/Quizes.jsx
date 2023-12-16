@@ -6,7 +6,7 @@ import { Link } from "react-router-dom";
 import Quiz from "./Quiz";
 import { useLocation, useParams } from "react-router-dom";
 import AuthButton from "../authButton";
-import { BeatLoader, ClipLoader } from "react-spinners";
+import { BeatLoader, FadeLoader } from "react-spinners";
 import instance from "../../axios";
 import { tokenConfig } from "../../Config/Config";
 import { Reform_to_suitable_form } from "../../Utils/reformQuestions";
@@ -24,7 +24,6 @@ import { setQuizzes, setQuizzes_with_answers } from "../../store/reducers/Quizze
 const Quizes = () => {
   const dispatch = useDispatch()
   const all_question = useSelector((state) => state.quizzes)
-  console.log(all_question)
   const [answers, setAnswers] = useState([]);
   const [start, setStart] = useState(0);
   const [end, setEnd] = useState(4);
@@ -131,11 +130,15 @@ const Quizes = () => {
     <Wrapper overlay={showOverlay}>
       {sucessfully_Submited && <Resultviewal ClearInterface={ClearInterface} length={all_question.quizzes.length}/>}
       {loading && 
-      <div className="fixed z-[99999000000]  w-full h-full flex justify-center items-center top-0 font-lato">
-      <div className=" top-0 mx-auto">
-        Computing...
-        <BeatLoader />
-        </div></div>
+      <div className="fixed    flex justify-center items-center top-0 font-lato w-full h-full">
+      <div className=" w-[350px] md:w-[688px] h-[80vh] z-[99999000000] top-0 mx-auto bg-white text-center flex flex-col items-center justify-center gap-[56px]">
+       <p className="text-[28px] font-semibold font-lato text-center"> Quiz Submitted</p>
+        <FadeLoader color="#5A0C91"/>
+        <p className="font-lato text-base text-center">
+        Please, hold on while we compile your score  
+        </p>
+        </div>
+      </div>
         }
       <div>
         <section className=" h-[10.625rem] flex justify-center items-center font-lato bold">
@@ -163,6 +166,7 @@ const Quizes = () => {
             <Quiz
               {...Reform_to_suitable_form(quest, all_question.quizzes.findIndex((ques) => ques.id == quest.id))}
               // number={index + 1}
+              answers = {answers}
               addAnswer={addAnswer}
             />
           ))}

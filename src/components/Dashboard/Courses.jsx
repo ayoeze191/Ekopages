@@ -39,7 +39,8 @@ const Courses = () => {
           setIsLoading(false)
           console.log("getting")
           console.log(res, "response")
-          setCourses(res.data.courses_with_progress)
+          setCourses(res.data.courses_with_progress.filter(cou => cou.completion_percentage < 100))
+          // console.log()
         })
         .catch((err) => {
           console.log(err, "error")
