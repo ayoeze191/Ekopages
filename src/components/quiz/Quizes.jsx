@@ -161,8 +161,8 @@ const Quizes = () => {
         <div className="section flex flex-col gap-[4.125rem] mb-10">
           {loadingQuestions?<BeatLoader />:all_question.quizzes.length == 0 ? "No Questions Yet":all_question.quizzes.slice(start, end).map((quest, index) => (
             <Quiz
-              {...Reform_to_suitable_form(quest)}
-              number={index + 1}
+              {...Reform_to_suitable_form(quest, all_question.quizzes.findIndex((ques) => ques.id == quest.id))}
+              // number={index + 1}
               addAnswer={addAnswer}
             />
           ))}

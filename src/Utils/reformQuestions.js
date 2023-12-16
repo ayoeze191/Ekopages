@@ -1,8 +1,9 @@
-export function Reform_to_suitable_form(questions) {
+export function Reform_to_suitable_form(questions, index) {
+    console.log(index)
     const question  = questions['question_text']
     const options = Object.values(questions)
     // console.log(options)
-    return {question, id:options[0],options: [{
+    return {question, id:options[0],number: index + 1,options: [{
         label: "a",
         text: options[2],
     },

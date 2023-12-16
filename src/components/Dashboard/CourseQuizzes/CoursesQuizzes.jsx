@@ -155,7 +155,7 @@ const CourseQuizes = () => {
                 onClick={HandleSubmit}
                 className=" text-white text-[17.6px] md:text-[1rem] font-[700] py-[10.5px] px-[33px]  md:px-0 md:w-[216px] rounded-[8px]  border-solid border-2 bg-[#5A0C91]  font-lato w-fit mx-auto"
               >
-                Complete Course
+                Complete Quizzes
               </button>
             ) : null}
           </div>
