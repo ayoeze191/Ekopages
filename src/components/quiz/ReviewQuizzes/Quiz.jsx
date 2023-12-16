@@ -28,7 +28,7 @@ const Quiz = ({id, number, question, mark, options, selectedAnswer, correctAnswe
         </div>
         <div className='text-[12px] md:text-[1rem] flex-nowrap flex'>1 mark</div>
         </div>
-        {correctAnswer &&
+        {selectedAnswer !== null &&
           selectedAnswer.toLocaleUpperCase() !== correctAnswer.toLocaleUpperCase() &&
           <div>
           Correct answer: {correctAnswer}
