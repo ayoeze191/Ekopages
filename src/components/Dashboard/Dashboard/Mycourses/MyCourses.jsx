@@ -4,10 +4,17 @@ import bell from "./../../../../assets/dashboard/bell.png"
 import Pending from './Pending'
 import { MdKeyboardArrowDown } from "react-icons/md";
 import { AiOutlineSafetyCertificate } from "react-icons/ai";
+import { Tabs, TabList, TabPanels, Tab, TabPanel, chakra } from "@chakra-ui/react"
+import  { motion, AnimatePresence, isValidMotionProp } from "framer-motion"
+import Completed from './Completed';
+
+
+
 const MyCourses = () => {
   const navigate = useNavigate()
   return (
-    <div>
+    <div className=''>
+      <Tabs isLazy={true} variant={'unstyled'}>
       <div className='py-[54px] pr-[78px] w-full flex flex-col gap-[1rem]'>
       <div className=' gap-[1rem] pl-[40px] flex ml-auto w-fit'>
           <Link className='bg-[#5A0C91] w-[125px] h-[40px] hidden md:flex border-solid border-[1px] text-center border-[#888888] text-[#FBFBFB] rounded-[5px] justify-center items-center' to={'/quizes'}>
@@ -22,22 +29,54 @@ const MyCourses = () => {
             <p className='font-[600] text-[24px] font-lato md:hidden'>My Courses</p>
             <p className='md:text-[20px] leading-[24px] font-lato font-medium'>Courses You are taking</p>
             </div>
-        <div className='flex  gap-[1rem] text-[#232323] flex-1  justify-center'>
-          <button className='bg-[#174D00] w-[125px] h-[40px] border-solid border-[1px] border-[#888888] text-[#FBFBFB] rounded-[5px]'>
+            <TabList  style={{
+                display: "flex",
+                justifyContent: "center",
+                gap: "1rem"
+              }}>
+        {/* <div className='flex  gap-[1rem] text-[#232323] flex-1  justify-center'> */}
+          <Tab _selected={{ bg: "#C54D09", color:"white", border: "0px none" }} style={{
+               width: '125px',
+               height: '40px',
+               borderRadius: "5px",
+               border: "solid 1px #88888888"
+             }}><button className='  '>
           Pending
           </button>
-          <button className='w-[125px] h-[40px] border-solid border-[1px] border-[#888888] rounded-[5px] text-[#888888]'>
+          </Tab>
+          <Tab _selected={{ bg: "#C54D09", color:"white", border: "0px none" }} style={{
+              //  padding: "0.5rem 2.125rem",
+               width: '125px',
+               height: '40px',
+               borderRadius: "5px",
+               border: "solid 1px #88888888"
+             }}>
+          <button className=''>
           Completed
           </button>
-          </div>
+          </Tab>
+          {/* </div> */}
+          </TabList>
           </div>
          
       </div>
-      <div className='flex flex-col md:flex-row md:pr-[64px] gap-[56px] md:gap-0 px-[20px] md:px-0'>
-      <Pending />
-      <Achievement />
+      
+      <TabPanels>
+      <TabPanel as={AnimatePresence}>
+        <div className='flex flex-col md:flex-row md:pr-[64px] gap-[56px] md:gap-0 px-[20px] md:px-0'>
+      <Pending /> <Achievement />
       </div>
+    </TabPanel>
+    <TabPanel as={AnimatePresence}>
+      <div className='flex flex-col justify-between md:flex-row md:pr-[64px] gap-[56px] md:gap-0 px-[20px] md:px-0'>
+             <Completed /> <Achievement />
+             </div>
+    </TabPanel>
+    </TabPanels>
+    </Tabs>
+    
     </div>
+  
   )
 }
 

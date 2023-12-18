@@ -20,6 +20,7 @@ import Resultviewal from "./Resultviewal";
 import { useSelector } from "react-redux";
 import { useDispatch } from "react-redux";
 import { setQuizzes, setQuizzes_with_answers } from "../../store/reducers/Quizzes";
+import { Return_Yet_To_Be_answered_Questions } from "../../Utils/HasAnsweredAllQuizzes";
 
 const Quizes = () => {
   const dispatch = useDispatch()
@@ -49,7 +50,7 @@ const Quizes = () => {
 
   const forward = () => {
     const rem = all_question.quizzes.length - end
-    console.log(rem)
+    // console.log(rem)
     if(rem > 4 ) {
     setStart(end);
     setEnd(end + 4);
@@ -60,7 +61,6 @@ const Quizes = () => {
     }
   };
   const rem = all_question.quizzes.length - end
-  console.log(start ,end, rem)
   const backward = () => {
     setEnd(start);
     setStart(start - 4);
@@ -81,6 +81,11 @@ const Quizes = () => {
     setAnswers(new_questions);
   };
   const HandleSubmit = async () => {
+    const yet_to_be_answerd_quest = Return_Yet_To_Be_answered_Questions(answers, all_question)
+    if(yet_to_be_answerd_quest.length > 0){
+      window.alert("Please attempt all questions ")
+      return setLoading(false)
+    }
     setShowOverlay(true);
     setLoading(true);
     try {

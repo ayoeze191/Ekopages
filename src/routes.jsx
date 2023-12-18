@@ -20,25 +20,25 @@ import Beapublisher from "./pages/Beapublisher/Beapublisher"
 import Productdetails from "./components/ProductDetails/Productdetails"
 import ExploreCourses from "./pages/ExploreCourses/ExploreCourses"
 import CourseQuizes from "./components/Dashboard/CourseQuizzes/CoursesQuizzes"
-
+import { Suspense } from "react"
 
 export const BasicRoutes = [
     {
         path: "/",
-        component:<LandingPage></LandingPage>
+        component:<Suspense fallback={<div>Loading</div>}><LandingPage></LandingPage></Suspense>
         
     },
     {
         path: "/about",
-        component:<AboutPage></AboutPage>  
+        component:<Suspense fallback={<div>Loading</div>}><AboutPage></AboutPage> </Suspense> 
     },
     {
         path: '/faq',
-        component: <FaqContainer/>
+        component: <Suspense fallback={<div>Loading</div>}><FaqContainer/></Suspense>
     },
     {
         path: '/services/*',
-        component: <ServicesContainer />
+        component: <Suspense fallback={<div>Loading</div>}><ServicesContainer /></Suspense>
     },
     {
         path: '/projects/*',
@@ -54,15 +54,15 @@ export const BasicRoutes = [
     },
     {
         path: '/ekonews/*',
-        component: <EkoNewsContain />
+        component:<Suspense fallback={<div>Loading</div>}> <EkoNewsContain /></Suspense>
     },
     {
         path: '/cart',
-        component: <ShppoingCarts />
+        component: <Suspense fallback={<div>Loading</div>}><ShppoingCarts /></Suspense>
     },
     {
         path: '/checkout',
-        component: <CheckoutContainer />
+        component: <Suspense fallback={<div>Loading</div>}><CheckoutContainer /></Suspense>
     },
     {
         path: '/whishlist',
@@ -86,7 +86,7 @@ export const BasicRoutes = [
     },
     {
         path: '/dashboard/*',
-        component: <Dashboardcontainer />
+        component: <Suspense fallback={<div>Loading</div>}><Dashboardcontainer /></Suspense>
     },
     {
         path: '/login',
@@ -102,7 +102,7 @@ export const BasicRoutes = [
     },
     {
         path: "/explore-courses",
-        component: <ExploreCourses />
+        component:<Suspense fallback={<div>Loading</div>}> <ExploreCourses /></Suspense>
     }
    
     

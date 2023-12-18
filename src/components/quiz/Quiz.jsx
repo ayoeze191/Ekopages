@@ -50,7 +50,7 @@ const Quiz = ({id, number, question, mark, options, addAnswer, answers}) => {
 <div className='flex flex-col gap-[1rem]'>
      {loading && <GeneralUiOverlay />}
     {options.map((option) => {
-      console.log(answer, option.text, answer === option.text)
+      // console.log(answer, option.text, answer === option.text)
       return  <Options {...option} selected={answer === option.text} onclick={onClickHandler}/>})}
 </div>
         </div>

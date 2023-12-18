@@ -1,5 +1,5 @@
 export function Reform_to_suitable_form(questions, index) {
-    console.log(index)
+    // console.log(index)
     const question  = questions['question_text']
     const options = Object.values(questions)
     // console.log(options)
