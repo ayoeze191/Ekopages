@@ -12,21 +12,21 @@ const Course = ({ course_name,
   course_id }) => {
   const [percent, setPercent] = useState(0);
 
-  const getPercentCompleted = () => {
-    instance
-      .get(`/services/percent_complete/${course_id}/`, tokenConfig())
-      .then((res) => {
-        console.log(res, "cou");
+  // const getPercentCompleted = () => {
+  //   instance
+  //     .get(`/services/percent_complete/${course_id}/`, tokenConfig())
+  //     .then((res) => {
+  //       console.log(res, "cou");
 
-        setPercent(res.data.completion_percentage);
-      })
-      .catch((err) => {
-        console.log(err);
-      });
-  }; 
-  useEffect(() => {
-    getPercentCompleted()
-  }, [])
+  //       setPercent(res.data.completion_percentage);
+  //     })
+  //     .catch((err) => {
+  //       console.log(err);
+  //     });
+  // }; 
+  // useEffect(() => {
+  //   getPercentCompleted()
+  // }, [])
   return (
     <Link
       className="flex flex-col pt-[2rem] px-[1.5rem] pb-[2.3125rem] bg-[#DCDEF9] rounded-[5px] w-full font-lato"
