@@ -2,14 +2,12 @@ import CheckoutContainer from "./components/checkout/CheckoutContainer"
 import Quizes from "./components/quiz/Quizes"
 import Review from "./components/quiz/ReviewQuizzes/Quizes"
 import ShortStory from "./components/shortStory/ShortStory"
-import { AboutPage } from "./pages/About/about"
+
 import Dashboardcontainer from "./pages/dashboard/Dashboardcontainer"
-import EkoNewsContain from "./pages/EkoNews/EkoNewsContain"
-import EkoStoreContainer from "./pages/EkoStore/EkoStoreContainer"
 import FaqContainer from "./pages/FAQ/FaqContainer"
-import LandingPage from "./pages/landingpage/landingPage"
-import ProjectsContainer from "./pages/Project/ProjectsContainer"
-import ServicesContainer from "./pages/Services/ServicesContainer"
+// import LandingPage from ""
+
+import GeneralUiOverlay from "./components/ui/GeneralUiOverlayLoader"
 import ShppoingCarts from "./pages/ShoppingCart/ShppoingCarts"
 import WhishlistContainer from "./pages/WhishlistContainer/WhishlistContainer"
 import Login from "./components/Login/Login"
@@ -20,33 +18,43 @@ import Beapublisher from "./pages/Beapublisher/Beapublisher"
 import Productdetails from "./components/ProductDetails/Productdetails"
 import ExploreCourses from "./pages/ExploreCourses/ExploreCourses"
 import CourseQuizes from "./components/Dashboard/CourseQuizzes/CoursesQuizzes"
-import { Suspense } from "react"
+import { Suspense, lazy } from "react"
+
+
+const LandingPage = lazy(() => import('./pages/landingpage/landingPage')) 
+const  AboutPage  = lazy(() => import('./pages/About/about')) 
+const ServicesContainer = lazy(() => import("./pages/Services/ServicesContainer"))
+const  ProjectsContainer = lazy(() => import("./pages/Project/ProjectsContainer"))
+const  EkoStoreContainer = lazy(() => import("./pages/EkoStore/EkoStoreContainer")) 
+const EkoNewsContain = lazy(() => import("./pages/EkoNews/EkoNewsContain")) 
+
+
 
 export const BasicRoutes = [
     {
         path: "/",
-        component:<Suspense fallback={<div>Loading</div>}><LandingPage></LandingPage></Suspense>
+        component:<Suspense fallback={<GeneralUiOverlay />}><LandingPage></LandingPage></Suspense>
         
     },
     {
         path: "/about",
-        component:<Suspense fallback={<div>Loading</div>}><AboutPage></AboutPage> </Suspense> 
+        component:<Suspense fallback={<GeneralUiOverlay />}><AboutPage></AboutPage>  </Suspense>
     },
     {
         path: '/faq',
-        component: <Suspense fallback={<div>Loading</div>}><FaqContainer/></Suspense>
+        component: <FaqContainer/>
     },
     {
         path: '/services/*',
-        component: <Suspense fallback={<div>Loading</div>}><ServicesContainer /></Suspense>
+        component: <Suspense fallback={<GeneralUiOverlay />}><ServicesContainer /></Suspense>
     },
     {
         path: '/projects/*',
-        component: <ProjectsContainer />
+        component: <Suspense fallback={<GeneralUiOverlay />}><ProjectsContainer /></Suspense>
     },
     {
         path: '/ekostore',
-        component: <EkoStoreContainer />
+        component: <Suspense fallback={<GeneralUiOverlay />}><EkoStoreContainer /></Suspense>
     },
     {
         path: '/ekostore/product/:id',
@@ -54,15 +62,15 @@ export const BasicRoutes = [
     },
     {
         path: '/ekonews/*',
-        component:<Suspense fallback={<div>Loading</div>}> <EkoNewsContain /></Suspense>
+        component: <Suspense fallback={<GeneralUiOverlay />}><EkoNewsContain /></Suspense>
     },
     {
         path: '/cart',
-        component: <Suspense fallback={<div>Loading</div>}><ShppoingCarts /></Suspense>
+        component: <ShppoingCarts />
     },
     {
         path: '/checkout',
-        component: <Suspense fallback={<div>Loading</div>}><CheckoutContainer /></Suspense>
+        component: <CheckoutContainer />
     },
     {
         path: '/whishlist',
@@ -86,7 +94,7 @@ export const BasicRoutes = [
     },
     {
         path: '/dashboard/*',
-        component: <Suspense fallback={<div>Loading</div>}><Dashboardcontainer /></Suspense>
+        component: <Dashboardcontainer />
     },
     {
         path: '/login',
@@ -102,7 +110,7 @@ export const BasicRoutes = [
     },
     {
         path: "/explore-courses",
-        component:<Suspense fallback={<div>Loading</div>}> <ExploreCourses /></Suspense>
+        component: <ExploreCourses />
     }
    
     

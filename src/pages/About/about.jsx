@@ -2,7 +2,7 @@ import { AboutContainer } from "../../components/about/aboutContainer"
 
 
 
-export const AboutPage = () => {
+const AboutPage = () => {
     
 
 
@@ -10,3 +10,5 @@ export const AboutPage = () => {
         <AboutContainer></AboutContainer>
     )
 }
+
+export default AboutPage
