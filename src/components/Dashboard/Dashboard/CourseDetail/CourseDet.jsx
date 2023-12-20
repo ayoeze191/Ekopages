@@ -197,6 +197,7 @@ const CourseDetails = () => {
                   id={mod.id}
                   lesson_number={mod.lesson_number}
                   level={mod.level?mod.level:null}
+                  course_id={param.id}
                 />
               ))}
           </div>
@@ -221,7 +222,7 @@ export default CourseDetails
 
 
 
-const Module = ({ changeCurrentModule, title, id, level, current, completed,update_Module_completed, lesson_number }) => {
+const Module = ({ changeCurrentModule, title, id, level, current, completed,update_Module_completed, lesson_number,course_id }) => {
     const dispatch = useDispatch()
     const navigate = useNavigate()
     // console.log(lesson_number)
@@ -229,7 +230,7 @@ const Module = ({ changeCurrentModule, title, id, level, current, completed,upda
     // console.log(completed)
     const handleGotoQuiz = () => {
       dispatch(swictchUserCourseUrl(param.id))
-      navigate(`/quizzes/${lesson_number}/${id}`)
+      navigate(`/quizzes/${lesson_number}/${id}/${course_id}`)
     }
 
     const HandleClick = () => {

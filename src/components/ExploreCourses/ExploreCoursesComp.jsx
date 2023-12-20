@@ -49,7 +49,7 @@ const [courseModal, setcourseModal] = useState(false)
     setcourseModal(false)
   }
 
-console.log(course_type)
+// console.log(course_type)
   return (
     <Wrapper overlay={showOverlay} onclick={handleClose}>
     <CourseModal  courseModal={courseModal} {...selected} handleClose={handleClose}/>

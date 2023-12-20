@@ -76,7 +76,7 @@ const EkoLearnAbout = () => {
           {" "}
           This is a subscription-based platform for schools to subscribe their
           students to. Each School can register as many as 10,000 students on
-          Eko Learn for N15,000 each per year.
+          Eko Learn for free.
         </p>
         <div className="w-full flex justify-between items-center my-[3rem]">
           {/* <p className="text-[20.67px] md:text-[2rem] font-[600]">
@@ -101,7 +101,7 @@ const EkoLearnAbout = () => {
             </span>
             <ul className="list-disc font-[400] text-[12px] md:font-[400] md:text-[1rem]">
               {/* <li>5 SDG-themed books with exercises for the children.</li> */}
-              <li>1 SDG pop-quizzes.</li>
+              <li>1 SDG pop-quizes.</li>
               <li>
                 1 curated beginner SDG course for children with certification.
                 OR

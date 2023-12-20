@@ -10,13 +10,14 @@ import { Reform_to_suitable_form } from "../../../Utils/reformQuestions";
 import {  useSelector } from "react-redux/es/hooks/useSelector";
 import { useDispatch } from "react-redux";
 import { swicthFinishedCourseQuiz } from "../../../store/reducers/Quizzes";
+import axios from "axios";
 const CourseQuizes = () => {
   // const navigate = useNavigate()
   const dispatch = useDispatch()
   const url = useSelector((state) => state.billing.url)
   console.log(url)
   const navigate = useNavigate() 
-  const {redirect_id, completed_id} = useParams()
+  const {redirect_id, completed_id, course_id} = useParams()
   const [all_question, setAll_questions] = useState([]);
   const [answers, setAnswers] = useState([]);
   const [start, setStart] = useState(0);
@@ -25,6 +26,15 @@ const CourseQuizes = () => {
   const [loadingQuestions, setloadingQuestions] = useState(false)
   const [showOverlay, setShowOverlay] = useState(false);
   const [sucessfully_Submited, setSucessfully_Submited] = useState(false);
+  const [completed, setCompleted] = useState(false)
+
+  const CheckwhetherCourseCompleted = async() => {
+    const res = await instance.get(`services/study_all/${course_id}`, tokenConfig())
+    const quiz = res.data.data.find((item) => item.id == completed_id)
+    console.log(quiz)
+    setCompleted(quiz.completed)
+  }
+
   const get_allquizzes = () => {
     setloadingQuestions(false)
     instance
@@ -42,6 +52,7 @@ const CourseQuizes = () => {
   };
   useEffect(() => {
     get_allquizzes();
+    CheckwhetherCourseCompleted()
   }, []);
 
   const addAnswer = (id, new_answer) => {
@@ -83,7 +94,7 @@ const CourseQuizes = () => {
  
   const setAsCompleted = async() => {
     try {
-      const res = await instance.post('/services/completed/', {completed: true, lesson:completed_id} ,tokenConfig())
+      const res = await instance.get('/services/completed/', {completed: true, lesson:completed_id} ,tokenConfig())
       console.log(res.data)
     }
     catch{

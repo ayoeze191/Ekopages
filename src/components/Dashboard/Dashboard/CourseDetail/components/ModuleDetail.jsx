@@ -15,7 +15,7 @@ const ModuleDetail = ({id, update_Module_completed}) => {
         setLoading(true)
         instance.get(`/services/study/${id}/`, tokenConfig())
         .then((res) => {
-            // console.log(res)
+            console.log(res)
             setmoduleDetails(res.data.data)
             setLoading(false)
         })
