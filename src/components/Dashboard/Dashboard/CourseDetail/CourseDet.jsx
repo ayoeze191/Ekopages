@@ -100,7 +100,7 @@ const CourseDetails = () => {
             if(index_of_current_modules !== 0) {
               if(nextModule.title == "Pop Quiz"){
               dispatch(swictchUserCourseUrl(param.id))
-                navigate(`/quizzes/${nextModule.lesson_number}/${nextModule.id}`)
+                navigate(`/quizzes/${nextModule.lesson_number}/${nextModule.id}/${param.id}`)
               }
               else{
                 setCurrent(nextModule.id)
@@ -113,7 +113,7 @@ const CourseDetails = () => {
           const prevModule = modules.find((mod) => mod.id == modules[index_of_current_modules - 1].id)
           if(index_of_current_modules !== 0) {
             if(prevModule.title == "Pop Quiz"){
-              navigate(`/quizzes/${prevModule.lesson_number}/${prevModule.id}`)
+              navigate(`/quizzes/${prevModule.lesson_number}/${prevModule.id}/${param.id}`)
               dispatch(swictchUserCourseUrl(param.id))
 
             }
@@ -132,7 +132,7 @@ const CourseDetails = () => {
         get_modules();
       }, []);
 
-    return(loading ? "" : modules.find(mod => mod.id == current).title == "Pop Quiz"? navigate(`/quizzes/${modules.find(mod => mod.id == current).lesson_number}/${modules.find(mod => mod.id == current).id}`) :
+    return(loading ? "" : modules.find(mod => mod.id == current).title == "Pop Quiz"? navigate(`/quizzes/${modules.find(mod => mod.id == current).lesson_number}/${modules.find(mod => mod.id == current).id}/${param.id}`) :
         <div className="px-[2.06rem]">
             <div className="bg-[#FFFFFF] md:bg-inherit rounded-[5px] px-[1.5rem] py-[1.5rem]">
             {/* <h1 className="font-[600] text-[1.25rem]">

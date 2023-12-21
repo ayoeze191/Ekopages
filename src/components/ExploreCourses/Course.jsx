@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import star from "./../../assets/star.svg"
 import ExploreCoursePicture from  "./../../assets/ExploreCoursePicture.svg"
 import instance from '../../axios'
@@ -6,8 +6,22 @@ import { ClipLoader } from 'react-spinners'
 import { useNavigate } from 'react-router-dom'
 import { tokenConfig } from '../../Config/Config'
 const Course = ({picture, subject, Tutor, price, stars, modules, id, handleSelect}) => {
-   
-    
+    const navigate = useNavigate()
+    const [enrolled, setEnrolled] = useState(false)
+  const getRegistered = () => {
+    instance.get(`services/study_all/${id}`, tokenConfig())
+    .then((res) => {
+        // console.log(res.data)
+        setEnrolled(res.data.data.length > 0)
+    })
+    .catch((error) =>{
+        console.log(error)
+    })
+  }  
+
+  useEffect(() => {
+    getRegistered()
+  }, [])
 
   return (
     <div  className='font-lato  rounded-[9.5px] bg-white h-[370px] flex flex-col justify-between'>
@@ -30,7 +44,9 @@ const Course = ({picture, subject, Tutor, price, stars, modules, id, handleSelec
         </div>
         <div className='px-[13.76px] flex justify-between '>
             <p className='font-[500] text-[22px] leading-[26px] font-lato'>{price}</p>
-            <button className='bg-[#5A0C91] text-[#FFFFFF]  font-[400] leading-[18.24px] px-[18.92px] py-[9.46px] rounded-[9.6px] font-lato' onClick={() => handleSelect(id)}>Start learning</button>
+            <button className='bg-[#5A0C91] text-[#FFFFFF]  font-[400] leading-[18.24px] px-[18.92px] py-[9.46px] rounded-[9.6px] font-lato' onClick={() =>{ 
+                enrolled?navigate(`dashboard/MyCourses/${id}`):
+                handleSelect(id)}}>{enrolled? "Continue Course": " Start learning"}</button>
         </div>
     </div>
   )

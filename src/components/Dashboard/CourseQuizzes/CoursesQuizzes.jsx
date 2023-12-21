@@ -52,7 +52,7 @@ const CourseQuizes = () => {
   };
   useEffect(() => {
     get_allquizzes();
-    CheckwhetherCourseCompleted()
+    // CheckwhetherCourseCompleted()
   }, []);
 
   const addAnswer = (id, new_answer) => {
