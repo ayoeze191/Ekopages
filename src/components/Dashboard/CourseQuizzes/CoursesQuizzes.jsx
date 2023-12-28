@@ -3,7 +3,7 @@ import back from "./../../../assets/back.png";
 import { Link, useNavigate } from "react-router-dom";
 import Quiz from "./Quiz";
 import { useLocation, useParams } from "react-router-dom";
-import { BeatLoader } from "react-spinners";
+import { BeatLoader, ClipLoader } from "react-spinners";
 import instance from "./../../../axios";
 import { tokenConfig } from "../../../Config/Config";
 import { Reform_to_suitable_form } from "../../../Utils/reformQuestions";
@@ -45,7 +45,7 @@ const CourseQuizes = () => {
   }
 
   const get_allquizzes = () => {
-    setloadingQuestions(false)
+    setloadingQuestions(true)
     instance
       // .get("/Quiz/list_Quizes", tokenConfig())
       .get(`/Quiz/start/${redirect_id}`, tokenConfig())
@@ -56,6 +56,7 @@ const CourseQuizes = () => {
         setAll_questions(res.data.data);
       })
       .catch((err) => {
+        setloadingQuestions(false)
         console.log(err);
       });
   };
@@ -102,6 +103,7 @@ const CourseQuizes = () => {
   };
  
   const setAsCompleted = async() => {
+    
     try {
       const res = await instance.post('/services/completed/', {completed: true, lesson:completed_id} ,tokenConfig())
       console.log(res.data)
@@ -169,7 +171,7 @@ const CourseQuizes = () => {
           </div>
         </section>
         <div className="section flex flex-col gap-[4.125rem] mb-10">
-          {loadingQuestions?<BeatLoader />:all_question.length == 0 ? "No Questions Yet":all_question.map((quest, index) => (
+          {loadingQuestions?<ClipLoader />:all_question.length == 0 ? "No Questions Yet":all_question.map((quest, index) => (
             <Quiz
               {...Reform_to_suitable_form(quest)}
             //   selectedAnswer = {userSelected.length > 0 && userSelected.find((answer) => answer.question_text === Reform_to_suitable_form(quest).question).user_answer}

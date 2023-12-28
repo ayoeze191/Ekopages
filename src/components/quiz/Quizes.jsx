@@ -6,7 +6,7 @@ import { Link } from "react-router-dom";
 import Quiz from "./Quiz";
 import { useLocation, useParams } from "react-router-dom";
 import AuthButton from "../authButton";
-import { BeatLoader, FadeLoader } from "react-spinners";
+import { BeatLoader, FadeLoader , ClipLoader} from "react-spinners";
 import instance from "../../axios";
 import { tokenConfig } from "../../Config/Config";
 import { Reform_to_suitable_form } from "../../Utils/reformQuestions";
@@ -33,7 +33,7 @@ const Quizes = () => {
   const [showOverlay, setShowOverlay] = useState(false);
   const [sucessfully_Submited, setSucessfully_Submited] = useState(false);
   const get_allquizzes = () => {
-    setloadingQuestions(false)
+    setloadingQuestions(true)
     instance
       .get("/dashboard-quizzes/start", tokenConfig())
       .then((res) => {
@@ -167,7 +167,7 @@ const Quizes = () => {
           </div>
         </section>
         <div className="section flex flex-col gap-[4.125rem] mb-10">
-          {loadingQuestions?<BeatLoader />:all_question.quizzes.length == 0 ? "No Questions Yet":all_question.quizzes.slice(start, end).map((quest, index) => (
+          {loadingQuestions?<div className="w-full flex justify-center items-center"><ClipLoader /></div>:all_question.quizzes.length == 0 ? "No Questions Yet":all_question.quizzes.slice(start, end).map((quest, index) => (
             <Quiz
               {...Reform_to_suitable_form(quest, all_question.quizzes.findIndex((ques) => ques.id == quest.id))}
               // number={index + 1}

@@ -45,7 +45,7 @@ const Course = ({picture, subject, Tutor, price, stars, modules, id, handleSelec
         <div className='px-[13.76px] flex justify-between '>
             <p className='font-[500] text-[22px] leading-[26px] font-lato'>{price}</p>
             <button className='bg-[#5A0C91] text-[#FFFFFF]  font-[400] leading-[18.24px] px-[18.92px] py-[9.46px] rounded-[9.6px] font-lato' onClick={() =>{ 
-                enrolled?navigate(`dashboard/MyCourses/${id}`):
+                enrolled?navigate(`/dashboard/MyCourses/${id}`):
                 handleSelect(id)}}>{enrolled? "Continue Course": " Start learning"}</button>
         </div>
     </div>
