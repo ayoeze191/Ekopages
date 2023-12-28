@@ -25,7 +25,7 @@ const Options = ({
       <div className="rounded-full p-[0.5rem] border-solid border-[1px] border-[#4A4A4A] w-7 h-7 flex items-center justify-center">
         {label}
       </div>
-      <div className="text-[#4A4A4A]">{text}</div>
+      <div className={`${selected == true?'text-white': "text-[#4A4A4A]"}`}>{text}</div>
     </div>
   ):
   (

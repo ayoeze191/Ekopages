@@ -3,7 +3,7 @@ import Quizes from "./components/quiz/Quizes"
 import Review from "./components/quiz/ReviewQuizzes/Quizes"
 import ShortStory from "./components/shortStory/ShortStory"
 
-import Dashboardcontainer from "./pages/dashboard/Dashboardcontainer"
+// import Dashboardcontainer from ""
 import FaqContainer from "./pages/FAQ/FaqContainer"
 // import LandingPage from ""
 
@@ -16,7 +16,7 @@ import Test from "./components/Test"
 import VerifyEmail from "./pages/Verify-email"
 import Beapublisher from "./pages/Beapublisher/Beapublisher"
 import Productdetails from "./components/ProductDetails/Productdetails"
-import ExploreCourses from "./pages/ExploreCourses/ExploreCourses"
+// import ExploreCourses from ""
 import CourseQuizes from "./components/Dashboard/CourseQuizzes/CoursesQuizzes"
 import { Suspense, lazy } from "react"
 
@@ -27,8 +27,8 @@ const ServicesContainer = lazy(() => import("./pages/Services/ServicesContainer"
 const  ProjectsContainer = lazy(() => import("./pages/Project/ProjectsContainer"))
 const  EkoStoreContainer = lazy(() => import("./pages/EkoStore/EkoStoreContainer")) 
 const EkoNewsContain = lazy(() => import("./pages/EkoNews/EkoNewsContain")) 
-
-
+const Dashboardcontainer = lazy(() => import('./pages/dashboard/Dashboardcontainer'))
+const ExploreCourses  = lazy(() => import('./pages/ExploreCourses/ExploreCourses'))
 
 export const BasicRoutes = [
     {
@@ -94,7 +94,7 @@ export const BasicRoutes = [
     },
     {
         path: '/dashboard/*',
-        component: <Dashboardcontainer />
+        component: <Suspense fallback={<GeneralUiOverlay />}><Dashboardcontainer /></Suspense>
     },
     {
         path: '/login',
@@ -110,7 +110,7 @@ export const BasicRoutes = [
     },
     {
         path: "/explore-courses",
-        component: <ExploreCourses />
+        component: <Suspense fallback={<GeneralUiOverlay />}><ExploreCourses /></Suspense>
     }
    
     

@@ -37,7 +37,9 @@ instance.interceptors.request.use(function (config) {
         return config
       })    
     .catch((err) =>  {
-            if(err.response.detail === "token_not_valid"){
+      console.log("token not valid", err.response)
+            if(err.response.data.detail === "Token is invalid or expired"){
+      console.log("token not valid")
               localStorage.clear()
               localStorage.removeItem('exp')
               localStorage.removeItem('eko_access')

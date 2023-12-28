@@ -124,7 +124,7 @@ const Quizes = () => {
   }, [setSucessfully_Submited])
 
   // function that checks if the user has done the test before
-
+  console.log(answers)
 
   const ClearInterface = () => {
     setShowOverlay(false)

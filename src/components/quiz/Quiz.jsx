@@ -6,15 +6,17 @@ import { tokenConfig } from '../../Config/Config'
 const Quiz = ({id, number, question, mark, options, addAnswer, answers}) => {
   // console.log(mark)
   const [loading, setLoading] = useState(false)
-  const [answer, setAnswer] = useState(answers.find(ans => ans.question == id) != undefined ? answers.find(ans => ans.question == id).answer: null)
+  const [answer, setAnswer] = useState(null)
   const onClickHandler = (label) => {
     setAnswer(label)
   }
   useEffect(() => {
+    setAnswer(null)
     if(answers.find(ans => ans.question == id) != undefined){
+      console.log()
       setAnswer(answers.find(ans => ans.question == id).answer)
     }
-  }, [answers.find(ans => ans.question == id || null)])
+  }, [id])
   const SubmitAnswer = () => {
     // setLoading(true)
     // console.log({question: id, answer})
@@ -30,6 +32,7 @@ const Quiz = ({id, number, question, mark, options, addAnswer, answers}) => {
     // })
     addAnswer(id,answer)
   }
+  console.log(answer)
 
   useEffect(() => {
     if(answer != null){

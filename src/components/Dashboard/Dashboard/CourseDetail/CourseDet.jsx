@@ -77,7 +77,6 @@ const CourseDetails = () => {
           if(id !== modules[0].id) {
               const index_of_the_clicked_module = modules.findIndex((item) => item.id == id)
               const prevMod = modules.find((item) => item.id === modules[index_of_the_clicked_module - 1].id)
-              console.log(id)
               // console.log(prevMod, index_of_the_clicked_module)
               if(prevMod.completed == true){
                 setCurrent(id)

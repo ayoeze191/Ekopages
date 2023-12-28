@@ -12,18 +12,20 @@ import Sidebar from './sidebar/Sidebar'
 import { useAuthContext } from '../../context/auth/auth'
 import { Books } from '../../components/Dashboard/Dashboard/dashboard/Books'
 import MyCourses from '../../components/Dashboard/Dashboard/Mycourses/MyCourses'
-
+import { toast } from 'react-toastify'
 const Dashboardcontainer = () => {
   const {isAuth} = useAuthContext()
   const navigate = useNavigate()
-    if(!isAuth){
-      navigate('/')
-      //("redirecting")
-    }
+    useEffect(() => {
+      isAuth === false && navigate('/')
+    }, [])
 
+  console.log(isAuth)
+    
 
   return (
     <div className='flex bg-inherit h-full relative'>
+      
       <div className='md:w-[25%]'>
         <Sidebar />
         </div>

@@ -11,6 +11,9 @@ import {  useSelector } from "react-redux/es/hooks/useSelector";
 import { useDispatch } from "react-redux";
 import { swicthFinishedCourseQuiz } from "../../../store/reducers/Quizzes";
 import axios from "axios";
+import { IoCloseCircleOutline } from "react-icons/io5";
+
+// import { Modal } from "antd";
 const CourseQuizes = () => {
   // const navigate = useNavigate()
   const dispatch = useDispatch()
@@ -26,13 +29,19 @@ const CourseQuizes = () => {
   const [loadingQuestions, setloadingQuestions] = useState(false)
   const [showOverlay, setShowOverlay] = useState(false);
   const [sucessfully_Submited, setSucessfully_Submited] = useState(false);
-  const [completed, setCompleted] = useState(false)
+  const [showModal, setShowmodal] = useState(false)
 
   const CheckwhetherCourseCompleted = async() => {
+    
     const res = await instance.get(`services/study_all/${course_id}`, tokenConfig())
-    const quiz = res.data.data.find((item) => item.id == completed_id)
-    console.log(quiz)
-    setCompleted(quiz.completed)
+    const response = res.data.data.find((item) => item.id == completed_id)
+    // console.log(response.completed)
+    
+    if(response.completed == true){
+      setShowmodal(response.completed)
+      console.log("showing overlay")
+      setShowOverlay(true)
+    }
   }
 
   const get_allquizzes = () => {
@@ -52,7 +61,7 @@ const CourseQuizes = () => {
   };
   useEffect(() => {
     get_allquizzes();
-    // CheckwhetherCourseCompleted()
+    CheckwhetherCourseCompleted()
   }, []);
 
   const addAnswer = (id, new_answer) => {
@@ -94,7 +103,7 @@ const CourseQuizes = () => {
  
   const setAsCompleted = async() => {
     try {
-      const res = await instance.get('/services/completed/', {completed: true, lesson:completed_id} ,tokenConfig())
+      const res = await instance.post('/services/completed/', {completed: true, lesson:completed_id} ,tokenConfig())
       console.log(res.data)
     }
     catch{
@@ -127,8 +136,17 @@ const CourseQuizes = () => {
   //   setSucessfully_Submited(false)
   // }
   
+  const redo = () => {
+    setShowmodal(false)
+    setShowOverlay(false)
+  }
+  const cont = () => {
+    navigate(`/dashboard/MyCourses/${url}`)
+  }
 
   return (
+    <Wrapper overlay={showOverlay}>
+     { showModal && <Modal redo={redo} cont={cont} />  }
       <div>
         <section className=" h-[10.625rem] flex justify-center items-center font-lato bold">
           <div className="w-full  lg:px-0 px-6 max-w-[77rem] py-4 mx-auto h-fit px-7  text-[#444444] flex flex-col md:flex-row items-center justify-between">
@@ -172,6 +190,7 @@ const CourseQuizes = () => {
           </div>
         </div>
       </div>
+      </Wrapper>
   );
 };
 
@@ -196,3 +215,20 @@ const Overlay = ({ onclick, show }) => {
     )
   ); 
 };
+
+
+const Modal = ({ redo, cont}) => {
+  return(
+    <div  className="fixed w-full h-full top-0  flex justify-center items-center ">
+      
+    <div className="font-lato flex items-center  bg-white flex-col w-[55vw] h-[60vh] max-w-[483px] max-h-[332px] rounded-[7.02px]">
+    <div className="ml-auto w-fit h-fit mt-[20px] mr-[20px]">
+      <IoCloseCircleOutline color="#232323" width={32} height={32} size={32} onClick={cont} className="mb-[40.5px] ml-auto cursor-pointer"/>
+    </div>
+      <div className="flex flex-col gap-[40px] items-center font-[500] text-[16px] leading-[19.2px] font-lato text-[#232323]">
+      This module waas previously completed by you <button className="bg-[#5A0C91] cursor-pointer rounded-[5px] w-[129px] h-[40px] font-lato leading-[19.2px] text-[#ffffff]" onClick={redo}>Retake</button>
+      </div>
+    </div>
+    </div>
+  )
+}
