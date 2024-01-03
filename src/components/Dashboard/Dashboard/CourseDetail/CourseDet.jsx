@@ -11,20 +11,42 @@ import { MoonLoader } from "react-spinners";
 import { RiLoader4Fill } from "react-icons/ri";
 import { useLocation } from "react-router-dom";
 import { swicthFinishedCourseQuiz } from "../../../../store/reducers/Quizzes";
+import CircularProgressBar from "../../../ui/CircularProgressBar";
+import CourseCompletionModal from "./CourseCompletionModal";
 const CourseDetails = () => {
+  const [coursePercentage, setCoursePercentage] = useState(100)
   const navigate = useNavigate()
-  
+  const param = useParams();
+  const getCoursePercentage = () => {
+      console.log("getting")
+        instance.get('/user_courses/courses_enrolled/', tokenConfig())
+        .then((res) => {
+          setCoursePercentage(res.data.courses_with_progress.find(cou => cou.course_id == param.id).completion_percentage)
+        })
+        .catch((err) => {
+          console.log(err, "error")
+        })
+      }
   const dispatch = useDispatch()
   const loc = useLocation()
   const completed_CourseQuiz = useSelector((state) => state.quizzes.finished_Course_quiz)
     // const viewref = useRef(null);
     const [loading, setLoading] = useState(true)
-    const param = useParams();
     // const loc = useLocation()
     // const vidoeRef = useRef(null)
     const [modules, setModules] = useState([]);
     const [current, setCurrent] = useState(1);
-    
+  const CheckIfUserHasCompletedCourse = (details) => {
+    let Completed = true
+    for(let i=0; i < details.length; i ++){
+      if(details[i].completed == false){
+          Completed = false
+      }
+    }
+    return Completed
+  }
+
+
     const setCurrentDetails = (details) => {
       let last_item;
       for(let i=0; i < details.length; i ++){
@@ -32,21 +54,9 @@ const CourseDetails = () => {
           last_item = details[i]
         }
       }
-
-      // find the index in order to set is to identify the next one after it
+      console.log(CheckIfUserHasCompletedCourse(details))
       const index_of_completed = details.findIndex((item) => item.id == last_item.id)
-      // console.log(index_of_completed)
       setCurrent(details[index_of_completed + 1].id)
-      // if(indexes_not_allowed.includes(index_of_completed) == false) {
-      //   setCurrent(details[index_of_completed + 1].id)
-      // }
-        // if(completed_CourseQuiz == true){
-        //   
-        // }
-        
-        // else {
-        //   setCurrent(details[index_of_completed].id)
-        // }
     }
   
 
@@ -130,9 +140,15 @@ const CourseDetails = () => {
       useEffect(() => {
         get_modules();
       }, []);
-
-    return(loading ? "" : modules.find(mod => mod.id == current).title == "Pop Quiz"? navigate(`/quizzes/${modules.find(mod => mod.id == current).lesson_number}/${modules.find(mod => mod.id == current).id}/${param.id}`) :
-        <div className="px-[2.06rem]">
+      useEffect(() => {
+        getCoursePercentage()
+      }, current)
+      // console.log(modules)
+    return(loading ? "" : (modules.find(mod => mod.id == current).title == "Pop Quiz" ||modules.find(mod => mod.id == current).title == "Literaure Questions")? navigate(`/quizzes/${modules.find(mod => mod.id == current).lesson_number}/${modules.find(mod => mod.id == current).id}/${param.id}`) :
+        <Wrapper overlay={true}
+        >
+          <CourseCompletionModal id={param.id}/>
+          <div className="px-[2.06rem]">
             <div className="bg-[#FFFFFF] md:bg-inherit rounded-[5px] px-[1.5rem] py-[1.5rem]">
             {/* <h1 className="font-[600] text-[1.25rem]">
               {modules[0].title}
@@ -141,7 +157,7 @@ const CourseDetails = () => {
               <div className="text-[32px] font-lato font-bold">
               {
                 modules.find(
-                  (mod) => mod.id === current && mod
+                  (mod) => mod.id == current && mod
                 ).title.split("(")[1].replace(")", "")
               }
               </div>
@@ -173,15 +189,17 @@ const CourseDetails = () => {
             </button>
           </div>
             </div>
-            <div className="hidden lg:flex flex-col gap-[1.5rem] px-[2.25rem] pb-[3.9375rem] bg-[#EFE7F4] w-[30%] text-[#4A4A4A] pt-[2.375rem] ">
+            <div className="hidden lg:flex flex-col gap-[1.5rem] px-[2.25rem] pb-[3.9375rem] 
+            bg-[#EFE7F4]
+             w-[30%] text-[#4A4A4A] pt-[2.375rem] ">
           <div className="flex flex-col gap-[3.75rem] font-lato font-[500] text-[1rem] items-start">
             <div className="flex justify-start gap-[8px] items-center w-full ">
               {/* <GoDotFill /> */}
               <div className="text-left font-[500] font-lato leading-[25.6px]">
                 MODULES IN THIS COURSE
               </div>
-              <div>
-              {loading ? <MoonLoader size={24} color="#5A0C91"/> :    ""}
+              <div className='w-6'>
+              <CircularProgressBar score={coursePercentage}/>
               </div>
             </div>
             {modules
@@ -201,11 +219,9 @@ const CourseDetails = () => {
               ))}
           </div>
         </div>
-
-
           </div>
-
         </div>
+        </Wrapper>
     )
 }
 
@@ -234,7 +250,7 @@ const Module = ({ changeCurrentModule, title, id, level, current, completed,upda
 
     const HandleClick = () => {
       console.log(title, "title")
-      if(title == "Pop Quiz") {
+      if(title == "Pop Quiz" || title == "Literaure Questions") {
         handleGotoQuiz()
         // Update_Module_Completed(id)
       }
@@ -274,4 +290,42 @@ const Module = ({ changeCurrentModule, title, id, level, current, completed,upda
       </div>
     );
   }
+
+
+
+
+
+
+
+
+
+
+
+
+  export const Wrapper = ({ overlay, children }) => {
+    return (
+      <>
+        <Overlay show={overlay} />
+        {children}
+      </>
+    );
+  };
+  export const Overlay = ({ onclick, show }) => {
+    console.log(show, "show");
+    return (
+      show && (
+        <div
+          className="bg-black opacity-[0.7] left-0 fixed w-full h-full top-0 z-10"
+          onClick={onclick}
+        ></div>
+      )
+    );
+  };
+  
+
+
+
+
+
+
   

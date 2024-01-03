@@ -206,7 +206,7 @@ const Quizes = () => {
 
 export default Quizes;
 
-const Wrapper = ({ overlay, children }) => {
+export const Wrapper = ({ overlay, children }) => {
   return (
     <>
       <Overlay show={overlay} />
@@ -214,7 +214,7 @@ const Wrapper = ({ overlay, children }) => {
     </>
   );
 };
-const Overlay = ({ onclick, show }) => {
+export const Overlay = ({ onclick, show }) => {
   console.log(show, "show");
   return (
     show && (
