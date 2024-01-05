@@ -15,16 +15,18 @@ import CircularProgressBar from "../../../ui/CircularProgressBar";
 import CourseCompletionModal from "./CourseCompletionModal";
 const CourseDetails = () => {
   const [coursePercentage, setCoursePercentage] = useState(100)
+  const [modal, setShowModal] = useState(false)
+  const [overlay, setShowOverlay] = useState(false)
   const navigate = useNavigate()
   const param = useParams();
   const getCoursePercentage = () => {
-      console.log("getting")
+      //("getting")
         instance.get('/user_courses/courses_enrolled/', tokenConfig())
         .then((res) => {
           setCoursePercentage(res.data.courses_with_progress.find(cou => cou.course_id == param.id).completion_percentage)
         })
         .catch((err) => {
-          console.log(err, "error")
+          //(err, "error")
         })
       }
   const dispatch = useDispatch()
@@ -54,7 +56,8 @@ const CourseDetails = () => {
           last_item = details[i]
         }
       }
-      console.log(CheckIfUserHasCompletedCourse(details))
+      //(CheckIfUserHasCompletedCourse(details))
+     
       const index_of_completed = details.findIndex((item) => item.id == last_item.id)
       setCurrent(details[index_of_completed + 1].id)
     }
@@ -63,7 +66,7 @@ const CourseDetails = () => {
 
     const get_modules = () => {
         setLoading(true)
-        // console.log("working");
+        // //("working");
         instance
           .get(`services/study_all/${param.id}`, tokenConfig())
           .then((res) => {
@@ -79,7 +82,7 @@ const CourseDetails = () => {
           })
           .catch((err) => {
             setLoading(false)
-            // console.log(err);
+            // //(err);
           });
       };
 
@@ -87,12 +90,12 @@ const CourseDetails = () => {
           if(id !== modules[0].id) {
               const index_of_the_clicked_module = modules.findIndex((item) => item.id == id)
               const prevMod = modules.find((item) => item.id === modules[index_of_the_clicked_module - 1].id)
-              // console.log(prevMod, index_of_the_clicked_module)
+              // //(prevMod, index_of_the_clicked_module)
               if(prevMod.completed == true){
                 setCurrent(id)
               }
               else{
-                console.log("rubbish")
+                //("rubbish")
               }
           }
           else {
@@ -103,8 +106,8 @@ const CourseDetails = () => {
         if(next){
             // const index_of_current_modules = modules.indexOf((mod) => mod.id == current)
             const index_of_current_modules = modules.findIndex((item) => item.id == current)
-            console.log(current, modules)
-            console.log(index_of_current_modules)
+            //(current, modules)
+            //(index_of_current_modules)
             const nextModule = modules.find((mod) => mod.id == modules[index_of_current_modules + 1].id)
             if(index_of_current_modules !== 0) {
               if(nextModule.title == "Pop Quiz"){
@@ -114,7 +117,6 @@ const CourseDetails = () => {
               else{
                 setCurrent(nextModule.id)
               }
-              
             }   
         }
         else {
@@ -141,13 +143,23 @@ const CourseDetails = () => {
         get_modules();
       }, []);
       useEffect(() => {
+        if(CheckIfUserHasCompletedCourse(modules) === true){
+          //("setting")
+          setShowOverlay(true)
+          setShowModal(true)
+          }
         getCoursePercentage()
       }, current)
-      // console.log(modules)
+
+      const ClearInterface = () => {
+        setShowOverlay(false)
+        setShowModal(false)
+      }
+      console.log(overlay)
     return(loading ? "" : (modules.find(mod => mod.id == current).title == "Pop Quiz" ||modules.find(mod => mod.id == current).title == "Literaure Questions")? navigate(`/quizzes/${modules.find(mod => mod.id == current).lesson_number}/${modules.find(mod => mod.id == current).id}/${param.id}`) :
-        <Wrapper overlay={true}
+        <Wrapper overlay={overlay}
         >
-          <CourseCompletionModal id={param.id}/>
+         {modal && <CourseCompletionModal id={param.id} ClearInterface={ClearInterface}/>}
           <div className="px-[2.06rem]">
             <div className="bg-[#FFFFFF] md:bg-inherit rounded-[5px] px-[1.5rem] py-[1.5rem]">
             {/* <h1 className="font-[600] text-[1.25rem]">
@@ -240,16 +252,16 @@ export default CourseDetails
 const Module = ({ changeCurrentModule, title, id, level, current, completed,update_Module_completed, lesson_number,course_id }) => {
     const dispatch = useDispatch()
     const navigate = useNavigate()
-    // console.log(lesson_number)
+    // //(lesson_number)
     const param = useParams()
-    // console.log(completed)
+    // //(completed)
     const handleGotoQuiz = () => {
       dispatch(swictchUserCourseUrl(param.id))
       navigate(`/quizzes/${lesson_number}/${id}/${course_id}`)
     }
 
     const HandleClick = () => {
-      console.log(title, "title")
+      //(title, "title")
       if(title == "Pop Quiz" || title == "Literaure Questions") {
         handleGotoQuiz()
         // Update_Module_Completed(id)
@@ -311,7 +323,7 @@ const Module = ({ changeCurrentModule, title, id, level, current, completed,upda
     );
   };
   export const Overlay = ({ onclick, show }) => {
-    console.log(show, "show");
+    //(show, "show");
     return (
       show && (
         <div

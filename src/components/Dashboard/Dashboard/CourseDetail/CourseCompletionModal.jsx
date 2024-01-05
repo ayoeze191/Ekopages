@@ -33,7 +33,7 @@ const CourseCompletionModal = ({ClearInterface, id}) => {
     },
     passed: {
       applaud: "Congratulations!",
-      text: "You did a great job by above beyond the average.",
+      text: "You did a great job by above beyond the average. That earned you a certificate",
       logo: excelentLogo
     },
   };
@@ -84,8 +84,8 @@ const CourseCompletionModal = ({ClearInterface, id}) => {
               } */}
               </span>
             </p>
-            <button className="bg-[#5A0C91] rounded-[5.5px] px-[20px] py-[13.5px] text-[#EFE7F4] text-[14px] mb-[20px]" onClick={() => {navigate('/quizes/reviewQuizzes'); ClearInterface()} }>
-              View Certificate
+            <button className="bg-[#5A0C91] rounded-[5.5px] px-[20px] py-[13.5px] text-[#EFE7F4] text-[14px] mb-[20px]" onClick={ () => result !== 'passed' ? ClearInterface() : navigate('/certification')}>
+              Continue
             </button>
             <p>Go Back to Courses</p>
           </div>
