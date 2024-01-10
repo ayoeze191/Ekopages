@@ -1,6 +1,8 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import { BsCart } from 'react-icons/bs'
 import Order from './Order'
+import instance from '../../../../axios'
+import { tokenConfig } from '../../../../Config/Config'
 
 
 
@@ -32,6 +34,18 @@ const orders = [
 ]
 
 const Orders = () => {
+    const [orders, setOrders] = useState([])  
+    const getCompletedOrders = () => {
+        instance.get('/history/all-history/', tokenConfig())
+        .then((res)=> {
+            console.log(res.data.data)
+            setOrders(res.data.data.total)
+        })
+    }
+    useEffect(() => {
+        getCompletedOrders()
+    }, [])
+
   return (
     <div>
         <div className='flex gap-[18.38px] items-center justify-center md:justify-start mb-[2rem] '> <div>
@@ -47,7 +61,7 @@ const Orders = () => {
             <div>Status</div>
         </div>
         <div className='flex flex-col gap-[24px] md:gap-[4px]'>
-        {orders.map((order) => <Order {...order}/>)}
+        {orders.length > 0 ? orders.map((order) => <Order {...order} status={order.completed == false?"Pending payment":"Paid"}/>): "No order Yet"}
         </div>
         </div>
     </div>

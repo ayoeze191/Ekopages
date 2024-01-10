@@ -7,7 +7,7 @@ import { GoDotFill } from "react-icons/go";
 import { useParams, useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import ModuleDetail from "./components/ModuleDetail";
-import { MoonLoader } from "react-spinners";
+import { MoonLoader, SyncLoader } from "react-spinners";
 import { RiLoader4Fill } from "react-icons/ri";
 import { useLocation } from "react-router-dom";
 import { swicthFinishedCourseQuiz } from "../../../../store/reducers/Quizzes";
@@ -39,9 +39,11 @@ const CourseDetails = () => {
     const [modules, setModules] = useState([]);
     const [current, setCurrent] = useState(1);
   const CheckIfUserHasCompletedCourse = (details) => {
+    // console.log(details, "det")
     let Completed = true
     for(let i=0; i < details.length; i ++){
       if(details[i].completed == false){
+        console.log(details[i].completed)
           Completed = false
       }
     }
@@ -110,7 +112,7 @@ const CourseDetails = () => {
             //(index_of_current_modules)
             const nextModule = modules.find((mod) => mod.id == modules[index_of_current_modules + 1].id)
             if(index_of_current_modules !== 0) {
-              if(nextModule.title == "Pop Quiz"){
+              if(nextModule.title == "Pop Quiz" || nextModule.title == "Final POP QUIZ" || nextModule.title == "Literaure Questions"){
               dispatch(swictchUserCourseUrl(param.id))
                 navigate(`/quizzes/${nextModule.lesson_number}/${nextModule.id}/${param.id}`)
               }
@@ -123,10 +125,9 @@ const CourseDetails = () => {
           const index_of_current_modules = modules.indexOf((mod) => mod.id == current)
           const prevModule = modules.find((mod) => mod.id == modules[index_of_current_modules - 1].id)
           if(index_of_current_modules !== 0) {
-            if(prevModule.title == "Pop Quiz"){
+            if(prevModule.title == "Pop Quiz" || prevModule.title == "Final POP QUIZ" || prevModule.title == "Literaure Questions"){
               navigate(`/quizzes/${prevModule.lesson_number}/${prevModule.id}/${param.id}`)
               dispatch(swictchUserCourseUrl(param.id))
-
             }
             else{
               setCurrent(prevModule.id)
@@ -143,28 +144,29 @@ const CourseDetails = () => {
         get_modules();
       }, []);
       useEffect(() => {
-        if(CheckIfUserHasCompletedCourse(modules) === true){
-          //("setting")
-          setShowOverlay(true)
-          setShowModal(true)
-          }
+        if(modules.length > 0){
+          if(CheckIfUserHasCompletedCourse(modules) === true){
+            console.log("CheckIfUserHasCompletedCourse(modules)")
+            setShowOverlay(true)
+            setShowModal(true)
+            }
+        }
         getCoursePercentage()
-      }, current)
+      }, [current])
 
       const ClearInterface = () => {
         setShowOverlay(false)
         setShowModal(false)
       }
-      console.log(overlay)
-    return(loading ? "" : (modules.find(mod => mod.id == current).title == "Pop Quiz" ||modules.find(mod => mod.id == current).title == "Literaure Questions")? navigate(`/quizzes/${modules.find(mod => mod.id == current).lesson_number}/${modules.find(mod => mod.id == current).id}/${param.id}`) :
+    return(loading ? <MoonLoader /> : (modules.find(mod => mod.id == current).title == "Pop Quiz" || modules.find(mod => mod.id == current).title == "Literaure Questions" || modules.find(mod => mod.id == current).title == "Final POP QUIZ")? navigate(`/quizzes/${modules.find(mod => mod.id == current).lesson_number}/${modules.find(mod => mod.id == current).id}/${param.id}`) :
         <Wrapper overlay={overlay}
         >
          {modal && <CourseCompletionModal id={param.id} ClearInterface={ClearInterface}/>}
           <div className="px-[2.06rem]">
             <div className="bg-[#FFFFFF] md:bg-inherit rounded-[5px] px-[1.5rem] py-[1.5rem]">
-            {/* <h1 className="font-[600] text-[1.25rem]">
+            <h1 className="font-[600] text-[1.25rem]">
               {modules[0].title}
-            </h1> */}
+            </h1>
            { loading? "" : <p className="font-[400] text-[1rem] flex   flex-col gap-[8px]">
               <div className="text-[32px] font-lato font-bold">
               {
@@ -262,7 +264,7 @@ const Module = ({ changeCurrentModule, title, id, level, current, completed,upda
 
     const HandleClick = () => {
       //(title, "title")
-      if(title == "Pop Quiz" || title == "Literaure Questions") {
+      if(title == "Pop Quiz" || title == "Literaure Questions" || title == "Final POP QUIZ") {
         handleGotoQuiz()
         // Update_Module_Completed(id)
       }

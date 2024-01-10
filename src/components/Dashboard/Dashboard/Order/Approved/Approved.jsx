@@ -42,7 +42,7 @@ const Approved = () => {
         // setLoading(true)
         instance.get('history/completed/', tokenConfig())
         .then(res => {
-            // //(res.data.data.completed)
+            console.log(res.data.data.completed)
             setLoading(false)
             setOrders(res.data.data.completed)
         })
@@ -51,7 +51,7 @@ const Approved = () => {
             //(err)
         })
     }
-    
+      
 
 
 useEffect(() => {

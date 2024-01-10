@@ -8,6 +8,7 @@ const Completed = () => {
     const [loading, setLoading] = useState([])
 
     const getCourses = () => {
+        console.log("getting course")
         setLoading(true)
 
         instance
@@ -15,10 +16,10 @@ const Completed = () => {
         .then( async (res) => {
             // setCourses(res.data.courses_with_progress.filter(cou => cou.completion_percentage < 100))
             let  ls = []
-            for (let i of res.data.courses_with_progress.filter(cou => cou.completion_percentage < 100)){
+            for (let i of res.data.courses_with_progress.filter(cou => cou.completion_percentage >= 100)){
                const response = await get_number_of_exercises(i)
                ls.push(response)
-            console.log(response)
+            console.log(ls)
                 // .then( res => {
                 //     console.log(res)
                 //     
@@ -26,6 +27,9 @@ const Completed = () => {
             }
             setCourses(ls)
         setLoading(false)
+    })
+    .catch((err) => {
+        console.log("error")
     })
     
     }
@@ -52,7 +56,7 @@ const Completed = () => {
     }, [])
 
   return (
-    <div className='px-[72px] flex flex-col  gap-[24px] mt-[95px] w-full'>
+    <div className='md:px-[72px] flex flex-col  gap-[24px] mt-[33px] w-full items-center justify-center'>
          {loading?<MoonLoader />:
         courses.map((course) => <Course {...course}/>)
   }
@@ -65,10 +69,10 @@ export default Completed
 
 const Course = ({course_name, number_of_lessons}) => {
     return (
-        <div className='flex  justify-between w-full shadow-sm bg-white md:h-[100px] items-center px-[40px]'>
-            <p><h2 className='font-lato font-[600] text-[24px] text-[#232323] leading-[28.8px]'>{course_name}
+        <div className='flex  justify-between w-full shadow-sm bg-white md:h-[100px] items-center px-[24px] py-[19px] md:py-0 md:px-[40px]'>
+            <p><h2 className='font-lato font-[500] md:text-[24px] text-[#232323] md:leading-[28.8px] text-[16px] '>{course_name}
             </h2>
-            <p  className='font-lato leading-[19.2px]'>{number_of_lessons} Excercises</p>
+            <p  className='font-lato md:leading-[19.2px] mt-[8px] text-[12px] md:text-base text-[#4A4A4A]'>{number_of_lessons} Excercises</p>
             </p>
             <div>
                 <FaCheckCircle color='#174D00' width={32.5} height={32.5} size={32.5}/>

@@ -69,7 +69,8 @@ const MyCourses = () => {
     </TabPanel>
     <TabPanel as={AnimatePresence}>
       <div className='flex flex-col justify-between md:flex-row md:pr-[64px] gap-[56px] md:gap-0 px-[20px] md:px-0'>
-             <Completed /> <Achievement />
+             <Completed /> 
+             <Achievement />
              </div>
     </TabPanel>
     </TabPanels>
@@ -84,6 +85,7 @@ const MyCourses = () => {
 
 
 const Achievement = () => {
+  const navigate = useNavigate()
   return (
     <div className='bg-[#EFE7F4] rounded-[10px] pt-[30px] pb-[70px] px-[20px] w-full md:max-w-[270px] mb-20 md:mb-0'>
       <h3 className='flex gap-4 items-center'>
@@ -99,7 +101,7 @@ const Achievement = () => {
         <div>
           <h2 className='font-[600] leading-[19.2px] font-lato text-[16px]'>Certificate</h2>
           <p className='font-[600] font-lato text-[12px] text-[#888888] leading-[18px] mt-[4px]'>
-          For this year, you have received <span className='text-[#232323]'>three certificates</span>. Congrats on your learning progress.
+          For this year, you have received <span className='text-[#232323]'>three certificates</span>. Congrats on your learning progress. <span className='text-[#232323] cursor-pointer' onClick={() => navigate('/dashboard/MyCourses/certifications')}>view certificates</span>
           </p>
         </div>
       </div>

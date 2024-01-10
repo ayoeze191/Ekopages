@@ -43,19 +43,19 @@ const Pending = () => {
     const [courses, setCourses] = useState([])
     
   const [isLoading, setIsLoading] = useState(true)
-  console.log(courses)
+  // console.log(courses)
   const getCourse = () => {
     // setIsLoading(true)
-      console.log("getting")
+      // console.log("getting")
         instance.get('/user_courses/courses_enrolled/', tokenConfig())
         .then((res) => {
           setIsLoading(false)
-          console.log("getting")
-          console.log(res, "response")
+          // console.log("getting")
+          // console.log(res, "response")
           setCourses(res.data.courses_with_progress)
         })
         .catch((err) => {
-          console.log(err, "error")
+          // console.log(err, "error")
           setIsLoading(false)
         })
       }
@@ -67,7 +67,9 @@ const Pending = () => {
     }, [])
   return (
     <div className="flex flex-col mx-auto md:grid md:grid-cols-3 gap-[16px] md:px-[16px] flex-1">
-        {isLoading?<MoonLoader />:
+        {isLoading?<MoonLoader />:courses.length == 0 ?<div>
+          
+        </div>:
         courses.map((course) => <Course {...course}/>)
   }
     </div>

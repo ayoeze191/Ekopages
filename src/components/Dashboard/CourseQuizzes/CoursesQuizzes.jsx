@@ -86,14 +86,25 @@ const CourseQuizes = () => {
     setLoading(true);
     try {
       for (const item of answers) {
-        console.log({ question: item.question, answer: item.answer })
-        const response = await instance.post(
-          "/Quiz/answer_quiz/",
-          { question: item.question, answer: item.answer, quiz: redirect_id },
-          tokenConfig()
-        );
-        const result = await response.data;
+      try{
+        const update = await updateAnswers(item.question, item.answer)
+        if(update.success){
+          ;
+        }
+        else{
+          const response = await instance.post(
+            "/Quiz/answer_quiz/",
+            { question: item.question, answer: item.answer, quiz: redirect_id },
+            tokenConfig()
+          );
+          const result = await response.data;
+        }
       }
+      catch(error){
+        console.error("Error updating answer", "updateError");
+      }
+      }
+      setLoading(false)
       setAsCompleted()
       navigate(`/dashboard/MyCourses/${url}`)
     } catch (error) {
@@ -101,6 +112,22 @@ const CourseQuizes = () => {
       setLoading(false);
     }
   };
+  const updateAnswers = async (question, answer) => {
+    try {
+        const response = await instance.put(
+          `/Quiz/functions/${question}/`,
+          { question: question, answer: answer, quiz: redirect_id },
+          tokenConfig()
+        );
+        const result = await response.data;
+        return {success: true}
+      }
+     
+    catch (error) {
+      console.error("Error making API call", error);
+      return {failed: error}
+    }
+  }
  
   const setAsCompleted = async() => {
     

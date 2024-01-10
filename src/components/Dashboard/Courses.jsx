@@ -35,19 +35,35 @@ const Courses = () => {
     setIsLoading(true)
       console.log("getting")
         instance.get('/user_courses/courses_enrolled/', tokenConfig())
-        .then((res) => {
+        .then(async (res) => {
           setIsLoading(false)
-          console.log("getting")
-          console.log(res, "response")
-          setCourses(res.data.courses_with_progress.filter(cou => cou.completion_percentage < 100))
-          // console.log()
+          const myCourse = []
+          // setCourses(res.data.courses_with_progress)
+          for(let i=0; i < res.data.courses_with_progress.length; i++){
+              myCourse.push({completion_percentage:res.data.courses_with_progress[i].completion_percentage,
+              completed_lessons:res.data.courses_with_progress[i].completed_lessons,
+              total_lessons:res.data.courses_with_progress[i].total_lessons,
+              course_id: res.data.courses_with_progress[i].course_id,
+              passed_course: await get_completion(res.data.courses_with_progress[i].course_id),
+              course_name: res.data.courses_with_progress[i].course_name
+
+            })
+            console.log(await get_completion(res.data.courses_with_progress[i].course_id))
+          }
+          
+          setCourses(myCourse.filter(cou => cou.passed_course == false))
+          
+          console.log()
         })
         .catch((err) => {
           console.log(err, "error")
           setIsLoading(false)
         })
       }
-    
+  const get_completion = async (id) => {
+    const res = await instance.get(`/services/percent_complete/${id}/`, tokenConfig())
+    return (res.data.passed_course)
+  } 
 
     useEffect(() => {
         getCourse()
@@ -58,7 +74,7 @@ const Courses = () => {
         {isLoading ? <ClipLoader  className='mx-auto'/> : courses.length > 
         0  ? courses.map(course => <Course {...course} />): 
         
-        <div className=' border-t-[orange] border-t-solid border-t-2 py-[14.2px] px-[17.8px] items-center font-[400] text-[12px] md:text-base font-lato mt-[1rem] text-[#4A4A4A] text-center bg-[#F8F8F8] w-fit mx-auto flex gap-2 md:gap-[17.9px] flex-col' >
+        <div className=' border-t-[#b0ada7] border-t-solid border-t-2 py-[14.2px] px-[17.8px] items-center font-[400] text-[12px] md:text-base font-lato mt-[1rem] text-[#4A4A4A] text-center bg-[#F8F8F8] w-fit mx-auto flex gap-2 md:gap-[17.9px] flex-col' >
         <p> You are currently not taking any course. Use the button below to take course</p>
      <Link to={'/explore-courses'} className='font-[400] text-[#E9E9E9] py-[15px] px-[30px] bg-[#5A0C91] rounded-[5px] font-lato mx-auto text-sm md:text-base'>Take a Course</Link>
       

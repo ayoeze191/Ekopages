@@ -5,6 +5,7 @@ import { tokenConfig } from '../../../../../Config/Config'
 import ReactPlayer from 'react-player'
 import Video from './Video'
 import Text from './Text'
+import { BarLoader } from 'react-spinners'
 const ModuleDetail = ({id, update_Module_completed}) => {
     // const vidoeRef = useRef(null)
     const [loading, setLoading] = useState(true)
@@ -32,7 +33,7 @@ const ModuleDetail = ({id, update_Module_completed}) => {
 
 
 // console.log(moduelDetails, "MEME")
-  return (moduelDetails !== null ?
+  return (loading ?<BarLoader/>: moduelDetails !== null ?
     <div>
         {moduelDetails.video !== null &&
          <Video

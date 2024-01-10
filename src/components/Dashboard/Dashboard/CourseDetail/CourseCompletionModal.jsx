@@ -18,8 +18,8 @@ const CourseCompletionModal = ({ClearInterface, id}) => {
     console.log("dont run twice")
     instance.get(`/Quiz/get_score/${id}`, tokenConfig())
     .then((result) => {
-      // console.log(result.data)
-      setResult(result.data.message === "Take the test again. Better luck next time"?"failed":"passed")
+      console.log(result.data)
+      setResult(result.data.message === "Take the tests again. Better luck next time"?"failed":"passed")
       setTotalScore(result.data.data.total)
       setLoading(false)
     })
@@ -85,7 +85,7 @@ const CourseCompletionModal = ({ClearInterface, id}) => {
               </span>
             </p>
             <button className="bg-[#5A0C91] rounded-[5.5px] px-[20px] py-[13.5px] text-[#EFE7F4] text-[14px] mb-[20px]" onClick={ () => result !== 'passed' ? ClearInterface() : navigate('/certification')}>
-              Continue
+              {result == "failed"?"Continue":"See certificate"}
             </button>
             <p>Go Back to Courses</p>
           </div>

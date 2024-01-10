@@ -44,20 +44,21 @@ const Quiz = ({id, number, question, mark, options, addAnswer, answers}) => {
     <div className='font-lato  text-[#4A4A4A]' >
       <div className='flex justify-between'>
         <div className=' w-full max-w-[37.5rem] '>
-<div className='flex font-[600] text-[1.25rem] gap-[1rem] items-center'>
+<div className='flex font-[500]  md:font-[600] md:text-[1.25rem] gap-[1rem] items-center'>
     <p>{number}.</p>
     <p>{question}</p>
+    <div className='text-[12px] md:text-[1rem] flex-nowrap flex md:hidden'>1 mark</div>
 </div>
 
 
-<div className='flex flex-col gap-[1rem]'>
+<div className='flex flex-col gap-[1rem] mt-4 md:mt-0'>
      {loading && <GeneralUiOverlay />}
     {options.map((option) => {
       // console.log(answer, option.text, answer === option.text)
       return  <Options {...option} selected={answer === option.text} onclick={onClickHandler}/>})}
 </div>
         </div>
-        <div className='text-[12px] md:text-[1rem] flex-nowrap flex'>1 mark</div>
+        <div className='text-[12px] md:text-[1rem] flex-nowrap hidden md:block'>1 mark</div>
         </div>
     </div>
   )

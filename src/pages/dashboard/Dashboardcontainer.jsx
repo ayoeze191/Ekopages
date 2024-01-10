@@ -13,6 +13,7 @@ import { useAuthContext } from '../../context/auth/auth'
 import { Books } from '../../components/Dashboard/Dashboard/dashboard/Books'
 import MyCourses from '../../components/Dashboard/Dashboard/Mycourses/MyCourses'
 import { toast } from 'react-toastify'
+import Certifications from '../../components/Dashboard/Dashboard/certifications/Certifications'
 const Dashboardcontainer = () => {
   const {isAuth} = useAuthContext()
   const navigate = useNavigate()
@@ -38,6 +39,7 @@ const Dashboardcontainer = () => {
         <Route element={<MyAccount />} path="/account" />
         <Route element={<Books/>} path='/books' />
         <Route element={<MyCourses/>} path='/MyCourses' />
+        <Route element={<Certifications />} path='/MyCourses/certifications'/>
         </Routes>
         </div>
     </div>

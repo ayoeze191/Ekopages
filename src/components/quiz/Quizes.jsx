@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import Question from "../FAQ/Question";
 import back from "./../../assets/back.png";
 // import { questions } from './questionsLiteral'
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import Quiz from "./Quiz";
 import { useLocation, useParams } from "react-router-dom";
 import AuthButton from "../authButton";
@@ -131,6 +131,7 @@ const Quizes = () => {
     setSucessfully_Submited(false)
   }
 
+  const navigate = useNavigate()
   return (
     <Wrapper overlay={showOverlay}>
       {sucessfully_Submited && <Resultviewal ClearInterface={ClearInterface} length={all_question.quizzes.length}/>}
@@ -149,8 +150,8 @@ const Quizes = () => {
         <section className=" h-[10.625rem] flex justify-center items-center font-lato bold">
           <div className="w-full  lg:px-0 px-6 max-w-[77rem] py-4 mx-auto h-fit px-7  text-[#444444] flex flex-col md:flex-row items-center justify-between">
             {" "}
-            <Link
-              to={"/services"}
+            <button
+            onClick={navigate(-1)}
               className=" h-full flex gap-[1.06rem] items-center text-[#5A0C91] font-[400] text-[1rem] cursor:pointer order-2 md:order-1 mr-auto md:mr-0"
             >
               {" "}
@@ -158,11 +159,10 @@ const Quizes = () => {
                 <img src={back} alt="" />
               </div>
               back{" "}
-            </Link>
+            </button>
             <div className="font-[700]  text-[24px] md:text-[3rem] flex h-full items-center order-1 md:order-2">
               {" "}
-              Pop Quiz{" "}
-            </div>{" "}
+              Pop Quiz{" "}     </div>{" "}
             <div  className="md:order-3"></div>{" "}
           </div>
         </section>

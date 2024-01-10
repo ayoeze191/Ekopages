@@ -25,7 +25,7 @@ const Quiz = ({id, number, question, mark, options, addAnswer}) => {
     <div className='font-lato  text-[#4A4A4A]' >
       <div className='flex justify-between'>
         <div className=' w-full max-w-[37.5rem] '>
-<div className='flex font-[600] text-[1.25rem] gap-[1rem] items-center'>
+<div className='flex font-[500]  md:font-[600] md:text-[1.25rem] gap-[1rem] items-center'>
     <p>{number}.</p>
     <p>{question}</p>
 </div>
