@@ -34,6 +34,8 @@ const Signup = () => {
     initialValues: {
       email: "",
       username: "",
+      first_name: "",
+      last_name: "",
       password1: "",
       password2: ""
     },
@@ -60,6 +62,14 @@ if(error) {
         <p className="font-lato font-[700] text-[1.5rem] md:text-[1.75rem] text-[#232323] text-center mx-auto mt-[24px]  mb-[24px] ">Create an Account</p>
         <form  onSubmit={formik.handleSubmit} className="flex flex-col  w-full md:max-w-[20.37rem] gap-[1.5rem] ">
         <section className="flex flex-col">
+                <InputField  blurHandler={signupObject.SignupFormObj.handleBlur} type="text" id="" onChangeHandler={formik.handleChange} value={formik.values.first_name} src={assets.profileIcon} fieldName={"First name"} name={"first_name"} desc="profile icons"  ></InputField>
+                {formik.errors.first_name && formik.touched.first_name ? <p className="text-[12px] text-red-500 mt-4">{ formik.errors.first_name}</p>:null}
+          </section>
+          <section className="flex flex-col">
+                <InputField  blurHandler={signupObject.SignupFormObj.handleBlur} type="text" id="" onChangeHandler={formik.handleChange} value={formik.values.last_name} src={assets.profileIcon} fieldName={"Last name"} name={"last_name"} desc="profile icons"  ></InputField>
+                {formik.errors.last_name && formik.touched.last_name ? <p className="text-[12px] text-red-500 mt-4">{ formik.errors.last_name}</p>:null}
+          </section>
+        <section className="flex flex-col">
             <InputField blurHandler={signupObject.SignupFormObj}  type="email" id="email" onChangeHandler={formik.handleChange} value={formik.values.email} src={assets.profileIcon} fieldName={"Email Address"} name={"email"} desc="profile icons"  ></InputField>
             {formik.errors.email  && formik.touched.email ? <p className="text-[12px] text-red-500">
               {formik.errors.email}
@@ -70,11 +80,13 @@ if(error) {
                 <InputField  blurHandler={signupObject.SignupFormObj.handleBlur} type="text" id="" onChangeHandler={formik.handleChange} value={formik.values.username} src={assets.profileIcon} fieldName={"Username"} name={"username"} desc="profile icons"  ></InputField>
                 {formik.errors.username && formik.touched.username ? <p className="text-[12px] text-red-500 mt-4">{ formik.errors.username}</p>:null}
           </section>
+         
 
           <section className="flex flex-col">
                 <InputField blurHandler={signupObject.SignupFormObj.handleBlur} type="password" onChangeHandler={formik.handleChange} value={formik.values.password1} src={assets.inboxIcon} fieldName={"Password"} desc="Email icons" name={"password1"} ></InputField>
                 {formik.errors.password1 && formik.touched.password1 ? <p className="text-[12px] text-red-500 mt-4">{ formik.errors.password1}</p>:null}
           </section>
+
 
           <section className="">
                 <InputField blurHandler={signupObject.SignupFormObj.handleBlur} type="password" onChangeHandler={formik.handleChange} value={formik.values.password2} src={assets.callIcon} fieldName={"confirm password"} name={"password2"} desc="call icons"  ></InputField>

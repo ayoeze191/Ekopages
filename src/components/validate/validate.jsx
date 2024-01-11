@@ -24,9 +24,12 @@ export function SignupValidate(values, name) {
         } else if (values.password1.length > 20) {
           errors.password2 = 'Must be 20 characters or less';
         }
-
-        
-
+        if(!values.first_name) {
+          errors.first_name = "Required"
+        }
+        if(!values.last_name) {
+          errors.last_name = "Required"
+        }
         return errors;
 }
 
@@ -49,5 +52,17 @@ export function validate(values) {
         if(!values.username) {
           errors.username = "username is required"
       }
+        if(!values.First_name){
+          errors.First_name = "first name is required"
+        }
         return errors;
+}
+
+export function validateCartForm(values) {
+  const errors = {}
+  if (!values.email) {
+    errors.email = 'Required';
+  } else if (!/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i.test(values.email)) {
+    errors.email = 'Invalid email address';
+  }
 }
