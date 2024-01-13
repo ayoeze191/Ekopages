@@ -1,8 +1,9 @@
 import React from 'react'
 import { Formik, Field, Form, useFormik } from 'formik'
 import { validate } from '../../../validate/validate'
+import { useAuthContext } from '../../../../context/auth/auth'
 const BillingDetails = ({formik}) => {
-  
+  const {isAuth} = useAuthContext()  
   
 
   return (
@@ -67,7 +68,7 @@ const BillingDetails = ({formik}) => {
             <input type="text" name="phone_number" id="" className='py-[1rem] px-[1.5rem] rounded-[5px] border-[#9E9E9E] border-[1px] bg-inherit' value={formik.values.phone_number} onChange={formik.handleChange}/>
             </div>
             <div className='flex flex-col gap-[0.5rem]'>
-            Email Address (optional)
+            Email Address {isAuth ? ("optional"):""}
             <input type="text" className='py-[1rem] px-[1.5rem] rounded-[5px] border-[#9E9E9E] border-[1px] bg-inherit' name='email' value={formik.values.email} onChange={formik.handleChange}/>
             </div>
             <div className='flex gap-[1rem] items-center'>
@@ -75,10 +76,10 @@ const BillingDetails = ({formik}) => {
             <input type="checkbox" name="create_Account" value={formik.values.create_Account} className='h-[2rem] w-[2rem]' onChange={formik.handleChange}/>
             <label htmlFor="create Account">create Account</label>
             </div>
-            <div className='flex gap-[1rem] items-center'>
+            {/* <div className='flex gap-[1rem] items-center'>
             <input type="checkbox" value={'Deliver to a Different Address?'} name="Deliver to a Different Address?" className='h-[2rem] w-[2rem]' />
             <label htmlFor="Deliver to a Different Address?">Deliver to a Different Address?</label>
-            </div>
+            </div> */}
             <div className=' flex flex-col gap-[0.5rem] ' >
                 Order Notes
                 <textarea name="Order_Notes" id="" cols="30" rows="5" placeholder='Special Notes about your delivery'  className='border-[#9E9E9E] border-solid border-[1px] bg-inherit p-[1.5rem] rounded-[5px]' onChange={formik.handleChange}></textarea>

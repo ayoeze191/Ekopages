@@ -58,9 +58,13 @@ export function validate(values) {
 
 export function validateCartForm(values) {
   const errors = {}
-  if (!values.email) {
-    errors.email = 'Required';
-  } else if (!/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i.test(values.email)) {
-    errors.email = 'Invalid email address';
+  if(!values.street_address){
+    errors.street_address = "Please Type in your address"
+  }
+  if(!values.city){
+    errors.city = "Please Type in your city"
+  }
+  if(!values.phone_number){
+    errors.phone_number = "Please Type in your phone_number"
   }
 }

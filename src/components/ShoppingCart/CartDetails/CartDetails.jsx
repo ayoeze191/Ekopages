@@ -2,7 +2,7 @@ import React from 'react'
 import BillingDetails from './BillinngDetails/BillingDetails'
 import CartTotals from './CartTotals/CartTotals'
 import { useFormik } from 'formik'
-import { validate } from '../../validate/validate'
+import { validateCartForm } from '../../validate/validate'
 import { create_billings } from '../../../store/Actions/billing'
 import { useSelector } from 'react-redux'
 import { payment_details } from '../../../store/Actions/billing'
@@ -133,7 +133,7 @@ const formik = useFormik({
     "Last_name": initialbillingDetails?initialbillingDetails.Last_name:"",
     "Company_name": initialbillingDetails?initialbillingDetails.Company_name:"",
     "country": initialbillingDetails?(initialbillingDetails.country.length > 0 ?initialbillingDetails.country: "nigeria"):"nigeria",
-    "street_address": initialbillingDetails?initialbillingDetails.street_address:"",
+    "street_address": initialbillingDetails?initialbillingDetails.street_address:null,
     "city": initialbillingDetails?(initialbillingDetails.city.length > 0 ?initialbillingDetails.city: "lagos"):"lagos",
     "apartment": initialbillingDetails?initialbillingDetails.apartment:"",
     "state": initialbillingDetails?(initialbillingDetails.state.length > 0 ?initialbillingDetails.city: "lagos"):"lagos",
@@ -146,7 +146,7 @@ const formik = useFormik({
   
   
 
-  // validate,
+  validateCartForm,
   onSubmit: ({First_name, Last_name, Company_name, country,
      street_address, city,
     apartment, state, phone_number, 
