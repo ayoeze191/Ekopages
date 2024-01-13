@@ -52,9 +52,7 @@ export function validate(values) {
         if(!values.username) {
           errors.username = "username is required"
       }
-        if(!values.First_name){
-          errors.First_name = "first name is required"
-        }
+      
         return errors;
 }
 
