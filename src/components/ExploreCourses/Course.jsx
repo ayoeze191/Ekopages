@@ -5,11 +5,12 @@ import instance from '../../axios'
 import { ClipLoader } from 'react-spinners'
 import { useNavigate } from 'react-router-dom'
 import { tokenConfig } from '../../Config/Config'
+import axios from 'axios'
 const Course = ({picture, subject, Tutor, price, stars, modules, id, handleSelect}) => {
     const navigate = useNavigate()
     const [enrolled, setEnrolled] = useState(false)
   const getRegistered = () => {
-    instance.get(`services/study_all/${id}`, tokenConfig())
+    axios.get(`https://ekopages-production.up.railway.app/services/study_all/${id}`, tokenConfig())
     .then((res) => {
         // console.log(res.data)
         setEnrolled(res.data.data.length > 0)
