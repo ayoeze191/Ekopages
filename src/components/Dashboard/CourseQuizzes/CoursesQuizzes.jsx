@@ -250,12 +250,12 @@ const Modal = ({ redo, cont}) => {
   return(
     <div  className="fixed w-full h-full top-0  flex justify-center items-center ">
       
-    <div className="font-lato flex items-center  bg-white flex-col w-[55vw] h-[60vh] max-w-[483px] max-h-[332px] rounded-[7.02px]">
+    <div className="font-lato flex items-center  bg-white flex-col w-[90vw] md:w-[55vw] h-[50vh] md:h-[60vh] max-w-[483px] max-h-[332px] rounded-[7.02px]">
     <div className="ml-auto w-fit h-fit mt-[20px] mr-[20px]">
       <IoCloseCircleOutline color="#232323" width={32} height={32} size={32} onClick={cont} className="mb-[40.5px] ml-auto cursor-pointer"/>
     </div>
-      <div className="flex flex-col gap-[40px] items-center font-[500] text-[16px] leading-[19.2px] font-lato text-[#232323]">
-      This module waas previously completed by you <button className="bg-[#5A0C91] cursor-pointer rounded-[5px] w-[129px] h-[40px] font-lato leading-[19.2px] text-[#ffffff]" onClick={redo}>Retake</button>
+      <div className="flex flex-col gap-[40px] items-center font-[500] text-[16px] leading-[19.2px] font-lato text-[#232323] text-center">
+      This module was previously completed by you <button className="bg-[#5A0C91] cursor-pointer rounded-[5px] w-[129px] h-[40px] font-lato leading-[19.2px] text-[#ffffff]" onClick={redo}>Retake</button>
       </div>
     </div>
     </div>
