@@ -105,9 +105,11 @@ const CourseDetails = () => {
           }
       }
       const changeCurrentModuleMob = (next) => {
-        if(next){
+        
+        if(next === true){
             // const index_of_current_modules = modules.indexOf((mod) => mod.id == current)
             const index_of_current_modules = modules.findIndex((item) => item.id == current)
+          console.log(index_of_current_modules)
             //(current, modules)
             //(index_of_current_modules)
             const nextModule = modules.find((mod) => mod.id == modules[index_of_current_modules + 1].id)
@@ -122,8 +124,10 @@ const CourseDetails = () => {
             }   
         }
         else {
-          const index_of_current_modules = modules.indexOf((mod) => mod.id == current)
+          const index_of_current_modules = modules.findIndex((item) => item.id == current)
+          console.log(index_of_current_modules)
           const prevModule = modules.find((mod) => mod.id == modules[index_of_current_modules - 1].id)
+          console.log(prevModule.title, "title")
           if(index_of_current_modules !== 0) {
             if(prevModule.title == "Pop Quiz" || prevModule.title == "Final POP QUIZ" || prevModule.title == "Literaure Questions"){
               navigate(`/quizzes/${prevModule.lesson_number}/${prevModule.id}/${param.id}`)

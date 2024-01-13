@@ -73,7 +73,7 @@ if(error) {
             <InputField blurHandler={signupObject.SignupFormObj}  type="email" id="email" onChangeHandler={formik.handleChange} value={formik.values.email} src={assets.profileIcon} fieldName={"Email Address"} name={"email"} desc="profile icons"  ></InputField>
             {formik.errors.email  && formik.touched.email ? <p className="text-[12px] text-red-500">
               {formik.errors.email}
-            </p>:null}
+          </p>:null}
           </section>
       
           <section className="flex flex-col">
