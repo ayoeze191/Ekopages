@@ -138,7 +138,7 @@ const formik = useFormik({
     "apartment": initialbillingDetails?initialbillingDetails.apartment:"",
     "state": initialbillingDetails?(initialbillingDetails.state.length > 0 ?initialbillingDetails.city: "lagos"):"lagos",
     "phone_number": initialbillingDetails?initialbillingDetails.phone_number:"",
-    "email": initialbillingDetails?initialbillingDetails.email:"",
+    "email": initialbillingDetails?initialbillingDetails.email:null,
     "shipping_location": initialbillingDetails?initialbillingDetails.shipping_location.location:0,
     "amount": total?total:null,
     "Order_Notes": initialbillingDetails?initialbillingDetails.Order_Notes:"",
