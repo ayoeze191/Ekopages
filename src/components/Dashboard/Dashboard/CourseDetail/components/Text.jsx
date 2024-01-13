@@ -40,7 +40,7 @@ const Text = ({ id, update_Module_completed, lesson}) => {
 
     // console.log(timer)
   return (
-    <div className="md:w-[640px] font-lato bg-[#FFFFFF] md:bg-inherit py-[16px] px-[24px] leading-[28.8px] flex flex-col gap-6">
+    <div className="md:w-[640px] font-lato bg-[#FFFFFF] md:bg-inherit py-[16px] md:px-[24px] leading-[28.8px] flex flex-col gap-6">
     {/* <h1 className='font-latomedium text-6xl'>{timer} </h1> */}
     {/* {lesson.split("<p>").map((p) => <p>{p}</p>)} */}
     {parse(lesson)}

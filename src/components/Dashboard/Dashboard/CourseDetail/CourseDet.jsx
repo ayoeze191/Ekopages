@@ -167,7 +167,7 @@ const CourseDetails = () => {
         >
          {modal && <CourseCompletionModal id={param.id} ClearInterface={ClearInterface}/>}
           <div className="px-[2.06rem]">
-            <div className="bg-[#FFFFFF] md:bg-inherit rounded-[5px] px-[1.5rem] py-[1.5rem]">
+            <div className="bg-[#FFFFFF] md:bg-inherit rounded-[5px] md:px-[1.5rem] py-[1.5rem]">
             <h1 className="font-[600] text-[1.25rem]">
               {modules[0].title}
             </h1>
