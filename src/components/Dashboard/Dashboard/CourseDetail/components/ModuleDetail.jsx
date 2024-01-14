@@ -6,6 +6,7 @@ import ReactPlayer from 'react-player'
 import Video from './Video'
 import Text from './Text'
 import { BarLoader } from 'react-spinners'
+import SkeletonsElement from '../../../../ui/skeletons/SkeletonsElement'
 const ModuleDetail = ({id, update_Module_completed}) => {
     // const vidoeRef = useRef(null)
     const [loading, setLoading] = useState(true)
@@ -33,7 +34,7 @@ const ModuleDetail = ({id, update_Module_completed}) => {
 
 
 // console.log(moduelDetails, "MEME")
-  return (loading ?<BarLoader/>: moduelDetails !== null ?
+  return (loading ?<ModuleSkeleton/>: moduelDetails !== null ?
     <div>
         {moduelDetails.video !== null &&
          <Video
@@ -65,3 +66,19 @@ const ModuleDetail = ({id, update_Module_completed}) => {
 }
 
 export default ModuleDetail
+
+
+
+const ModuleSkeleton = () => {
+    return (
+        <div className='flex flex-col items-center w-full'>
+            <SkeletonsElement type={'title'}/>
+            <SkeletonsElement type={'text'}/>
+            <SkeletonsElement type={'text'}/>
+            <SkeletonsElement type={'text'}/>
+            <SkeletonsElement type={'text'}/>
+            <SkeletonsElement type={'text'}/>
+            <SkeletonsElement type={'text'}/>
+        </div>
+    )
+}

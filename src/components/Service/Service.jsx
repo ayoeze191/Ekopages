@@ -1,18 +1,18 @@
-import React from "react";
+import React, {useState} from "react";
 import { Link } from "react-router-dom";
 import { Shimmer, Image } from "react-shimmer";
+import SkeletonsElement from "../ui/skeletons/SkeletonsElement";
 
 const Service = ({ img, h, p, button, imagefirst, url }) => {
+  const [loaded, setLoaded] = useState(false) 
+
+
   return imagefirst ? (
     <div className="flex flex-row gap-[15px] lg:gap-[3rem] font-lato items-center relative">
-      <div className="rounded-lg w-[50%] lg:w-[65%] h-[100%]">
-        {/* <Image
-          src={img}
-          alt=""
-          className="h-full w-full"
-          fallback={<Shimmer width={300} height={300} />}
-        /> */}
-        <img src={img}  className="h-full w-full rounded-lg"/>
+      <div className="rounded-lg w-[50%] lg:w-[65%] h-[100%] md:h-[450px]">
+      
+            {!loaded?<SkeletonsElement type={'images'} />:null}
+         <img src={img} alt=""  className="h-full w-full rounded-lg" onLoad={() => setLoaded(true)}/>
       </div>
       <div className=" w-1/2">
         <h1 className="text-[#232E52] mb-[0.5rem] lg:mb-[1rem] font-[700] text-[18px] lg:text-[2.25rem]">

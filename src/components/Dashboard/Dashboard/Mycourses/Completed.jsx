@@ -7,52 +7,49 @@ const Completed = () => {
     const [courses, setCourses] = useState([])
     const [loading, setLoading] = useState([])
 
-    const getCourses = () => {
-        console.log("getting course")
+    const getCourse = () => {
         setLoading(true)
-
-        instance
-        .get(`/user_courses/courses_enrolled/`, tokenConfig())
-        .then( async (res) => {
-            // setCourses(res.data.courses_with_progress.filter(cou => cou.completion_percentage < 100))
-            let  ls = []
-            for (let i of res.data.courses_with_progress.filter(cou => cou.completion_percentage >= 100)){
-               const response = await get_number_of_exercises(i)
-               ls.push(response)
-            console.log(ls)
-                // .then( res => {
-                //     console.log(res)
-                //     
-                // })
+        instance.get('/user_courses/courses_enrolled/', tokenConfig())
+          .then(async (res) => {
+            setLoading(false)
+            const myCourse = []
+            for(let i=0; i < res.data.courses_with_progress.length; i++){
+                console.log(await get_completion(res.data.courses_with_progress[i].course_id))
+                if(await get_completion(res.data.courses_with_progress[i].course_id) === true ){
+                    myCourse.push({
+                        course_name: res.data.courses_with_progress[i].course_name,
+                        number_of_lessons: await get_number_of_exercises(res.data.courses_with_progress[i])
+                      })
+                    // console.log(get_number_of_exercises(res.data.courses_with_progress[i]))
+                }
             }
-            setCourses(ls)
-        setLoading(false)
-    })
-    .catch((err) => {
-        console.log("error")
-    })
-    
-    }
+            setCourses(myCourse)
+          })
+        }
+
+console.log(courses)
 
     const get_number_of_exercises = async(cou) => {
-        let number_of_lessons = 0;
+        // let number_of_lessons = 0;
+        console.log(cou)
+        // let completed_res
+        // try {
+        //     completed_res = await get_completion(cou.course_id)
+        // }
+        // catch(err){
+        //     console.log(err)
+        // }
         
         const res = await instance.get(`services/study_all/${cou.course_id}`, tokenConfig())
-        for(let i of res.data.data) {
-            // console.log(i.topic)
-            if(i.topic == "Pop Quiz"){
-                // console.log("POP quiz")
-                number_of_lessons =+ 1;
-            }
-            if(i.topic === "Final POP QUIZ"){
-                number_of_lessons += 1;
-            }
-        }
-        return {...cou, number_of_lessons:number_of_lessons}
+        return res.data.total_lessons
     }   
 
+    const get_completion = async (id) => {
+        const res = await instance.get(`/services/percent_complete/${id}/`, tokenConfig())
+        return (res.data.passed_course)
+    } 
     useEffect(() => {
-        getCourses()
+        getCourse()
     }, [])
 
   return (

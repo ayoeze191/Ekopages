@@ -50,7 +50,6 @@ const Courses = () => {
             })
             console.log(await get_completion(res.data.courses_with_progress[i].course_id))
           }
-          
           setCourses(myCourse.filter(cou => cou.passed_course == false))
           
           console.log()

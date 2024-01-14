@@ -8,6 +8,7 @@ import SingleNews from './SingleNews'
 import instance from '../../axios'
 import {ClipLoader} from "react-spinners"
 import withErrorHandler from '../withErrHandler'
+import NewsSkeleton from './NewsSkeleton'
 
 
 const News = () => {
@@ -35,12 +36,15 @@ useEffect(() => {
   return (
     <div className='section flex flex-col gap-[6rem] md:mb-[95px]'>
         {loading?
-        <ClipLoader color='#5A0C91' size={100} className='mx-auto font-bold'/>:
+        // <ClipLoader color='#5A0C91' size={100} className='mx-auto font-bold'/>
+        [1, 2, 3, 4, 5].map((skeleton) => <NewsSkeleton key={skeleton} />)
+        :
         news.length > 0 ?
         news.map((eachNews) => <SingleNews {...eachNews}/>):
         <div className='font-Poppins'>
             Sorry No News Yet
         </div>}
+        {/* {} */}
     </div>
   )
 }

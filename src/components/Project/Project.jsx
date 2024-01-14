@@ -4,6 +4,7 @@ import { Link } from 'react-router-dom'
 import { Image} from "react-shimmer"
 import Shimmer from '../ui/Shimmer/Shimmer'
 import {AiOutlineArrowRight} from "react-icons/ai"
+import SkeletonsElement from '../ui/skeletons/SkeletonsElement'
 
 const Project = ({img, h1, p, path}) => {
     const [loaded, setLoaded] = useState(false) 
@@ -11,7 +12,7 @@ const Project = ({img, h1, p, path}) => {
   return (
     <div className='flex flex-col font-lato w-full rounded-[20px]'>
         <div className='mb-[1.5rem] w-full h-[300px] relative object-contain'>
-            {!loaded?<Shimmer />:null}
+            {!loaded?<SkeletonsElement type={'images'} />:null}
             <img src={img} alt='' className='h-full w-full rounded-t-[20px]' onLoad={() => setLoaded(true)}/>
         </div>
         <div className='flex flex-col gap-[0.5rem] mb-2.5rem'>

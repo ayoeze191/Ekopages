@@ -45,20 +45,31 @@ const Pending = () => {
   const [isLoading, setIsLoading] = useState(true)
   // console.log(courses)
   const getCourse = () => {
-    // setIsLoading(true)
-      // console.log("getting")
-        instance.get('/user_courses/courses_enrolled/', tokenConfig())
-        .then((res) => {
+      setIsLoading(true)
+      instance.get('/user_courses/courses_enrolled/', tokenConfig())
+        .then(async (res) => {
           setIsLoading(false)
-          // console.log("getting")
-          // console.log(res, "response")
-          setCourses(res.data.courses_with_progress)
-        })
-        .catch((err) => {
-          // console.log(err, "error")
-          setIsLoading(false)
+          const myCourse = []
+          for(let i=0; i < res.data.courses_with_progress.length; i++){
+              myCourse.push({completion_percentage:res.data.courses_with_progress[i].completion_percentage,
+              completed_lessons:res.data.courses_with_progress[i].completed_lessons,
+              total_lessons:res.data.courses_with_progress[i].total_lessons,
+              course_id: res.data.courses_with_progress[i].course_id,
+              passed_course: await get_completion(res.data.courses_with_progress[i].course_id),
+              course_name: res.data.courses_with_progress[i].course_name
+
+            })
+            console.log(await get_completion(res.data.courses_with_progress[i].course_id))
+          }
+          setCourses(myCourse.filter(cou => cou.passed_course == false))
+          
+          console.log()
         })
       }
+  const get_completion = async (id) => {
+        const res = await instance.get(`/services/percent_complete/${id}/`, tokenConfig())
+        return (res.data.passed_course)
+    } 
     
 
     useEffect(() => {

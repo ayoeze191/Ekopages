@@ -162,11 +162,11 @@ const CourseDetails = () => {
         setShowOverlay(false)
         setShowModal(false)
       }
-    return(loading ? <MoonLoader /> : (modules.find(mod => mod.id == current).title == "Pop Quiz" || modules.find(mod => mod.id == current).title == "Literaure Questions" || modules.find(mod => mod.id == current).title == "Final POP QUIZ")? navigate(`/quizzes/${modules.find(mod => mod.id == current).lesson_number}/${modules.find(mod => mod.id == current).id}/${param.id}`) :
+    return(loading ? <div className="mx-auto  flex justify-center py-20 items-center"><MoonLoader /></div> : (modules.find(mod => mod.id == current).title == "Pop Quiz" || modules.find(mod => mod.id == current).title == "Literaure Questions" || modules.find(mod => mod.id == current).title == "Final POP QUIZ")? navigate(`/quizzes/${modules.find(mod => mod.id == current).lesson_number}/${modules.find(mod => mod.id == current).id}/${param.id}`) :
         <Wrapper overlay={overlay}
         >
          {modal && <CourseCompletionModal id={param.id} ClearInterface={ClearInterface}/>}
-          <div className="px-[2.06rem]">
+          <div className="px-[2.06rem] max-w-[67rem]">
             <div className="bg-[#FFFFFF] md:bg-inherit rounded-[5px] md:px-[1.5rem] py-[1.5rem]">
             <h1 className="font-[600] text-[1.25rem]">
               {modules[0].title}
@@ -190,8 +190,8 @@ const CourseDetails = () => {
             </p>
 }
           </div>
-          <div className="flex  pb-[3.75rem] font-lato gap-[2rem]">
-            <div className="mt-[16px]">
+          <div className="flex  pb-[3.75rem] font-lato gap-[2rem] ">
+            <div className="mt-[16px] flex-1">
              {loading ? "": <ModuleDetail id={current} update_Module_completed={update_Module_completed}/>}
               <div className="lg:hidden flex w-full justify-between mt-[16px]">
             <button className="text-[#232323] leading-[25px] font-[600] font-lato"
@@ -210,7 +210,7 @@ const CourseDetails = () => {
             <div className="hidden lg:flex flex-col gap-[1.5rem] px-[2.25rem] pb-[3.9375rem] 
             bg-[#EFE7F4]
              w-[30%] text-[#4A4A4A] pt-[2.375rem] ">
-          <div className="flex flex-col gap-[3.75rem] font-lato font-[500] text-[1rem] items-start">
+          <div className="flex flex-col gap-[3.75rem] font-lato font-[500] text-[1rem] items-start w-fit">
             <div className="flex justify-start gap-[8px] items-center w-full ">
               {/* <GoDotFill /> */}
               <div className="text-left font-[500] font-lato leading-[25.6px]">
@@ -277,7 +277,7 @@ const Module = ({ changeCurrentModule, title, id, level, current, completed,upda
       }
     }
     return (
-      <div className="w-full flex flex-col items-center h-[20px] ">
+      <div className="w-full flex flex-col items-center h-[20px]">
         <div className="flex gap-[8px] items-center w-full  text-[#5A0C91] h-full">
           <div className='relative after:content-[""] after:text-[#D9D9D9] after:absolute after:w-[2px] after:h-12 after:bg-[#D9D9D9] after:left-[6.5px] after:top-5'>
             {completed === true && current != id ? (
