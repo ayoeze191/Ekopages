@@ -28,16 +28,17 @@ const Quiz = ({id, number, question, mark, options, addAnswer}) => {
 <div className='flex font-[500]  md:font-[600] md:text-[1.25rem] gap-[1rem] items-center'>
     <p>{number}.</p>
     <p>{question}</p>
+    <div className='text-[12px] md:text-[1rem] flex-nowrap flex md:hidden'>1 mark</div>
 </div>
 
 
-<div className='flex flex-col gap-[1rem]'>
+<div className='flex flex-col gap-[1rem] mt-4 md:mt-0'>
     {options.map((option) => {
       // console.log(answer, option.label)
       return  <Options {...option}  onclick={onClickHandler} selected={answer === option.text}/>})}
 </div>
         </div>
-        <div className='text-[12px] md:text-[1rem] flex-nowrap flex'>1 mark</div>
+        <div className='text-[12px] md:text-[1rem] flex-nowrap hidden md:block'>1 mark</div>
         </div>
     </div>
   )
