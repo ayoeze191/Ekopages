@@ -48,10 +48,10 @@ const CourseModal = ({picture, subject, Tutor, price, stars, modules, id,handleC
         exit={{scale: 0}}
         initial={{  scale: 0 }}
         animate={{ scale: [0, 1] }}
-        transition={{  duration: 0.1 }} className="flex bg-[#F6F6F6]  rounded-[10px] h-[45vh] w-[90%] max-w-[400px] md:max-w-[1000px] md:h-4/5 md:max-h-[650px] ">
+        transition={{  duration: 0.1 }} className="flex bg-[#F6F6F6]  rounded-[10px] h-[45vh] w-[90%] max-w-[400px] md:max-w-[1000px] md:h-4/5 overflow-y-scroll">
             <div className=" bg-red-400 px-0 rounded-l-[10px] hidden md:block w-[45%]"><img src={coursModalBg} className="  w-full object-cover  h-full rounded-l-[10px]" alt=""/></div>
  
-      <div className="flex flex-col flex-1 md-[30px] lg:pt-[40px] h-full px-[16px] md:px-[30px] lg:px-[40px]"> 
+      <div className="flex flex-col flex-1 md-[30px] lg:pt-[40px] h-full px-[16px] md:px-[30px] lg:px-[40px] overflow-y-scroll"> 
   <IoCloseCircleOutline color="#232323" width={32} height={32} size={32}  className="md:mb-[40.5px] ml-auto cursor-pointer min-w-[32px] min-h-[32px] mt-[16px]" onClick={handleClose}/>
       <p className="font-lato font-bold leading-[24px] md:leading-normal text-[20px] md:text-[28px] text-center">Course Payment</p>
       <div className="flex mt-[8px] gap-[18px] items-center">
