@@ -151,7 +151,7 @@ const Quizes = () => {
           <div className="w-full  lg:px-0 px-6 max-w-[77rem] py-4 mx-auto h-fit px-7  text-[#444444] flex flex-col md:flex-row items-center justify-between">
             {" "}
             <button
-            onClick={navigate(-1)}
+            onClick={() => navigate(-1)}
               className=" h-full flex gap-[1.06rem] items-center text-[#5A0C91] font-[400] text-[1rem] cursor:pointer order-2 md:order-1 mr-auto md:mr-0"
             >
               {" "}

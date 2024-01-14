@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react'
-import { Route, redirect, useNavigate } from 'react-router-dom'
+import { Route, redirect, useNavigate, Navigate } from 'react-router-dom'
 import { Routes } from 'react-router-dom'
 import CourseDetails from '../../components/Dashboard/Dashboard/CourseDetail/CourseDet'
 import Dashboard from '../../components/Dashboard/Dashboard/dashboard/Dashboard'
@@ -16,10 +16,10 @@ import { toast } from 'react-toastify'
 import Certifications from '../../components/Dashboard/Dashboard/certifications/Certifications'
 const Dashboardcontainer = () => {
   const {isAuth} = useAuthContext()
-  const navigate = useNavigate()
-    useEffect(() => {
-      isAuth === false && navigate('/')
-    }, [])
+  // const navigate = useNavigate()
+  //   useEffect(() => {
+  //     isAuth === false && navigate('/')
+  //   }, [])
 
   console.log(isAuth)
     
@@ -31,6 +31,7 @@ const Dashboardcontainer = () => {
         <Sidebar />
         </div>
         <div className='flex-1'>
+        <ProtectedRoutes>
         <Routes>
         <Route element={<Dashboard />} path='/' />
         <Route element={<Settings />} path="/settings" />
@@ -41,9 +42,20 @@ const Dashboardcontainer = () => {
         <Route element={<MyCourses/>} path='/MyCourses' />
         <Route element={<Certifications />} path='/MyCourses/certifications'/>
         </Routes>
+        </ProtectedRoutes>
         </div>
     </div>
+
   )
 }
 
 export default Dashboardcontainer
+
+
+const ProtectedRoutes = ({children}) => {
+  const {isAuth} = useAuthContext()
+  
+  return (
+      isAuth ? <>{children}</>: <Navigate to={'/'}/>
+  )
+}
