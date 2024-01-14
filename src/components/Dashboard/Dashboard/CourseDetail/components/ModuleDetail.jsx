@@ -7,6 +7,7 @@ import Video from './Video'
 import Text from './Text'
 import { BarLoader } from 'react-spinners'
 import SkeletonsElement from '../../../../ui/skeletons/SkeletonsElement'
+import { Shimmer } from '../../../../ui/skeletons/Shimmer'
 const ModuleDetail = ({id, update_Module_completed}) => {
     // const vidoeRef = useRef(null)
     const [loading, setLoading] = useState(true)
@@ -71,7 +72,8 @@ export default ModuleDetail
 
 const ModuleSkeleton = () => {
     return (
-        <div className='flex flex-col items-center w-full'>
+        <div className='flex flex-col items-center w-full relative'>
+            <Shimmer />
             <SkeletonsElement type={'title'}/>
             <SkeletonsElement type={'text'}/>
             <SkeletonsElement type={'text'}/>

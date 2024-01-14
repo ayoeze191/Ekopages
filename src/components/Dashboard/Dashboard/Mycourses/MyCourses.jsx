@@ -63,12 +63,12 @@ const MyCourses = () => {
       
       <TabPanels>
       <TabPanel as={AnimatePresence}>
-        <div className='flex flex-col md:flex-row md:pr-[64px] gap-[56px] md:gap-0 px-[20px] md:px-0'>
+        <div className='flex flex-col md:flex-row md:pr-[64px] gap-[56px] md:gap-0 px-[20px] md:px-0  mb-5'>
       <Pending /> <Achievement />
       </div>
     </TabPanel>
     <TabPanel as={AnimatePresence}>
-      <div className='flex flex-col justify-between md:flex-row md:pr-[64px] gap-[56px] md:gap-0 px-[20px] md:px-0'>
+      <div className='flex flex-col justify-between md:flex-row md:pr-[64px] gap-[56px] md:gap-0 px-[20px] md:px-0 mb-5'>
              <Completed /> 
              <Achievement />
              </div>
