@@ -21,9 +21,13 @@ const CourseDetails = () => {
   const param = useParams();
   const getCoursePercentage = () => {
       //("getting")
+      setShowOverlay(true)
+      setShowModal(true)
         instance.get('/user_courses/courses_enrolled/', tokenConfig())
         .then((res) => {
           setCoursePercentage(res.data.courses_with_progress.find(cou => cou.course_id == param.id).completion_percentage)
+          setShowOverlay(false)
+          setShowModal(false)
         })
         .catch((err) => {
           //(err, "error")
@@ -150,12 +154,11 @@ const CourseDetails = () => {
       useEffect(() => {
         if(modules.length > 0){
           if(CheckIfUserHasCompletedCourse(modules) === true){
-            console.log("CheckIfUserHasCompletedCourse(modules)")
-            setShowOverlay(true)
-            setShowModal(true)
+            getCoursePercentage()
             }
+
         }
-        getCoursePercentage()
+        
       }, [current])
 
       const ClearInterface = () => {
