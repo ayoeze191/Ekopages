@@ -37,14 +37,19 @@ const Video = ({url, id, update_Module_completed}) => {
   initialRender.current = false
   }, [played])
   return (
+    <div className= 'w-[100%] md:w-[640px]'>
     <ReactPlayer
     ref={vidoeRef}
     onProgress={(progress) => setPlayed(progress.playedSeconds)}
-    width={640}
-    height={360}
+    // style={{width: "10%"}}
+    width='100%'
+    height='100%'
+
+    // height={360}
     controls
     url={url}
     />
+    </div>
   )
 }
 

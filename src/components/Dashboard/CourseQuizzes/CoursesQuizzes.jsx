@@ -105,7 +105,12 @@ const CourseQuizes = () => {
       }
       }
       setLoading(false)
-      setAsCompleted()
+      try{
+        setAsCompleted()
+      }
+      catch(error){
+        console.log(error)
+      }
       navigate(`/dashboard/MyCourses/${url}`)
     } catch (error) {
       console.error("Error making API call", error);
@@ -135,8 +140,9 @@ const CourseQuizes = () => {
       const res = await instance.post('/services/completed/', {completed: true, lesson:completed_id} ,tokenConfig())
       console.log(res.data)
     }
-    catch{
-      throw("Can't set Completed")
+    catch(error){
+      console.log(error)
+      // throw("Can't set Completed")
     }
   }
 
@@ -180,7 +186,7 @@ const CourseQuizes = () => {
        <p className="text-[28px] font-semibold font-lato text-center"> Quiz Submitted</p>
         <FadeLoader color="#5A0C91"/>
         <p className="font-lato text-base text-center">
-        Please, hold on while we compile your score  
+        Please, hold on while we Submit your answer  
         </p>
         </div>
       </div>}

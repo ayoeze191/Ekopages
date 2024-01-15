@@ -26,8 +26,7 @@ const CourseDetails = () => {
         instance.get('/user_courses/courses_enrolled/', tokenConfig())
         .then((res) => {
           setCoursePercentage(res.data.courses_with_progress.find(cou => cou.course_id == param.id).completion_percentage)
-          setShowOverlay(false)
-          setShowModal(false)
+          // setShowOverlay(false)
         })
         .catch((err) => {
           //(err, "error")
