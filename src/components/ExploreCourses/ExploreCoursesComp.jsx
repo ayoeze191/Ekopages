@@ -55,7 +55,7 @@ const [courseModal, setcourseModal] = useState(false)
     <CourseModal  courseModal={courseModal} {...selected} handleClose={handleClose}/>
     <div className='overflow-x-hidden mb-10'>
       <p className='text-center mt-[43px]  mx-auto text-[#000000] font-lato font-[600] text-[40px] leading-[48px]'>Explore Courses</p>
-       <Buttons func={changeCourseType}/>
+       <Buttons func={changeCourseType} course={course_type}/>
        
       <div className='grid md:grid-cols-4 mt-[61px] mx-auto w-full section gap-[32px]'>
       {loading? <ClipLoader  className='mx-auto'/>: courses.length > 0 ? courses.map((course) => 
@@ -72,7 +72,7 @@ const [courseModal, setcourseModal] = useState(false)
 
 export default  withErrorHandler(ExploreCoursesComp, instance)
 
-const Buttons = ({func}) => {
+const Buttons = ({func, course}) => {
   const [course_type, setCourseType] = useState([
         {
           name: "All",
@@ -96,7 +96,7 @@ const Buttons = ({func}) => {
   <div className='mx-auto flex gap-[24px] md:gap-[48px] w-full md:w-fit mt-[40px] overflow-x-scroll md:overflow-hidden px-[26px] md:px-0'>
   
   {course_type.map(({name, url}) => {
-      return <button className='rounded-[10px] border-solid border-[#232323] border-[1px] py-[10px] px-[15.5px] md:px-[48px] w-full text-[12px] md:text-base' onClick={() => func(url)}>
+      return <button className={`rounded-[10px] ${course == url && "bg-[#5A0C91]"} border-solid border-[#232323] border-[1px] py-[10px] px-[15.5px] md:px-[48px] w-full text-[12px] md:text-base`} onClick={() => func(url)}>
       {name}
         </button>
   })}
@@ -118,7 +118,6 @@ const Wrapper = ({overlay,children, onclick}) => {
 
 
 const Overlay = ({ onclick, show }) => {
-  console.log(show, "show");
   return (
     show && (
       <div
