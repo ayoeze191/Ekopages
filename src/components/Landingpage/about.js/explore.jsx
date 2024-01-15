@@ -19,7 +19,7 @@ export const Explore = () => {
             textStyle: {color:"#BB7C03"},
             content: "A weekly publication of children's stories, with themes that align with the sustainable development goals.",
             styles:{backgroundColor:"#FAE2B4"},
-            url: "services/ekotale"
+            url: "services/ekotales"
 
         },
         {

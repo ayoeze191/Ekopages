@@ -7,6 +7,7 @@ import assets from "../../../assets/landingpage/export"
 import { useDispatch, useSelector } from 'react-redux';
 import StoreCard from '../../EkoStore/StoreCard';
 import GeneralUiOverlayLoader from '../../ui/GeneralUiOverlayLoader';
+import { useNavigate } from 'react-router-dom';
 
 //carousel configuration
 const responsive = {
@@ -35,6 +36,7 @@ const responsive = {
 const Store = () => {
   const store = useSelector(state => state.products)
   const disptach = useDispatch()
+  const navigate = useNavigate()
 
   useEffect(() => {
     disptach(get_products('All', "All"))
@@ -48,7 +50,7 @@ const Store = () => {
         {store.products.slice(0, 6).map((prod) => <StoreCard {...prod}/>)}
     </div>
     <div className=' w-full flex justify-center'>
-    <button className='bg-[#5A0C91] text-[#E9E9E9] text-xl font-medium rounded-[5px]  font-lato px-[70px] py-[15px] mx-auto'>
+    <button className='bg-[#5A0C91] text-[#E9E9E9] text-xl font-medium rounded-[5px]  font-lato px-[70px] py-[15px] mx-auto' onClick={() => navigate('/ekostore')}>
       Show all
     </button>
     </div>

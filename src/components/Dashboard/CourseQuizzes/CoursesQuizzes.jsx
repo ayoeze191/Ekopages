@@ -3,7 +3,7 @@ import back from "./../../../assets/back.png";
 import { Link, useNavigate } from "react-router-dom";
 import Quiz from "./Quiz";
 import { useLocation, useParams } from "react-router-dom";
-import { BeatLoader, ClipLoader } from "react-spinners";
+import { BeatLoader, ClipLoader,FadeLoader } from "react-spinners";
 import instance from "./../../../axios";
 import { tokenConfig } from "../../../Config/Config";
 import { Reform_to_suitable_form } from "../../../Utils/reformQuestions";
@@ -175,6 +175,15 @@ const CourseQuizes = () => {
 
   return (
     <Wrapper overlay={showOverlay}>
+      {loading &&  <div className="fixed    flex justify-center items-center top-0 font-lato w-full h-full">
+      <div className=" w-[350px] md:w-[688px] h-[80vh] z-[99999000000] top-0 mx-auto bg-white text-center flex flex-col items-center justify-center gap-[56px]">
+       <p className="text-[28px] font-semibold font-lato text-center"> Quiz Submitted</p>
+        <FadeLoader color="#5A0C91"/>
+        <p className="font-lato text-base text-center">
+        Please, hold on while we compile your score  
+        </p>
+        </div>
+      </div>}
      { showModal && <Modal redo={redo} cont={cont} />  }
       <div>
         <section className=" h-[10.625rem] flex justify-center items-center font-lato bold">
