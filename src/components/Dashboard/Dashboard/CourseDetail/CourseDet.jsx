@@ -155,7 +155,6 @@ const CourseDetails = () => {
           if(CheckIfUserHasCompletedCourse(modules) === true){
             getCoursePercentage()
             }
-
         }
         
       }, [current])
