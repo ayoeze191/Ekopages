@@ -12,6 +12,7 @@ import { useDispatch } from "react-redux";
 import { swicthFinishedCourseQuiz } from "../../../store/reducers/Quizzes";
 import axios from "axios";
 import { IoCloseCircleOutline } from "react-icons/io5";
+import { Return_Yet_To_Be_answered_Questions } from "../../../Utils/HasAnsweredAllQuizzes";
 
 // import { Modal } from "antd";
 const CourseQuizes = () => {
@@ -30,7 +31,7 @@ const CourseQuizes = () => {
   const [showOverlay, setShowOverlay] = useState(false);
   const [sucessfully_Submited, setSucessfully_Submited] = useState(false);
   const [showModal, setShowmodal] = useState(false)
-
+  const [moduleCompleted, setModuleCompleted] =  useState(false)
   const CheckwhetherCourseCompleted = async() => {
     
     const res = await instance.get(`services/study_all/${course_id}`, tokenConfig())
@@ -39,6 +40,7 @@ const CourseQuizes = () => {
     
     if(response.completed == true){
       setShowmodal(response.completed)
+      setModuleCompleted(response.completed)
       console.log("showing overlay")
       setShowOverlay(true)
     }
@@ -84,38 +86,77 @@ const CourseQuizes = () => {
   const HandleSubmit = async () => {
     setShowOverlay(true);
     setLoading(true);
-    try {
-      for (const item of answers) {
-      try{
-        const update = await updateAnswers(item.question, item.answer)
-        if(update.success){
-          ;
-        }
-        else{
+    const yet_to_be_answerd_quest = Return_Yet_To_Be_answered_Questions(answers, all_question)
+    if(yet_to_be_answerd_quest.length > 0){
+      window.alert("Please attempt all questions ")
+      return setLoading(false)
+    }
+    try{
+      if(moduleCompleted == false) {
+        for (const item of answers) {
           const response = await instance.post(
-            "/Quiz/answer_quiz/",
+                    "/Quiz/answer_quiz/",
+                    { question: item.question, answer: item.answer, quiz: redirect_id },
+                    tokenConfig()
+                  );
+                  const result = await response.data;
+        }
+        try{
+          setAsCompleted()
+        }
+        catch(error){
+          console.log(error)
+        }
+      }
+      else {
+        for (const item of answers) {
+          const response = await instance.put(
+            `/Quiz/functions/${item.question}/`,
             { question: item.question, answer: item.answer, quiz: redirect_id },
             tokenConfig()
           );
           const result = await response.data;
         }
       }
-      catch(error){
-        console.error("Error updating answer", "updateError");
-      }
-      }
-      setLoading(false)
-      try{
-        setAsCompleted()
-      }
-      catch(error){
-        console.log(error)
-      }
       navigate(`/dashboard/MyCourses/${url}`)
-    } catch (error) {
-      console.error("Error making API call", error);
-      setLoading(false);
+      setLoading(false)
     }
+    catch(error){
+      console.log("error")
+    }
+
+    // try {
+    //   for (const item of answers) {
+    //   try{
+    //     const update = await updateAnswers(item.question, item.answer)
+    //     if(update.success){
+    //       ;
+    //     }
+    //     else{
+    //       const response = await instance.post(
+    //         "/Quiz/answer_quiz/",
+    //         { question: item.question, answer: item.answer, quiz: redirect_id },
+    //         tokenConfig()
+    //       );
+    //       const result = await response.data;
+    //     }
+    //   }
+    //   catch(error){
+    //     console.error("Error updating answer", "updateError");
+    //   }
+    //   }
+    //   setLoading(false)
+    //   try{
+    //     setAsCompleted()
+    //   }
+    //   catch(error){
+    //     console.log(error)
+    //   }
+    //   navigate(`/dashboard/MyCourses/${url}`)
+    // } catch (error) {
+    //   console.error("Error making API call", error);
+    //   setLoading(false);
+    // }
   };
   const updateAnswers = async (question, answer) => {
     try {
