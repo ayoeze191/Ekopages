@@ -221,13 +221,13 @@ const CourseDetails = () => {
             <div className="mt-[16px] flex-1">
              {loading ? "": <ModuleDetail id={current} update_Module_completed={update_Module_completed}/>}
               <div className="flex w-full justify-between mt-[16px]">
-            <button disabled={disable_prev_btn} className={`text-[#232323] leading-[25px] font-[600] font-lato ${disable_prev_btn&&"opacity-25"}`}
+            <button disabled={disable_prev_btn} className={`text-[#232323] md:text-[#5A0C91] leading-[25px] font-[600] font-lato ${disable_prev_btn&&"opacity-25"}`}
             onClick={changeCurrentModuleMob}
               >
               Back
             </button>
             <button disabled={disable_next_btn}
-              className={`text-[#232323] ${disable_next_btn&&"opacity-25"} leading-[25px] font-[600] font-lato`}
+              className={`text-[#232323] md:text-[#5A0C91] ${disable_next_btn&&"opacity-25"} leading-[25px] font-[600] font-lato`}
             onClick={() => changeCurrentModuleMob(true)}
             >
               Next
