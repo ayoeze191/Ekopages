@@ -20,7 +20,6 @@ const CourseDetails = () => {
   const navigate = useNavigate()
   const param = useParams();
   const getCoursePercentage = () => {
-      //("getting")
       setShowOverlay(true)
       setShowModal(true)
         instance.get('/user_courses/courses_enrolled/', tokenConfig())
@@ -41,6 +40,32 @@ const CourseDetails = () => {
     // const vidoeRef = useRef(null)
     const [modules, setModules] = useState([]);
     const [current, setCurrent] = useState(1);
+
+    const [disable_next_btn, setDisable_nxt_btn] = useState(true)
+    const [disable_prev_btn, setDisable_prev_btn] = useState(true)
+    useEffect(() => {
+      const index_of_current_modules = modules.findIndex((item) => item.id == current)
+      console.log(index_of_current_modules)
+      if(modules[index_of_current_modules] != undefined ){
+        console.log(modules[index_of_current_modules])
+        if(modules[index_of_current_modules].completed == true && index_of_current_modules !== modules.length - 1){
+          setDisable_nxt_btn(false)
+        }
+        else{
+          setDisable_nxt_btn(true)
+        }
+      }
+      if(index_of_current_modules == 0){
+        
+        setDisable_prev_btn(true)
+      }
+      else{
+        setDisable_prev_btn(false)
+
+      }
+      console.log("module chaged")
+    }, [modules, current])
+
   const CheckIfUserHasCompletedCourse = (details) => {
     // console.log(details, "det")
     let Completed = true
@@ -116,7 +141,7 @@ const CourseDetails = () => {
             //(current, modules)
             //(index_of_current_modules)
             const nextModule = modules.find((mod) => mod.id == modules[index_of_current_modules + 1].id)
-            if(index_of_current_modules !== 0) {
+            if(index_of_current_modules !== modules.length - 1) {
               if(nextModule.title == "Pop Quiz" || nextModule.title == "Final POP QUIZ" || nextModule.title == "Literaure Questions"){
               dispatch(swictchUserCourseUrl(param.id))
                 navigate(`/quizzes/${nextModule.lesson_number}/${nextModule.id}/${param.id}`)
@@ -196,13 +221,13 @@ const CourseDetails = () => {
             <div className="mt-[16px] flex-1">
              {loading ? "": <ModuleDetail id={current} update_Module_completed={update_Module_completed}/>}
               <div className="flex w-full justify-between mt-[16px]">
-            <button className="text-[#232323] leading-[25px] font-[600] font-lato"
+            <button disabled={disable_prev_btn} className={`text-[#232323] leading-[25px] font-[600] font-lato ${disable_prev_btn&&"opacity-25"}`}
             onClick={changeCurrentModuleMob}
               >
               Back
             </button>
-            <button
-              className="text-[#232323] leading-[25px] font-[600] font-lato"
+            <button disabled={disable_next_btn}
+              className={`text-[#232323] ${disable_next_btn&&"opacity-25"} leading-[25px] font-[600] font-lato`}
             onClick={() => changeCurrentModuleMob(true)}
             >
               Next
@@ -281,7 +306,7 @@ const Module = ({ changeCurrentModule, title, id, level, current, completed,upda
     return (
       <div className="w-full flex flex-col items-center h-[20px]">
         <div className="flex gap-[8px] items-center w-full  text-[#5A0C91] h-full">
-          <div className='relative after:content-[""] after:text-[#D9D9D9] after:absolute after:w-[2px] after:h-12 after:bg-[#D9D9D9] after:left-[6.5px] after:top-5'>
+          <div className={`relative after:content-[""] after:text-[#D9D9D9] after:absolute after:w-[2px] after:h-12 after:bg-[#D9D9D9] after:left-[6.5px] after:top-5 ${completed === true ? "after:top-7":""}`}>
             {completed === true && current != id ? (
               <IoCheckmarkSharp
                 size={24}
@@ -289,10 +314,12 @@ const Module = ({ changeCurrentModule, title, id, level, current, completed,upda
                 color="#5A0C91"
                 width={24}
                 height={24}
+                
               />
             ) : current == id ? (
               <GoDotFill 
               color="#5A0C91"
+              
               />
             ): <GoDotFill 
             color="#D9D9D9"
