@@ -195,7 +195,7 @@ const CourseDetails = () => {
           <div className="flex  pb-[3.75rem] font-lato gap-[2rem] ">
             <div className="mt-[16px] flex-1">
              {loading ? "": <ModuleDetail id={current} update_Module_completed={update_Module_completed}/>}
-              <div className="lg:hidden flex w-full justify-between mt-[16px]">
+              <div className="flex w-full justify-between mt-[16px]">
             <button className="text-[#232323] leading-[25px] font-[600] font-lato"
             onClick={changeCurrentModuleMob}
               >
@@ -209,7 +209,7 @@ const CourseDetails = () => {
             </button>
           </div>
             </div>
-            <div className="hidden lg:flex flex-col gap-[1.5rem] px-[2.25rem] pb-[3.9375rem] 
+            <div className="flex flex-col gap-[1.5rem] px-[2.25rem] pb-[3.9375rem] 
             bg-[#EFE7F4]
              w-[30%] text-[#4A4A4A] pt-[2.375rem] ">
           <div className="flex flex-col gap-[3.75rem] font-lato font-[500] text-[1rem] items-start w-fit">
