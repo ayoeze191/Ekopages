@@ -82,6 +82,7 @@ const Quizes = () => {
   };
   const HandleSubmit = async () => {
     const yet_to_be_answerd_quest = Return_Yet_To_Be_answered_Questions(answers, all_question.quizzes)
+    console.log(yet_to_be_answerd_quest)
     if(yet_to_be_answerd_quest.length > 0){
       window.alert("Please attempt all questions ")
       return setLoading(false)

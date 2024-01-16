@@ -1,4 +1,6 @@
-import React from 'react'
+import React, {useEffect, useState} from 'react'
+import { tokenConfig } from '../../../../Config/Config'
+import instance from '../../../../axios'
 import { Link, useNavigate } from 'react-router-dom'
 import bell from "./../../../../assets/dashboard/bell.png"
 import Pending from './Pending'
@@ -86,6 +88,23 @@ const MyCourses = () => {
 
 const Achievement = () => {
   const navigate = useNavigate()
+  const [certificates, setCertificates] = useState([])
+  const getCertificates = () => {
+    console.log("running")
+    instance.get('/services/my_certificates', tokenConfig())
+    .then((res) => {
+      setCertificates(res.data.data)
+      // setCertificates([])
+  
+    })
+  }
+
+
+useEffect(() => {
+  
+  getCertificates()
+}, [])
+
   return (
     <div className='bg-[#EFE7F4] rounded-[10px] pt-[30px] pb-[70px] px-[20px] w-full md:max-w-[270px] mb-20 md:mb-0'>
       <h3 className='flex gap-4 items-center'>
@@ -94,18 +113,18 @@ const Achievement = () => {
         <p className='text-[12px] font-lato font-medium leading-[14.4px]'>  This year </p><MdKeyboardArrowDown color='#888888'/>
         </div>
       </h3>
-      <div className='flex mt-[47px] gap-[16px]'>
+      <div className='flex mt-[47px] gap-[16px] cursor-pointer' >
         <div>
         <AiOutlineSafetyCertificate size={30} width={23} height={28} color='#5A0C91'/>
         </div>
-        <div>
+        <div onClick={() => navigate('/dashboard/MyCourses/certifications')}>
           <h2 className='font-[600] leading-[19.2px] font-lato text-[16px]'>Certificate</h2>
           <p className='font-[600] font-lato text-[12px] text-[#888888] leading-[18px] mt-[4px]'>
-          For this year, you have received <span className='text-[#232323]'>three certificates</span>. Congrats on your learning progress. <span className='text-[#232323] cursor-pointer' onClick={() => navigate('/dashboard/MyCourses/certifications')}>view certificates</span>
+          For this year, you have received <span className='text-[#232323]'>{certificates.length == 0?"No":certificates.length} certificates</span>. Congrats on your learning progress. <span className='text-[#232323] cursor-pointer' >view certificates</span>
           </p>
         </div>
       </div>
-      <div className='flex mt-[47px] gap-[16px]'>
+      {/* <div className='flex mt-[47px] gap-[16px]'>
         <div>
         <AiOutlineSafetyCertificate size={30} width={23} height={28} color='#5A0C91'/>
         </div>
@@ -115,7 +134,7 @@ const Achievement = () => {
           For this year, you have received <span className='text-[#232323]'>three certificates</span>. Congrats on your learning progress.
           </p>
         </div>
-      </div>
+      </div> */}
     </div>
   )
 }
