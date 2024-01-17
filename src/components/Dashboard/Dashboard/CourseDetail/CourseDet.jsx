@@ -4,7 +4,7 @@ import { tokenConfig } from "../../../../Config/Config";
 import { swictchUserCourseUrl } from "../../../../store/reducers/billing";
 import instance from "../../../../axios";
 import { GoDotFill } from "react-icons/go";
-import { useParams, useNavigate } from "react-router-dom";
+import { useParams, useNavigate, Navigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import ModuleDetail from "./components/ModuleDetail";
 import { MoonLoader, SyncLoader } from "react-spinners";
@@ -19,6 +19,7 @@ const CourseDetails = () => {
   const [overlay, setShowOverlay] = useState(false)
   const navigate = useNavigate()
   const param = useParams();
+  const [Completed, setCompleted] = useState(false)
   const getCoursePercentage = () => {
       setShowOverlay(true)
       setShowModal(true)
@@ -100,6 +101,10 @@ const CourseDetails = () => {
         instance
           .get(`services/study_all/${param.id}`, tokenConfig())
           .then((res) => {
+            if(res.data.message == "congratulaions scholar, You have passed this course, take on another challenge."){
+              setLoading(false)
+              return setCompleted(true)
+            }
             let myModules = res.data.data.map(
               (module) =>
                 module.id && { title: module.topic, id: module.id, completed: module.completed, lesson_number: module.lesson_number}
@@ -193,6 +198,7 @@ const CourseDetails = () => {
         <Wrapper overlay={overlay}
         >
          {modal && <CourseCompletionModal id={param.id} ClearInterface={ClearInterface}/>}
+         { Completed == false ?
           <div className="px-[2.06rem] max-w-[67rem]">
             <div className="bg-[#FFFFFF] md:bg-inherit rounded-[5px] md:px-[1.5rem] py-[1.5rem]">
             <h1 className="font-[600] text-[1.25rem]">
@@ -266,6 +272,7 @@ const CourseDetails = () => {
         </div>
           </div>
         </div>
+:<Navigate to={'/certifications'} />} 
         </Wrapper>
     )
 }
