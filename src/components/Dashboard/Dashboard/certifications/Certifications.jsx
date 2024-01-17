@@ -35,7 +35,7 @@ useEffect(() => {
                 Back to my Courses
             </p>
         </div>
-        
+        <div className='flex flex-col gap-5'>
         {certificates.length == 0 ?
         <div className = "flex flex-col items-center mx-auto gap-[40px]">
           <div>
@@ -49,6 +49,7 @@ Take a Course
         </button>
         </div>
         : certificates.map((cert) => <Cetificate {...cert}/>)}
+        </div>
     </div>
   )
 }
