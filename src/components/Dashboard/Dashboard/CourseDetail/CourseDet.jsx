@@ -14,17 +14,16 @@ import { swicthFinishedCourseQuiz } from "../../../../store/reducers/Quizzes";
 import CircularProgressBar from "../../../ui/CircularProgressBar";
 import CourseCompletionModal from "./CourseCompletionModal";
 const CourseDetails = () => {
-  const [coursePercentage, setCoursePercentage] = useState(100)
+  const [coursePercentage, setCoursePercentage] = useState(0)
   const [modal, setShowModal] = useState(false)
   const [overlay, setShowOverlay] = useState(false)
   const navigate = useNavigate()
   const param = useParams();
   const [Completed, setCompleted] = useState(false)
   const getCoursePercentage = () => {
-      setShowOverlay(true)
-      setShowModal(true)
         instance.get('/user_courses/courses_enrolled/', tokenConfig())
         .then((res) => {
+          console.log(res.data.courses_with_progress)
           setCoursePercentage(res.data.courses_with_progress.find(cou => cou.course_id == param.id).completion_percentage)
           // setShowOverlay(false)
         })
@@ -183,11 +182,11 @@ const CourseDetails = () => {
       useEffect(() => {
         if(modules.length > 0){
           if(CheckIfUserHasCompletedCourse(modules) === true){
-            getCoursePercentage()
+            setShowOverlay(true)
+            setShowModal(true)
             }
-
+            getCoursePercentage()
         }
-        
       }, [current])
 
       const ClearInterface = () => {

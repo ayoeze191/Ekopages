@@ -31,7 +31,7 @@ useEffect(() => {
             <p className=' text-[#232323] md:text-[#4A4A4A] text-[24px] md:text-[20px] font-[500] font-lato'>
                 Certificates
             </p>
-            <p className='text-[#5A0C91] text-[20px] font-[500] font-lato hidden md:block' onClick={() => navigate('/dashboard/MyCourse')}>
+            <p className='text-[#5A0C91] text-[20px] font-[500] font-lato hidden md:block cursor-pointer' onClick={() => navigate('/dashboard/MyCourses')}>
                 Back to my Courses
             </p>
         </div>

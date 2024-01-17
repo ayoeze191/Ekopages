@@ -11,6 +11,7 @@ const CircularProgressBars = ({score}) => {
     const c = b + start
     return "hsl(" + c + ", 100%, 50%)"
    }
+   console.log(score)
   return (  
     <CircularProgressbar value={score} text={`${score}`} circleRatio={1}
     styles={{
