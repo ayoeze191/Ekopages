@@ -20,10 +20,11 @@ const CourseDetails = () => {
   const navigate = useNavigate()
   const param = useParams();
   const [Completed, setCompleted] = useState(false)
+  const [course_title, setCourse_title] = useState(null)
   const getCoursePercentage = () => {
         instance.get('/user_courses/courses_enrolled/', tokenConfig())
         .then((res) => {
-          console.log(res.data.courses_with_progress)
+          setCourse_title(res.data.courses_with_progress.find(cou => cou.course_id == param.id).course_name)
           setCoursePercentage(res.data.courses_with_progress.find(cou => cou.course_id == param.id).completion_percentage)
           // setShowOverlay(false)
         })
@@ -201,7 +202,7 @@ const CourseDetails = () => {
           <div className="px-[2.06rem] max-w-[67rem]">
             <div className="bg-[#FFFFFF] md:bg-inherit rounded-[5px] md:px-[1.5rem] py-[1.5rem]">
             <h1 className="font-[600] text-[1.25rem]">
-              {modules[0].title}
+              {course_title}
             </h1>
            { loading? "" : <p className="font-[400] text-[1rem] flex   flex-col gap-[8px]">
               <div className="text-[32px] font-lato font-bold">
