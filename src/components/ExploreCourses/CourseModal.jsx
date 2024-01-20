@@ -4,8 +4,8 @@ import star from "./../../assets/star.svg"
 import naira from "./../../assets/naira.svg"
 import { motion, AnimatePresence } from "framer-motion"
 import { useState } from "react"   
+import axios from "axios"
 import { useNavigate } from "react-router-dom"
-import instance from '../../axios'
 import { tokenConfig } from "../../Config/Config"
 import { BeatLoader } from "react-spinners"
 import { toast } from "react-toastify"
@@ -16,26 +16,26 @@ const CourseModal = ({picture, subject, Tutor, price, stars, modules, id,handleC
     const [enrolled, setEnrolled] = useState(false)
     const Enrol = async () => {
         setLoading(true)
-        // instance.post(`/services/enroll/${id}/`, null,tokenConfig())
-        // .then((res) => {
-        //     console.log(res)
-        //     setTimeout(() => setEnrolled(true), 500) 
-        //     // navigate('/dashboard')
-        // })
-        // .catch((error) => {
-        //     console.log(error)
-        // })  
-        try {
-            const res = await instance.post(`/services/enroll/${id}/`, null,tokenConfig())
+        axios.post(`https://ekopages-production.up.railway.app/services/enroll/${id}/`, null,tokenConfig())
+        .then((res) => {
             console.log(res)
             setTimeout(() => setEnrolled(true), 500) 
-            setLoading(false)
-            toast.success(`You have successfully enrolled for ${subject}`)
-            navigate('/dashboard')  
-        }
-        catch(err){
-            console.log(err)
-        }
+            // navigate('/dashboard')
+        })
+        .catch((error) => {
+            console.log(error.response)
+        })  
+        // try {
+        //     const res = await instance.post(`/services/enroll/${id}/`, null,tokenConfig())
+        //     console.log(res)
+        //     setTimeout(() => setEnrolled(true), 500) 
+        //     setLoading(false)
+        //     toast.success(`You have successfully enrolled for ${subject}`)
+        //     navigate('/dashboard')  
+        // }
+        // catch(err){
+        //     console.log(err)
+        // }
     }
 
 

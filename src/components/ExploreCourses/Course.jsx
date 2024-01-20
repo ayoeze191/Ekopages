@@ -6,14 +6,28 @@ import { ClipLoader } from 'react-spinners'
 import { useNavigate } from 'react-router-dom'
 import { tokenConfig } from '../../Config/Config'
 import axios from 'axios'
+import { toast } from 'react-toastify'
 const Course = ({picture, subject, Tutor, price, stars, modules, id, handleSelect}) => {
     const navigate = useNavigate()
     const [enrolled, setEnrolled] = useState(false)
+    const [completed, setComplted] = useState(false)
   const getRegistered = () => {
     axios.get(`https://ekopages-production.up.railway.app/services/study_all/${id}`, tokenConfig())
     .then((res) => {
         // console.log(res.data)
-        setEnrolled(res.data.data.length > 0)
+        // console.log(res.data.message === "congratulaions scholar, You have passed this course, take on another challenge.")
+
+        if(res.data.message === "congratulaions scholar, You have passed this course, take on another challenge."){
+          // console.log("settin")
+              setEnrolled(false)
+              return setComplted(true)
+        }
+        else if(res.data.data.length > 0){
+          return setEnrolled(res.data.data.length > 0)
+        }
+              // console.log("settin")
+              setEnrolled(false)
+              setComplted(false)
     })
     .catch((error) =>{
         console.log(error)
@@ -45,9 +59,9 @@ const Course = ({picture, subject, Tutor, price, stars, modules, id, handleSelec
         </div>
         <div className='px-[13.76px] flex justify-between '>
             <p className='font-[500] text-[22px] leading-[26px] font-lato'>{price}</p>
-            <button className='bg-[#5A0C91] text-[#FFFFFF]  font-[400] leading-[18.24px] px-[18.92px] py-[9.46px] rounded-[9.6px] font-lato' onClick={() =>{ 
-                enrolled?navigate(`/dashboard/MyCourses/${id}`):
-                handleSelect(id)}}>{enrolled? "Continue Course": " Start learning"}</button>
+            <button className={`${!completed ? "bg-[#5A0C91]":"bg-green-600"} text-[#FFFFFF]  font-[400] leading-[18.24px] px-[18.92px] py-[9.46px] rounded-[9.6px] font-lato`} onClick={() =>{ 
+                enrolled?navigate(`/dashboard/MyCourses/${id}`):completed?toast.info("You have taken this course before"):
+                handleSelect(id)}}>{enrolled? "Continue Course": completed === true ?"Done": "Start learning"}</button>
         </div>
     </div>
   )
