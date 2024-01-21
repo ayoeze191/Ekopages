@@ -3,6 +3,7 @@ import { BsCart } from 'react-icons/bs'
 import Order from './Order'
 import instance from '../../../../axios'
 import { tokenConfig } from '../../../../Config/Config'
+import { useNavigate } from 'react-router-dom'
 
 
 
@@ -34,6 +35,7 @@ const orders = [
 ]
 
 const Orders = () => {
+    const navigate = useNavigate()
     const [orders, setOrders] = useState([])  
     const getCompletedOrders = () => {
         instance.get('/history/all-history/', tokenConfig())
@@ -48,7 +50,11 @@ const Orders = () => {
 
   return (
     <div>
-        <div className='flex gap-[18.38px] items-center justify-center md:justify-start mb-[2rem] '> <div>
+        {orders.length == 0 ? <div className=' border-t-[orange] border-t-solid border-t-2 py-[14.2px] px-[17.8px] items-center font-[400] text-[12px] md:text-base font-lato mt-[1rem] text-[#4A4A4A] text-center bg-[#F8F8F8] w-fit mx-auto flex gap-2 md:gap-[17.9px] flex-col' >
+        <p> No Order  Yet</p>
+     <button onClick={() => navigate('/ekostore')} className='font-[400] text-[#E9E9E9] py-[15px] px-[30px] bg-[#5A0C91] rounded-[5px] font-lato mx-auto text-sm md:text-base'>Go to EkoStore</button>
+    </div>:
+       <> <div className='flex gap-[18.38px] items-center justify-center md:justify-start mb-[2rem] '> <div>
             <BsCart />
             </div> 
             <p className='text-[1.5rem]'> My Orders </p></div>
@@ -61,9 +67,11 @@ const Orders = () => {
             <div>Status</div>
         </div>
         <div className='flex flex-col gap-[24px] md:gap-[4px]'>
-        {orders.length > 0 ? orders.map((order) => <Order {...order} status={order.completed == false?"Pending payment":"Paid"}/>): "No order Yet"}
+        { orders.map((order) => <Order {...order} status={order.completed == false?"Pending payment":"Paid"}/>)}
         </div>
         </div>
+        </>
+}
     </div>
   )
 }

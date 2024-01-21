@@ -18,7 +18,7 @@ const Project = ({img, h1, p, path}) => {
                 <SkeletonsElement type={'images'} />
             
             </div>:null}
-            <img src={img} alt='' className='h-full w-full rounded-t-[20px]' onLoad={() => setLoaded(true)}/>
+            <img src={img} alt='' className='h-full w-full rounded-[20px]' onLoad={() => setLoaded(true)}/>
         </div>
         <div className='flex flex-col gap-[0.5rem] mb-2.5rem'>
         <h1 className='font-lato font-[700] text-[24px]'>

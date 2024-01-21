@@ -5,54 +5,69 @@ import twitter from "./../../assets/about/twitter.png"
 import linkedln from "./../../assets/about/linkedln.png"
 import facebook from "./../../assets/about/facebook.png"
 import Subscribe from '../about/subscribe/Subscribe';
-import { useLocation } from 'react-router-dom';
+import { useLocation, useNavigate } from 'react-router-dom';
 import { Link } from 'react-router-dom';
+import { useModalContext } from '../../context/modal/modal';
 
-const NavItem = ({to, name}) => {
- return  <Link to={to}>{name}</Link>
-}
-
-const linkVal = [
-    {
-        name: "Eko News",
-        to: "/ekonews"
-    },
-    {
-        name: "Become a Partner",
-        to: ""
-    },
-    {
-        name: "Contact Us",
-        to: "/contact"
-    },
-    {
-        name: "FAQs",
-        to: "/faq"
+const NavItem = ({to, name, openModal}) => {
+    const navigate = useNavigate()
+    const handleClick = () => {
+        if(to){
+            navigate(to)
+        }
+        if(openModal){
+            openModal()
+        }
     }
-]
-const linkVal2 = [
-    {
-        name: "About us",
-        to: "/about"
-    },
-    {
-        name: "Projects",
-        to: "/projects"
-    },
-    {
-        name: "Services",
-        to: "/services"
-    },
-    {
-        name: "Eko Store",
-        to: "/ekostore"
-    },
-]
+   
+
+ return  <div className='cursor-pointer' onClick={handleClick}>{name}</div>
+}
 
 
 
 
 const Footers = () => {
+
+    const {setpartnerModal} = useModalContext()
+    const linkVal = [
+        {
+            name: "Eko News",
+            to: "/ekonews"
+        },
+        {
+            name: "Become a Partner",
+            to: "",
+            openModal: setpartnerModal
+        },
+        {
+            name: "Contact Us",
+            to: "/contact"
+        },
+        {
+            name: "FAQs",
+            to: "/faq"
+        }
+    ]
+    const linkVal2 = [
+        {
+            name: "About us",
+            to: "/about"
+        },
+        {
+            name: "Projects",
+            to: "/projects"
+        },
+        {
+            name: "Services",
+            to: "/services"
+        },
+        {
+            name: "Eko Store",
+            to: "/ekostore"
+        },
+    ]
+
     const loc = useLocation()
     // //(loc.pathname)
 
@@ -73,7 +88,7 @@ const Footers = () => {
         <div></div>
     </div>
         </div>
-    <div className='flex gap-[5.4rem] text-[#232323]   font-lato  text-left mr-[4.75rem] h-full items-start font-[500] text-[1rem]'>
+    <div className='flex gap-[5.4rem] text-[#232323] w-full md:w-fit   font-lato  text-left md:mr-[4.75rem] h-full items-start font-[500] text-[1rem]'>
     <div className='flex flex-col gap-3 h-full'>
         {linkVal.map(li => <NavItem {...li}/>)}
     </div>

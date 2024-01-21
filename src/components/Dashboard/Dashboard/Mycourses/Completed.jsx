@@ -57,7 +57,7 @@ console.log(courses)
   return (
     <div className='md:px-[72px] flex flex-col  gap-[24px] mt-[33px] w-full items-center justify-center'>
          {
-         loading?<MoonLoader /> : courses.length > 0 ?  <div className=' border-t-[#b0ada7] border-t-solid border-t-2 py-[14.2px] px-[17.8px] items-center font-[400] text-[12px] md:text-base font-lato mt-[1rem] text-[#4A4A4A] text-center bg-[#F8F8F8] w-fit mx-auto flex gap-2 md:gap-[17.9px] flex-col' >
+         loading?<MoonLoader /> : courses.length == 0 ?  <div className=' border-t-[#b0ada7] border-t-solid border-t-2 py-[14.2px] px-[17.8px] items-center font-[400] text-[12px] md:text-base font-lato mt-[1rem] text-[#4A4A4A] text-center bg-[#F8F8F8] w-fit mx-auto flex gap-2 md:gap-[17.9px] flex-col' >
         <p> You have not completed any course yet. Use the button below to take course</p>
      <Link to={'/explore-courses'} className='font-[400] text-[#E9E9E9] py-[15px] px-[30px] bg-[#5A0C91] rounded-[5px] font-lato mx-auto text-sm md:text-base'>Take a Course</Link>
       

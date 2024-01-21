@@ -39,15 +39,15 @@ const EkoTalesDetails = () => {
   }, [tale])
 
   return (loading? 
-  <div className='mx-auto flex flex-col justify-center items-center relative w-full h-full'> <ClipLoader /></div>:
-    <div className='font-lato max-w-5xl mx-auto flex- flex-col items-center mt-[7.3125rem] px-6 lg:px-0'>
+  <div className='mx-auto flex flex-col justify-center items-center relative w-full h-full  overflow-hidden'> <ClipLoader /></div>:
+    <div className='font-lato w-full md:max-w-5xl mx-auto flex- flex-col items-center mt-[7.3125rem] px-6 lg:px-0 '>
             <p className='font-[700] text-[1.7rem] md:text-[3rem] font-lato'>{tale.title}</p>
 
         {/* <div className='flex flex-col gap-[2rem] text-[#232323] items-center mb-[2rem] w-full bg-red-100'> */}
-            <div className='' ref={imgRef}><img src={tale.image} className='w-[300px] h-[300px] sm:w-[400px] sm:h-[400px] md:w-[initial] md:h-[initial] mr-auto' alt="" /></div>
+            <div className='w-full md:w-fit' ref={imgRef}><img src={tale.image} className='w-full sm:w-[400px]  sm:h-[400px] md:w-[initial] md:h-[initial] mx-auto' alt="" /></div>
         {/* </div> */}
 
-        <div className='flex flex-col gap-[2rem] text-[#232323] text-[1rem] md:text-[1.25rem] mb-[5rem] font-[400] font-lato'>
+        <div className='flex flex-col gap-[2rem] text-[#232323] text-[1rem] md:text-[1.25rem] mb-[5rem] font-[400] font-lato mt-6'>
             
               {showSmall?
               <p>{tale.body.split("<p>").map((p) => <p>{p}</p>)}</p>:
@@ -55,7 +55,7 @@ const EkoTalesDetails = () => {
             }
             
         </div>
-          <div className='relative w-full '>
+          <div className='relative w-full overflow-hidden  '>
         <OtherTales />
         </div>
     </div>

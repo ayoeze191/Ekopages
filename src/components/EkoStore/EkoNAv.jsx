@@ -17,7 +17,7 @@ const EkoNAv = () => {
 
 
   return (
-    <div className='flex mt-[3.5rem] mx-auto w-fit mb-[12.75rem] '>
+    <div className='flex mt-[3.5rem] mx-auto w-fit mb-[5rem] md:mb-[12.75rem] '>
         <NavItem name="All" id="All"/>
         { navtem.map((item) =><NavItem {...item}/> )}
     </div>

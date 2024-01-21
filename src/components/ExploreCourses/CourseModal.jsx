@@ -9,6 +9,7 @@ import { useNavigate } from "react-router-dom"
 import { tokenConfig } from "../../Config/Config"
 import { BeatLoader } from "react-spinners"
 import { toast } from "react-toastify"
+import { FaNairaSign } from "react-icons/fa6";
 const CourseModal = ({picture, subject, Tutor, price, stars, modules, id,handleClose, courseModal}) => {
     // const toast = useToast()
     const navigate = useNavigate()
@@ -70,7 +71,12 @@ const CourseModal = ({picture, subject, Tutor, price, stars, modules, id,handleC
         <p className="font-[400] text-[12px] md:text-base font-lato text-[#888888]  leading-[14.4px] md:leading-[19.2px]">(34)</p>
             </div>
             <p className="flex items-center font-lato font-semibold text-[16px] md:text-[32px] mt-[11px] md:mt-[22.4px] ">
-                <img src={naira} className="h-3 lg:h-[initial]"/>{price?price:"3,500"}
+                <div className="flex items-center">
+                    {/* <img src={naira} className="h-3 lg:h-[initial]" /> */}
+                    <FaNairaSign height={12}
+                    size={24}
+                    />
+                    </div>{price?price:"3,500"}
             </p>
             <button className="bg-[#5A0C91] w-[100px] h-[32px] md:w-[216px] md:h-[59px] rounded-[10px] text-[#FFFFFF] font-[500] text-[14px] md:text-[24px] font-lato leading-[28.9px] mt-[24px] md:mt-[50px]" onClick={Enrol}>
               {loading?<BeatLoader />:"Buy Now"}

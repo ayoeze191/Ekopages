@@ -224,7 +224,7 @@ const CourseDetails = () => {
 }
           </div>
           <div className="flex  pb-[3.75rem] font-lato gap-[2rem] ">
-            <div className="mt-[16px] flex-1">
+            <div className="mt-[16px] flex-1 w-full md:w-fit">
              {loading ? "": <ModuleDetail id={current} update_Module_completed={update_Module_completed}/>}
               <div className="flex w-full justify-between mt-[16px]">
             <button disabled={disable_prev_btn} className={`text-[#232323] md:text-[#5A0C91] leading-[25px] font-[600] font-lato ${disable_prev_btn&&"opacity-25"}`}
@@ -240,10 +240,10 @@ const CourseDetails = () => {
             </button>
           </div>
             </div>
-            <div className="flex flex-col gap-[1.5rem] px-[2.25rem] pb-[3.9375rem] 
+            <div className="md:flex flex-col gap-[1.5rem] px-[2.25rem] pb-[3.9375rem] hidden  
             bg-[#EFE7F4]
-             w-[30%] text-[#4A4A4A] pt-[2.375rem] ">
-          <div className="flex flex-col gap-[3.75rem] font-lato font-[500] text-[1rem] items-start w-fit">
+             w-[30%] text-[rgb(74,74,74)] pt-[2.375rem] ">
+          <div className=" flex flex-col gap-[3.75rem] font-lato font-[500] text-[1rem] items-start w-fit">
             <div className="flex justify-start gap-[8px] items-center w-full ">
               {/* <GoDotFill /> */}
               <div className="text-left font-[500] font-lato leading-[25.6px]">

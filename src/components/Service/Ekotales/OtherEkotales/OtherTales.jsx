@@ -23,8 +23,8 @@ const Tales = ({image, title, date_created, id}) => {
 
     return (
         <div className='flex flex-col w-full h-full cursor-pointer'  onClick={() =>navigate(`/services/ekotales/details/${id}`, {replace: true})}>
-            <div className='mt-[24px] mb-[8px]'>
-                <img src={image} className='w-[280px] h-[220px] md:w-[350px] md:h-[300px]'/> 
+            <div className='mt-[24px] mb-[8px] w-full object-contain'>
+                <img src={image} className='w-full h-[220px] md:w-[350px] md:h-[300px] object-contain'/> 
             </div>
             <div className=''>
                 <p className='text-[500] md:text-[24px] '>
@@ -59,11 +59,11 @@ const OtherTales = () => {
         <div className='w-full h-full ] overflow-hidden' >
             <Swiper 
             modules={[Navigation]}
-            slidesPerView={2}
+            slidesPerView={1}
             spaceBetween= {0}
             // navigation={true}
             autoplay = {{pauseOnMouseEnter: false}}
-            loop={true}
+            // loop={true}
             breakpoints={{
             640: {
                 slidesPerView: 3,

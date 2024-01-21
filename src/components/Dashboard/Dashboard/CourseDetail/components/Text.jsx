@@ -3,12 +3,12 @@ import instance from '../../../../../axios'
 import { tokenConfig } from '../../../../../Config/Config'
 import parse from "html-react-parser"
 const Text = ({ id, update_Module_completed, lesson}) => {
-    const [timer, setTimer] = useState(15)
+    const [timer, setTimer] = useState(111115)
     const [completed, setCompleted] = useState(false)
 
     // console.log(timer)
     useEffect(() => {
-        setTimer(15)
+        setTimer(11115)
 
         const interval = setInterval(() => {
           if(timer !== 0){

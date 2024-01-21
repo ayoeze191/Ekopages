@@ -46,7 +46,7 @@ const Store = () => {
             <p className="text-center text-[24px] md:text-[44px] font-[700] mb-[60px] mt-[57px]">Eko Store</p>
             {store.isloading ? <GeneralUiOverlayLoader /> :store.products?
             <div>
-    <div className='flex flex-col md:grid md:grid-cols-3 mx-auto section gap-x-[2rem] gap-y-10 md:gap-y-[12.25rem] items-center mb-[60px]'>
+    <div className='flex flex-col md:grid md:grid-cols-3 mx-auto section gap-x-[2rem] gap-y-10 md:gap-y-[5.25rem] items-center mb-[60px]'>
         {store.products.slice(0, 6).map((prod) => <StoreCard {...prod}/>)}
     </div>
     <div className=' w-full flex justify-center'>

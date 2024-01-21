@@ -43,7 +43,7 @@ const StoreCard = ({name, image, available, author, price, id, category, merch_s
   return (
     // cart.loading?<GeneralUiOverlay /> :
     <div className='
-    flex items-center rounded-[10px] bg-[#EFE7F4] h-[184px] lg:h-[210px] xl:h-[266px] mx-auto'>
+    flex items-center rounded-[10px] bg-[#EFE7F4] h-[184px] lg:h-[210px] xl:h-[266px] mx-auto max-w-[400px] w-full '>
         {/* <div className='w-full'>
             {category !== 'books'?<div className='relative mb-[2rem] -mt-24 w-[8rem] h-[8rem] md:w-[9rem] md:h-[9rem] mx-auto bg-white px-6 py-6'><img src={image}  className=' w-full h-full' /></div>:
             <div className='relative mb-[2rem] -mt-24 w-[8rem] h-[8rem] md:w-[9rem] md:h-[9rem] mx-auto '><img src={image}  className=' w-full h-full' /></div>}
