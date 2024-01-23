@@ -18,7 +18,7 @@ import axios from "axios"
   }
 
   export const imageConfig = () => {
-    const access = localStorage.getItem('access')? localStorage.getItem('access'):null
+    const access = localStorage.getItem('eko_access')? localStorage.getItem('eko_access'):null
       const config = {
         headers: {
           "Content-Type": "multipart/form-data",
@@ -28,6 +28,7 @@ import axios from "axios"
       if(access !== null){
       config.headers["Authorization"] = `Bearer ${access}`;
       }
+      console.log(config)
       return config;
     }
 

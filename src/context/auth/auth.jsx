@@ -48,8 +48,7 @@ export const AuthProvider = ( { children }) => {
     
     const changeProfilePics = (picture) => {
       //("changing profile pics")
-      instance.put("auth/user/", {profile_picture: picture} ,imageConfig())
-      
+      instance.put("auth/user/", {profile_picture: picture} , imageConfig())
       .then((res) => {
       //("profile pics changed", res)
       setProfpics(res.data.profile_picture)
