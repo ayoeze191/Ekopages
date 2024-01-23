@@ -8,7 +8,7 @@ const FAQContainer = () => {
     <div className='bg-[#F6F6F6]'>
       {/* <NavHead></NavHead> */}
       <FAD />
-      <div className='font-lato font-[500] text-[#232323] mt-[24px] text-center md:hidden '>Here are some common questions asked by users about Eko pages</div>
+      <div className='font-lato font-[500] text-[#232323] mt-[24px] text-center md:hidden px-10 md:px-0'>Here are some common questions asked by users about Eko pages</div>
       <Questions />
       {/* <Footers /> */}
     </div>
