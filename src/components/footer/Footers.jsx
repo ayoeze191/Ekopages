@@ -29,7 +29,7 @@ const NavItem = ({to, name, openModal}) => {
 
 const Footers = () => {
 
-    const {setpartnerModal} = useModalContext()
+    const {setpartnerModal, setstayIntouchModal} = useModalContext()
     const linkVal = [
         {
             name: "Eko News",
@@ -42,7 +42,8 @@ const Footers = () => {
         },
         {
             name: "Contact Us",
-            to: "/contact"
+            to: "",
+            openModal: setstayIntouchModal
         },
         {
             name: "FAQs",

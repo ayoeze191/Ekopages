@@ -10,6 +10,8 @@ export const ModalContext = React.createContext({
     setLoginModal: () => {},
     signupModal: false,
     setSignupModal: () => {},
+    setLogOutModal: () => {},
+    logoutModal: false,
 });
 
 export const ModalProvider = ({children}) => {
