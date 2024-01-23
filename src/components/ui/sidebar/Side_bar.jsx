@@ -6,12 +6,14 @@ import { AiOutlineUser,  AiOutlineHeart, AiOutlineSearch} from 'react-icons/ai'
 import { BsCart } from 'react-icons/bs'
 import Overlay from '../Overlay'
 import { useAuthContext } from '../../../context/auth/auth'
+import { useModalContext } from '../../../context/modal/modal'
+
 const Side_bar = ({show, sideFunc}) => {
   const {isAuth, user, logout, setloginMode} = useAuthContext()
-
+  const {setLogOutModal} = useModalContext()
   const LogOut = () => {
     //("logging out")
-    logout()
+    setLogOutModal()
   }
 
 

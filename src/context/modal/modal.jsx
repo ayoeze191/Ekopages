@@ -19,7 +19,7 @@ export const ModalProvider = ({children}) => {
     const [stay, setStay] = useState(false)
     const [login, setLogin] = useState(false)
     const [signup, setSignup] = useState(false)
-
+    const [logoutModal, setlogOutModal] = useState(false)
 
     const setpartnerFunc = () => {
         setpartner(!partner)
@@ -35,6 +35,9 @@ export const ModalProvider = ({children}) => {
     const setSignupFunc = () => {
         setSignup(!signup)
     }
+    const handleLogoutModal = () => {
+        setlogOutModal(!logoutModal)
+    }
     return (
         <ModalContext.Provider
         value={{
@@ -45,7 +48,9 @@ export const ModalProvider = ({children}) => {
             loginModal: login,
             setLoginModal: setLoginFunc,
             setSignupModal: setSignupFunc,
-            signupModal: signup
+            signupModal: signup,
+            logoutModal,
+            setLogOutModal: handleLogoutModal
         }}
         >
             {children}

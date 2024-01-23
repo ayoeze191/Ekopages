@@ -83,10 +83,10 @@ const StoreCard = ({name, image, available, author, price, id, category, merch_s
               Category: {category === "books"?"Books":"Merch"}
             </div>
             </div>
-            <div className='px-[16px] md:px-[20px] flex items-center font-semibold  md:text-[24px] leading-[21px] md:leading-[28.8px] font-latomedium'>
-            <span> <FaNairaSign /> </span><span className='h-full  pt-1'>{price}</span>
+            <div className='px-[16px] md:px-[20px]  flex items-center font-semibold  md:text-[24px] leading-[21px] md:leading-[28.8px] font-lato'>
+            <span> <FaNairaSign /> </span><span className='h-full  pt-1 font-lato'>{price}</span>
             </div>
-            <div className='flex gap-[32px]  items-center pl-[16px] md:pl-[20px] justify-between w-full '>
+            <div className='flex gap-[32px] font-lato  items-center pl-[16px] md:pl-[20px] justify-between w-full '>
             <img src={Vector15} />
             <AddToCartbtn name={"Add to Cart"} isLoading={(cart.prodid===id && cart.loading)? true:false} add={addTocart}></AddToCartbtn> 
             </div>

@@ -1,6 +1,6 @@
 //compoents
 import LandingPage from "./pages/landingpage/landingPage";
-import {Route,Routes,Navigate,BrowserRouter, Link} from "react-router-dom"
+import {Route,Routes,Navigate,BrowserRouter, Link, useLocation} from "react-router-dom"
 import { BasicRoutes, PrivateRoutes } from "./routes";
 import NavHead from "./components/about/Navhead";
 import Footers from "./components/footer/Footers";
@@ -24,11 +24,19 @@ import 'react-toastify/dist/ReactToastify.css';
 import instance from "./axios";
 import withErrorHandler from "./components/withErrHandler";
 import {GoQuestion} from "react-icons/go"
+import Logout from "./components/ui/Modal/Logout";
 
 export const cookieContext = createContext({cookie: "", setContext: () => {}})
 
 
 function App() {
+  
+
+  useEffect(() => {
+
+      window.scrollTo(0, 0);
+
+  }, [Routes]);
   const [side, setSide] = useState(false)
   const [cookies, setCookie, removeCookie] = useCookies(['eko_session_id']);
   
@@ -52,7 +60,7 @@ function App() {
 
   //(cookies, "app")
   
-  const {partnerModal, setpartnerModal, stayIntouchModal, setstayIntouchModal} = useModalContext()
+  const {partnerModal, setpartnerModal, stayIntouchModal, setstayIntouchModal, logoutModal, setLogOutModal} = useModalContext()
   return (
     <cookieContext.Provider value={{cookie: cookies.eko_session_id !== (undefined || null)? cookies.eko_session_id:null, setContext: setCookieContext }}>
     <div className="bg-[#F6F6F6] flex">
@@ -75,6 +83,20 @@ function App() {
         
       >
         <BecomeAPartner />
+      </Rodal>
+      <Rodal 
+       customStyles={{
+        // background: "#F6F6F6",
+        width: "80%",
+        maxWidth:"668px",
+        height: "fit-content",
+        maxWidth: "1000px",
+        borderRadius: "10px"
+        }}
+        onClose = {setLogOutModal}
+        visible={logoutModal}
+      >
+        <Logout />
       </Rodal>
 
       <Rodal 

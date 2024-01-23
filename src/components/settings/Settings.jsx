@@ -11,12 +11,13 @@ import { useSelector } from 'react-redux';
 import GeneralUiOverlay from '../ui/GeneralUiOverlayLoader';
 import { ClipLoader } from 'react-spinners';
 import  { motion, AnimatePresence } from "framer-motion"
+import { useModalContext } from '../../context/modal/modal';
 
 
 const Settings = () => {
     const [passwordReset, setPasswordReset] = useState(false)
     const {change_profile_pics, profile_pics, isAuth, logout} =  useAuthContext()
-    
+    const {setLogOutModal} = useModalContext()
     const password = useSelector(profile => profile.profile)
     const dispatch = useDispatch()
     const [userprofile, setUserprofile] = useState(profile_pics)
@@ -115,7 +116,7 @@ const Settings = () => {
             </AnimatePresence>
             
 </div>
-                <button className='mr-auto cursor-pointer' onClick={() => logout()}>Log Out</button>
+                <button className='mr-auto cursor-pointer' onClick={setLogOutModal}>Log Out</button>
             </div>
             <div>
             
