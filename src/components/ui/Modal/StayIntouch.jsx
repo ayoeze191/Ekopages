@@ -20,15 +20,15 @@ const StayIntouch = () => {
 
 
   return (
-    <div className='flex rounded-[10px 0px 0px 10px] text-center font-lato'>
-        <div className='w-[50%] bg-[#EFA30C] flex items-center justify-center'>
+    <div className='flex flex-col md:flex-row rounded-[10px 0px 0px 10px] text-center font-lato'>
+        <div className='w-full md:w-[50%] bg-[#EFA30C] flex items-center justify-center'>
 
-        <div>
-            <img src={phoneCall} alt="" />
+        <div className='w-full md:w-[initial] h-[200.12px] md:h-[initial]'>
+            <img src={phoneCall} alt="" className='w-full  h-[100%]'/>
         </div>
 
         </div>
-        <div className='w-[50%] bg-[#F9F9F9] px-[79px] py-[80px]'>
+        <div className='w-full md:w-[50%] bg-[#F9F9F9] px-[20px] py-[20px] md:px-[79px] md:py-[80px]'>
             <div className='font-[700] text-[28px] flex flex-col gap-[1rem] mt-[4px] mb-[40px]'>
             Stay in touch with us
             </div>
