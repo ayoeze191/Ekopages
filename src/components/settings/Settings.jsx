@@ -12,7 +12,9 @@ import GeneralUiOverlay from '../ui/GeneralUiOverlayLoader';
 import { ClipLoader } from 'react-spinners';
 import  { motion, AnimatePresence } from "framer-motion"
 import { useModalContext } from '../../context/modal/modal';
-
+import { toast } from 'react-toastify';
+import instance from '../../axios';
+import { tokenConfig } from '../../Config/Config';
 
 const Settings = () => {
     const [passwordReset, setPasswordReset] = useState(false)
@@ -21,6 +23,25 @@ const Settings = () => {
     const password = useSelector(profile => profile.profile)
     const dispatch = useDispatch()
     const [userprofile, setUserprofile] = useState(profile_pics)
+    const[changing_password, setChanging_password] = useState(false)
+
+    const setPAssword = ( data ) => {
+     setChanging_password(true)
+    instance.post("auth/password/change/", data, tokenConfig())
+    .then((res) => {
+        //(res, "reseted")
+        toast.success("Sucessfully changed password")
+        // dispatch(password_reset(res.data.detail))
+        setChanging_password(false)
+    })
+    .catch((err) => {
+        // dispatch(password_reset_failed(err.response.data))
+        toast.error("Unable to change password")
+        setChanging_password(false)
+        //(err, "error in resetting")
+    })
+}
+
     const handle__profile_picture = (Picture) => {
         // //(Picture)
         change_profile_pics(Picture)
@@ -42,7 +63,12 @@ const Settings = () => {
                 new_password1: values.new_password1,
                 new_password2: values.new_password2   
             }
-            dispatch(setPAssword(data))
+            if(values.password1 == values.new_password1){
+                setPAssword(data)
+            }
+            else{
+                toast.error("Password did not match")
+            }
         }
     })
     // //(userprofile)
@@ -110,7 +136,7 @@ const Settings = () => {
             </div>
             <p className='text-green-600 font-lato '> {password.password_reset_success?password.password_reset_success:null}</p>
             
-            <button className='bg-[#5A0C91] rounded-[5px] font-[500] text-[1rem] py-[0.625rem] w-fit px-[2.125rem] text-[#EFE7F4]' onClick={formik.handleSubmit}>Update {password.passwordResetloading? <ClipLoader color='white' />:null}  </button>
+            <button className='bg-[#5A0C91] rounded-[5px] font-[500] text-[1rem] py-[0.625rem] w-fit px-[2.125rem] text-[#EFE7F4] flex items-center' onClick={formik.handleSubmit}>Update {changing_password == true ? <ClipLoader color='white' size={20} />:null}  </button>
             </div>
             }
             </AnimatePresence>
