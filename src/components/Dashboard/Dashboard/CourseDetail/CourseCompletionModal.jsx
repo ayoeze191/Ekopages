@@ -87,7 +87,7 @@ const CourseCompletionModal = ({ClearInterface, id}) => {
             <button className="bg-[#5A0C91] rounded-[5.5px] px-[20px] py-[13.5px] text-[#EFE7F4] text-[14px] mb-[20px]" onClick={ () => result !== 'passed' ? ClearInterface() : navigate('/dashboard/MyCourses/certifications')}>
               {result == "failed"?"Continue":"See certificate"}
             </button>
-            {<p onClick={()  =>  navigate('/dashboard/MyCourses')} className='cursor:pointer'>Go Back to Courses</p>}
+            {<p onClick={()  =>  ClearInterface()} className='cursor-pointer'>Go Back to Courses</p>}
           </div>
       </div>
     </motion.div>

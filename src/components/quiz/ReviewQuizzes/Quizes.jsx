@@ -28,7 +28,6 @@ const Quizes = () => {
     setEnd(start);
     setStart(start - 4);
   };
-console.log(Reform_to_suitable_form(all_question[3]), Reform_to_suitable_form(all_question[4]), Reform_to_suitable_form(all_question[5]))
   return (
   
       <div>

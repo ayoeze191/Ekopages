@@ -13,6 +13,7 @@ import { swicthFinishedCourseQuiz } from "../../../store/reducers/Quizzes";
 import axios from "axios";
 import { IoCloseCircleOutline } from "react-icons/io5";
 import { Return_Yet_To_Be_answered_Questions } from "../../../Utils/HasAnsweredAllQuizzes";
+import ReviewQuizzes from "./ReviewQuiz/ReviewQuizzes";
 
 // import { Modal } from "antd";
 const CourseQuizes = () => {
@@ -32,39 +33,71 @@ const CourseQuizes = () => {
   const [sucessfully_Submited, setSucessfully_Submited] = useState(false);
   const [showModal, setShowmodal] = useState(false)
   const [moduleCompleted, setModuleCompleted] =  useState(false)
-  const CheckwhetherCourseCompleted = async() => {
+  const [course_completed, setCourse_completed] = useState(null)
+  const [userSelected, setUserSelectedAnswers] = useState(null)
+  const CheckwhetherQuizCompleted = async() => {
+    setloadingQuestions(true)
+    setShowOverlay(true)
+    const course_comp = await CheckwhetherCourseCompleted(course_id)
     
+    if(course_comp == true){
+      const res = await Reviewquiz()
+      const getting_questions = await get_allquizzes()
+      console.log(getting_questions)
+      console.log(res)
+      setloadingQuestions(false)
+      setShowOverlay(false)
+      return setCourse_completed(true)
+    }
+    else{
+      setCourse_completed(false)
+    }
     const res = await instance.get(`services/study_all/${course_id}`, tokenConfig())
     const response = res.data.data.find((item) => item.id == completed_id)
-    // console.log(response.completed)
-    
     if(response.completed == true){
       setShowmodal(response.completed)
       setModuleCompleted(response.completed)
-      console.log("showing overlay")
       setShowOverlay(true)
+      setloadingQuestions(false)
+      const get_quizzes = await get_allquizzes();
+      console.log(get_allquizzes)
+    }
+    else{
+      const get_quizzes = await get_allquizzes();
+      setloadingQuestions(false)
+      setShowOverlay(false)
+      console.log(get_allquizzes)
     }
   }
 
-  const get_allquizzes = () => {
-    setloadingQuestions(true)
-    instance
-      // .get("/Quiz/list_Quizes", tokenConfig())
-      .get(`/Quiz/start/${redirect_id}`, tokenConfig())
-      .then((res) => {
-        setloadingQuestions(false)
-        console.log(res.data)
-        console.log(res.data);
-        setAll_questions(res.data.data);
-      })
-      .catch((err) => {
-        setloadingQuestions(false)
-        console.log(err);
-      });
+
+  const CheckwhetherCourseCompleted = async (id) => {
+    const res = await instance.get(`/services/percent_complete/${id}/`, tokenConfig())
+    return res.data.passed_course
+  }
+
+  const get_allquizzes = async () => {
+    // setloadingQuestions(true)
+    try {
+      const res = await instance.get(`/Quiz/start/${redirect_id}`, tokenConfig())
+      setAll_questions(res.data.data);
+      setloadingQuestions(false)
+    }
+    catch(err) {
+      console.log(err)
+    }
+    return "done"
   };
+  const Reviewquiz = async () => {
+    const res = await instance.get(`/Quiz/Review/${redirect_id}`, tokenConfig())
+    .then((res) => {
+      setUserSelectedAnswers(res.data)
+      setloadingQuestions(false)
+    })
+    return res
+  }
   useEffect(() => {
-    get_allquizzes();
-    CheckwhetherCourseCompleted()
+    CheckwhetherQuizCompleted()
   }, []);
 
   const addAnswer = (id, new_answer) => {
@@ -125,56 +158,7 @@ const CourseQuizes = () => {
     catch(error){
       console.log("error")
     }
-
-    // try {
-    //   for (const item of answers) {
-    //   try{
-    //     const update = await updateAnswers(item.question, item.answer)
-    //     if(update.success){
-    //       ;
-    //     }
-    //     else{
-    //       const response = await instance.post(
-    //         "/Quiz/answer_quiz/",
-    //         { question: item.question, answer: item.answer, quiz: redirect_id },
-    //         tokenConfig()
-    //       );
-    //       const result = await response.data;
-    //     }
-    //   }
-    //   catch(error){
-    //     console.error("Error updating answer", "updateError");
-    //   }
-    //   }
-    //   setLoading(false)
-    //   try{
-    //     setAsCompleted()
-    //   }
-    //   catch(error){
-    //     console.log(error)
-    //   }
-    //   navigate(`/dashboard/MyCourses/${url}`)
-    // } catch (error) {
-    //   console.error("Error making API call", error);
-    //   setLoading(false);
-    // }
   };
-  const updateAnswers = async (question, answer) => {
-    try {
-        const response = await instance.put(
-          `/Quiz/functions/${question}/`,
-          { question: question, answer: answer, quiz: redirect_id },
-          tokenConfig()
-        );
-        const result = await response.data;
-        return {success: true}
-      }
-     
-    catch (error) {
-      console.error("Error making API call", error);
-      return {failed: error}
-    }
-  }
  
   const setAsCompleted = async() => {
     
@@ -188,18 +172,6 @@ const CourseQuizes = () => {
     }
   }
 
-  // const Check = () => {
-  //   instance.get('/dashboard-quizzes/quiz/review/', tokenConfig())
-  //     .then((res) => {
-  //       setUserSelectedAnswers(res.data.review_data)
-  //       setLoading(false);
-  //     setShowOverlay(true);
-  //     setSucessfully_Submited(true);
-  //     })
-  //     .catch((err) => {
-  //     })
-  // }
-
   useEffect(() => {
     
     
@@ -208,10 +180,6 @@ const CourseQuizes = () => {
   // function that checks if the user has done the test before
 
 
-  // const ClearInterface = () => {
-  //   setShowOverlay(false)
-  //   setSucessfully_Submited(false)
-  // }
   
   const redo = () => {
     setShowmodal(false)
@@ -220,7 +188,7 @@ const CourseQuizes = () => {
   const cont = () => {
     navigate(`/dashboard/MyCourses/${url}`)
   }
-
+  console.log(course_completed)
   return (
     <Wrapper overlay={showOverlay}>
       {loading &&  <div className="fixed    flex justify-center items-center top-0 font-lato w-full h-full">
@@ -233,7 +201,7 @@ const CourseQuizes = () => {
         </div>
       </div>}
      { showModal && <Modal redo={redo} cont={cont} />  }
-      <div>
+     <div>
         <section className=" h-[10.625rem] flex justify-center items-center font-lato bold">
           <div className="w-full  lg:px-0 px-6 max-w-[77rem] py-4 mx-auto h-fit px-7  text-[#444444] flex flex-col md:flex-row items-center justify-between">
             {" "}
@@ -255,7 +223,7 @@ const CourseQuizes = () => {
           </div>
         </section>
         <div className="section flex flex-col gap-[4.125rem] mb-10">
-          {loadingQuestions?<ClipLoader />:all_question.length == 0 ? "No Questions Yet":all_question.map((quest, index) => (
+          {loadingQuestions?<ClipLoader />: course_completed == false ? all_question.length == 0 ? "No Questions Yet":all_question.map((quest, index) => (
             <Quiz
               {...Reform_to_suitable_form(quest)}
             //   selectedAnswer = {userSelected.length > 0 && userSelected.find((answer) => answer.question_text === Reform_to_suitable_form(quest).question).user_answer}
@@ -263,14 +231,14 @@ const CourseQuizes = () => {
               number={index + 1}
               addAnswer={addAnswer}
             />
-          ))}
+          )):course_completed == true ? <ReviewQuizzes all_question={all_question} selectedAnswers={userSelected}/> : "No Quizzes"}
           <div className="flex justify-between w-full px-0">
             {all_question.length  > 0? (
               <button
-                onClick={HandleSubmit}
+                onClick={course_completed?() => navigate(`/dashboard/MyCourses/${url}`):HandleSubmit}
                 className=" text-white text-[17.6px] md:text-[1rem] font-[700] py-[10.5px] px-[33px]  md:px-0 md:w-[216px] rounded-[8px]  border-solid border-2 bg-[#5A0C91]  font-lato w-fit mx-auto"
               >
-                Complete Quizzes
+                {course_completed?"Back to Quiz" :" Complete Quizzes"}
               </button>
             ) : null}
           </div>
@@ -318,3 +286,7 @@ const Modal = ({ redo, cont}) => {
     </div>
   )
 }
+
+
+
+

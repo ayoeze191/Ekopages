@@ -218,8 +218,7 @@ const CourseDetails = () => {
                   (mod) => mod.id === current && mod
                 ).title.split("(")[0]
               }
-              </div>
-              
+              </div>              
             </p>
 }
           </div>

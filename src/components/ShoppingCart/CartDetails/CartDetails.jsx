@@ -108,8 +108,15 @@ const Totalfunc = () => {
       
   let  OverallTotalCost = parseInt(total)
   if(Locations) {
-      const list =  Locations.map(loc => loc.id == formik.values.shipping_location?parseInt(loc.price):0)
-      OverallTotalCost += list[0]
+    console.log(Locations)
+      const list =  Locations.find(loc => loc.id == formik.values.shipping_location)
+      console.log(list)
+      if(list){
+        OverallTotalCost += parseInt(list.price)
+      }
+      else{
+        OverallTotalCost += 0
+      }
   }
   setOverAmount(OverallTotalCost)
 }
@@ -119,10 +126,7 @@ const Totalfunc = () => {
 
  
 
-useEffect(() => {
-    Totalfunc()
-    //(initialbillingDetails, "checking")
-}, )
+
 
 
 
@@ -180,6 +184,11 @@ amount:OverallAmount,
 email
       })
     }})
+
+    useEffect(() => {
+      Totalfunc()
+      //(initialbillingDetails, "checking")
+  }, [formik.values.shipping_location])
 
 
 
