@@ -16,6 +16,12 @@ import { toast } from 'react-toastify'
 import Certifications from '../../components/Dashboard/Dashboard/certifications/Certifications'
 const Dashboardcontainer = () => {
   const {isAuth} = useAuthContext()
+  const loc = window.location
+
+  useEffect(() => {
+      window.scrollTo(0, 0);
+
+  }, [ loc]);
   // const navigate = useNavigate()
   //   useEffect(() => {
   //     isAuth === false && navigate('/')

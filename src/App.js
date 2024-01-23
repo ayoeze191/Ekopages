@@ -30,13 +30,12 @@ export const cookieContext = createContext({cookie: "", setContext: () => {}})
 
 
 function App() {
-  
+  const loc = window.location
 
   useEffect(() => {
-
       window.scrollTo(0, 0);
 
-  }, [Routes]);
+  }, [Routes, loc]);
   const [side, setSide] = useState(false)
   const [cookies, setCookie, removeCookie] = useCookies(['eko_session_id']);
   

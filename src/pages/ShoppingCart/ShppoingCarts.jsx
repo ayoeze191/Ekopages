@@ -6,7 +6,12 @@ import { get_cart } from '../../store/Actions/Cart'
 
 
 const ShppoingCarts = () => {
-  
+  const loc = window.location
+
+  useEffect(() => {
+      window.scrollTo(0, 0);
+
+  }, [ loc]);
 
 
   return (

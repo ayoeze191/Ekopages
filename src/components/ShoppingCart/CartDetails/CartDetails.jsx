@@ -107,8 +107,9 @@ const [OverallAmount, setOverAmount] = useState(total?total:0)
 const Totalfunc = () => {
       
   let  OverallTotalCost = parseInt(total)
+
   if(Locations) {
-    console.log(Locations)
+    console.log(formik.values.shipping_location)
       const list =  Locations.find(loc => loc.id == formik.values.shipping_location)
       console.log(list)
       if(list){
@@ -123,9 +124,6 @@ const Totalfunc = () => {
   useEffect(() => {
       billing_locations()
   }, [])
-
- 
-
 
 
 
@@ -184,11 +182,10 @@ amount:OverallAmount,
 email
       })
     }})
-
-    useEffect(() => {
-      Totalfunc()
-      //(initialbillingDetails, "checking")
-  }, [formik.values.shipping_location])
+  useEffect(() => {
+    Totalfunc()
+  }, [ formik.values.shipping_location, total])
+ 
 
 
 

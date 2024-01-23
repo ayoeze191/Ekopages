@@ -1,10 +1,17 @@
-import React from 'react'
+import React, {useEffect} from 'react'
 import ProjectContainer from '../../components/Project/ProjectContainer'
 import { Route, Routes } from 'react-router-dom'
 import Sdg from '../../components/Project/sdg/Sdg'
 import SdgArt from '../../components/Project/SdgArt/SdgArt'
+
 import TeachHer from '../../components/Project/TeachHer/TeachHer'
 const ProjectsContainer = () => {
+  const loc = window.location
+
+  useEffect(() => {
+      window.scrollTo(0, 0);
+
+  }, [ loc]);
   return (
     <div>
         <Routes>
