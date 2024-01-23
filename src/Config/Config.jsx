@@ -12,8 +12,7 @@ import axios from "axios"
     if(access !== null){
     config.headers["Authorization"] = `Bearer ${access}`;
     }
-    // console.log(access)
-    // //(config)
+
     return config;
   }
 
@@ -28,7 +27,7 @@ import axios from "axios"
       if(access !== null){
       config.headers["Authorization"] = `Bearer ${access}`;
       }
-      console.log(config)
+     
       return config;
     }
 
