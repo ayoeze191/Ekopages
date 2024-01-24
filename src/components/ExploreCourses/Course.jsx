@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react'
 import star from "./../../assets/star.svg"
 import ExploreCoursePicture from  "./../../assets/ExploreCoursePicture.svg"
 import instance from '../../axios'
-import { ClipLoader } from 'react-spinners'
+import { BeatLoader, ClipLoader } from 'react-spinners'
 import { useNavigate } from 'react-router-dom'
 import { tokenConfig } from '../../Config/Config'
 import axios from 'axios'
@@ -11,20 +11,25 @@ const Course = ({picture, subject, Tutor, price, stars, modules, id, handleSelec
     const navigate = useNavigate()
     const [enrolled, setEnrolled] = useState(false)
     const [completed, setComplted] = useState(false)
+    const [loading, setLoading] = useState(false)
   const getRegistered = async () => {
     const Response = await axios.get(`https://ekopages-production.up.railway.app/services/study_all/${id}`, tokenConfig())
         if(await get_completion(id)){
               setEnrolled(false)
+              setLoading(false)
               return setComplted(true)
         }
         else if(Response.data.data.length > 0){
           setComplted(false)
+          setLoading(false)
           return setEnrolled(Response.data.data.length > 0)
         }
               setEnrolled(false)
+              setLoading(false)
               setComplted(false)
     .catch((error) =>{
         console.log(error)
+        setLoading(false)
     })
   }  
 
@@ -62,7 +67,7 @@ const Course = ({picture, subject, Tutor, price, stars, modules, id, handleSelec
             <p className='font-[500] text-[22px] leading-[26px] font-lato'>{price}</p>
             <button className={`${!completed ? "bg-[#5A0C91]":"bg-green-600"} text-[#FFFFFF]  font-[400] leading-[18.24px] px-[18.92px] py-[9.46px] rounded-[9.6px] font-lato mb-8`} onClick={() =>{ 
                 enrolled?navigate(`/dashboard/MyCourses/${id}`):completed?navigate(`/dashboard/MyCourses/${id}`):
-                handleSelect(id)}}>{enrolled? "Continue Course": completed === true ?"Done": "Start learning"}</button>
+                handleSelect(id)}}>{loading?<BeatLoader />:enrolled? "Continue Course": completed === true ?"Done": "Start learning"}</button>
         </div>
     </div>
   )
