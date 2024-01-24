@@ -1,22 +1,56 @@
-import React from 'react'
+import React, { useRef, useState } from 'react'
 import AuthButton from '../../authButton'
 import InputField from '../../inputField'
 import { useFormik } from 'formik'
 import phoneCall from "./../../../assets/modal/phoneCall.png"
+import emailjs from '@emailjs/browser';
+import { toast } from 'react-toastify'
+// import mjml2html from 'mjml'
+
+
+
+
+
+
 const StayIntouch = () => {
-    
-    const formik = useFormik({
-        initialValues: {
-          "username": "",
-            "email": "",
-            "password": ""
-        },
-        // validate,
+    const [loading, setLoading] = useState(false)
+    const form = useRef()
+    // const formik = useFormik({
+    //     initialValues: {
+    //       "user_name": "",
+    //         "user_email": "",
+    //         "message": ""
+    //     },
+    //     // validate,
         
-        // onSubmit: values => {
-            // login(values)
-        // },
-    }) 
+    //     onSubmit: values => {
+    //       console.log("handling")
+    //       handleSubmit(values)
+    //     },
+    // }) 
+
+    const handleSubmit = (e) => {
+      e.preventDefault()
+      console.log("logging")
+      setLoading(true)
+      emailjs.sendForm('service_wre4psm', 'template_kjvcbf2', form.current, 'OaSBWydBNTXMiqT70')
+      .then((result) => {
+        console.log("successfull")
+      setLoading(false)
+        toast.success("Your message has been delivered, thank you.")
+        form.current = null
+          console.log(result.text);
+      }, (error) => {
+        console.log("failed")
+      setLoading(false)
+        toast.error("failed")
+      setLoading(false)
+
+          console.log(error.text);
+      });
+  };
+
+
 
 
   return (
@@ -33,21 +67,20 @@ const StayIntouch = () => {
             Stay in touch with us
             </div>
 
-            <form action="" className='flex flex-col gap-[1.5rem]'>
+            <form action="" className='flex flex-col gap-[1.5rem]' onSubmit={handleSubmit} ref={form}>
             <section className="flex flex-col">
-            <InputField type="text" onChangeHandler={formik.handleChange} value={formik.values.username} fieldName={"Name"} name="name" id="Name" placeholder={"Enter your name here"}></InputField>
+            <input className='p-[1rem] border-[1px] border-solid border-[#CCB4DD] bg-[inherit] rounded-[2px]' type="text" name="user_name" id="Name" placeholder={"Enter your full  name here"}/>
             {/* <p className="text-[12px] text-red-600 mt-4">{formik.touched.username && formik.errors.username ? formik.errors.username:null}</p> */}
             </section>
-
             <section className="flex flex-col">
-            <InputField type="email" onChangeHandler={formik.handleChange} value={formik.values.email} fieldName={"Email Address"} name="email" id="email" placeholder={"example@gmail.com"}></InputField>
+            <input className='p-[1rem] border-[1px] border-solid border-[#CCB4DD] bg-[inherit] rounded-[2px]' type="email"   name="user_email" id="email" placeholder={"example@gmail.com"}></input>
             {/* <p className="text-[12px] text-red-600 mt-4">{formik.touched.username && formik.errors.username ? formik.errors.username:null}</p> */}
             </section>
             <section className='flex flex-col'>
                 <div className='font-[600] text-left text-[1rem] font-lato mb-[8px] '>Message</div>
-            <textarea name="message" id="" cols="30" rows="10" placeholder='Type your message here' className='p-[1rem] border-[1px] border-solid border-[#CCB4DD] bg-[inherit] rounded-[2px]'></textarea>
+            <textarea name="message" id="" cols="30" rows="10" placeholder='Type your message here'  className='p-[1rem] border-[1px] border-solid border-[#CCB4DD] bg-[inherit] rounded-[2px]'></textarea>
             </section>
-            <AuthButton isLoading={false} name={"Send message"}/>
+            <AuthButton isLoading={loading} name={"Send message"}/>
             </form>
         </div>
     </div>
