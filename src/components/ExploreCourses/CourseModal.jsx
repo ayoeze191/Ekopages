@@ -20,8 +20,9 @@ const CourseModal = ({picture, subject, Tutor, price, stars, modules, id,handleC
         axios.post(`https://ekopages-production.up.railway.app/services/enroll/${id}/`, null,tokenConfig())
         .then((res) => {
             console.log(res)
+            toast.success("successfully enrolled for a course")
             setTimeout(() => setEnrolled(true), 500) 
-            // navigate('/dashboard')
+            navigate('/dashboard')
         })
         .catch((error) => {
             console.log(error.response)
@@ -84,8 +85,6 @@ const CourseModal = ({picture, subject, Tutor, price, stars, modules, id,handleC
       </div>
       </div>
       </div>
-
-
       </motion.div>
       </div>
 }

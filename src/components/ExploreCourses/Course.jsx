@@ -14,6 +14,7 @@ const Course = ({picture, subject, Tutor, price, stars, modules, id, handleSelec
     const [loading, setLoading] = useState(false)
   const getRegistered = async () => {
     setLoading(true)
+    try{
     const Response = await axios.get(`https://ekopages-production.up.railway.app/services/study_all/${id}`, tokenConfig())
         if(await get_completion(id)){
               setEnrolled(false)
@@ -28,10 +29,12 @@ const Course = ({picture, subject, Tutor, price, stars, modules, id, handleSelec
               setEnrolled(false)
               setLoading(false)
               setComplted(false)
-    .catch((error) =>{
-        console.log(error)
-        setLoading(false)
-    })
+      }
+    catch(error){
+      setEnrolled(false)
+      setLoading(false)
+      setComplted(false)
+    }
   }  
 
   const get_completion = async (id) => {
@@ -73,5 +76,4 @@ const Course = ({picture, subject, Tutor, price, stars, modules, id, handleSelec
     </div>
   )
 }
-
 export default Course
