@@ -13,6 +13,7 @@ const Course = ({picture, subject, Tutor, price, stars, modules, id, handleSelec
     const [completed, setComplted] = useState(false)
     const [loading, setLoading] = useState(false)
   const getRegistered = async () => {
+    setLoading(true)
     const Response = await axios.get(`https://ekopages-production.up.railway.app/services/study_all/${id}`, tokenConfig())
         if(await get_completion(id)){
               setEnrolled(false)
@@ -67,7 +68,7 @@ const Course = ({picture, subject, Tutor, price, stars, modules, id, handleSelec
             <p className='font-[500] text-[22px] leading-[26px] font-lato'>{price}</p>
             <button className={`${!completed ? "bg-[#5A0C91]":"bg-green-600"} text-[#FFFFFF]  font-[400] leading-[18.24px] px-[18.92px] py-[9.46px] rounded-[9.6px] font-lato mb-8`} onClick={() =>{ 
                 enrolled?navigate(`/dashboard/MyCourses/${id}`):completed?navigate(`/dashboard/MyCourses/${id}`):
-                handleSelect(id)}}>{loading?<BeatLoader />:enrolled? "Continue Course": completed === true ?"Done": "Start learning"}</button>
+                handleSelect(id)}}>{loading ? <BeatLoader />:enrolled? "Continue Course": completed === true ?"Done": "Start learning"}</button>
         </div>
     </div>
   )
