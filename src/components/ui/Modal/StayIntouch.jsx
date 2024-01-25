@@ -5,6 +5,7 @@ import { useFormik } from 'formik'
 import phoneCall from "./../../../assets/modal/phoneCall.png"
 import emailjs from '@emailjs/browser';
 import { toast } from 'react-toastify'
+import {useModalContext} from "./../../../context/modal/modal"
 // import mjml2html from 'mjml'
 
 
@@ -15,6 +16,7 @@ import { toast } from 'react-toastify'
 const StayIntouch = () => {
     const [loading, setLoading] = useState(false)
     const form = useRef()
+    const {setstayIntouchModal} = useModalContext()
     // const formik = useFormik({
     //     initialValues: {
     //       "user_name": "",
@@ -38,6 +40,7 @@ const StayIntouch = () => {
         console.log("successfull")
       setLoading(false)
         toast.success("Your message has been delivered, thank you.")
+        setstayIntouchModal()
         form.current = null
           console.log(result.text);
       }, (error) => {
@@ -69,6 +72,7 @@ const StayIntouch = () => {
 
             <form action="" className='flex flex-col gap-[1.5rem]' onSubmit={handleSubmit} ref={form}>
             <section className="flex flex-col">
+            <div className='font-[600] text-left text-[1rem] font-lato mb-[8px] '>First Name</div>
             <input className='p-[1rem] border-[1px] border-solid border-[#CCB4DD] bg-[inherit] rounded-[2px]' type="text" name="user_name" id="Name" placeholder={"Enter your full  name here"}/>
             {/* <p className="text-[12px] text-red-600 mt-4">{formik.touched.username && formik.errors.username ? formik.errors.username:null}</p> */}
             </section>
