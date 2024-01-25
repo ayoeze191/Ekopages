@@ -82,10 +82,10 @@ const Footers = () => {
             <p className='max-w-xs font-[Lato] text-[#4A4A4A] mb-5 font-[400] text-[14px] md:text-[1rem]'>Eko Pages is a publishing outfit that immerses children into the act of environmental sustainability with our top books, stories and publications.   </p>
     <p className='lg:font-400 lg:font-[700] mb-[1.5rem] hidden lg:block'>Follow us on social media</p>
     <div  className='lg:flex gap-8 mx-auto hidden  lg:mx-0'>
-        <div><img src={twitter} alt="" srcset="" /></div>
-        <div><img src={instagram} alt='' /></div>
-        <div><img src={facebook} alt='' /></div>
-        <div><img src={linkedln} alt=""/></div>
+        <a href='https://www.twitter.com/ekopages_'><img src={twitter} alt="" srcset="" /></a>
+        <a href='https://www.instagram.com/ekopages_?igsh=MWV0Zzlua2EwMHUyzQ=='><img src={instagram} alt='' /></a>
+        <a href='https://www.facebook.com/ekopages'><img src={facebook} alt='' /></a>
+        <a href='https://www.linkedin.com/company/ekopages/'><img src={linkedln} alt=""/></a>
         <div></div>
     </div>
         </div>
@@ -103,11 +103,11 @@ const Footers = () => {
     <section className='flex flex-col lg:hidden'>
     <p className='lg:font-400 lg:font-[700] mb-[1.5rem] '>Follow us on social media</p>
     <div  className='flex gap-[1.75rem] mx-auto  lg:mx-0'>
-        <div><img src={twitter} alt="" srcset="" /></div>
-        <div><img src={instagram} alt='' /></div>
-        <div><img src={facebook} alt='' /></div>
-        <div><img src={linkedln} alt=""/></div>
-        <div></div>
+        <a href='https://www.twitter.com/ekopages'><img src={twitter} alt="" srcset="" /></a>
+        <a href='https://www.instagram.com/ekopages_?igsh=MWV0Zzlua2EwMHUyzQ=='><img src={instagram} alt='' /></a>
+        <a href='https://www.facebook.com/ekopages'><img src={facebook} alt='' /></a>
+        <a href='https://www.linkedin.com/company/ekopages/'><img src={linkedln} alt=""/></a>
+        <a href=''></a>
     </div>
     </section>
         

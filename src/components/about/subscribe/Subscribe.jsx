@@ -6,7 +6,7 @@ const Subscribe = () => {
     <div className='text-[#ffffff] relative box-border flex flex-col items-center justify-center text-center flex-1 h-full border-solid border-black p-0'>
         <img src={bell} alt="" className='absolute w-[8rem] md:w-initial -top-14 -right-8'/>
         <div className='bg-[#5A0C91] rounded-[5px]'>
-        <div className='px-[5rem] py-[2.5rem]'>
+        <div className='px-[2rem] md:px-[5rem] py-[2.5rem]'>
             <h1 className='mb-[1rem] lg:text-[1rem] font-[600] md:text-[1.5rem]'>Subscribe to our Newslettter</h1>
             <p className='mb-[2rem] text-[10px] lg:text-[12px] font-[500]'>We would send you all the latest developments in
 the world of Edtech. </p>

@@ -5,6 +5,12 @@ import instance from '../../../axios'
 import OtherTales from './OtherEkotales/OtherTales'
 import { useParams } from 'react-router-dom'
 const EkoTalesDetails = () => {
+  const loc = window.location
+
+  useEffect(() => {
+    window.scrollTo(0, 0);
+
+}, [ loc]);
   const [loading, setLoading] = useState(true)
   const [tale, setTale] = useState(null);
   const [error, setError] = useState(false);
