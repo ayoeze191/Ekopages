@@ -136,8 +136,8 @@ const Settings = () => {
             </div>
 
             <div className='flex gap-[0.75rem] items-center'>
-                <div className='rounded-full border-[2px] border-solid border-[#888888] w-[3.75rem] h-[3.75rem] flex items-center justify-center'>
-                    <img src={userprofile?userprofile:bx_user} alt="" className='w-full h-full rounded-full object-cover' />
+                <div className='rounded-full border-[2px] bg-center border-solid border-[#888888] w-[3.75rem] h-[3.75rem] flex items-center justify-center'>
+                    <img src={userprofile?userprofile:bx_user} alt="" className='w-full h-full rounded-full object-center bg-center' />
                 </div>
                 <div className=''>
                 <label htmlFor="profpics"><div className=' border-solid border-[1px] border-[#888888] px-[0.5rem] font-[400] text-[1rem] text-[#232323] flex items-center gap-[0.5rem]'> <p>Upload New</p>

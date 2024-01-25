@@ -4,7 +4,7 @@ import { useAuthContext } from '../../../context/auth/auth'
 import { useModalContext } from '../../../context/modal/modal'
 
 const Logout = () => {
-    const {logout} = useAuthContext()
+    const {logout, } = useAuthContext()
     const {setLogOutModal} = useModalContext()
   return (
     <div className='bg-white flex flex-col gap-[110px] items-center '>
