@@ -111,7 +111,7 @@ const CartDetails = () => {
       billing_locations()
   }, [])
 
-
+console.log(initialbillingDetails)
 
 const formik = useFormik({
   enableReinitialize: true,
@@ -126,7 +126,7 @@ const formik = useFormik({
     "state": initialbillingDetails?(initialbillingDetails.state.length > 0 ?initialbillingDetails.city: "lagos"):"lagos",
     "phone_number": initialbillingDetails?initialbillingDetails.phone_number:"",
     "email": initialbillingDetails?initialbillingDetails.email:null,
-    "shipping_location": initialbillingDetails?initialbillingDetails.shipping_location:null,
+    "shipping_location":null,
     "amount": total?total:null,
     "Order_Notes": initialbillingDetails?initialbillingDetails.Order_Notes:"",
   },
