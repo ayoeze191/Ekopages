@@ -1,7 +1,7 @@
 //compoents
 import LandingPage from "./pages/landingpage/landingPage";
 import {Route,Routes,Navigate,BrowserRouter, Link, useLocation} from "react-router-dom"
-import { BasicRoutes, PrivateRoutes } from "./routes";
+import { BasicRoutes,  } from "./routes";
 import NavHead from "./components/about/Navhead";
 import Footers from "./components/footer/Footers";
 import { useAuthContext } from "./context/auth/auth";
@@ -37,6 +37,7 @@ function App() {
 
   }, [Routes, loc]);
   const [side, setSide] = useState(false)
+  var currentDate = new Date();
   const [cookies, setCookie, removeCookie] = useCookies(['eko_session_id']);
   
   const {isAuth, update_token} = useAuthContext()
@@ -49,15 +50,12 @@ function App() {
   }
 
   const setCookieContext = () => {
-      setCookie('eko_session_id', generateRandomString(15), { path: '/' })
-
+      setCookie('eko_session_id', generateRandomString(15), { path: '/' }, {expires: currentDate.setDate(currentDate.getDate() + 5)})
   }
 
   if(!cookies.eko_session_id) {
     setCookieContext()
   }
-
-  //(cookies, "app")
   
   const {partnerModal, setpartnerModal, stayIntouchModal, setstayIntouchModal, logoutModal, setLogOutModal} = useModalContext()
   return (
@@ -134,9 +132,7 @@ function App() {
             BasicRoutes.map((eachRoutes, id) => <Route key={id} path={eachRoutes.path} element={eachRoutes.component}></Route>
             )
           }
-          {
-            isAuth?PrivateRoutes.map((eachRoutes, id ) => <Route key={id} path={eachRoutes.path} element={eachRoutes.component} /> ):null
-          }
+         
       </Routes>
       <Footers /> 
       </div>

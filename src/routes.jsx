@@ -116,10 +116,5 @@ export const BasicRoutes = [
     
 ]
 
-export const PrivateRoutes = [
-    {
-        path: '/dashboard/*',
-        component: <Dashboardcontainer />
-    }
-]
+
 

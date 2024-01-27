@@ -1,11 +1,12 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { Formik, Field, Form, useFormik } from 'formik'
 import { validate } from '../../../validate/validate'
 import { useAuthContext } from '../../../../context/auth/auth'
+import { useModalContext } from '../../../../context/modal/modal'
 const BillingDetails = ({formik}) => {
-  const {isAuth} = useAuthContext()  
-  
-
+  const {isAuth, } = useAuthContext()  
+  const [create_an_account, setCreate_an_account] = useState(false)
+  const {setSignupModal} = useModalContext()
   return (
     <div className='font-lato w-full md:w-[57%]'>
         <div className='font-[400] text-[1rem]'>
@@ -72,11 +73,12 @@ const BillingDetails = ({formik}) => {
             <input type="text" className='py-[1rem] px-[1.5rem] rounded-[5px] border-[#9E9E9E] border-[1px] bg-inherit' name='email' value={formik.values.email} onChange={formik.handleChange}/>
             {formik.errors.email && formik.touched.email ? <p className="text-[12px] text-red-500 mt-4">{ formik.errors.email}</p>:null}
             </div>
-            {/* <div className='flex gap-[1rem] items-center'>
+            {/* {isAuth && <div className='flex gap-[1rem] items-center'>
                 
-            <input type="checkbox" name="create_Account" value={formik.values.create_Account} className='h-[2rem] w-[2rem]' onChange={formik.handleChange}/>
+            <input type="checkbox" name="create_Account" checked={create_an_account} className='h-[2rem] w-[2rem]' onChange={() => setCreate_an_account(!create_an_account)  }/>
             <label htmlFor="create Account">create Account</label>
-            </div> */}
+            </div>
+} */}
             {/* <div className='flex gap-[1rem] items-center'>
             <input type="checkbox" value={'Deliver to a Different Address?'} name="Deliver to a Different Address?" className='h-[2rem] w-[2rem]' />
             <label htmlFor="Deliver to a Different Address?">Deliver to a Different Address?</label>
