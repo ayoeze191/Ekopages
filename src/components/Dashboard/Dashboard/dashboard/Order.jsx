@@ -11,5 +11,4 @@ const Order = ({id, date_created, paid_on, status}) => {
     </div>
   )
 }
-
 export default Order
