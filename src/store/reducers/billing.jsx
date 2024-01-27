@@ -10,7 +10,9 @@ const initialState = {
     loading: false, 
     success: false,
     error: "",
-    url: ""
+    url: "",
+    shipping_locations:[],
+    selected_shipping_locations: null,
 }  
 // report item damage
 const billingSlice = createSlice({
@@ -27,14 +29,19 @@ const billingSlice = createSlice({
             state.error = action.payload
         },
         swictchUserCourseUrl: (state, action) => {
-            state.url = action.payload
-            
+            state.url = action.payload   
+        },
+        setbillinglocations: (state, action) => {
+            state.shipping_locations = action.payload
+        },
+        selectbillingLocation: (state, action) => {
+            state.selected_shipping_locations = action.payload
         }
     }
 })
 
 
-export const {sending_bill, billing_sent, billing_error, swictchUserCourseUrl} = billingSlice.actions
+export const {sending_bill, billing_sent, billing_error, swictchUserCourseUrl, selectbillingLocation, setbillinglocations} = billingSlice.actions
 
 
 export default billingSlice.reducer;

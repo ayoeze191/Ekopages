@@ -46,8 +46,9 @@ export const get_cart = (isauth) => (dispatch) => {
 
 
 
-export const Add_to_cart = (id, isauth) => (dispatch) => {
+export const Add_to_cart = (id, isauth, amount) => (dispatch, getState) => {
     const data = {"product": id}
+    const cartItems = getState().cart.cart
 
     if(isauth.isAuth) {
     dispatch(adding__to__Cart(id))
@@ -142,7 +143,7 @@ export const get_cart_total = (isauth) => (dispatch) => {
         })
         .catch(err => {
             //(err)
-        } )
+        })
     }
     else {
         instance.get(`unregistered-cart/total/${isauth.session_id}/`, VisitorTokenConfig())

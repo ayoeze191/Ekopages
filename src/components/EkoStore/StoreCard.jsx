@@ -29,7 +29,7 @@ const StoreCard = ({name, image, available, author, price, id, category, merch_s
       isAuth,
       session_id: cookie
   }
-      dispatch(Add_to_cart(id, authVerification))
+      dispatch(Add_to_cart(id, authVerification, price))
   }
 
   if(cart.success) {
@@ -44,31 +44,6 @@ const StoreCard = ({name, image, available, author, price, id, category, merch_s
     // cart.loading?<GeneralUiOverlay /> :
     <div className='
     flex items-center rounded-[10px] bg-[#EFE7F4] h-[184px] lg:h-[210px] xl:h-[266px] mx-auto max-w-[400px] w-full '>
-        {/* <div className='w-full'>
-            {category !== 'books'?<div className='relative mb-[2rem] -mt-24 w-[8rem] h-[8rem] md:w-[9rem] md:h-[9rem] mx-auto bg-white px-6 py-6'><img src={image}  className=' w-full h-full' /></div>:
-            <div className='relative mb-[2rem] -mt-24 w-[8rem] h-[8rem] md:w-[9rem] md:h-[9rem] mx-auto '><img src={image}  className=' w-full h-full' /></div>}
-            <div className='flex justify-between font-lato font-[700] text-1.47rem mb-[0.5rem]'>{name}<p><img src={Vector15} /></p></div>
-           {merch_size && <div className='flex justify-between font-lato font-[700] text-1.47rem mb-[0.5rem]'>{merch_size}</div>}
-          <div className='flex gap-2'> {myArray.map((err) => <div className=''><img src={err} /></div> )}</div>
-
-            {category == "books"&&<div className='font-lato font-[400] text-[1.125rem]'>Written by: {author}</div>}
-            <div className='font-lato font-[500] text-[1.125rem] font-lato '>
-              Category: {category}
-            </div>
-            <div className='text-[0.8rem] mb-[1rem]'>{available?'In Stock': ''}</div>
-        </div> */}
-        
-        {/* <div className='flex justify-between w-full w-full border-t-solid pt-[2.68rem] border-t-[rgba(90, 12, 145, 0.5)] border-t-[0.15rem]'> */}
-            {/* <div className='font-[500] text-[1.68rem] font-lato'>
-                #{price}
-            </div> */}
-            {/* <button className='px-[1.18rem] bg-[#5A0C91] text-[#ffffff] py-[0.656rem] rounded-[0.3125rem] font-lato font-[500] text-[1rem]' onClick={() => dispatch(Add_to_cart(id))}>
-            
-            </button> */}
-            
-            {/* <AddToCartbtn name={"Add to Cart"} isLoading={(cart.prodid===id && cart.loading)? true:false} add={addTocart}></AddToCartbtn> */}
-        {/* </div> */}
-
             <div className='w-[130.05px] h-[184px] lg:w-[160px] lg:h-[210px] xl:w-[188px] xl:h-[266px] '>
               <img src={image} className='w-full h-full object-cover' alt={name} style={{
                 'borderRadius': "10px 0px 0px 10px"

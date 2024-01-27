@@ -38,18 +38,17 @@ const BillingDetails = ({formik}) => {
             </div>
             <div className='flex flex-col gap-[0.5rem]' >
             Street Address <input type="text" name='street_address' className='py-[1rem] px-[1.5rem] rounded-[5px] border-[#9E9E9E] border-[1px] bg-inherit' value={formik.values.street_address} onChange={formik.handleChange} placeholder='House number and street name'/>
+            {formik.errors.street_address && formik.touched.street_address ? <p className="text-[12px] text-red-500 mt-4">{ formik.errors.street_address}</p>:null}
             </div>
             <div className='flex flex-col gap-[0.5rem]'>
             Apartment, Suit or Unit (optional)
             <input type="text" name='apartment' className='py-[1rem] px-[1.5rem] rounded-[5px] border-[#9E9E9E] border-[1px] bg-inherit' onChange={formik.handleChange} value={formik.values.apartment}/>
+            
             </div>
             <div className='flex flex-col gap-[0.5rem]'>
             Town / City
-            <select className='py-[1rem] px-[1.5rem] rounded-[5px] border-[#9E9E9E] border-[1px] bg-inherit pr-[1.26rem]' name='city' onChange={formik.handleChange} value={formik.values.city}>
-            <option value="ipod">Lagos</option>
-            <option value="radio">ondo</option>
-            <option value="computer">akure</option>
-            </select>
+            <input type="text" name='city' className='py-[1rem] px-[1.5rem] rounded-[5px] border-[#9E9E9E] border-[1px] bg-inherit' onChange={formik.handleChange} value={formik.values.city}/>
+            {formik.errors.city && formik.touched.city ? <p className="text-[12px] text-red-500 mt-4">{ formik.errors.city}</p>:null}
             </div>
             <div className='flex flex-col gap-[0.5rem]'>
             State
@@ -66,16 +65,18 @@ const BillingDetails = ({formik}) => {
             <div className='flex flex-col gap-[0.5rem]'>
             Phone number 
             <input type="text" name="phone_number" id="" className='py-[1rem] px-[1.5rem] rounded-[5px] border-[#9E9E9E] border-[1px] bg-inherit' value={formik.values.phone_number} onChange={formik.handleChange}/>
+            {formik.errors.phone_number && formik.touched.phone_number ? <p className="text-[12px] text-red-500 mt-4">{ formik.errors.phone_number}</p>:null}
             </div>
             <div className='flex flex-col gap-[0.5rem]'>
             Email Address {isAuth ? ("optional"):""}
             <input type="text" className='py-[1rem] px-[1.5rem] rounded-[5px] border-[#9E9E9E] border-[1px] bg-inherit' name='email' value={formik.values.email} onChange={formik.handleChange}/>
+            {formik.errors.email && formik.touched.email ? <p className="text-[12px] text-red-500 mt-4">{ formik.errors.email}</p>:null}
             </div>
-            <div className='flex gap-[1rem] items-center'>
+            {/* <div className='flex gap-[1rem] items-center'>
                 
             <input type="checkbox" name="create_Account" value={formik.values.create_Account} className='h-[2rem] w-[2rem]' onChange={formik.handleChange}/>
             <label htmlFor="create Account">create Account</label>
-            </div>
+            </div> */}
             {/* <div className='flex gap-[1rem] items-center'>
             <input type="checkbox" value={'Deliver to a Different Address?'} name="Deliver to a Different Address?" className='h-[2rem] w-[2rem]' />
             <label htmlFor="Deliver to a Different Address?">Deliver to a Different Address?</label>

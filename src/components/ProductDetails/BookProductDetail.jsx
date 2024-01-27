@@ -12,7 +12,7 @@ import AddToCartbtn from '../EkoStore/AddToCartbtn'
 import { Add_to_cart } from '../../store/Actions/Cart'
 
 
-const BookProductDetail = ({id, qty, cartit}) => {
+const BookProductDetail = ({id, qty, cartit, price}) => {
     const dispatch = useDispatch();
     const {isAuth} = useAuthContext();
     const {cookie} = useContext(cookieContext);
@@ -25,7 +25,7 @@ const BookProductDetail = ({id, qty, cartit}) => {
           isAuth,
           session_id: cookie
       }
-          dispatch(Add_to_cart(id, authVerification))
+          dispatch(Add_to_cart(id, authVerification, price))
       }
 
 

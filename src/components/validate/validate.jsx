@@ -65,6 +65,13 @@ export function validateCartForm(values) {
     errors.city = "Please Type in your city"
   }
   if(!values.phone_number){
-    errors.phone_number = "Please Type in your phone_number"
+    errors.phone_number = "Phone number is required"
   }
+  if(!values.shipping_location){
+    errors.shipping_location = "shipping location is required"
+  }
+  if(!values.email){
+    errors.email = "email is required"
+  }
+  return errors
 }

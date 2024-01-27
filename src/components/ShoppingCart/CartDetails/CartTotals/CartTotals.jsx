@@ -10,7 +10,7 @@ import { TbLoaderQuarter,  } from 'react-icons/tb'
 import { useState } from 'react'
 import instance from '../../../../axios'
 import { BeatLoader } from "react-spinners"
-
+import { selectbillingLocation } from '../../../../store/reducers/billing'
 
 
 
@@ -22,9 +22,10 @@ const CartTotals = ({formi, Locations,OverallAmount, loading}) => {
     const total_loading = useSelector((state) => state.cart.total_loading)
     const cart = useSelector(state => state.cart.cart)
     const {cookie} = useContext(cookieContext)
+  const shipping = useSelector((state) => state.billing)
     
   
-
+    console.log("Month")
 
    
 
@@ -37,7 +38,7 @@ const CartTotals = ({formi, Locations,OverallAmount, loading}) => {
     }, [cart])
 
     
-
+console.log(formi.errors)
 //(total, "fucking total")
     
 
@@ -55,11 +56,16 @@ const CartTotals = ({formi, Locations,OverallAmount, loading}) => {
             </p>
             <div className='flex flex-col font-[500] text-[1rem] gap-[2rem]'>
                 {Locations.map((loc) => <div className='flex gap-[0.75rem] items-start'>
-            <input type="radio" value={loc.id} id="" className='w-[1.5rem] h-[1.5rem]' onChange={formi.handleChange} name="shipping_location"/>
+            <input type="radio" value={loc.id} id="" className='w-[1.5rem] h-[1.5rem]' checked={loc.id == shipping.selected_shipping_locations?true:false} onChange={(e) => {
+                disptach(selectbillingLocation(loc.id))
+                formi.handleChange(e)
+            }
+            
+            } name="shipping_location"/>
             <label htmlFor={loc.location}>{loc.location} {loc.price}</label>
-                </div>)}                
+                </div>)}
+                                
             </div>
-
             <div className='mt-[4.5rem] py-[1.5rem] border-[#9E9E9E] border-y-solid border-y-[1px] flex justify-between font-[600]'>
                <span className='text-[20px]'> TOTAL: </span> <span className='text-[21px]'>{OverallAmount}</span> 
             </div>
@@ -68,7 +74,7 @@ const CartTotals = ({formi, Locations,OverallAmount, loading}) => {
             </div>
         </div>
     </div>
-
+    {formi.errors.shipping_location && formi.touched.shipping_location ? <p className="text-[12px] text-red-500 mt-4">{ formi.errors.shipping_location}</p>:null}
     <button className='bg-[#5A0C91] py-[0.937rem] w-full text-center text-white text-[1.25rem] font-lato font-normal rounded-[5px] mt-[2rem]' type='submit' onClick={() => formi.handleSubmit()}>{loading?<BeatLoader color="#ffffff" ></BeatLoader>:"Place Order"}</button>
     </div>
   )

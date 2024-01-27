@@ -16,25 +16,29 @@ import { cookieContext } from '../../../App'
 import { useEffect } from 'react'
 import { useDispatch } from 'react-redux'
 import { clear_cart } from '../../../store/Actions/Cart'
-
+import { setbillinglocations, selectbillingLocation } from '../../../store/reducers/billing'
 
 const CartDetails = () => {
 
   const {cookie} = useContext(cookieContext)
-  const cart = useSelector(state => state.cart)
+  // const cart = useSelector(state => state.cart)
   const {isAuth, user} = useAuthContext()
   const dispatch = useDispatch()
-  
+  const total = useSelector((state) => state.cart.total)
+
   //(isAuth)
 
   
-
+  // states for the initial billing details
   const [initialbillingDetails, setinitialbillingDetails] = useState(null)
   // const [billLoading, ]
-  const total = useSelector((state) => state.cart.total)
-  
+  // function for total cost  of products in currently in the cart
+
+  const shipping = useSelector((state) => state.billing)
   const [payment, setPayment] = useState({sucess: false, loading: false, error: false })
   
+
+  // function for payment
   const paymentFunc = (data) => {
     const authVerification = {
       isAuth,
@@ -66,11 +70,12 @@ const CartDetails = () => {
     }
 }
 
-
+// function for getting the billing detials
   const getBillingsDetails = () => {
     instance.get('/billing-details/billing-details/', tokenConfig())
     .then((res) => {
       setinitialbillingDetails(res.data.data)
+     
       //(res.data.data, "getting billing details")
       
     })
@@ -81,50 +86,30 @@ const CartDetails = () => {
   }
 
 
-  useEffect(() => {
-    if(isAuth){
-      getBillingsDetails()
-    }
-  }, [])
-
-
   //
-const [Locations, setLocations] = useState([])
+  // states for all locations
 
 
-    
+
+    // function for getting all locations
   const billing_locations = () => {
     instance.get('/checkout/shipping_locations/')
     .then((res) => {
-        setLocations(res.data.data)
+        // setLocations(res.data.data)
+        dispatch(setbillinglocations(res.data.data))
+
     })
     .catch((err) => {
         //(err, "billing Location error")
     })
 }
 
-const [OverallAmount, setOverAmount] = useState(total?total:0)
-const Totalfunc = () => {
-      
-  let  OverallTotalCost = parseInt(total)
-
-  if(Locations) {
-    console.log(formik.values.shipping_location)
-      const list =  Locations.find(loc => loc.id == formik.values.shipping_location)
-      console.log(list)
-      if(list){
-        OverallTotalCost += parseInt(list.price)
-      }
-      else{
-        OverallTotalCost += 0
-      }
-  }
-  setOverAmount(OverallTotalCost)
-}
   useEffect(() => {
+    if(isAuth){
+      getBillingsDetails()
+    }
       billing_locations()
   }, [])
-
 
 
 
@@ -141,14 +126,10 @@ const formik = useFormik({
     "state": initialbillingDetails?(initialbillingDetails.state.length > 0 ?initialbillingDetails.city: "lagos"):"lagos",
     "phone_number": initialbillingDetails?initialbillingDetails.phone_number:"",
     "email": initialbillingDetails?initialbillingDetails.email:null,
-    "shipping_location": initialbillingDetails?initialbillingDetails.shipping_location.location:0,
+    "shipping_location": initialbillingDetails?initialbillingDetails.shipping_location:null,
     "amount": total?total:null,
     "Order_Notes": initialbillingDetails?initialbillingDetails.Order_Notes:"",
   },
-  
-  
-
-  validateCartForm,
   onSubmit: ({First_name, Last_name, Company_name, country,
      street_address, city,
     apartment, state, phone_number, 
@@ -181,11 +162,37 @@ const formik = useFormik({
 amount:OverallAmount,
 email
       })
-    }})
+    },
+    validate:validateCartForm
+  })
+    const [OverallAmount, setOverAmount] = useState(total?total:0)
+
+  const Totalfunc = () => {
+      
+      let  OverallTotalCost = parseInt(total)
+      console.log(shipping.selected_shipping_locations)
+      if(shipping.shipping_locations) {
+          const list =  shipping.shipping_locations.find(loc => loc.id == shipping.selected_shipping_locations)
+          console.log(list)
+          if(list){
+            OverallTotalCost += parseInt(list.price)
+          }
+          else{
+            OverallTotalCost += 0
+          }
+      }
+      setOverAmount(OverallTotalCost)
+      // return OverallTotalCost
+    }
+
+  //     useEffect(() => {
+  //   console.log("Setting", shipping.selected_shipping_locations)
+  //   dispatch(selectbillingLocation(formik.values.shipping_location))
+  // }, [formik.values.shipping_location])
+
   useEffect(() => {
     Totalfunc()
   }, [ formik.values.shipping_location, total])
- 
 
 
 
@@ -193,7 +200,7 @@ email
     <div className='mx-auto lg:px-0 px-6 max-w-[77rem] mt-[1.5rem] mb-[100px]' >
          <p className='mb-[1rem]'>Have a discount code?</p><div className='flex  flex-col md:flex-row gap-[6rem]'>
         <BillingDetails formik={formik}/>
-        <CartTotals formi={formik} Locations = {Locations} OverallAmount={OverallAmount} loading={payment.loading}/>
+        <CartTotals formi={formik} Locations = {shipping.shipping_locations} OverallAmount={OverallAmount} loading={payment.loading}/>
         </div>
     </div>
   )
