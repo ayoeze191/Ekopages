@@ -14,26 +14,19 @@ const LandingPage = () => {
   const nav = useNavigate()
   const referenceValue = urlSearchParams.get('reference');
     console.log(referenceValue)
-  const [verificationSuccesfull, setVerificationSuccesfull] = useState(false)
-  const VerifyPayment = () => {
-      instance.get('/cart_payment/payment/verify/' + referenceValue, tokenConfig())
-      .then((res)=> {
-        setVerificationSuccesfull(true)
-      })
-      .catch((err) => setVerificationSuccesfull(false))
-  }
+ 
 
   useEffect(() => {
     if(referenceValue){
-      VerifyPayment()
+     nav('/payment_confirmation')
     }
   }, [])
 
   return (
     <div className="box-border w-full ">
-      <Rodal visible={verificationSuccesfull} onClose={() => {setVerificationSuccesfull(false); window.location.assign = 'ekopages.com' } }>
-     <p className="font-lato text-center "> We have Received Your payment, thank you for your patronage</p>
-      </Rodal>
+      {/* <Rodal visible={verificationSuccesfull} onClose={() => {setVerificationSuccesfull(false); window.location.assign = 'ekopages.com' } }> */}
+     {/* <p className="font-lato text-center "> We have Received Your payment, thank you for your patronage</p>
+      </Rodal> */}
           <LandingComponent></LandingComponent>
         </div>
        
