@@ -4,6 +4,7 @@ import Rodal from "rodal";
 import instance from "../../axios";
 import { useEffect, useState } from "react";
 import { tokenConfig } from "../../Config/Config";
+import { useLocation, useNavigate, useParams } from "react-router-dom"
 
 
 
@@ -12,6 +13,8 @@ const LandingPage = () => {
   const urlSearchParams = new URLSearchParams(window.location.search);
   const referenceValue = urlSearchParams.get('reference');
     console.log(referenceValue)
+  const nav = useNavigate()
+
  
 
   useEffect(() => {
