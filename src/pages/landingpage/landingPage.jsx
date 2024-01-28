@@ -10,18 +10,18 @@ import { useLocation, useNavigate, useParams } from "react-router-dom"
 
 
 const LandingPage = () => {
-  const urlSearchParams = new URLSearchParams(window.location.search);
-  const referenceValue = urlSearchParams.get('reference');
-    console.log(referenceValue)
-  const nav = useNavigate()
+  // const urlSearchParams = new URLSearchParams(window.location.search);
+  // // const referenceValue = urlSearchParams.get('reference');
+  // //   console.log(referenceValue)
+  // // const nav = useNavigate()
 
  
 
-  useEffect(() => {
-    if(referenceValue){
-     nav('/payment_confirmation')
-    }
-  }, [])
+  // // useEffect(() => {
+  // //   if(referenceValue){
+  // //    nav('/payment_confirmation')
+  // //   }
+  // // }, [])
 
   return (
     <div className="box-border w-full ">
