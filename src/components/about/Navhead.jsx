@@ -77,7 +77,15 @@ const NavHead = ({sideHandler}) => {
             isAuth,
             session_id: cookie
         }))
-        get_user_detail()
+        if(isAuth){
+            try{
+                get_user_detail()
+            }
+            catch(error){
+                console.log(error)
+            }
+           
+        }
     }, [])
 
 

@@ -40,11 +40,11 @@ const Approved = () => {
 
     const getOrderCompletedOrder = () => {
         // setLoading(true)
-        instance.get('history/completed/', tokenConfig())
+        instance.get('/history/all-history/', tokenConfig())
         .then(res => {
-            console.log(res.data.data.completed)
+            console.log(res.data.data)
             setLoading(false)
-            setOrders(res.data.data.completed)
+            setOrders(res.data.data.total)
         })
         .catch((err) => {
             setLoading(false)

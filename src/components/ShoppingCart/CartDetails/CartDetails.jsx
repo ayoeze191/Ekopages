@@ -44,19 +44,23 @@ const CartDetails = () => {
       isAuth,
       session_id: cookie
     }
+    
     setPayment({error:false, sucess:false, loading:true})
     if(isAuth) {
-      instance.post('/cart_payment/payment/', data, tokenConfig())
-    .then((res) => {
-      //(res)
-      setPayment({error:false, sucess:true,loading: false})
-      dispatch(clear_cart(authVerification))
-      window.location.assign(res.data.data.data.authorization_url);
-    })   
-    .catch((err) => {
-      //(err)
-      setPayment({sucess:false, error:true, loading: false})
-    })
+      instance.get(`/checkout/cart/checkout/`, tokenConfig())
+      .then(() => {
+        instance.post('/cart_payment/payment/', data, tokenConfig())
+        .then((res) => {
+          //(res)
+          setPayment({error:false, sucess:true,loading: false})
+          window.location.assign(res.data.data.data.authorization_url);
+        })   
+        .catch((err) => {
+          //(err)
+          setPayment({sucess:false, error:true, loading: false})
+        })
+      })
+     
     }
     else{
       instance.post(`/unregistered-cart-payment/payment/${cookie}/`, data)

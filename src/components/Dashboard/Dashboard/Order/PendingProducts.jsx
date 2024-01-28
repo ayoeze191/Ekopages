@@ -36,9 +36,11 @@ const PendingProducts = () => {
    <Products />
     </div>
     <div className='w-full flex justify-end px-6 lg:px-0'>
-    <Link to={'/cart'} className='text-center bg-[#5A0C91] py-[0.9375rem] w-full md:max- md:w-[29rem] text-white rounded-[5px] font-lato font-[600] text-[1.25rem]'>
+   {cart.cart.length > 0 && <Link to={'/cart'} className='text-center bg-[#5A0C91] py-[0.9375rem] w-full md:max- md:w-[29rem] text-white rounded-[5px] font-lato font-[600] text-[1.25rem]'>
         Place Order
     </Link>
+  }
+
     </div>
     </div>
   )
