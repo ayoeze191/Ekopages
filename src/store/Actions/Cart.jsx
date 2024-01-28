@@ -1,5 +1,7 @@
 // import axios from "axios"
 import instance from "../../axios"
+import { useLocation, useNavigate, useParams } from "react-router-dom"
+
 import { tokenConfig, VisitorTokenConfig } from "../../Config/Config"
 import { added_to_cart, adding__to__Cart, 
 getCart, getting_Cart, finished_adding,

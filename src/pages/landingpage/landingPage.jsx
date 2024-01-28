@@ -1,5 +1,4 @@
 //components
-import { useLocation, useNavigate, useParams } from "react-router-dom"
 import LandingComponent from "../../components/Landingpage/LandingContainer"
 import Rodal from "rodal";
 import instance from "../../axios";
@@ -11,7 +10,6 @@ import { tokenConfig } from "../../Config/Config";
 
 const LandingPage = () => {
   const urlSearchParams = new URLSearchParams(window.location.search);
-  const nav = useNavigate()
   const referenceValue = urlSearchParams.get('reference');
     console.log(referenceValue)
  
