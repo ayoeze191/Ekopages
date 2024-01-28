@@ -1,8 +1,9 @@
-import React, { useEffect } from 'react'
+import React, { useEffect, useState } from 'react'
 import instance from '../axios'
 import { tokenConfig } from '../Config/Config'
 const PaymentSuccessful = () => {
   const [verificationSuccesfull, setVerificationSuccesfull] = useState(false)
+  const urlSearchParams = new URLSearchParams(window.location.search);
 
     const VerifyPayment = () => {
         instance.get(`/cart_payment/payment/verify/${referenceValue}` +  tokenConfig())
