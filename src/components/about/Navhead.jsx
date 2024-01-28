@@ -85,17 +85,17 @@ const NavHead = ({sideHandler}) => {
         // <div className='bg-[#F6F6F6] w-full'>
     <div className="headersection w-full  flex items-center justify-between text-[24px] font-normal font-lato relative">
             <Rodal
-                customStyles={{
-                width: "90%",
-                paddingLeft: "0",
-                paddingRight: "0",
-                paddingTop: "0",
-                paddingBottom: "0",
-                background: "#F6F6F6",
-                overflowY:"hidden",
-                height: "fit-content",
-                maxWidth: "1000px",
-                }}
+                 customStyles={{
+                    width: "90%",
+                    paddingLeft: "0",
+                    paddingRight: "0",
+                    paddingTop: "0",
+                    paddingBottom: "0",
+                    background: "#F6F6F6",
+                    overflowY:"hidden",
+                    height: "fit-content",
+                    maxWidth: "1000px",
+                    }}
                 visible={loginModal}
                 onClose={setLoginModal}
                 >
@@ -113,8 +113,6 @@ const NavHead = ({sideHandler}) => {
                 overflowY:"scroll",
                 maxWidth: "1000px",
                 }}
-                
-                
                 visible={accountSuccessfullycreatedModal}
                 onClose={setaccountSuccessfullycreatedModal}
                 >
@@ -133,7 +131,8 @@ const NavHead = ({sideHandler}) => {
                     maxWidth: "1000px",
                     }}
                 visible={signupModal}
-                onClose={setSignupModal}>
+                onClose={setSignupModal}
+                >
                 <Signup ></Signup>
             </Rodal>
 

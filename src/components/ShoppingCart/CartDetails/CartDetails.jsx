@@ -75,8 +75,6 @@ const CartDetails = () => {
     instance.get('/billing-details/billing-details/', tokenConfig())
     .then((res) => {
       setinitialbillingDetails(res.data.data)
-     
-      //(res.data.data, "getting billing details")
       
     })
     .catch((err) => {
@@ -126,7 +124,7 @@ const formik = useFormik({
     "state": initialbillingDetails?(initialbillingDetails.state.length > 0 ?initialbillingDetails.city: "lagos"):"lagos",
     "phone_number": initialbillingDetails?initialbillingDetails.phone_number:"",
     "email": initialbillingDetails?initialbillingDetails.email:null,
-    "shipping_location":null,
+    "shipping_location":shipping.selected_shipping_locations?shipping.selected_shipping_locations:null,
     "amount": total?total:null,
     "Order_Notes": initialbillingDetails?initialbillingDetails.Order_Notes:"",
   },

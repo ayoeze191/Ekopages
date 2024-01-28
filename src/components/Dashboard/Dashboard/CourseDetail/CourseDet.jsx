@@ -179,7 +179,8 @@ const CourseDetails = () => {
 
       useEffect(() => {
         get_modules();
-      }, []);
+      }, [])
+      
       useEffect(() => {
         if(modules.length > 0){
           if(CheckIfUserHasCompletedCourse(modules) === true){
