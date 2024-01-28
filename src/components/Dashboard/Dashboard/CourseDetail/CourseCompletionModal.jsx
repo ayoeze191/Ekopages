@@ -13,6 +13,7 @@ const CourseCompletionModal = ({ClearInterface, id}) => {
     const navigate = useNavigate()
   const [result, setResult] = useState(null) 
   const [Loading, setLoading] = useState(true)
+  const [viewed_before, setViewedBefore] = useState(false)
   const [total_score, setTotalScore] = useState()
   const get_scores = async () => {
     console.log("dont run twice")
@@ -20,6 +21,7 @@ const CourseCompletionModal = ({ClearInterface, id}) => {
     .then((result) => {
       console.log(result.data)
       setResult(result.data.message === "Take the tests again. Better luck next time"?"failed":"passed")
+      setViewedBefore(result.data.data.Done_before)
       setTotalScore(result.data.data.total)
       setLoading(false)
     })
@@ -41,13 +43,19 @@ const CourseCompletionModal = ({ClearInterface, id}) => {
   useEffect(() => {
     get_scores()
   }, [])
+  console.log(viewed_before)
   return (
-    Loading?<BeatLoader />:<motion.div className="fixed   w-full left-0 z-20 flex justify-center items-center "
+    Loading?<BeatLoader />:viewed_before ? <></>:
+    
+    <div className="fixed h-full top-0  w-full left-0 z-20 flex justify-center items-center "
     // initial={{  scale: 0 }}
     // animate={{ scale: [0, 2, 1] }} 
     // transition={{ type: "spring", stiffness: 200, duration: 10 }}
     >
-      <div className="w-[350px] md:w-[688px] h-[80vh] bg-[#ffffff] z-50 mx-auto overflow-hidden flex flex-col items-center">
+       <div
+          className="bg-black opacity-[0.9] left-0 fixed w-full h-full top-0 z-10" onClick={ClearInterface}
+        ></div>
+      <motion.div className="w-[350px] md:w-[688px] h-[80vh] bg-[#ffffff] z-[999999999999999999] mx-auto overflow-hidden flex flex-col items-center opacity-1">
       <div className="bg-[#5A0C91] rounded-b-[100%] relative  -top-20 md:-top-24 md:right-5  h-[300px] w-[415px] md:w-[730px] bg-cover right-10 mx-auto">
             <img src={result == "passed"?excelentBg:""} className="bg-cover h-full" alt=""/>
           </div>
@@ -89,8 +97,8 @@ const CourseCompletionModal = ({ClearInterface, id}) => {
             </button>
             {<p onClick={()  =>  ClearInterface()} className='cursor-pointer'>Go Back to Courses</p>}
           </div>
-      </div>
-    </motion.div>
+      </motion.div>
+    </div>
   )
 }
 

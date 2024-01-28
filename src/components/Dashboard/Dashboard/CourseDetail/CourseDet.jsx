@@ -180,7 +180,7 @@ const CourseDetails = () => {
       useEffect(() => {
         get_modules();
       }, [])
-      
+
       useEffect(() => {
         if(modules.length > 0){
           if(CheckIfUserHasCompletedCourse(modules) === true){
@@ -192,13 +192,12 @@ const CourseDetails = () => {
       }, [current])
 
       const ClearInterface = () => {
-        setShowOverlay(false)
         setShowModal(false)
       }
     return(loading ? <div className="mx-auto  flex justify-center py-20 items-center"><MoonLoader /></div> : (modules.find(mod => mod.id == current).title == "Pop Quiz" || modules.find(mod => mod.id == current).title == "Literaure Questions" || modules.find(mod => mod.id == current).title == "Final POP QUIZ")? navigate(`/quizzes/${modules.find(mod => mod.id == current).lesson_number}/${modules.find(mod => mod.id == current).id}/${param.id}`) :
-        <Wrapper overlay={overlay}
+        <Wrapper
         >
-         {modal && <CourseCompletionModal id={param.id} ClearInterface={ClearInterface}/>}
+         {modal && <CourseCompletionModal ClearInterface={ClearInterface} id={param.id} />}
          { Completed == false ?
           <div className="px-[2.06rem] max-w-[67rem]">
             <div className="bg-[#FFFFFF] md:bg-inherit rounded-[5px] md:px-[1.5rem] py-[1.5rem]">
@@ -356,10 +355,10 @@ const Module = ({ changeCurrentModule, title, id, level, current, completed,upda
 
 
 
-  export const Wrapper = ({ overlay, children }) => {
+  export const Wrapper = ({  children }) => {
     return (
       <>
-        <Overlay show={overlay} />
+        {/* <Overlay show={overlay} /> */}
         {children}
       </>
     );
