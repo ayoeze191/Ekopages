@@ -1,5 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import instance from '../axios'
+import { useLocation, useNavigate, useParams } from "react-router-dom"
+
 import { tokenConfig } from '../Config/Config'
 const PaymentSuccessful = () => {
   const [verificationSuccesfull, setVerificationSuccesfull] = useState(false)
