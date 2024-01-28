@@ -36,7 +36,7 @@ const PaymentSuccessful = () => {
  </div>
     </div>
     :<><div className='flex flex-col gap-[16px] mx-auto'>
-    <p className='font-[700] font-lato text-[1.25rem] text-[#232323] md:text-[40px]'> Opps!! we didnt Receive Your Payment</p>
+    <p className='font-[700] font-lato text-[1.25rem] text-[#232323] md:text-[40px]'> Opps!! we did'nt Receive Your Payment</p>
     <p className='font-[400] font-lato text-[1rem] text-[#232323] md:text-[24px]'>
     Please visit the contact us modal for your complaint
     </p>
