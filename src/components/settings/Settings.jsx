@@ -18,7 +18,7 @@ import { tokenConfig } from '../../Config/Config';
 
 const Settings = () => {
     const [passwordReset, setPasswordReset] = useState(false)
-    const {change_profile_pics, profile_pics, } =  useAuthContext()
+    const {change_profile_pics, profile_pics, get_user_detail} =  useAuthContext()
     const [userProfileDetails, setUserProfileDetails] = useState(null)
     const {setLogOutModal} = useModalContext()
     const password = useSelector(profile => profile.profile)
@@ -52,8 +52,12 @@ const Settings = () => {
     }
     useEffect(() => {
         finish()
-        console.log("finifhsin")
     }, [profile_pics])
+
+    useEffect(() => {
+        get_user_detail()
+    }, [])
+
 
     const EditProfile = (data) => {
         setEditingProfile(true)

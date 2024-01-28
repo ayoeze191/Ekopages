@@ -16,7 +16,7 @@ const LandingPage = () => {
     console.log(referenceValue)
   const [verificationSuccesfull, setVerificationSuccesfull] = useState(false)
   const VerifyPayment = () => {
-      instance.get('/cart_payment/payment/verify/' + referenceValue + '/', tokenConfig())
+      instance.get('/cart_payment/payment/verify/' + referenceValue, tokenConfig())
       .then((res)=> {
         setVerificationSuccesfull(true)
       })

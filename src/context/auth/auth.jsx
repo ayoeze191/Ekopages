@@ -26,6 +26,7 @@ export const AuthContext = React.createContext({
     profpics: "",
     change_profile_pics: () => {},
     update_token: () => {},
+    get_user_detail: () => {}
 });
 
 
@@ -75,7 +76,6 @@ export const AuthProvider = ( { children }) => {
           localStorage.setItem('eko_refresh', res.data.refresh_token)
           localStorage.setItem('eko_user', JSON.stringify(res.data.user))
           setProfilePic(res.data.user.profile_picture)
-          // setProfpics(res.data.user.profile_picture)
           setIsloading(false)
           setLoginModal(!loginModal)
           setLoginModal()
@@ -131,6 +131,12 @@ export const AuthProvider = ( { children }) => {
         })
         }   
     }
+    const get_user = () => {
+        instance.get('/auth/user/', tokenConfig())
+        .then((res) => {
+          setProfpics(res.data.profile_picture)
+        })
+    }
 
     return (
       <AuthContext.Provider
@@ -150,7 +156,8 @@ export const AuthProvider = ( { children }) => {
           change_profile_pics: changeProfilePics,
           profile_pics: profpics,
           exp: localStorage.getItem('exp'),
-          update_token: RefreshToken
+          update_token: RefreshToken,
+          get_user_detail: get_user
         }}
       >
         {children}

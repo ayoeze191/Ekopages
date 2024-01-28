@@ -94,15 +94,13 @@ const MyAccount = () => {
             <div className='bg-[#4A4A4A] py-[56px] flex flex-col justify-center items-center gap-[13px]'>
                 <div className='w-[80px] h-[80px] border-[#E9E9E9] border-[1px] rounded-full flex justify-center items-center relative'>
             <div className='rounded-full w-[72px] h-[72px] bg-[#E9E9E9] flex items-center justify-center'>
-                <img src={profile_pics} className='bg-center object-center'/>
+                <img src={profile_pics} className='bg-center object-center w-full h-full rounded-full'/>
             </div>
-            <FaCropSimple size={20} className='cursor-pointer absolute bottom-0 right-1 ' onClick={() => setShowCrop(true)}/>
-             <div className='absolute bottom-0 right-1 text-black  cursor-pointer  w-full'>
-                <label htmlFor="profpics" className='curson-pointer absolute bottom-0 left-1'>
-                <div >< FaPenSquare size={20} />  </div>
+             {/* <div className='absolute   h-full text-black   w-full'>
+                <label htmlFor="profpics" className=' absolute bottom-0 left-1'>
                 </label>
                 <input type="file"  placeholder='Upload New' accept="image/*" name='profpics' id='profpics' className='hidden' onChange={(e) => handle__profile_picture(e.target.files[0])}/>
-                </div>
+            </div> */}
             </div>
            <Rodal height={'10vh'} customStyles={{
         width: "90%",
@@ -118,7 +116,7 @@ const MyAccount = () => {
         }} onClose = {() => setShowCrop(false)}
         visible={showCrop}>
             <div><ReactCrop className='w-full mx-auto  h-[50%] bg-center bg-gray-300' crop={crop} onChange={c => setCrop(c)} >
-      <img src={profile_pics}  className='w-full h-full object-center'/>
+      <img src={profile_pics}  className='w-full h-full object-center bg-center'/>
     </ReactCrop></div>
     <button className='bg-[#5A0C91] text-white px-4 py-2 rounded'>Crop</button>
     </Rodal>

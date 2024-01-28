@@ -170,11 +170,11 @@ const NavHead = ({sideHandler}) => {
                  {isAuth && <>                      <p className="text-[#4A4A4A] text-[0.875rem] lg:text-[1rem] font-[400] ">hello {user.username}</p> 
                     <Link className="hidden  relative  w-[28px] h-[28px] lg:w-[40px] lg:h-[40px] bg-[#CCB4DD] rounded-full md:flex items-center justify-center cursor-pointer flex" to = {'/dashboard'} >
                         {/* <AiOutlineUser></AiOutlineUser> */}
-                        <img src={profile_pics} className='object-center bg-center'/>
+                        <img src={profile_pics} className='object-center bg-center w-full h-full rounded-full'/>
                         <p className="absolute h-[7px] w-[7px] rounded-[7px] bg-[#03A800] top-[5px] right-[0px]"></p>
                     </Link>
                     <Link className=" relative  w-[28px] h-[28px] lg:w-[40px] lg:h-[40px] bg-[#CCB4DD] rounded-full flex md:hidden items-center justify-center cursor-pointer flex" to = {'/dashboard/account'} >
-                    <img src={profile_pics} className='object-center bg-center'/>
+                    <img src={profile_pics} className='object-center bg-center w-full h-full rounded-full'/>
                         <p className="absolute h-[7px] w-[7px] rounded-[7px] bg-[#03A800] top-[5px] right-[0px]"></p>
                     </Link>
                     <AiOutlineHeart className='hidden lg:flex'></AiOutlineHeart>
