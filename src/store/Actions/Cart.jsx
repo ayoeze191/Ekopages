@@ -109,10 +109,11 @@ export const update_cart_items = (id, quantity, isauth, type) => (dispatch, getS
         toast.success("sucessfully updated")
     })
     .catch((err) => {
+        console.log(err.response.data.message)
         // //(err)
         dispatch(update_cart(present_cart))
         console.log(err.response)
-        toast.info("Update failed")
+        toast.info(err.response.data.message)
     })
     }
     else {
