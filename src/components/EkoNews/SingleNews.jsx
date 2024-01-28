@@ -1,9 +1,12 @@
 import React from 'react'
 import { useState } from 'react'
 import {Navigate, Link, useNavigate} from "react-router-dom"
-
+import Shimmer from '../ui/Shimmer/Shimmer'
+import SkeletonsElement from '../ui/skeletons/SkeletonsElement'
 const SingleNews = ({image, title, body, id , date_created}) => {
 const [inc, setinc] = useState(false)
+const [loaded, setLoaded] = useState(false) 
+
 const textStyle = ['h-[88px] md:h-[46px] overflow-hidden transition ease-in-out delay-150 duration-300']
 const fulltextStyle = ['h-200px md:h-[100px] transition ease-in-out delay-150 duration-300']
 let date = new Date(date_created)
@@ -32,12 +35,14 @@ const navigate = useNavigate()
     </span>
 </div>
         </div>
-
-
-
-
+        
         <div className=''>
-            <img src={image}  alt="" className='h-[210px] w-full md:h-[306px] md:w-[655px] object-cover'/>
+        {!loaded?<div className='relative'>
+                <Shimmer />
+                <SkeletonsElement type={'images'} />
+            
+            </div>:null}
+            <img src={image}  alt="" className='h-[210px] w-full md:h-[306px] md:w-[655px] object-cover' onLoad={() => setLoaded(true)}/>
         </div>
     </div>
   )

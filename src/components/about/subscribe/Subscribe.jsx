@@ -3,7 +3,7 @@ import bell from "./../../../assets/about/bell.png"
 const Subscribe = () => {
     
   return (
-    <div className='text-[#ffffff] relative box-border flex flex-col items-center justify-center text-center flex-1 h-full border-solid border-black p-0'>
+    <div className='text-[#ffffff] relative box-border flex flex-col items-center justify-center text-center flex-1 h-full border-solid border-black p-0 mt-4 md:mt-0'>
         <img src={bell} alt="" className='absolute w-[8rem] md:w-initial -top-14 -right-8'/>
         <div className='bg-[#5A0C91] rounded-[5px]'>
         <div className='px-[2rem] md:px-[5rem] py-[2.5rem]'>

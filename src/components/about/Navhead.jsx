@@ -37,7 +37,7 @@ const NavHead = ({sideHandler}) => {
     const {accountSuccessfullycreatedModal, setaccountSuccessfullycreatedModal} = useSignupContext()
 
     const NavLogicObject = useLogic()
-    const {isAuth,user, change_profile_pics, profpics, profile_pics} = useAuthContext()
+    const {isAuth,user, change_profile_pics, profpics, profile_pics, get_user_detail} = useAuthContext()
     const {cookie} = useContext(cookieContext)
     const dispatch = useDispatch()
     const cart = useSelector((state) => state.cart.cart)
@@ -67,6 +67,9 @@ const NavHead = ({sideHandler}) => {
             path: "/beapublisher"
         }
     ]
+    // useEffect(() => {
+        
+    // }, [])
     
 
     useEffect(() => {
@@ -74,6 +77,7 @@ const NavHead = ({sideHandler}) => {
             isAuth,
             session_id: cookie
         }))
+        get_user_detail()
     }, [])
 
 

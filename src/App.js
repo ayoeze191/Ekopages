@@ -93,7 +93,7 @@ function App() {
         onClose = {setLogOutModal}
         visible={logoutModal}
       >
-        <Logout />
+        <Logout sidebarHandler={sidebarHandler}  sidebar={side}/>
       </Rodal>
 
       <Rodal 

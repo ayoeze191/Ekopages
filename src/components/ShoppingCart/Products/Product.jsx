@@ -12,11 +12,12 @@ import { cookieContext } from '../../../App';
 import { useContext } from 'react';
 import { useSelector } from 'react-redux';
 import { data } from 'autoprefixer';
+import Rodal from 'rodal';
 import Shimmer from '../../ui/Shimmer/Shimmer';
 
 const Product = ({id, qty, cartit}) => {
     const [clicked, setClicked] = useState(false)
-
+    const [deletemodal, setDeleteModal] = useState(false)
     const {product, loading} = useProduct(id)
     const {isAuth} = useAuthContext()
     const dispatch = useDispatch()
@@ -63,6 +64,22 @@ const Product = ({id, qty, cartit}) => {
 
 
   return (<div className='flex justify-between w-full  mx-auto max-w-[77rem] font-lato border-b-solid border-b-[1px] border-b-[#BBBBBB] h-[269px] items-center' >
+
+    <Rodal visible={deletemodal} customStyles={{width: 'fit-content', height: 'fit-content'}}>
+    <div className=' h-[50vh] max-h-[473px] px-[82px] text-center w-[80vw] max-w-[688px] font-lato text-[20px] md:text-[28px] flex flex-col items-center justify-center'>
+    You are about to delete this item from cart
+    <div className='flex gap-[39px] mt-[66px]'>
+        <button className='bg-[#DC1824] w-[70px] h-[30px] md:w-[120px] md:h-[40px] rounded-[5px] text-[#EFE7F4] text-[14px]  md:text-[1rem] font-lato font-[500] leading-[19px]' onClick={() =>{
+            remove_item()
+            }}>
+            DELETE
+        </button>
+        <button className='border rounded-[5px] border-[#5A0C91] border-solid w-[70px] h-[30px] md:w-[120px] md:h-[40px]  text-[14px]  md:text-[1rem] font-[500] font-lato leading-[19.2px]' onClick={() => setDeleteModal() }>
+            Cancel
+        </button>
+    </div>
+    </div>
+    </Rodal>
   <div className='flex gap-[13.15px] md:gap-[3.25rem] items-center'>
       <div className='w-[62.85px] h-[92px] md:w-[101.85px] md:h-[128px]'>
       
@@ -100,8 +117,8 @@ const Product = ({id, qty, cartit}) => {
       <p className='text-[14px] md:text-[1rem] '>
           Subtotal: {loading?<Shimmer />: product.data.price * qty}
       </p>
-      <div onClick={() => remove_item()}>
-          <img src={del} className='w-[19.5px] h-[21px] md:w-initial md:h-initial' alt="" />
+      <div onClick={() => setDeleteModal(true)}>
+          <img src={del} className='w-[19.5px] h-[21px] md:w-initial md:h-initial cursor-pointer' alt="" />
       </div>
   </div>
 </div>

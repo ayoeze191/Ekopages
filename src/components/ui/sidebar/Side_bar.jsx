@@ -51,7 +51,7 @@ const Side_bar = ({show, sideFunc}) => {
 
         </div>
 
-        {isAuth&&<div className=' bg-[#5A0C91] text-[#FFFFFF] py-[20px] px-[2.5rem] ' onClick={() => LogOut()}>
+        {isAuth&&<div className=' bg-[#5A0C91] text-[#FFFFFF] py-[20px] px-[2.5rem] cursor-pointer ' onClick={() => LogOut()}>
         Log Out
         </div>}
     </div>
