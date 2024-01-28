@@ -9,7 +9,7 @@ const PaymentSuccessful = () => {
   const [verificationSuccesfull, setVerificationSuccesfull] = useState(false)
   const urlSearchParams = new URLSearchParams(window.location.search);
   const nav = useNavigate()
-
+  const referenceValue = urlSearchParams.get('reference');
     const VerifyPayment = () => {
         instance.get(`/cart_payment/payment/verify/${referenceValue}/` , tokenConfig())
         .then((res)=> {
@@ -17,7 +17,7 @@ const PaymentSuccessful = () => {
         })
         .catch((err) => setVerificationSuccesfull(false))
     }
-    const referenceValue = urlSearchParams.get('reference');
+    
     useEffect(() => {
         VerifyPayment()
     })
@@ -41,7 +41,7 @@ const PaymentSuccessful = () => {
     Please visit the contact us modal for your complaint
     </p>
     </div>
-    <button className='font-lato text-[1rem] text-[#E9E9E9] font-[500] bg-[#0d0c0e] py-[8px] mx-auto px-[20px] rounded-[5px] w-fit' onClick={() => nav('/ekostore')}>
+    <button className='font-lato text-[1rem] text-[#E9E9E9] font-[500] bg-[#0d0c0e] py-[8px] mx-auto px-[20px] rounded-[5px] w-fit mb-4' onClick={() => nav('/ekostore')}>
     Continue
     </button>
     </>
