@@ -4,6 +4,7 @@ import { tokenConfig } from '../Config/Config'
 const PaymentSuccessful = () => {
   const [verificationSuccesfull, setVerificationSuccesfull] = useState(false)
   const urlSearchParams = new URLSearchParams(window.location.search);
+  const nav = useNavigate()
 
     const VerifyPayment = () => {
         instance.get(`/cart_payment/payment/verify/${referenceValue}` +  tokenConfig())
