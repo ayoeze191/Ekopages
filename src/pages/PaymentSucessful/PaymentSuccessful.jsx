@@ -1,8 +1,10 @@
 import React, { useEffect, useState } from 'react'
-import instance from '../axios'
+import instance from '../../axios'
 import { useLocation, useNavigate, useParams } from "react-router-dom"
 
-import { tokenConfig } from '../Config/Config'
+import { tokenConfig } from '../../Config/Config'
+
+
 const PaymentSuccessful = () => {
   const [verificationSuccesfull, setVerificationSuccesfull] = useState(false)
   const urlSearchParams = new URLSearchParams(window.location.search);
@@ -33,7 +35,16 @@ const PaymentSuccessful = () => {
  </button>
  </div>
     </div>
-    :""
+    :<><div className='flex flex-col gap-[16px]'>
+    <p className='font-[700] font-lato text-[1.25rem] text-[#232323] md:text-[40px]'> Opps!! we didnt Receive Your Payment</p>
+    <p className='font-[400] font-lato text-[1rem] text-[#232323] md:text-[24px]'>
+    Please visit the contact us modal for your complaint
+    </p>
+    </div>
+    <button className='font-lato text-[1rem] text-[#E9E9E9] font-[500] bg-[#0d0c0e] py-[8px] px-[20px] rounded-[5px]' onClick={() => nav('/ekostore')}>
+    Continue
+    </button>
+    </>
   )
 }
 
@@ -41,3 +52,7 @@ const PaymentSuccessful = () => {
 export default PaymentSuccessful
 
 // :"opps, we didn't receive any payment
+
+
+
+    

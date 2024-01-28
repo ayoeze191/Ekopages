@@ -19,7 +19,7 @@ import Productdetails from "./components/ProductDetails/Productdetails"
 // import ExploreCourses from ""
 import CourseQuizes from "./components/Dashboard/CourseQuizzes/CoursesQuizzes"
 import { Suspense, lazy } from "react"
-import PaymentSuccessful from "./pages/PaymentSuccessful"
+import PaymentSuccessful from "./pages/PaymentSucessful/PaymentSuccessful"
 
 
 const LandingPage = lazy(() => import('./pages/landingpage/landingPage')) 
@@ -106,6 +106,10 @@ export const BasicRoutes = [
         component: <VerifyEmail />
     },
     {
+        path: "/payment_confirmation",
+        component: <PaymentSuccessful />
+    },
+    {
         path: "/beapublisher",
         component: <Beapublisher />
     },
@@ -113,10 +117,7 @@ export const BasicRoutes = [
         path: "/explore-courses",
         component: <Suspense fallback={<GeneralUiOverlay />}><ExploreCourses /></Suspense>
     },
-    {
-        path: "/payment_confirmation",
-        component: <PaymentSuccessful />
-    }
+ 
    
     
 ]
