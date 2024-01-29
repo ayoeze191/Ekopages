@@ -11,7 +11,7 @@ const PaymentSuccessful = () => {
   const nav = useNavigate()
   const referenceValue = urlSearchParams.get('reference');
     const VerifyPayment = () => {
-        instance.get(`/cart_payment/payment/verify/${referenceValue}/` , tokenConfig())
+        instance.get(`/cart_payment/payment/verify/${referenceValue}` , tokenConfig())
         .then((res)=> {
           setVerificationSuccesfull(true)
         })
