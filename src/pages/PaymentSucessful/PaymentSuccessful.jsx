@@ -3,7 +3,7 @@ import instance from '../../axios'
 import { useLocation, useNavigate, useParams } from "react-router-dom"
 
 import { tokenConfig } from '../../Config/Config'
-import { FadeLoader } from 'react-spinners'
+import { ClipLoader, FadeLoader } from 'react-spinners'
 
 
 const PaymentSuccessful = () => {
@@ -29,7 +29,7 @@ const PaymentSuccessful = () => {
     })
   return (
     loading? <div className='mx-auto min-h-[50vh] mt-[20px]'>
-      <FadeLoader />
+      <ClipLoader />
     </div>:verificationSuccesfull == true ? <div>
         <div className='flex justify-center flex-col items-center text-center gap-[29px] mx-auto mb-10 min-h-[50vh]'>
 <div className='flex flex-col gap-[16px] mx-auto'>
