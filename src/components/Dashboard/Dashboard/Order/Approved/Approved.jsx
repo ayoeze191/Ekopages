@@ -71,7 +71,7 @@ useEffect(() => {
             <div>Paid on</div>
             <div>Status</div>
         </div>
-        {orders.length > 0? orders.map((order) => <ApprovedOrder {...order}/>): <div className='flex w-full font-lato text-[24px] font-[500] mx-auto justify-center h-full items-center mt-[2rem]'>You are yet to complete any Order</div> }
+        {orders.length > 0? orders.slice(orders.length - 10, orders.length).map((order) => <ApprovedOrder {...order}/>): <div className='flex w-full font-lato text-[24px] font-[500] mx-auto justify-center h-full items-center mt-[2rem]'>You are yet to complete any Order</div> }
     </motion.div>
   )
 }
