@@ -26,7 +26,7 @@ const PaymentSuccessful = () => {
     }
     useEffect(() => {
         VerifyPayment()
-    })
+    },[])
   return (
     loading == true ? <div className='mx-auto min-h-[50vh] mt-[20px]'>
       <ClipLoader />
