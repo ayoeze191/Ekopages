@@ -28,7 +28,7 @@ const PaymentSuccessful = () => {
         VerifyPayment()
     })
   return (
-    loading? <div className='mx-auto min-h-[50vh] mt-[20px]'>
+    loading == true ? <div className='mx-auto min-h-[50vh] mt-[20px]'>
       <ClipLoader />
     </div>:verificationSuccesfull == true ? <div>
         <div className='flex justify-center flex-col items-center text-center gap-[29px] mx-auto mb-10 min-h-[50vh]'>
