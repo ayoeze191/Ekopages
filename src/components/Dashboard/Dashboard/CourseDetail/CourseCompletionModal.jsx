@@ -45,7 +45,7 @@ const CourseCompletionModal = ({ClearInterface, id}) => {
   }, [])
   console.log(viewed_before)
   return (
-    Loading?<BeatLoader />:viewed_before ? <></>:
+    Loading?<BeatLoader />:viewed_before == true ? <></>:
     
     <div className="fixed h-full top-0  w-full left-0 z-20 flex justify-center items-center "
     // initial={{  scale: 0 }}
