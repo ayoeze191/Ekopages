@@ -35,7 +35,7 @@ const CourseCompletionModal = ({ClearInterface, id}) => {
     },
     passed: {
       applaud: "Congratulations!",
-      text: "You did a great job by above beyond the average. That earned you a certificate",
+      text: "You did a great job by scoring above the average score. That earned you a certificate",
       logo: excelentLogo
     },
   };
