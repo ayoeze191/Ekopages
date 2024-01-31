@@ -10,12 +10,17 @@ import { tokenConfig } from "../../Config/Config"
 import { BeatLoader } from "react-spinners"
 import { toast } from "react-toastify"
 import { FaNairaSign } from "react-icons/fa6";
+import {useAuthContext} './../../context/auth/auth'
+import {useModalContext} './../../context/modal/modal'
 const CourseModal = ({picture, subject, Tutor, price, stars, modules, id,handleClose, courseModal}) => {
     // const toast = useToast()
     const navigate = useNavigate()
     const [loading, setLoading] = useState(false)
     const [enrolled, setEnrolled] = useState(false)
+    const {setLoginModal} = useModalContext()
+    const {isAuth} = useAuthContext()
     const Enrol = async () => {
+        if(isAuth) {
         setLoading(true)
         axios.post(`https://ekopages-production.up.railway.app/services/enroll/${id}/`, null,tokenConfig())
         .then((res) => {
@@ -27,6 +32,12 @@ const CourseModal = ({picture, subject, Tutor, price, stars, modules, id,handleC
         .catch((error) => {
             console.log(error.response)
         })  
+    }
+    else {
+        handleClose()
+        setLoginModal()
+        
+    }
         // try {
         //     const res = await instance.post(`/services/enroll/${id}/`, null,tokenConfig())
         //     console.log(res)
