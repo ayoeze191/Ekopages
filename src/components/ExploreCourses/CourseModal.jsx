@@ -10,8 +10,8 @@ import { tokenConfig } from "../../Config/Config"
 import { BeatLoader } from "react-spinners"
 import { toast } from "react-toastify"
 import { FaNairaSign } from "react-icons/fa6";
-import {useAuthContext} './../../context/auth/auth'
-import {useModalContext} './../../context/modal/modal'
+import {useAuthContext} from './../../context/auth/auth'
+import {useModalContext} from  './../../context/modal/modal'
 const CourseModal = ({picture, subject, Tutor, price, stars, modules, id,handleClose, courseModal}) => {
     // const toast = useToast()
     const navigate = useNavigate()
