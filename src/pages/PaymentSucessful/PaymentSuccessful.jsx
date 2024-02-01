@@ -4,15 +4,19 @@ import { useLocation, useNavigate, useParams } from "react-router-dom"
 
 import { tokenConfig } from '../../Config/Config'
 import { ClipLoader, FadeLoader } from 'react-spinners'
-
-
+import { useAuthContext } from '../../context/auth/auth'
+import { cookieContext } from '../../App'
+import { useContext } from 'react'
 const PaymentSuccessful = () => {
   const [verificationSuccesfull, setVerificationSuccesfull] = useState(false)
+  const {isAuth} = useAuthContext()
+  const {cookie} = useContext(cookieContext)
   const [loading, setLoading]  = useState(false)
   const urlSearchParams = new URLSearchParams(window.location.search);
   const nav = useNavigate()
   const referenceValue = urlSearchParams.get('reference');
     const VerifyPayment = () => {
+      if(isAuth == true){
         setLoading(true)
         instance.get(`/cart_payment/payment/verify/${referenceValue}` , tokenConfig())
         .then((res)=> {
@@ -23,6 +27,19 @@ const PaymentSuccessful = () => {
           setVerificationSuccesfull(false);
           setLoading(false)
         } )
+      }
+      else {
+        setLoading(true)
+        instance.get(`/unregistered-cart-payment/payment/verify/${referenceValue}/${cookie}` , tokenConfig())
+        .then((res)=> {
+          setVerificationSuccesfull(true)
+          setLoading(false)
+        })
+        .catch((err) => {
+          setVerificationSuccesfull(false);
+          setLoading(false)
+        } )
+      }
     }
     useEffect(() => {
         VerifyPayment()
