@@ -54,7 +54,8 @@ const Course = ({picture, subject, Tutor, price, stars, modules, id, handleSelec
         </div>
         <div className='px-[13.76px] flex gap-[6px] flex-col'>
             <p className='font-[500] text-[20.64px] font-lato '>
-              {subject[0].toUpperCase() + subject.substr(1, subject.length - 1).toLowerCase()}
+              {subject}
+              {/* {subject[0].toUpperCase() + subject.substr(1, subject.length - 1).toLowerCase()} */}
               </p>
             <p className='font-[400] text-[10.32px] leading-[12.38px] text-[#888888]'>{modules}Modules</p>
             <p className='font-[600] text-[13.76px] leading-[16.51px] text-[#888888] flex'> <p className='text-[#4A4A4A] '>Tutor:{" "}</p> {Tutor}</p>

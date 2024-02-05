@@ -25,6 +25,7 @@ import instance from "./axios";
 import withErrorHandler from "./components/withErrHandler";
 import {GoQuestion} from "react-icons/go"
 import Logout from "./components/ui/Modal/Logout";
+import PasswordReset from "./components/ui/Modal/PasswordReset";
 
 export const cookieContext = createContext({cookie: "", setContext: () => {}})
 
@@ -57,7 +58,7 @@ function App() {
     setCookieContext()
   }
   
-  const {partnerModal, setpartnerModal, stayIntouchModal, setstayIntouchModal, logoutModal, setLogOutModal} = useModalContext()
+  const {forgotPasswordModal, switchforgotPasswordModal, partnerModal, setpartnerModal, stayIntouchModal, setstayIntouchModal, logoutModal, setLogOutModal} = useModalContext()
   return (
     <cookieContext.Provider value={{cookie: cookies.eko_session_id !== (undefined || null)? cookies.eko_session_id:null, setContext: setCookieContext }}>
     <div className="bg-[#F6F6F6] flex">
@@ -115,8 +116,24 @@ function App() {
       >
         <StayIntouch />
       </Rodal>
+      <Rodal 
+      customStyles={{
+        width: "90%",
+        paddingLeft: "0",
+        paddingRight: "0",
+        paddingTop: "0",
+        paddingBottom: "0",
+        background: "#F6F6F6",
+        height: "60vh",
+        minHeight: "473px",
+        maxWidth: "688px",
+        borderRadius: "10px 0px 0px 10px"
+        }}
+        onClose={switchforgotPasswordModal}
+      visible={forgotPasswordModal}>
+        <PasswordReset />
+      </Rodal>
       <ToastContainer />
-
       <BrowserRouter>
       <Routes>
       {/* <Route element= {<Login />}  path="/login" /> */}

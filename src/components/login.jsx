@@ -22,7 +22,7 @@ import { useModalContext } from "../context/modal/modal"
 const Login = () => {
 
   const loginObject = useLogic()
-  const {setLoginModal, setSignupModal} = useModalContext()
+  const {setLoginModal, setSignupModal, switchforgotPasswordModal} = useModalContext()
   const { login, loading, error, success } = useAuthContext()
 
   const formik = useFormik({
@@ -80,7 +80,7 @@ const handleError = (error) => {
             {error?  handleError(error):null}
             </div>
 
-            <p className="text-[16px] text-[black] font-Poppins mt-[15px] mb-[15px]">
+            <p className="text-[16px] text-[black] font-Poppins mt-[15px] mb-[15px]" onClick={() =>{ switchforgotPasswordModal(); setLoginModal()} }>
           Forgot Password?
           </p>
           </section>  
