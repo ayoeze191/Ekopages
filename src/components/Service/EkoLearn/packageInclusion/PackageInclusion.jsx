@@ -6,7 +6,7 @@ import Package from './Package'
 
 const details = [
     {
-        link: "dashboard/courses",
+        link: "/explore-courses",
         mode :"free",
         image: clarity_certificate_line,
         title: "SDG COURSES",
@@ -18,7 +18,7 @@ const details = [
         title: "POP QUIZZES",
         text: "Subscribe to our affordable school and group packages to access our books, courses, quizzes and games",
         btnValue: "Take a Quiz",
-        link: "dashboard/courses",
+        link: "/quizes",
     },
     {
         mode :"paid",
@@ -26,7 +26,7 @@ const details = [
         title: "SDG THEMED BOOKS",
         text: "Subscribe to our affordable school and group packages to access our books, courses, quizzes and games",
         btnValue: "See Books",
-        link: "/dashboard/books"
+        link: "/ekostore"
     },
 ]
 
