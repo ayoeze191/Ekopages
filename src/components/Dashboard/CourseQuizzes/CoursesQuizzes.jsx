@@ -128,12 +128,17 @@ const CourseQuizes = () => {
     try{
       if(moduleCompleted == false) {
         for (const item of answers) {
+          try{
           const response = await instance.post(
                     "/Quiz/answer_quiz/",
                     { question: item.question, answer: item.answer, quiz: redirect_id },
                     tokenConfig()
                   );
                   const result = await response.data;
+          }
+          catch(error){
+            console.log(error)
+          } 
         }
         try{
           setAsCompleted()
