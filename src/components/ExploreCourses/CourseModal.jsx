@@ -85,9 +85,10 @@ const CourseModal = ({picture, subject, Tutor, price, stars, modules, id,handleC
             <p className="flex items-center font-lato font-semibold text-[16px] md:text-[32px] mt-[11px] md:mt-[22.4px] ">
                 <div className="flex items-center">
                     {/* <img src={naira} className="h-3 lg:h-[initial]" /> */}
-                    <FaNairaSign height={12}
+                    {price !== "free"? <FaNairaSign height={12}
                     size={24}
                     />
+            :""}
                     </div>{price?price:"3,500"}
             </p>
             <button className="bg-[#5A0C91] w-[100px] h-[32px] md:w-[216px] md:h-[59px] rounded-[10px] text-[#FFFFFF] font-[500] text-[14px] md:text-[24px] font-lato leading-[28.9px] mt-[24px] md:mt-[50px]" onClick={Enrol}>
