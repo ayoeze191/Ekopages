@@ -22,7 +22,7 @@ const LandingComponent = () => {
             {/* <NavHeader></NavHeader> */}
             <WelcomeComponent></WelcomeComponent>
             {/* <OurPartners></OurPartners> */}
-            {/* <Partners /> */}
+            <Partners />
             <About></About>
             <Benefits></Benefits>
             <Store></Store>
