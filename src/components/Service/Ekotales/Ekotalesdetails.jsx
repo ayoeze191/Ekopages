@@ -4,6 +4,8 @@ import { ClipLoader} from "react-spinners"
 import instance from '../../../axios'
 import OtherTales from './OtherEkotales/OtherTales'
 import { useParams } from 'react-router-dom'
+import parse from "html-react-parser"
+
 const EkoTalesDetails = () => {
   const loc = window.location
 
@@ -55,10 +57,11 @@ const EkoTalesDetails = () => {
 
         <div className='flex flex-col gap-[2rem] text-[#232323] text-[1rem] md:text-[1.25rem] mb-[5rem] font-[400] font-lato mt-6'>
             
-              {showSmall?
+              {/* {showSmall?
               <p>{tale.body.split("</p>").map((p) => <p>{p}</p>)}</p>:
               tale.body.split("</p>").map((p) => <p>{p}</p>)
-            }
+            } */}
+            {parse(tale.body)}
             
         </div>
           <div className='relative w-full overflow-hidden  '>

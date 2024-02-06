@@ -4,6 +4,8 @@ import { useState } from 'react'
 import {BarLoader, ClipLoader} from "react-spinners"
 import instance from '../../../../axios'
 import { useNavigate } from 'react-router-dom'
+import parse from "html-react-parser"
+
 const TalesOfTheWeek = () => {
   const [loading, setLoading] = useState(true)
   const [tale, setTale] = useState(null);
@@ -42,12 +44,12 @@ const TalesOfTheWeek = () => {
         </div>
 
         <div className='flex flex-col gap-[2rem] text-[#232323] text-[1.25rem] mb-[5rem] font-[400] font-lato'>
-            
+{/*             
               {showSmall?
               <p>{tale.body.slice(0, 1000).split("</p>").map((p) => <p>{p}</p>)}</p>:
               tale.body.split("</p>").map((p) => <p>{p}</p>)
-            }
-            
+            } */}
+            {parse(tale.body.slice(0, 1000))}
         </div>
 
     <div className='w-full flex justify-center'>
