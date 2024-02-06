@@ -5,7 +5,10 @@ import FME from "./../../assets/about/FME.png"
 import LME from "./../../assets/about/LME.png"
 import REESAfricaLogo from "./../../assets/about/REESAfricaLogo.png"
 import TNCI from "./../../assets/about/TNCI.png"
+import educator from "./../../assets/about/educators.jpeg"
+
 import partners from "./../../assets/landingpage/partners.svg"
+
 import { Swiper, SwiperSlide } from 'swiper/react';
 
 import 'swiper/css';
@@ -29,7 +32,7 @@ const Partners = () => {
         // className=' flex w-full  md:w-fit justify-center items-center mx-auto '
             // modules={[Navigation]}
             slidesPerView={1}
-            spaceBetween= {4}
+            spaceBetween= {0}
             // navigation={true}
             autoplay = {{pauseOnMouseEnter: false}}
             loop={true}
@@ -44,12 +47,14 @@ const Partners = () => {
             }
         }}
         >
-            <SwiperSlide><div className='px-3 w-full  mx-auto' ><img src={British} className='mx-auto w-40 md:w-full '/></div></SwiperSlide>
-            <SwiperSlide><div className='px-3 w-full  mx-auto'  ><img src={chevening} className='mx-auto w-40 md:w-full' /></div></SwiperSlide>
-            <SwiperSlide> <div className='px-3 w-full   mx-auto'  ><img src={TNCI} className='mx-auto w-40 md:w-full' /></div></SwiperSlide>
-            <SwiperSlide><div className='px-3 w-full  mx-auto'  ><img src={FME} className='mx-auto w-40 md:w-full' /></div></SwiperSlide>
-            <SwiperSlide> <div className='px-3 w-full  mx-auto'  ><img src={REESAfricaLogo} className='mx-auto w-40 md:w-full' /></div></SwiperSlide>
-            <SwiperSlide><div className='px-3 w-full mx-auto'  ><img src={LME} className='mx-auto w-40 md:w-full' /></div></SwiperSlide>
+            <SwiperSlide><div className='px-3 w-fit  mx-auto' ><img src={British} className='mx-auto w-40 md:w-full '/></div></SwiperSlide>
+            <SwiperSlide><div className='px-3 w-fit  mx-auto'  ><img src={chevening} className='mx-auto w-40 md:w-full' /></div></SwiperSlide>
+            <SwiperSlide> <div className='px-3 w-fit   mx-auto'  ><img src={TNCI} className='mx-auto w-40 md:w-full' /></div></SwiperSlide>
+            <SwiperSlide><div className='px-3 w-fit  mx-auto'  ><img src={FME} className='mx-auto w-40 md:w-full' /></div></SwiperSlide>
+            <SwiperSlide> <div className='px-3 w-fit  mx-auto'  ><img src={REESAfricaLogo} className='mx-auto w-40 md:w-full' /></div></SwiperSlide>
+            <SwiperSlide><div className='px-3 w-fit mx-auto'  ><img src={LME} className='mx-auto w-40 md:w-full' /></div></SwiperSlide>
+            <SwiperSlide><div className='px-3 w-fit mx-auto'  ><img src={educator} className='mx-auto w-40 md:w-full' /></div></SwiperSlide>
+
             </Swiper>        
         </div>
     </div>
