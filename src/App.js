@@ -57,8 +57,25 @@ function App() {
   if(!cookies.eko_session_id) {
     setCookieContext()
   }
-  
-  const {forgotPasswordModal, switchforgotPasswordModal, partnerModal, setpartnerModal, stayIntouchModal, setstayIntouchModal, logoutModal, setLogOutModal} = useModalContext()
+    
+  const {forgotPasswordModal, switchforgotPasswordModal, partnerModal, setpartnerModal, stayIntouchModal, setstayIntouchModal, logoutModal, setLogOutModal, setSignupModal} = useModalContext()
+  const urlSearchParams = new URLSearchParams(window.location.search);
+  const referenceValue = urlSearchParams.get('signup');
+  useEffect(() => {
+    if(referenceValue == 'true'){
+      const currentUrl = window.location.href;
+      setSignupModal()
+      if (currentUrl.indexOf('signup=true') !== -1) {
+        // Remove the 'signup' parameter
+        var updatedUrl = currentUrl.replace('?signup=true', '');
+    
+        // Update the URL in the browser without reloading the page
+        window.history.replaceState({}, document.title, updatedUrl);
+    }
+    }
+  }, [])
+
+
   return (
     <cookieContext.Provider value={{cookie: cookies.eko_session_id !== (undefined || null)? cookies.eko_session_id:null, setContext: setCookieContext }}>
     <div className="bg-[#F6F6F6] flex">
