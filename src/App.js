@@ -26,13 +26,26 @@ import withErrorHandler from "./components/withErrHandler";
 import {GoQuestion} from "react-icons/go"
 import Logout from "./components/ui/Modal/Logout";
 import PasswordReset from "./components/ui/Modal/PasswordReset";
+import ReactGA from 'react-ga';
 
 export const cookieContext = createContext({cookie: "", setContext: () => {}})
 
 
 function App() {
-  const loc = window.location
 
+  const loc = window.location
+  const location = useLocation();
+  // useEffect(() => {
+  //   ReactGA.pageview(location.pathname + location.search);
+  // }, [location]);
+  useEffect(() => {
+  ReactGA.pageview(window.location.pathname)
+  }, [])
+  //    useEffect(() => {
+  //   ReactGA.event({
+  //   category: 
+  //   })
+  // }, [location]);
   useEffect(() => {
       window.scrollTo(0, 0);
 

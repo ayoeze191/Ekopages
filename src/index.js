@@ -10,9 +10,12 @@ import { AuthProvider } from './context/auth/auth';
 import { SignUpProvider } from "./context/auth/signup"
 import { store } from './store/Store';
 import { ModalProvider } from './context/modal/modal';
-
+import ReactGA from 'react-ga';
+// Initialize React Ga with your tracking ID
+ReactGA.initialize('UA-215728478-2');
 const root = ReactDOM.createRoot(document.getElementById('root'));
 const queryClient = new QueryClient()
+
 root.render(
   // <React.StrictMode>
     <ModalProvider>
