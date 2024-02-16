@@ -32,7 +32,7 @@ export const cookieContext = createContext({cookie: "", setContext: () => {}})
 
 
 function App() {
-  console.log("anyalzuin")
+  console.log("anyalzuins")
   const loc = window.location
   // const location = useLocation();
   // useEffect(() => {
