@@ -12,7 +12,7 @@ import { store } from './store/Store';
 import { ModalProvider } from './context/modal/modal';
 import ReactGA from 'react-ga';
 // Initialize React Ga with your tracking ID
-ReactGA.initialize('UA-215728478-2');
+ReactGA.initialize('G-33MK520YP4');
 const root = ReactDOM.createRoot(document.getElementById('root'));
 const queryClient = new QueryClient()
 
