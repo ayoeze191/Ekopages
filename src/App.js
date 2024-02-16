@@ -34,7 +34,7 @@ export const cookieContext = createContext({cookie: "", setContext: () => {}})
 function App() {
 
   const loc = window.location
-  const location = useLocation();
+  // const location = useLocation();
   // useEffect(() => {
   //   ReactGA.pageview(location.pathname + location.search);
   // }, [location]);
