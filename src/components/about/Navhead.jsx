@@ -154,7 +154,7 @@ const NavHead = ({sideHandler}) => {
                 </Link>
  </section>
                 <section className='hidden lg:block'>
-                <div  className="text-[16px] font-lato flex justify-between gap-[20px]">
+                <div  className="text-[12px] lg:text-[14px] xl:text-[16px] font-lato flex justify-between gap-[20px]">
 
 {
     arrauOfNavs.map((eachItems) => <NavLink style={(props) => props.isActive ? {color: '#5A0C91', fontWeight: 600}:null}  className=" text-[#303030]" to={eachItems.path}  >{eachItems.name}</NavLink>)
@@ -164,14 +164,14 @@ const NavHead = ({sideHandler}) => {
                 </section>
 
             <section className="flex items-center lg:gap-[1rem]">
-                <div className="bg-[#E4E4E4] rounded-[10px] text-[20px] items-center py-[0.8125rem] px-[1.18rem] hidden lg:flex"  >
+                <div className="bg-[#E4E4E4] rounded-[10px] text-[16px] px-[0.5rem] py-[0.4rem] xl:text-[20px] items-center xl:py-[0.8125rem] xl:px-[1.18rem] hidden lg:flex"  >
                     <AiOutlineSearch className=" text-[#888888] mr-[6px]" width={'1rem'} height={"14.4px"}></AiOutlineSearch>
                     <input className="h-full bg-[#E4E4E4] outline-0 text-[12px]" placeholder="Search" type="text" />
                 </div>
-                {!isAuth&& <><button onClick={()=> setSignupModal(NavLogicObject.state)}  className=" bg-[#5A0C91] text-white rounded-[5px] font-lato text-[1rem] font-[500] lg:w-[7.5rem] w-[5.75rem]  h-[2.187rem] lg:h-[2.5rem] ">
+                {!isAuth&& <><button onClick={()=> setSignupModal(NavLogicObject.state)}  className=" bg-[#5A0C91] text-white rounded-[5px] font-lato text-[14px]  xl:text-[1rem] font-[500] w-[6rem] xl:w-[7.5rem] xl-[5.75rem]  h-[1.9rem] lg:h-[2.187rem] xl:h-[2.5rem] ">
                     Sign Up
                 </button>
-                <button onClick={()=> setLoginModal()} className="hidden lg:block bg-inherit border-[solid] border  border-[#5A0C91] text-[#5A0C91] rounded-[5px] font-lato text-[1rem] font-[500] w-[7.5rem] h-[2.5rem]">
+                <button onClick={()=> setLoginModal()} className="hidden lg:block bg-inherit border-[solid] border  border-[#5A0C91] text-[#5A0C91] rounded-[5px] font-lato text-[1rem] font-[500] w-[6rem] xl:w-[7.5rem] h-[1.9rem] lg:h-[2.187rem] xl:h-[2.5rem]">
                     Log In
                 </button> </> }
             </section>
