@@ -1,7 +1,8 @@
 import React, { useEffect, useState } from 'react'
 import star from "./../../assets/star.svg"
-import ExploreCoursePicture from  "./../../assets/ExploreCoursePicture.svg"
+import explorecoursesImage from  "./../../assets/explorecoursesImage.png"
 import instance from '../../axios'
+// import 
 import { BeatLoader, ClipLoader } from 'react-spinners'
 import { useNavigate } from 'react-router-dom'
 import { tokenConfig } from '../../Config/Config'
@@ -50,7 +51,7 @@ const Course = ({picture, subject, Tutor, price, stars, modules, id, handleSelec
     <div  className='font-lato  rounded-[9.5px] bg-white h-[370px] flex flex-col justify-between hover:border-solid hover:border-[1px] hover:border-[#5A0C91]'>
         <div className='relative'>
             <div className={`absolute right-[13px] top-[13.76px] ${price === "FREE"?'bg-[#247A00]':'bg-[#5A0C91]'} h-[23px] w-[45px] text-white font-[500] text-[13.76px] leading-[16.5px] rounded-[2.58px] flex items-center justify-center `}>{price === "FREE"?"FREE":"PRO"}</div>
-            <img src={ExploreCoursePicture} className='object-contain'/>
+            <img src={explorecoursesImage} className='object-contain'/>
         </div>
         <div className='px-[13.76px] flex gap-[6px] flex-col'>
             <p className='font-[500] text-[20.64px] font-lato '>
