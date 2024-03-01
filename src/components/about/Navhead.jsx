@@ -33,6 +33,7 @@ import AccountSuccesfullyCreated from '../ui/Modal/AccountSuccesfullyCreated';
 import { useSignupContext } from '../../context/auth/signup';
 
 const NavHead = ({sideHandler}) => {
+    const [fixed, setFixed] = useState(false)
     const {loginModal, setLoginModal, signupModal, setSignupModal} = useModalContext()
     const {accountSuccessfullycreatedModal, setaccountSuccessfullycreatedModal} = useSignupContext()
 
@@ -87,11 +88,22 @@ const NavHead = ({sideHandler}) => {
            
         }
     }, [])
-
+    const HandlerFixed = () => {
+        if(window.scrollY >= 72){
+            setFixed(true)
+        }
+        else{
+            setFixed(false)
+        }
+    }
+    window.addEventListener('scroll', HandlerFixed)
 
     return (
-        // <div className='bg-[#F6F6F6] w-full'>
-    <div className="headersection w-full  flex items-center justify-between text-[24px] font-normal font-lato relative">
+        <div className={`bg-[#F6F6F6] w-full  top-0 z-[5] ${fixed==true?'fixed shadow-xl':''}`}
+        style={{
+            transition: 'all 500s' 
+        }}>
+    <div className="headersection w-full  flex items-center justify-between text-[24px] font-normal font-lato relative  ">
             <Rodal
                  customStyles={{
                     width: "90%",
@@ -196,10 +208,8 @@ const NavHead = ({sideHandler}) => {
 
 
         </div>
-        // </div>
+        </div>
     )
-    
-
 } 
 
 export default NavHead
