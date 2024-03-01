@@ -27,7 +27,9 @@ const Signup = () => {
   const {setLoginModal, setSignupModal} = useModalContext()
   // const {signUp, signupOnChangeHandler, details} = useSignupOnchange()
   // const NavLogicObject = useLogic()
-
+  const urlSearchParams = new URLSearchParams(window.location.search);
+  const referer_code = urlSearchParams.get('referer_code');
+ 
   const {loading, signup, success, error,} =  useSignupContext()
   const {setloginMode} = useAuthContext()
   const formik = useFormik({
@@ -37,7 +39,8 @@ const Signup = () => {
       first_name: "",
       last_name: "",
       password1: "",
-      password2: ""
+      password2: "",
+      referer_code:referer_code
     },
     onSubmit: values => {
         signup(values)
@@ -93,6 +96,10 @@ if(error) {
                 {formik.errors.password2 && formik.touched.password2 ? <p className="text-[12px] text-red-500 mt-4">{ formik.errors.password2}</p>:null}
 
           </section>
+          <section className="">
+          <InputField type="hidden" className='hi' onChangeHandler={formik.handleChange} value={formik.values.referer_code} fieldName={"referer_code"}  name="referer_code"></InputField>
+          </section>
+       
           <div>
             {err}
           </div>

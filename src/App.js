@@ -78,13 +78,13 @@ function App() {
     if(referenceValue == 'true'){
       const currentUrl = window.location.href;
       setSignupModal()
-      if (currentUrl.indexOf('signup=true') !== -1) {
-        // Remove the 'signup' parameter
-        var updatedUrl = currentUrl.replace('?signup=true', '');
+    //   if (currentUrl.indexOf('signup=true') !== -1) {
+    //     // Remove the 'signup' parameter
+    //     var updatedUrl = currentUrl.replace('?signup=true', '');
     
-        // Update the URL in the browser without reloading the page
-        window.history.replaceState({}, document.title, updatedUrl);
-    }
+    //     // Update the URL in the browser without reloading the page
+    //     window.history.replaceState({}, document.title, updatedUrl);
+    // }
     }
   }, [])
 
