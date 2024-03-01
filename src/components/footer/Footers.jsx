@@ -73,13 +73,13 @@ const Footers = () => {
     // //(loc.pathname)
 
   return ( 
-   <div className='bg-[#EFE7F4]'>
+   <div className=''>
       <div className=' pt-[3.5rem] font-lato section'>
     <div className='w-full  mx-auto lg:px-0 px-6  '>
           <div className='flex justify-between flex-col lg:flex-row items-center gap-[2rem] lg:gap-[2.5rem]  lg:items-left'>
         <div className='flex flex-col  text-left mr-[4rem]'>
             <div className=' w-fit mb-[1rem]'><img src={Logo} alt="" /></div>
-            <p className='max-w-xs font-[Lato] text-[#4A4A4A] mb-5 font-[400] text-[14px] md:text-[1rem]'>Eko Pages is a publishing outfit that immerses children into the act of environmental sustainability with our top books, stories and publications.   </p>
+            <p className='max-w-xs font-[Lato] text-[#4A4A4A] mb-5 font-[400] text-[14px] '>Eko Pages is a publishing outfit that immerses children into the act of environmental sustainability with our top books, stories and publications.   </p>
     <p className='lg:font-400 lg:font-[700] mb-[1.5rem] hidden lg:block'>Follow us on social media</p>
     <div  className='lg:flex gap-8 mx-auto hidden  lg:mx-0'>
         <a href='https://www.twitter.com/ekopages_'><img src={twitter} alt="" srcset="" /></a>

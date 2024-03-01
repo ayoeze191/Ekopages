@@ -166,7 +166,7 @@ const NavHead = ({sideHandler}) => {
                 </Link>
  </section>
                 <section className='hidden lg:block'>
-                <div  className="text-[12px] lg:text-[14px] xl:text-[16px] font-lato flex justify-between gap-[20px]">
+                <div  className="text-[12px] lg:text-[14px]  font-lato flex justify-between gap-[20px]">
 
 {
     arrauOfNavs.map((eachItems) => <NavLink style={(props) => props.isActive ? {color: '#5A0C91', fontWeight: 600}:null}  className=" text-[#303030]" to={eachItems.path}  >{eachItems.name}</NavLink>)
@@ -176,14 +176,14 @@ const NavHead = ({sideHandler}) => {
                 </section>
 
             <section className="flex items-center lg:gap-[1rem]">
-                <div className="bg-[#E4E4E4] rounded-[10px] text-[16px] px-[0.5rem] py-[0.4rem] xl:text-[20px] items-center xl:py-[0.8125rem] xl:px-[1.18rem] hidden lg:flex"  >
+                <div className="bg-[#E4E4E4] rounded-[10px] text-[16px] px-[0.5rem] py-[0.4rem] xl:text-[20px] items-center   hidden lg:flex"  >
                     <AiOutlineSearch className=" text-[#888888] mr-[6px]" width={'1rem'} height={"14.4px"}></AiOutlineSearch>
                     <input className="h-full bg-[#E4E4E4] outline-0 text-[12px]" placeholder="Search" type="text" />
                 </div>
-                {!isAuth&& <><button onClick={()=> setSignupModal(NavLogicObject.state)}  className=" bg-[#5A0C91] text-white rounded-[5px] font-lato text-[14px]  xl:text-[1rem] font-[500] w-[6rem] xl:w-[7.5rem] xl-[5.75rem]  h-[1.9rem] lg:h-[2.187rem] xl:h-[2.5rem] ">
+                {!isAuth&& <><button onClick={()=> setSignupModal(NavLogicObject.state)}  className=" bg-[#5A0C91] text-white rounded-[5px] font-lato text-[14px]  xl:text-[0.8rem] font-[500] w-[6rem]  h-[1.9rem] lg:h-[2.187rem] ">
                     Sign Up
                 </button>
-                <button onClick={()=> setLoginModal()} className="hidden lg:block bg-inherit border-[solid] border  border-[#5A0C91] text-[#5A0C91] rounded-[5px] font-lato text-[1rem] font-[500] w-[6rem] xl:w-[7.5rem] h-[1.9rem] lg:h-[2.187rem] xl:h-[2.5rem]">
+                <button onClick={()=> setLoginModal()} className="hidden lg:block bg-inherit border-[solid] border  border-[#5A0C91] text-[#5A0C91] rounded-[5px] font-lato text-[0.8rem] font-[500] w-[6rem]  h-[1.9rem] lg:h-[2.187rem] ">
                     Log In
                 </button> </> }
             </section>
@@ -191,7 +191,7 @@ const NavHead = ({sideHandler}) => {
             <section className=' items-center justify-between gap-[1rem] flex flex-0'>
             
                  {isAuth && <>                      <p className="text-[#4A4A4A] text-[0.875rem] lg:text-[1rem] font-[400] ">hello {user.username}</p> 
-                    <Link className="hidden  relative  w-[28px] h-[28px] lg:w-[40px] lg:h-[40px] bg-[#CCB4DD] rounded-full md:flex items-center justify-center cursor-pointer flex" to = {'/dashboard'} >
+                    <Link className="  relative  w-[28px] h-[28px] lg:w-[40px] lg:h-[40px] bg-[#CCB4DD] rounded-full md:flex items-center justify-center cursor-pointer flex" to = {'/dashboard'} >
                         {/* <AiOutlineUser></AiOutlineUser> */}
                         <img src={profile_pics} className='object-center bg-center w-full h-full rounded-full'/>
                         <p className="absolute h-[7px] w-[7px] rounded-[7px] bg-[#03A800] top-[5px] right-[0px]"></p>
@@ -200,10 +200,10 @@ const NavHead = ({sideHandler}) => {
                     <img src={profile_pics} className='object-center bg-center w-full h-full rounded-full'/>
                         <p className="absolute h-[7px] w-[7px] rounded-[7px] bg-[#03A800] top-[5px] right-[0px]"></p>
                     </Link>
-                    <AiOutlineHeart className='hidden lg:flex'></AiOutlineHeart>
+                    <AiOutlineHeart className='hidden lg:flex' size={20}></AiOutlineHeart>
                     </>
 }                   
-                  <Link to={'/cart'}>   <BsCart className='hidden lg:block'></BsCart></Link>
+                  <Link to={'/cart'}>   <BsCart className='hidden lg:block' size={20}></BsCart ></Link>
             </section>
 
 
