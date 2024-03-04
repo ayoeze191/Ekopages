@@ -99,7 +99,7 @@ const NavHead = ({sideHandler}) => {
     window.addEventListener('scroll', HandlerFixed)
 
     return (
-        <div className={`bg-[#F6F6F6] w-full  top-0 z-[5] ${fixed==true?'fixed shadow-xl':''}`}
+        <div className={`bg-[#F6F6F6] w-full  top-0 z-[5] ${fixed==true?'fixed shadow-md':''}`}
         style={{
             transition: 'all 500s' 
         }}>
