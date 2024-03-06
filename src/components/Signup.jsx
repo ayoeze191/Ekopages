@@ -97,7 +97,7 @@ if(error) {
 
           </section>
           <section className="">
-          <InputField type="text"  onChangeHandler={formik.handleChange} value={formik.values.referer_code} fieldName={"referral code"}  name="referer_code" ></InputField>
+          <InputField type="text"  onChangeHandler={formik.handleChange} value={formik.values.referral_code} fieldName={"referral code"}  name="referer_code" ></InputField>
           </section>
        
           <div>
