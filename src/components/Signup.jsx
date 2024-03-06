@@ -28,7 +28,7 @@ const Signup = () => {
   // const {signUp, signupOnChangeHandler, details} = useSignupOnchange()
   // const NavLogicObject = useLogic()
   const urlSearchParams = new URLSearchParams(window.location.search);
-  const referer_code = urlSearchParams.get('referer_code');
+  const referer_code = urlSearchParams.get('referral_code');
  
   const {loading, signup, success, error,} =  useSignupContext()
   const {setloginMode} = useAuthContext()
@@ -97,7 +97,7 @@ if(error) {
 
           </section>
           <section className="">
-          <InputField type="text"  onChangeHandler={formik.handleChange} value={formik.values.referer_code} fieldName={"referer_code"}  name="referer_code" ></InputField>
+          <InputField type="text"  onChangeHandler={formik.handleChange} value={formik.values.referer_code} fieldName={"referral code"}  name="referer_code" ></InputField>
           </section>
        
           <div>
