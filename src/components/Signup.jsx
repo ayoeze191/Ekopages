@@ -40,7 +40,7 @@ const Signup = () => {
       last_name: "",
       password1: "",
       password2: "",
-      referer_code:referer_code
+      referral_code:referer_code
     },
     onSubmit: values => {
         signup(values)
