@@ -29,7 +29,7 @@ const Signup = () => {
   // const NavLogicObject = useLogic()
   const urlSearchParams = new URLSearchParams(window.location.search);
   const referer_code = urlSearchParams.get('referral_code');
- 
+
   const {loading, signup, success, error,} =  useSignupContext()
   const {setloginMode} = useAuthContext()
   const formik = useFormik({
@@ -43,7 +43,17 @@ const Signup = () => {
       referral_code:referer_code
     },
     onSubmit: values => {
-        signup(values)
+      const submit_values = {email: values.email,
+      username: values.username,
+      first_name: values.first_name,
+      last_name: values.last_name,
+      password1: values.password1,
+      password2: values.password2,
+      referral_code:values.referral_code!==null?values.referral_code:""
+    
+    }
+      console.log(values.referral_code)
+        signup(submit_values)
     },
     validate: SignupValidate
 })
@@ -114,7 +124,6 @@ if(error) {
   <span className="">Or Sign In using </span>
   <span className="flex-1 md:h-[1px] bg-[#CCB4DD] "></span>
            </div>
-  
           <div className="flex justify-between gap-[40.8px] mx-auto items-center">
             <div> <img src = {google} /> </div>
             <div> <img src = {facebook} /> </div>
