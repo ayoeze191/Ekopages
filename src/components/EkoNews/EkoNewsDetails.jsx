@@ -1,8 +1,31 @@
 import React from 'react'
 import Otherinteresting from './otherInteresting/Otherinteresting'
 import { useLocation } from 'react-router-dom'
+
+import { useEffect, useState } from 'react'
+import { useModalContext } from '../../context/modal/modal'
 const EkoNewsDetails = () => {
+  const {setFeedback} = useModalContext()
     const {state} = useLocation()
+    const [timer, setTimer] = useState(30)
+    console.log(timer)
+
+    useEffect(() => {
+      setTimer(10)
+      const interval = setInterval(() => {
+        if(timer != 0){
+        setTimer((prevSeconds) => prevSeconds - 1);
+        }
+      }, 1000);
+      // Cleanup function to clear the interval when the component is unmounted
+      return () => clearInterval(interval);
+    }, []);
+    useEffect(() => {
+      if(timer == 0){
+        setFeedback()
+    }
+    }, [timer])
+
     //(state)
   return (
     <div className='font-lato'>

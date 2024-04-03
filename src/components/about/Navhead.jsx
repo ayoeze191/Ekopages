@@ -31,10 +31,11 @@ import { cookieContext } from '../../App';
 import { useModalContext } from '../../context/modal/modal';
 import AccountSuccesfullyCreated from '../ui/Modal/AccountSuccesfullyCreated';
 import { useSignupContext } from '../../context/auth/signup';
+import Feedback from '../ui/Modal/Feedbackform';
 
 const NavHead = ({sideHandler}) => {
     const [fixed, setFixed] = useState(false)
-    const {loginModal, setLoginModal, signupModal, setSignupModal} = useModalContext()
+    const {loginModal, setLoginModal, signupModal, setSignupModal, feedback, setFeedback} = useModalContext()
     const {accountSuccessfullycreatedModal, setaccountSuccessfullycreatedModal} = useSignupContext()
 
     const NavLogicObject = useLogic()
@@ -116,10 +117,29 @@ const NavHead = ({sideHandler}) => {
                     height: "fit-content",
                     maxWidth: "1000px",
                     }}
+                visible={feedback}
+                onClose={setFeedback}
+                >
+            {/* <Login></Login> */}
+            <Feedback/>
+            </Rodal>
+            <Rodal
+                 customStyles={{
+                    width: "90%",
+                    paddingLeft: "0",
+                    paddingRight: "0",
+                    paddingTop: "0",
+                    paddingBottom: "0",
+                    background: "#F6F6F6",
+                    overflowY:"hidden",
+                    height: "fit-content",
+                    maxWidth: "1000px",
+                    }}
                 visible={loginModal}
                 onClose={setLoginModal}
                 >
             <Login></Login>
+            {/* <Feedback/> */}
             </Rodal>
             <Rodal
                 customStyles={{

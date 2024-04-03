@@ -36,7 +36,7 @@ const Footers = () => {
             to: "/ekonews"
         },
         {
-            name: "Become a Partner",
+            name: "Be a Partner",
             to: "",
             openModal: setpartnerModal
         },

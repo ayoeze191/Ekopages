@@ -13,7 +13,6 @@ const ModuleDetail = ({id, update_Module_completed}) => {
     const [loading, setLoading] = useState(true)
     const [moduelDetails, setmoduleDetails] = useState(null) 
 
-
     const get_ModuleDetails = () => {
         setLoading(true)
         instance.get(`/services/study/${id}/`, tokenConfig())
@@ -32,30 +31,17 @@ const ModuleDetail = ({id, update_Module_completed}) => {
     }, [id])
 
     
-
-
-// console.log(moduelDetails, "MEME")
   return (loading ?<ModuleSkeleton/>: moduelDetails !== null ?
     <div>
         {moduelDetails.video !== null &&
          <Video
          update_Module_completed={update_Module_completed}
-    // onProgress={(progress) => setPlayed(progress.playedSeconds)}
-    // ref={vidoeRef}
       width={640}
       height={360}
       controls
       url={moduelDetails.video}
       id={id}
-    //   url={
-    //     moduleDetails.find(
-    //       (mod) => mod.lesson_number === current && mod
-    //     ).video !== "null"
-    //       ? moduleDetails.find(
-    //           (mod) => mod.lesson_number === current && mod
-    //         ).video
-    //       : ""
-    //   }
+ 
     />
         }
         {

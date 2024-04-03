@@ -14,6 +14,10 @@ export const ModalContext = React.createContext({
     forgotPasswordModal: false,
     switchforgotPasswordModal: () => {},
     logoutModal: false,
+    lasturl: null,
+    setlastUrl: (val) => {},
+    feedback: false,
+    setFeedback: () => {}
 });
 
 export const ModalProvider = ({children}) => {
@@ -23,6 +27,12 @@ export const ModalProvider = ({children}) => {
     const [signup, setSignup] = useState(false)
     const [logoutModal, setlogOutModal] = useState(false)
     const [forgotPasswordModal, setforgotPasswordModal] = useState(false)
+    const [url, setUrl] = useState('')
+    const [feedback, setFeedback]  = useState(false)
+
+    const handleFeedback = () => {
+        setFeedback(!feedback)
+    }
     const setpartnerFunc = () => {
         setpartner(!partner)
     }
@@ -30,6 +40,9 @@ export const ModalProvider = ({children}) => {
         setforgotPasswordModal(!forgotPasswordModal)
     }
 
+    const handleLasturl = (val) => {
+        setUrl(val)
+    }
     const setStayFunc = () => {
         setStay(!stay)
     }
@@ -43,6 +56,8 @@ export const ModalProvider = ({children}) => {
     const handleLogoutModal = () => {
         setlogOutModal(!logoutModal)
     }
+    
+
 
     return (
         <ModalContext.Provider
@@ -58,7 +73,10 @@ export const ModalProvider = ({children}) => {
             logoutModal,
             setLogOutModal: handleLogoutModal,
             forgotPasswordModal,
-            switchforgotPasswordModal
+            switchforgotPasswordModal,
+            setlastUrl: handleLasturl,
+            feedback,
+            setFeedback: handleFeedback
         }}
         >
             {children}

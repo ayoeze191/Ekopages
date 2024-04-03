@@ -13,6 +13,9 @@ import { useLocation } from "react-router-dom";
 import { swicthFinishedCourseQuiz } from "../../../../store/reducers/Quizzes";
 import CircularProgressBar from "../../../ui/CircularProgressBar";
 import CourseCompletionModal from "./CourseCompletionModal";
+import Feedbackform from "./../../../ui/Modal/Feedbackform"
+import Rodal from "rodal";
+import { useModalContext } from "../../../../context/modal/modal";
 const CourseDetails = () => {
   const [coursePercentage, setCoursePercentage] = useState(0)
   const [modal, setShowModal] = useState(false)
@@ -181,6 +184,7 @@ const CourseDetails = () => {
         get_modules();
       }, [])
 
+
       useEffect(() => {
         if(modules.length > 0){
           if(CheckIfUserHasCompletedCourse(modules) === true){
@@ -194,10 +198,19 @@ const CourseDetails = () => {
       const ClearInterface = () => {
         setShowModal(false)
       }
+      const {setlastUrl, setFeedback} = useModalContext()
+      
+      const handleFeedback = () => {
+        setFeedback()
+        setShowModal(!modal)
+        setlastUrl('/dashboard/MyCourses/certifications')
+      }
+
     return(loading ? <div className="mx-auto  flex justify-center py-20 items-center"><MoonLoader /></div> : (modules.find(mod => mod.id == current).title == "Pop Quiz" || modules.find(mod => mod.id == current).title == "Literaure Questions" || modules.find(mod => mod.id == current).title == "Final POP QUIZ")? navigate(`/quizzes/${modules.find(mod => mod.id == current).lesson_number}/${modules.find(mod => mod.id == current).id}/${param.id}`) :
         <Wrapper
         >
-         {modal && <CourseCompletionModal ClearInterface={ClearInterface} id={param.id} />}
+         {modal && <CourseCompletionModal ClearInterface={ClearInterface} id={param.id} showFeedback={handleFeedback}/>}
+         
          { Completed == false ?
           <div className="px-[2.06rem] max-w-[67rem]">
             <div className="bg-[#FFFFFF] md:bg-inherit rounded-[5px] md:px-[1.5rem] py-[1.5rem]">

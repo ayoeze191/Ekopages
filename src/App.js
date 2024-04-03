@@ -2,11 +2,13 @@
 import LandingPage from "./pages/landingpage/landingPage";
 import {Route,Routes,Navigate,BrowserRouter, Link, useLocation} from "react-router-dom"
 import { BasicRoutes,  } from "./routes";
+import Rodal from "rodal";
+import Feedback from "./components/ui/Modal/Feedbackform";
 import NavHead from "./components/about/Navhead";
 import Footers from "./components/footer/Footers";
 import { useAuthContext } from "./context/auth/auth";
 import Login from "./components/login";
-import Rodal from "rodal";
+// import Rodal from "rodal";
 import 'rodal/lib/rodal.css';
 import Side_bar from "./components/ui/sidebar/Side_bar";
 import { useState } from "react";
@@ -71,7 +73,12 @@ function App() {
     setCookieContext()
   }
     
-  const {forgotPasswordModal, switchforgotPasswordModal, partnerModal, setpartnerModal, stayIntouchModal, setstayIntouchModal, logoutModal, setLogOutModal, setSignupModal} = useModalContext()
+
+
+  const {forgotPasswordModal, switchforgotPasswordModal,
+    feedback,
+     partnerModal, setpartnerModal, stayIntouchModal, setstayIntouchModal, logoutModal, 
+    setLogOutModal, setSignupModal} = useModalContext()
   const urlSearchParams = new URLSearchParams(window.location.search);
   const referenceValue = urlSearchParams.get('signup');
   useEffect(() => {
@@ -126,7 +133,6 @@ function App() {
       >
         <Logout sidebarHandler={sidebarHandler}  sidebar={side}/>
       </Rodal>
-
       <Rodal 
        customStyles={{
         width: "90%",
@@ -174,7 +180,9 @@ function App() {
       <Side_bar show={side} sideFunc={sidebarHandler}/>
       <div className="min-h-screen h-full w-full flex flex-col  justify-center">
       <NavHead sideHandler ={sidebarHandler}/>
+
         <Routes>
+          
           {
             BasicRoutes.map((eachRoutes, id) => <Route key={id} path={eachRoutes.path} element={eachRoutes.component}></Route>
             )
