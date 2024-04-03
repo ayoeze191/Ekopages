@@ -7,20 +7,28 @@ import instance from "../../../axios"
 import { tokenConfig } from "../../../Config/Config"
 import { useModalContext } from "../../../context/modal/modal"
 import { useNavigate } from "react-router-dom"
+import {toast} from 'react-toastify'
 const Feedback = () => {
   const {lasturl, setFeedback} = useModalContext()
   const navigate = useNavigate()
     const handlesubmit = (data) => {
         instance.post('/feedback/feedback/', data)
         .then((res) => {
+          toast.success('Your Feed back has been sent ')
           setFeedback()
           console.log(res.data)
           if(lasturl !== null){
             navigate(lasturl)
           }
+          else {
+
+          }
           
         })
-        .catch(error => console.log(error))  
+        .catch(error => {
+          toast.error('Your Feed back was not sent ')
+          
+        })  
      }
 
     const formik = useFormik({
