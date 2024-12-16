@@ -6,7 +6,12 @@ const WhyUs = () => {
         <img src={earth} className='relative -mb-24 mt-12'/>
         <div className='py-12 mx-auto lg:px-0 px-6 section font-lato text-[1rem] md:text-[1.25rem] flex flex-col gap-10'>
         <div >
-        <p >Our purpose is simple- catch them young. We aim to catch children young to inspire them to lead the next generation fully aware of sustainability issues and how to address them via a proper representation of the realities the children are in without jeopardizing diversity. We need African children to read and see more books for them, with characters that look like them and a culture that represents them.
+        <p >Our purpose is simple- to catch them young and inspire children to lead the next generation with
+a deep understanding of sustainability issues, foundational literacy, and numeracy. We promote
+stories and educational content that reflect African cultures and realities, ensuring that every
+Nigerian child achieves basic literacy and numeracy by 2030 while acquiring the knowledge and
+skills to drive sustainable development in line with SDG 4 eliminating disparities, ensuring that
+no child is left behind in the pursuit of a better, greener planet.
         </p>
 <p>Eko Pages is a publishing outfit that immerses children into the act of environmental sustainability with our top books, stories and publications. The goal of the brand is to train the kids into becoming eco-soldiers, thereby leading to a protected and sustainable environment for everyone. Books published by “Eko Pages” will create an indelible impact on children of our generation.</p>
 
@@ -15,11 +20,21 @@ const WhyUs = () => {
 
 <div>
    
-<p>We have observed that children are deeply concerned about environmental issues and worry because their voices are not being heard, nor that their opinions are considered.</p>
-<p>Through literature, children can better understand global issues, engage in critical inquiry about themselves globally, and combine narrative structure with information to take children beyond and expand their knowledge of complex scientific concepts such as climate change. </p>
-<p>Education is key to the integrated global framework of 17 Sustainable Development Goals (SDGs), reaffirmed as a central concern by the United Nations and UNESCO. There is a direct relationship between childhood education and achieving Sustainable Development Goals. </p>
-<p>As we approach SDG 2030, proper childhood education provides a sound footing and foundation that equips a child to become professional and competent to handle the development issues outlined in the global goals. Education for sustainability shapes learning and attitudes and provides the proper foundation for these children to tackle different aspects of sustainability in a localized manner as they transition into adults.</p>
-        </div>
+<p>At Ekopages, we believe that education is the foundation of progress and that empowering
+children and educators with the right tools can transform communities. Our platform uniquely
+combines foundational literacy and numeracy education with climate and sustainability-focused
+content, ensuring that young learners are equipped not only with essential academic skills but
+also with the awareness and capacity to address global challenges. In a world increasingly
+shaped by environmental crises, Ekopages fills a critical gap by embedding sustainability into
+education, fostering a generation of informed and proactive changemakers.</p>
+<p>What sets Ekopages apart is our deep commitment to local relevance and accessibility. Our
+books and e-learning materials are tailored to reflect African cultures, stories, and realities,
+making education relatable and impactful for children across Nigeria. With a vision to ensure
+every child achieves basic literacy and numeracy by 2030, we combine storytelling, innovative
+technology, and hands-on community programs to deliver high-quality education at scale. By
+choosing Ekopages, you are supporting a movement that empowers learners, strengthens
+communities, and builds a sustainable future for all. </p>
+      </div>
         </div>
     </div>
   )

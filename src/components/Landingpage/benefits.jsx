@@ -16,14 +16,14 @@ const Benefits = () => {
                                 <img src={assets.visualCard} alt="visualiseable content card" className="w-[17.01px] h-[12.5px] md:w-[initial] md:h-[initial]"/>
                                
                         </div>
-                        <p className="text-[10.890px] font-[400] md:text-[13px] text-center  text-[#303030] font-lato ">Visualisable Content </p>
+                        <p className="text-[10.890px] font-[400] md:text-[13px] text-center  text-[#303030] font-lato ">Interactive learning for sustainability </p>
                     
                 </section>
                     <section className="flex flex-col items-center gap-[1rem]">
                         <div className=" ml-auto mr-auto md:w-[80px] md:h-[80px] w-[42px] h-[42px] md:rounded-[16px] rounded-[6px] bg-white flex items-center justify-center" >
                         <img src={assets.engagementCard} alt="Increase Engagement and Participation card" className="w-[17.01px] h-[12.5px] md:w-[initial] md:h-[initial]" />
                         </div>
-                        <p className="text-[10.890px] font-[400] md:text-[13px] text-center  text-[#303030] font-lato">Increase Engagement and Participation </p>
+                        <p className="text-[10.890px] font-[400] md:text-[13px] text-center  text-[#303030] font-lato">Access to diverse educational content</p>
 
                    
                 </section>
@@ -31,7 +31,7 @@ const Benefits = () => {
                         <div className=" ml-auto mr-auto md:w-[80px] md:h-[80px] w-[42px] h-[42px] md:rounded-[16px] rounded-[6px] bg-white flex items-center justify-center">
                         <img src={assets.retentionCard} alt="Increase Retention by up to 100% card" className="w-[17.01px] h-[12.5px] md:w-[initial] md:h-[initial]" />
                         </div>
-                        <p className="text-[10.890px] font-[400] md:text-[13px] text-center  text-[#303030] font-lato">Increase Retention by up to 100% </p>
+                        <p className="text-[10.890px] font-[400] md:text-[13px] text-center  text-[#303030] font-lato">Promotes foundational literacy and numeracy </p>
 
                   
                 </section>
@@ -40,7 +40,7 @@ const Benefits = () => {
                         <img  src={assets.prepareCard} alt="Prepares kids for the future card" className="w-[17.01px] h-[12.5px] md:w-[initial] md:h-[initial]"/>
 
                         </div>
-                    <p className="text-[10.890px] font-[400] md:text-[13px] text-center  text-[#303030] font-lato">Prepares kids for the future </p>
+                    <p className="text-[10.890px] font-[400] md:text-[13px] text-center  text-[#303030] font-lato">Empowers educators and students for the future</p>
                 </section>
           
            

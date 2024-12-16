@@ -38,7 +38,10 @@ export const About = () => {
                    <p className="hidden md:block text-[44px] font-[700] text-[#232323] md:mr-auto">About Us</p>
                     <p className="font-[500] text-[20px] text-center md:text-left mt-[24px] md:mr-auto mb-[16px]">Our <span className="text-[#5A0C91]"> purpose </span> is simple- <span className="text-[#5A0C91]">Catch  them young. </span></p>
                     <p className="text-[14px] font-[500] font-lato text-center md:text-left md:font-[400] text-[#4A4A4A] lg:text-[20px]">
-                    We aim to catch children young to inspire them to lead the next generation fully aware of sustainability issues and how to address them via a proper representation of the realities the children are in without jeopardizing diversity. We need African children to read and see more books for them, with characters that look like them and a culture that represents them.
+                    Our purpose is simple- Catch them young. We are an Education for
+Sustainability (ESD) platform that improves foundational literacy and numeracy in
+children across Nigeria and the world while imparting them with tech-enabled green
+education to champion sustainable development in their communities.
                     </p>
                     <Link to={'/about'} className=" md:mr-auto font-[600] md:font-[500] text-[14px] md:text-[24px] bg-[#5A0C91] py-[8px] px-[12px] md:px-[52px] md:py-[15px] text-[white] md:text-black rounded-[3px] mt-[16px] md:bg-[#EFA30C]">
                     Read more
