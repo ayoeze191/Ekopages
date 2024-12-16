@@ -16,7 +16,7 @@ const WelcomeComponent = () => {
                 <div className="flex flex-col">
                     <div className="">
                     <h1 className="text-[#ffffff] font-[700] text-[24px] md:text-[80px] md:font-[700] mb-[12px] md:leading-[5.5rem]">Education <span className="text-[#EFA30C] text-[15px] md:text-[40px]"> for </span> <br />  Sustainability</h1>
-                    <p className="font-[500] text-[#D7D7D7] text-[12px] md:text-[20px] md:font-[400] font-lato mb-[20px] md:mb-[40px]">An “Edtech” Platform for Sustainability Literacy for <br/> Children through Literature, Animation and Courses.</p>
+                    <p className="font-[500] text-[#D7D7D7] text-[12px] md:text-[20px] md:font-[400] font-lato mb-[20px] md:mb-[40px]">Foundational <span className="font-bold">Climate</span>, <span className="font-bold">Literacy</span> and<br/> <span className="font-bold">Numeracy</span> Education</p>
                     </div>
                 <div className="flex gap-[1rem]">
                     <Link to={'/explore-courses'} className="bg-[#EFA30C] text-[#480A74] border-[#EFE7F4] text-[10px] md:text-[20px] rounded-[5px] md:rounded-[10px] border-[0.5px] md:px-[20px] md:py-[17px] px-[7.5px] py-[10.5px]">Explore Courses</Link>
