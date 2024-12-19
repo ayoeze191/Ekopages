@@ -30,7 +30,6 @@ const LandingPage = () => {
       </Rodal> */}
           <LandingComponent></LandingComponent>
         </div>
-       
     )
 }
 

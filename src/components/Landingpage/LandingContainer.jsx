@@ -9,6 +9,7 @@ import { About } from "./about.js/about";
 import { EkoNews } from "./news";
 import { Footer } from "../footer/footer";
 import Partners from "../about/Partners";
+import OtherTales from "../Service/Ekotales/OtherEkotales/OtherTales";
 
 
 
@@ -22,6 +23,7 @@ const LandingComponent = () => {
             {/* <NavHeader></NavHeader> */}
             <WelcomeComponent></WelcomeComponent>
             {/* <OurPartners></OurPartners> */}
+           <div className="section py-12 mx-auto lg:px-0 px-6 font-lato font-bold"> <OtherTales /></div>
             <Partners />
             <About></About>
             <Benefits></Benefits>

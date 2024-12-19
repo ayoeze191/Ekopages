@@ -20,7 +20,7 @@ const WelcomeComponent = () => {
                     </div>
                 <div className="flex gap-[1rem]">
                     <Link to={'/explore-courses'} className="bg-[#EFA30C] text-[#480A74] border-[#EFE7F4] text-[10px] md:text-[20px] rounded-[5px] md:rounded-[10px] border-[0.5px] md:px-[20px] md:py-[17px] px-[7.5px] py-[10.5px]">Explore Courses</Link>
-                    <Link to={'/ekonews'} className="bg-[#EFA30C] text-[#480A74] border-[#EFE7F4] text-[10px] md:text-[20px] rounded-[5px] md:rounded-[10px] border-[0.5px] md:px-[20px] md:py-[17px] px-[7.5px] py-[10.5px]">Explore our Stories</Link>
+                    <Link to={'/services/ekotales'} className="bg-[#EFA30C] text-[#480A74] border-[#EFE7F4] text-[10px] md:text-[20px] rounded-[5px] md:rounded-[10px] border-[0.5px] md:px-[20px] md:py-[17px] px-[7.5px] py-[10.5px]">Explore Short Stories</Link>
                     {/* <button className="text-[white] border-[#EFE7F4] text-[10px] md:text-[20px] rounded-[5px] md:rounded-[10px] border-[0.5px] md:px-[20px] md:py-[17px] px-[7.5px] py-[10.5px]" onClick={() => setpartnerModal()}>Explore our Stories</button> */}
                     {/* <button></button> */}
                 </div>

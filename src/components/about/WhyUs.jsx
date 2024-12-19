@@ -13,7 +13,7 @@ Nigerian child achieves basic literacy and numeracy by 2030 while acquiring the 
 skills to drive sustainable development in line with SDG 4 eliminating disparities, ensuring that
 no child is left behind in the pursuit of a better, greener planet.
         </p>
-<p>Eko Pages is a publishing outfit that immerses children into the act of environmental sustainability with our top books, stories and publications. The goal of the brand is to train the kids into becoming eco-soldiers, thereby leading to a protected and sustainable environment for everyone. Books published by “Eko Pages” will create an indelible impact on children of our generation.</p>
+<p>Eko Pages is a publishing outfit that immerses children into the act of environmental sustainability with our top books, stories and publications. </p>
 
 </div>
 <h2 className='lato text-[1.25rem] md:text-[2rem] font-[600]'>Why EkoPages?</h2>

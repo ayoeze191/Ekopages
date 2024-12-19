@@ -80,7 +80,6 @@ const OtherTales = () => {
             {/* <button className='nextEl'> */}
                 {/* next */}
             {/* </button> */}
-
             </Swiper>
         </div>
     </div>
