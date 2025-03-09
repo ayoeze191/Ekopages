@@ -6,7 +6,7 @@ import LME from "./../../assets/about/LME.png"
 import REESAfricaLogo from "./../../assets/about/REESAfricaLogo.png"
 import TNCI from "./../../assets/about/TNCI.png"
 import educator from "./../../assets/about/educators.png"
-
+import pollination from "./../../assets/landingpage/polination.jpeg"
 import partners from "./../../assets/landingpage/partners.svg"
 
 import { Swiper, SwiperSlide } from 'swiper/react';
@@ -39,12 +39,12 @@ const Partners = () => {
             breakpoints={{
               450: {
                 loop: true,
-                slidesPerView: 6,
+                slidesPerView: 7,
                 spaceBetween: 5
               },
               640: {
                 loop: true,
-                slidesPerView: 6,
+                slidesPerView: 7,
                 spaceBetween: 56
             }
         }}
@@ -63,6 +63,8 @@ const Partners = () => {
             <SwiperSlide> <div className='px-3 w-fit  mx-auto flex items-center   h-full'  ><img src={REESAfricaLogo} className='mx-auto w-40 md:w-full' /></div></SwiperSlide>
             <SwiperSlide><div className='px-3 w-fit mx-auto flex items-center   h-full'  ><img src={LME} className='mx-auto w-40 md:w-full' /></div></SwiperSlide>
             <SwiperSlide><div className='px-3 w-[200px] mx-auto flex items-center   h-full'  ><img src={educator} className='mx-auto w-40 md:w-full' /></div></SwiperSlide>
+            <SwiperSlide><div className='px-3 w-[200px] mx-auto flex items-center   h-full'  ><img src={pollination} className='mx-auto w-40 md:w-full' /></div></SwiperSlide>
+
             </Swiper>        
         </div>
     </div>
