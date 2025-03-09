@@ -11,12 +11,6 @@ import { Footer } from "../footer/footer";
 import Partners from "../about/Partners";
 import OtherTales from "../Service/Ekotales/OtherEkotales/OtherTales";
 
-
-
-
-
-
-
 const LandingComponent = () => {
     return (
         <div className="w-full ">
